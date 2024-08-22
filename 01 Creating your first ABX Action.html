@@ -1,0 +1,306 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="importing-the-blueprint" data-step-uuid="B5F2CBE6-9BAD-496C-B342-945F608458D5">
+    <h2 id="importing-the-blueprint" class="step-title screensteps-heading">Examining an Action </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_B488865E-43BB-47FE-BAA1-403EFE59D946" class="text-block-content">
+    <p>Let's create our first ABX Action. </p>
+<p>Open <strong>Cloud Assembly</strong> and navigate to <strong>Extensibility &gt; Actions</strong> and click <strong>New Action</strong>. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/309/original/33846aac-33d1-4983-aa1b-56d40c0a9916.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1114ced97cc7719662450cda8d9f8d1b33bfdda713a3cf62765cc610507e42a9" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="428" width="611">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7E247494-B679-4847-89B5-45F232BB90D8" class="text-block-content">
+    <p>Supply the following values:</p>
+<ol>
+<li>
+<strong>Name</strong>: myFirstAbx-<em><strong>yourname</strong></em>
+</li>
+<li>
+<strong>Project</strong>: &nbsp;<strong>dev-tito</strong>
+</li>
+</ol>
+<p>Click <strong>Next </strong>and click <strong>Save.</strong></p>
+<p>Let's examine the building blocks of the Action. </p>
+<p>On the left side we can see the an example action script being created containing our main function. We can also see a drop-down where we can select the scripting language we want to use for the action. &nbsp;We are going to stick with Python. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/310/original/9cefe47b-9313-4551-b2df-67621f10ae74.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a58ceb5af198925451d28afcc58c552efa5cb5dd2219ef6c33decee69e8fd317" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="356" width="513">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C2C2FCB5-5F0F-4801-92B1-A726D0B75A93" class="text-block-content">
+    <p>On the right side of the screen we can see and set up few things: </p>
+<ol>
+<li>
+<strong>Main function</strong> - The name of our main / entry function. If we have multiple functions defined in the Action this is the name of the entry function that will be started first once the Action starts. </li>
+<li>
+<strong>Default Inputs</strong> - We can see one default input that was created together with the action. Inputs are key/value pairs that are passed to the Action once it starts. For now please delete the default input(s)</li>
+<li>
+<strong>Dependency</strong> - Here can can define dependencies that we may need to be imported into the Action runtime environment. Dependencies are script modules our Action may need in order to execute. For example if we are doing REST calls within the action we will probably be using the Python <strong>requests</strong> module <a href="(https://pypi.org/project/requests/)">(https://pypi.org/project/requests/)</a> which contains methods we can utilize to do API Calls. If you open the requests module page you will see that if you wanted to use this module in an environment where you are running Python, you would run <code>pip install requests</code>, which would install the <strong>requests</strong> module in that environment. If we enter <strong>requests</strong> in the <strong>Dependency</strong> field, this will do exactly the same for our function.</li>
+<li>
+<strong>FaaS Provider </strong>- We also need to select where to run the function. We can leave it at <strong>Auto Select</strong> or we can choose a preferred FaaS provider like Amazon Web Services, Microsoft Azure, or On Prem. If we select <strong>On Prem</strong> this will run in an Extensibility VM, which we have to download from VMware Cloud Assembly and install in an on-prem datacenter. You may not see On Prem if there is no Extensibility VM deployed. For now select <strong>Amazon Web Services.</strong>
+</li>
+</ol>
+<p>Click <strong>Save</strong> and close the Action.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/311/original/02ecd47a-cc39-4132-bb86-088c4fbdd264.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ea70ba914fd376a3f0c4cd57675ad6138dbee73b85c2d389a068f5e67e8c2622" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="466" width="634">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="creating-a-subscription" data-step-uuid="30A97645-68D4-4AFB-8608-E272C0CD4E9D">
+    <h2 id="creating-a-subscription" class="step-title screensteps-heading">Creating a Subscription</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4CC437FE-6E5B-4F14-8FD2-3DCA96848FB1" class="text-block-content">
+    <p>Let's create a subscription for our action. The action doesn't do much at this point, but we are going to change this later. <br>Let's establish that we want to run our action at the very beginning of a provisioning process, at a stage where we can easily change some data passed into payload and still be able to return it in time to the Event Broker Service so that the new information can be used during provisioning. &nbsp;</p>
+<p>Navigate to <strong>Event Topics</strong> and click <strong>Compute allocation.</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/312/original/c4303239-9fd8-4f0a-bd14-a9ab433c3741.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d0a671671fdd336adb2ae1fd833d458fb907f5701ca67fc2f01eb7fe39274971" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="403" width="541">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9737AEF8-0E16-4A4D-A5E1-BFECF355ED4B" class="text-block-content">
+    <p>Here we can see the schema of objects and information this event brings with it. This is the information that we can use/modify in an action afterward. For example, from this event topic we can get the Resource Name(s), the Tags, and the Custom Properties of the Compute Resources. </p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/313/original/c4f6d20a-6ce7-4e91-a18b-14ab9dbfd786.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e6abc167f08295019241a3f957b7cc97aa312ee6f6433a0f551e71f3ec2d54be" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/313/medium/c4f6d20a-6ce7-4e91-a18b-14ab9dbfd786.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7b86a546f3189abe8ab5145c9253cab9b97a08242924fb42a5890342300a707a" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="895" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EC56042B-752D-4ECF-9F77-3EA7DF84C5C6" class="text-block-content">
+    <p>Now lets create a Subscription for this Event Topic for our Action. </p>
+<p>Navigate to <strong>Subscriptions</strong> and click <strong>New Subscription.</strong></p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/314/original/2763f24f-9397-4e0c-8e92-29d2c88d6d19.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1186620104b3f51df0315a001ee669c34a481ea202d67c81e789661df80eff37" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="181" width="548">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_36D85545-72A6-4878-A7A7-DB75684EBB50" class="text-block-content">
+    <p>Let's talk a bit about some of the configuration within the subscription.</p>
+<ul>
+<li>
+<strong>Event</strong> <strong>Topic</strong>: &nbsp;Here we have to select an Event Topic we wanna subscribe to. We examined this earlier. </li>
+<li>
+<strong>Condition</strong>: &nbsp;Create a JavaScript syntax boolean expression using the 'event' object &nbsp;and its properties. Use 'event.data' to access the event's payload&nbsp;(data) according to the specified topic schema, or any of the event's header properties: sourceType, sourceIdentity, timeStamp, eventType, &nbsp;eventTopicId, correlationType, correlationId, description, targetType, &nbsp;targetId, userName, orgId. &nbsp;For example, I can say that I want this subscription to be triggered only when a user with a particular username is triggering an event (e.g. event.userName ==&nbsp;'myemail@mydomain.com'). &nbsp;We are going to look into some more complex examples later. </li>
+<li>
+<strong>Action/workflow</strong>: &nbsp;Here we can select the ABX Action or vRO Workflow which will be run when the subscription gets triggered. You may notice that there is a number next to each ABX/Workflow . This indicates on how many Projects / Instances of vRO this workflow can be found. &nbsp;If for example I have 3 vRO Integrations and a particular workflow is imported in all three of them, next to that vRO workflow I will see the number "3". </li>
+<li>
+<strong>Blocking</strong>: &nbsp;Blockable Event Topics allow Blocking Subscriptions. Marking a subscription as Blocking will block any other subscriptions of this&nbsp;Blockable Event Topic and Condition until this action/workflow has completed. &nbsp;For example, we use this when we need to intercept the payload and return it back to the Event Broker with our modifications for a given deployment. If we do not mark it as <strong>Blocking</strong>, the Event Broker will not wait for the action to complete and return the payload, instead it will continue with the deployment execution. Lets say we want to change the IP that will be assigned to a deployment during provisioning time via ABX Action. &nbsp;We would enable <strong>Blocking</strong> so that the new IP gets returned on time to Event Broker before the deployment has moved to a stage where the IP is already set. </li>
+</ul>
+<p>Let's connect our ABX action to the subscription. Provide the following details for the subscription:</p>
+<ol>
+<li>
+<strong>Name</strong>: myFirstABX-sub-<em>yourname</em>
+</li>
+<li>
+<strong>Status</strong>: Enable</li>
+<li>
+<strong>Event</strong> <strong>Topic</strong>: Select Compute Allocation (compute.allocation.pre)</li>
+<li>
+<strong>Condition</strong>: event.userName ==&nbsp;'<em>&lt;YOUR_EMAIL_ADDRESS&gt;</em>' (this is done to avoid this subscription triggering for other attendees) </li>
+<li>
+<strong>Action/workflow</strong>: myFirstABX-<em>yourname</em>
+</li>
+<li>
+<strong>Blocking</strong>: No</li>
+<li>
+<strong>Subscription scope</strong>: Any Project</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/315/original/44d97192-5f6e-490e-95eb-6fb053874410.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b0fad679109bec76f20f13ed5e5834dcc03d0014a1e779ef4dbe7fc024754598" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="1034" width="778">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="configuring-the-action_1" data-step-uuid="C0A3CA07-DC46-4DED-81C9-CEC8A5CD0507">
+    <h2 id="configuring-the-action_1" class="step-title screensteps-heading">Configuring the Action</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2E7E4F4F-DA08-488D-A64A-83A502A50D2E" class="text-block-content">
+    <p>Let's change our ABX action.</p>
+<p>1. Open your ABX action and paste the following code in the script syntax editor.</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_4F6E14DE-FCF6-4E2A-AE72-C3FDC4194A4A"><code>&lt;p&gt;def handler(context, inputs):
+
+    outputs = inputs
+    
+    return outputs&lt;/p&gt;</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_4F6E14DE-FCF6-4E2A-AE72-C3FDC4194A4A">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_BC02AC82-9AF1-41A9-9AC6-B8C282ED47D7" class="text-block-content">
+    <p>2. Under Default Inputs create the following input: </p>
+<ul>
+<li>
+<strong>Name</strong>: abxInputNameIn</li>
+<li>
+<strong>Value</strong>: abxInputValue</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/316/original/cf050f18-5cc4-4b40-ba3e-afc4fff2006d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=297eb15f77ef95920166d43341560a2984b50fe1dd61d632ed707a8e6f37d410" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/316/medium/cf050f18-5cc4-4b40-ba3e-afc4fff2006d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f5be73b504fcc9b62daad40fe30ccfcdcc84a91e29cda40e71381d111ceea491" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="352" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EEF70E48-63E3-430A-859C-DD21E1925048" class="text-block-content">
+    <p>Within the script function notice the two function parameters <strong>context</strong> and <strong>inputs</strong>, and the function return object called <strong>outputs.</strong></p>
+<ul>
+<li>
+<strong>context</strong> - among other things handles <strong>authentication</strong> for the ABX Action</li>
+<li>
+<strong>inputs</strong> - this function parameter will give us access to the action input(s) we have defined under <strong>Default Inputs. &nbsp;</strong>In addition it will also give us access to the <strong>payload content</strong>. </li>
+<li>
+<strong>outputs</strong> - returns information from the function. If we modify a payload property and we want to send it back to the Event Broker Service, we need to output it as a return from our main function.</li>
+</ul>
+<p>When we examine the script again we see that the only thing it does is take the inputs and assign them as outputs of the function/action. &nbsp;Lets run it and see what we have so far. </p>
+<p>Click <strong>Save</strong> and click <strong>Test. <br></strong>Click <strong>See details </strong>next to the Test button to open the Test Status dialog.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/317/original/3b5d1fb5-ebe2-4a6a-a015-3e8cd74421e6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0e611bb0742580ad198731edb244b1938a373364b0301dfa26774edfecf365a6" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/317/medium/3b5d1fb5-ebe2-4a6a-a015-3e8cd74421e6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e1756203eba5346c96a8b30b89e8957f1d41fc746fc3806b53df3e499160ec95" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="691" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_DBCF7917-9600-4857-BE5B-15299E5FD8BF" class="text-block-content">
+    <p>Under <strong>Inputs</strong> we can see the Action Input which we have defined in the action. </p>
+<p>Earlier we learned that the inputs function parameter gives us access to the payload data and the action inputs. &nbsp;At this point we don't really have any payload data as we don't have any active deployments that can provide this. </p>
+<p>Under <strong>Outputs </strong>we can see the function/action outputs . We have only some __metadata<strong> </strong>information which contains things like who triggered the action, etc. &nbsp;We are going to cover this topic later in the course. &nbsp;We also see our input being outputted back from the action. </p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="configuring-the-action" data-step-uuid="E2147ABA-FB3C-45DC-9C16-6B3EBA77C5F9">
+    <h2 id="configuring-the-action" class="step-title screensteps-heading">Working with Deployment Payload</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0A30DC97-858E-4DD8-857D-FFE6A0ED43FB" class="text-block-content">
+    <p>Now that we have configured the Action and the Subscription, let's run a deployment and see how the deployment payload gets passed to an action. </p>
+<ol>
+<li>Import the myFirstABX.yaml blueprint from Dropbox. </li>
+<li>Name it <strong>myFirstABX-</strong><em><strong>yourname</strong></em>
+</li>
+<li>Deploy the blueprint with default inputs. </li>
+<li>Navigate to <strong>Extensibility &gt; Action Runs</strong> and open the action run which just got triggered for the deployment.</li>
+</ol>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/318/original/d9e39aeb-d261-4f08-9e7c-56c06221b9c0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=bf43dc7c9a481d0be14bf9153984445f64f7bdad2707c249ce3f23d41042a537" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="907" width="779">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C1FA9387-AE4E-47DC-A32F-519523ADB876" class="text-block-content">
+    <p>Notice on the Details tab there is now much more information in the form of the deployment payload being passed to the inputs for our function. We can still see the ABX Action inputs here as well as them being merged with the payload info. As we can see in this Event Topic we also get the <strong>customProperties</strong> passed via the payload. These are the properties of the machine resource object from the Blueprint. What we may also notice is that unfortunately the Blueprint Input <strong>userInput</strong> which is defined in the Blueprint YAML is not seen in the payload. </p>
+<p>What can we do to get that user input value included as part of the payload, you ask? &nbsp;Well, we can create a YAML custom property, assign the Blueprint as input to that property and the we can read it via the same customPorperties in the payload. Let's see how we can do this. </p>
+<p>Navigate back to the Blueprint and open it. </p>
+<p>Uncomment the userInputProp property value</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/319/original/0e70becd-a35f-4e08-9e7c-9d1d3076213b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=04192f23aded73b6b2a817b2545fd25a73863236d260e4bac253f9bb9ff69331" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="258" width="491">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D6E1BF0A-7282-4B50-8DB9-C8470F2729D2" class="text-block-content">
+    <p>We can see that our YAML custom property <strong>userInputProp</strong> is configured to the take the value passed to the input variables called <strong>userInput</strong>. </p>
+<p>Run another deployment of the Blueprint and lets check the action again. </p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/320/original/3cc9d01a-5ece-44ec-bb01-82f819225668.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194506Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=fd6dac3206b08bf2479cc024e04e7d35cb6c295803c4c4531fc7b13d6c1c2b01" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="450" width="557">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9BBB6DD3-DCB3-40BB-A939-0EEC99252B66" class="text-block-content">
+    <p>We can see that now the <strong>userInputProp</strong> is also part of the <strong>customProperties</strong> payload. &nbsp;This is a great way to pass some user inputs as payload information in case we need it in the ABX action.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="subscription-conditions" data-step-uuid="59C7F9C8-F37C-4A60-89D8-7AEF1B07CC24">
+    <h2 id="subscription-conditions" class="step-title screensteps-heading">Subscription Conditions</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_767A02AE-0EBA-4C73-9A03-B271EACF1242" class="text-block-content">
+    <p>Let's extend the subscription condition that we created earlier. We are going to only run the action if the user input matches the word <strong>run.</strong></p>
+<p>Navigate to <strong>Extensibility &gt; Subscriptions</strong>. </p>
+<p>Open myFirstABX-sub-<em>yourname </em>and edit the condition. Change it to the following value: </p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_9EF8A403-44D8-48D3-8540-B8F4694ADF72"><code>&lt;p&gt;event.userName == &#39;youremail@domain.com&#39; &amp;amp;&amp;amp; event.data.customProperties.userInput == &#39;run&#39;&lt;/p&gt;</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_9EF8A403-44D8-48D3-8540-B8F4694ADF72">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_52439A76-DE94-4F78-AEBD-ED1964245B26" class="text-block-content">
+    <p>Now in addition to the action only triggering when the deployment is being run under a given email, it will also search for a custom property called <strong>userInput</strong> with a value of <strong>run</strong>. &nbsp;If <strong>both</strong> of these are not found the action will not trigger. </p>
+<p>Deploy the blueprint again without making any changes to it. &nbsp;The previous time we deployed it the action was triggered, however this time the action should not be triggered as the <strong>userInput</strong> does not match <strong>run</strong>. </p>
+<p>Verify that no action is triggered <strong>Action Runs</strong>. </p>
+  </div>
+</div>
+ 
+  </div>
+
+

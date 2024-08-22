@@ -1,0 +1,242 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_2ADA6B88-8F9D-488C-BCEE-CFBF89BC304D" class="text-block-content">
+    <p>Delivery Resources:</p>
+<ol>
+<li>
+<strong>vCloud Director: </strong><a href="https://vcd.livefire.dev/tenant/Delivery" target="_blank">Delivery Org</a> ( <a href="https://vcd.livefire.dev/tenant/Delivery">https://vcd.livefire.dev/tenant/Delivery</a> )</li>
+<li>
+<strong>Horizon Windows Desktop:</strong> ATT-W10-NSX (Windows 10 Desktop)</li>
+<li>
+<strong>Horizon Desktop User Account:</strong> nsxuser001 - nsxuser100</li>
+<li>
+<strong>Available vROps Dashboard(s):</strong> HaaS vCD Dashboard</li>
+</ol>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="vcloud-director-vapptemplate-vpod" data-step-uuid="7BE2FC08-6DED-435F-A2F2-98C6C348FE8A">
+    <h2 id="vcloud-director-vapptemplate-vpod" class="step-title screensteps-heading">1. vCloud Director vAppTemplate / vPod</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_55A8B254-CEF6-4B86-A9A3-C890E3D891A1" class="text-block-content">
+    <p>The vAppTemplate you wish to use for delivery should be in the Livefire-Delivery-Catalog as per:</p>
+<p><a data-internal-link-id="1853782" data-internal-link="article" href="../../124967/l/1853782-how-to-copy-vapptemplate-to-delivery-org" target="_blank">How To: Copy vAppTemplate to Delivery Org</a></p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="set-v2t-class-template-if-necessary" data-step-uuid="A93AFEA1-BD8B-4DE0-8F20-BE8259ACB18F">
+    <h3 id="set-v2t-class-template-if-necessary" class="step-title screensteps-heading">1.1. Set V2T / VCN / Federation Class Template (if necessary)</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_C865949C-1491-4FC3-9359-4E88D1CFA67E" class="text-block-content">
+    <p>NOTE: This is ONLY required if you have just updated your vAppTemplate</p>
+<p>This will provide a dropdown list of the available vAppTemplate in the Livefire Delivery Org. The NSX Instructor can then choose which one should be used for upcoming deliveries. That value will be used by the Deploy V2T Class ass an input. </p>
+<p>NOTE: The process for V2T, VCN, and NSXT-Federation vPod deployments is the same. The big difference is that the V2T request deploys 2 vPods per attendee while the others deploy 1 vPod per attendee.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EC4E1C29-E45C-4DB7-A05B-9E23F8967A97" class="text-block-content">
+    <p>Use the <a href="https://vra.lab.livefire.dev/catalog/#/library" target="_blank">Livefire Automation Portal - Service Broker</a> (Login with your HaaS Lab User account)</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/176/original/194c4679-efe4-4ce4-bb3e-ff68fb2fd324.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=16ce2b4767d1c0d220408b24e9a082e74d57fe02d039b12b5bc26aa62eddc8f1" srcset="" alt="" height="607" width="432">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_831C9532-062F-4AD1-96A4-2C5102E8EC8C" class="text-block-content">
+    <p>The page should prompt you for login... if there is a dropdown for domain selection, choose "lab.livefire.dev" - future visits to the page should show like my screenshot above.</p>
+<p>Since the domain is already selected, you just specify your username and password then click Sign In</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="update-delivery-template-list" data-step-uuid="3909B5A3-88DD-42F8-BB0F-7AE8C9BEC736">
+    <h4 id="update-delivery-template-list" class="step-title screensteps-heading">1.1.1. Update Delivery Template List</h4>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_2269E500-DEAA-4797-9BDD-53F8869A2CF1" class="text-block-content">
+    <p><strong>PLEASE NOTE:</strong> This step is ONLY required if you have JUST NOW copied a NEW template to the Delivery Catalog. This workflow is run automatically on a DAILY basis. So, if you have a new Template you want to test in the Delivery Org right away, you may need to run this simple worklow. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/180/original/f6aedd9b-b46d-44da-9a61-c88c56d46f4b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=942497a20fa3bd65a0c8ff4a26752ae1e76aa308653ea4b4e6f445330355d00e" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/180/medium/f6aedd9b-b46d-44da-9a61-c88c56d46f4b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3c0fbc0db128c0cd48957a1030f48c71218fa3ca727a2d39d3cde74109b87b0d" srcset="" alt="" height="829" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D1B6B8F6-8569-420F-BD7C-D8B754A41D33" class="text-block-content">
+    <p>Request the <strong>GetandStoreDeliveryTemplates</strong> catalog item. This workflow will update the available templates in the Set VCN Template catalog item.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/181/original/c9ac20bb-b142-4d54-a20f-041c2eb012ac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d13b0eae39f4cdf0d9d6d0e7eb0c29722f7c341c38b2f87c460e503e8be594c2" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/181/medium/c9ac20bb-b142-4d54-a20f-041c2eb012ac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4be10aba8a366ced5d320577e3959aa1eb1da8b4eba968b84193314b9b4624a7" srcset="" alt="" height="472" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E9F4BFA8-4577-4C53-BB8F-8F05435A4332" class="text-block-content">
+    <p>Click <strong>SUBMIT</strong> to run the request. It will only take a minute or two to complete.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_C3A16529-7E3A-4866-B529-289B22A5F757" class="text-block-content">
+    <p>END optional Update Delivery Template list section... you may continue on with Setting the Template for the desired class.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/182/original/ce0b2225-ed87-4a55-b309-f62c86fac10f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6c184ba6b9c671a5cde708b3b03d95e1c00b158dccdc1dc5a55ffbd7d7b19d19" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/182/medium/ce0b2225-ed87-4a55-b309-f62c86fac10f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d7f113f2c4864129e2482231e0686a3a6c486383fbd3fcb0c8e8d7eddb1ef221" srcset="" alt="" height="829" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E077F036-B2D2-4F9C-9506-F0A554CE1951" class="text-block-content">
+    <p>Request the "Set V2T Class Template" catalog item</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/177/original/98dcaa15-5697-4840-affc-207407300f96.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3656d0cec0b8a97553e724e4817ba8af089fd6473cb1898948da9ebb12d41559" srcset="" alt="" height="562" width="620">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A03327CE-A934-40E3-8857-B431DBC8E4D0" class="text-block-content">
+    <ol>
+<li>You can always see what the currently selected template for the V2T class is by simply loading this form</li>
+<li>The <strong>vAppTemplate to Use</strong> dropdown list:<ol>
+<li>Is a list of the available vAppTemplates in the Livefire-Delivery-Catalog as of Midnight</li>
+<li>The list t is updated every day at midnight - via a scheduled workflow</li>
+</ol>
+</li>
+</ol>
+<p>If you have a NEW template that is to be used in an upcoming/future class and it already appears in the dropdown list, select it and click SUBMIT</p>
+<p>If you have a NEW template that was added to the Livefire-Delivery-Catalog more than a day ago AND it does NOT show in the dropdown, please notify Burke</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="deploy-v2t-class" data-step-uuid="B4545CF8-0312-422E-B55B-035B95D64824">
+    <h3 id="deploy-v2t-class" class="step-title screensteps-heading">1.2. Deploy V2T Class</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_478579BF-1A8A-4F3F-9BC0-26677F3EF918" class="text-block-content">
+    <p>The steps below can be done up to 1 day prior to delivery. </p>
+<p><span style="color:rgb(255,38,0);"><strong>The Workflow run-time for 25 attendees is approximately 3 Hours and 45 Minutes</strong></span></p>
+<p>This custom workflow has been written to deploy a full set of class vApps for the V2T Class. A “set” means 2 vApps per attendee.</p>
+<p>The template used by this request is the one set by the <strong>Set V2T Class Template</strong> request in the previous step of this manual</p>
+<p><strong>A V2T-A-### and a V2T-B-### vApp: </strong></p>
+<p>The V2T-A-### vApp is immediately deployed and powered on, while the V2T-B-### is only deployed (not powered on). Once all sets for the specified number of attendees has been deployed, an e-mail is sent to the Instructor e-mail addresses that the submitter entered in the form. That e-mail provides a few helpful links as well as all the nsxuser### accounts, current attendee password at time of workflow execution, and the day 1 (V2T-A pod) and day 2 &nbsp;(V2T-B pod) External IP Addresses that the attendees will use to perform the labs.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/178/original/ac23ba0f-0e5a-40f9-8300-d020dd32f6d2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=36007078fb01be5a26a64f897b5861413c36bb2ce44e3a18fe962ec5c7ec24da" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/178/medium/ac23ba0f-0e5a-40f9-8300-d020dd32f6d2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=167740d7dc628804b5b512f232924ceba0b3837b70c7bbec8917f9d8d0bf85ab" srcset="" alt="Livefire Automation Portal - Service Broker" height="647" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ED65A509-D492-4BF1-912F-6D78190F3C93" class="text-block-content">
+    <p>When you are ready to deploy a V2T class set of pods (for testing or for actual delivery), you should use the <strong>Deploy V2T Class</strong> catalog item in the &nbsp;<a href="https://vra.lab.livefire.dev/catalog/#/library" target="_blank">Livefire Automation Portal - Service Broker</a> (Login with your HaaS Lab User account)</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/179/original/7461a5f5-78ea-4a4d-a64f-a109095cf2e9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ba7a572cdf07213c8ec443e30ff5b73da13a756e5bf646b897b842f24aae1e11" srcset="" alt="Deploy V2T Class Form" height="750" width="605">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A5EC1C71-156A-480C-9E18-385A83928DC7" class="text-block-content">
+    <p>When the form loads up, most of the default values can be left in place, but the following SHOULD be changed as appropriate for your delivery:</p>
+<ol>
+<li>How many attendees - this will default to 10, but can be lowered for testing purposes or increased to 25 for a full class delivery</li>
+<li>Instructor E-Mail Addresses - This is required. The addresses specified will receive an e-mail notification with the NSX Attendee Usernames (IE: nsxuser001 - nsxuser025), the currently set password for the attendee account, and the Day 1 and Day 2 Pod IP Addresses and names</li>
+</ol>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_C878D93C-462B-4F9F-9642-E8E1456A5ED5" class="text-block-content">
+    <p>During delivery, it is the instructor's responsibility to Power Down the V2T-A-### apps as the users move on to the day 2 of the class. Once the V2T-A-### app is powered off, the corresponding V2T-B-### vApp should be powered on. Set about a 15 minute expectation for the attendee.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/175/original/6f5f015d-78f4-4f52-91a6-22e401ea44c9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=59644f54f281f9ae2a6506471526e51555f6b1d30f715e6318c0f22aa7eff042" srcset="" alt="Example E-Mail" height="785" width="743">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="horizon-desktop-user-account" data-step-uuid="5691EFDF-B112-4F97-8656-B4CCC96C2C0B">
+    <h2 id="horizon-desktop-user-account" class="step-title screensteps-heading">2. Horizon Windows Desktop</h2>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/174/original/cc26bd97-ecb9-42c9-a40f-e31718afccfa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=10e5e9287e719207e107b35df39de216449f0777a5d3b4a8f2b97f5fb786a49a" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/174/medium/cc26bd97-ecb9-42c9-a40f-e31718afccfa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194349Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0b2b9f6ff5676db79835f2b387ce0d5d454f39ee91b846c294a987d00ec27636" srcset="" alt="NSX Attendee Desktop Pool" height="362" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_998ECAAC-A214-47E6-B9FA-843DDBFC8E20" class="text-block-content">
+    <p>NSX Attendees will login to a floating assignment Windows 10 pool as shown in the screenshot above.</p>
+<p>When a user logs out of their desktop, that desktop is deleted. Upon logging back in, the user gets a new desktop from the pool. The pool is configured to automatically maintain a minimum number of desktops as well as spares.</p>
+<p>As of this article, the pool</p>
+<ul>
+<li>maintains 5 "spare" machines</li>
+<li>has a maximum of 25 machines</li>
+<li>auto-logs off 2 hours after disconnect (resulting in desktop deletion)</li>
+</ul>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="horizon-desktop-user-account_1" data-step-uuid="26A28FD0-0DBF-434C-A1CD-7540DA8AE724">
+    <h2 id="horizon-desktop-user-account_1" class="step-title screensteps-heading">3. Horizon Desktop User Account</h2>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_4D74FCE7-52A1-49A1-A942-8E9E1EB931ED" class="text-block-content">
+    <p>The NSXUSER### Passwords should be changed after every delivery to prevent extended, unauthorized access to our lab environment.</p>
+<p>PLEASE ALWAYS RESET PASSWORDS </p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EC017B2D-CD0E-4396-B497-2E8E70C37EF0" class="text-block-content">
+    <p>If you are not yet familiar with the process of retrieving the current attendee password for your team or how to change the attendees password, see the following articles:</p>
+<p>The NSX team Attendee user accounts are:</p>
+<p><strong>nsxuser001 -&gt; nsxuser100</strong></p>
+<ul>
+<li><a data-internal-link-id="1853800" data-internal-link="article" href="../../124968/l/1853800-how-do-i-get-the-current-password-for-my-team-s-attendees" target="_blank">How do I get the current password for my team's attendees?</a></li>
+<li><a data-internal-link-id="1853801" data-internal-link="article" href="../../124968/l/1853801-how-to-change-attendee-passwords" target="_blank">How to Change attendee passwords</a></li>
+</ul>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="available-vrops-dashboard-s" data-step-uuid="762C254E-7E59-4357-B6E1-2E4F2AFD0FB7">
+    <h2 id="available-vrops-dashboard-s" class="step-title screensteps-heading">4. Available vROps Dashboard(s)</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2C68BAFC-FD4E-45B2-B565-2C74BFC9DCF9" class="text-block-content">
+    <p><a href="https://vrops.lab.livefire.dev/ui?t=h7ck3zi2n9#n882lmjjf4" target="_blank">HaaS vCD Dashboard</a> - Provides underlying Cluster CPU health as well as list of running vApps and a few top-10 lists (CPU/Memory/Storage)</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+  </div>
+
+

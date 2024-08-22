@@ -1,0 +1,221 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4EC41283-182C-421B-A79B-769DDA617D01" class="text-block-content">
+    <p>The article explains how to create a VLP class using vRA catalog: "<strong>Create EUC/IS Class and Capture details"</strong></p>
+<ul>
+<li>This catalog investigates Smartsheet and filter classes based on it's status as "Pending Delivery- Reg Closed".</li>
+<li>Create Class in VLP, Add Attendees to the class, Publish the class and Enable Class Entitlements.</li>
+<li>After enabling entitlements, VLP will start provisioning vApps in vCD and attach user entitlements to the respective VLP class.</li>
+<li>It waits for approx 30 minutes for all the vAPPs to get &nbsp;provisioned and settled down.</li>
+<li>It will query Livefire Delivery and On-Demand Org for deployed vApps and send a summary e-mail (to primary and secondary instructors) including Attendee's First Name, Last Name, lab login credentials, entitlements, and vPod External IP addresses etc.</li>
+<li>Based on the scheduled class end time VLP triggers a cleanup task and deletes all the deployed vApps for the respective class.</li>
+</ul>
+<p>It also performs few additional steps, which is required for the respective classes as explained below:</p>
+<p><strong>Horizon Cloud Advanced Integration</strong> :This catalog will start provisioning AWS Route 53 sub hosted zones and MX, TXT, CNAME records with the default NS and SOA records, it imports all created sub-zone's NS record to the main zone. It also deletes the created sub zones based on the scheduled delete date and time mentioned in the catalog.</p>
+<p><br><strong>Intrinsic Security</strong> : &nbsp;As part of this class, it spins up VeloCloud SaaS tenants for every individual attendees (based on the triggered events in VLP) who has registered for this class and receives email with tenant related details in their respective email ids. When the class ends this automation takes care of all assigned services, edge and tenant deletion from VeloCloud.</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_80919851-0795-4D7F-8ABA-1D10FBA3DC2A" class="text-block-content">
+    <p>Delivery Resources:</p>
+<ol>
+<li>
+<strong>vCloud Director:&nbsp;</strong>Delivery Org ( <a href="https://vcd.livefire.dev/tenant/Delivery">https://vcd.livefire.dev/tenant/Delivery</a> )</li>
+<li>
+<strong>vRA catalog</strong> :&nbsp;<a href="https://vra.lab.livefire.dev/catalog/#/library" target="_blank">https://vra.lab.livefire.dev/catalog/#/library</a>
+</li>
+<li>
+<strong>VLP Livefire admin portal&nbsp;</strong>: <a href="https://admin.prod.learningplatform.vmware.com/login?tenant=livefire">https://admin.prod.learningplatform.vmware.com/login?tenant=livefire</a>
+</li>
+<li>
+<strong>Available vROps Dashboard(s):&nbsp;</strong><a href="https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Fvrops.lab.livefire.dev%2Fui%3Ft%3Dh7ck3zi2n9%23n882lmjjf4&amp;data=05%7C01%7Cnainam%40vmware.com%7C9e1578235f394cb53f8108da9bcedc89%7Cb39138ca3cee4b4aa4d6cd83d9dd62f0%7C0%7C0%7C637993610044292851%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=MrjGDirdz8aA2wLf9%2BONECuiHn3EU0021Dbu%2BGbd4Bs%3D&amp;reserved=0" target="_blank"><strong>Livefire Lab vCD Dashboard</strong></a>
+</li>
+<li>
+<strong>Smartsheet class details</strong>: <a href="https://app.smartsheet.com/sheets/H8j7Cq3MW4CWrMPr9g334r4mFpXX48c93rWvrM71?view=calendar">https://app.smartsheet.com/sheets/H8j7Cq3MW4CWrMPr9g334r4mFpXX48c93rWvrM71?view=calendar</a>
+</li>
+<li>
+<strong>Horizon Windows Desktop :&nbsp;</strong>ATT-W10-AW (Windows 10 Desktop)</li>
+<li>
+<strong>ISEC Windows Desktop</strong> : ATT-W10-IS (Windows 10 Desktop)</li>
+<li>
+<strong>Horizon Desktop User Account</strong> : dwuser001 - dwuser100</li>
+<li>
+<strong>ISEC Desktop User Account</strong> : isuser001 - isuser100</li>
+</ol>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="1-vcloud-director-vapptemplate-vpod" data-step-uuid="F37165A3-DAF7-4AB4-9F28-DC01283138E1">
+    <h2 id="1-vcloud-director-vapptemplate-vpod" class="step-title screensteps-heading">1. Pre-requisites</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A88E5ADD-6C1D-4884-98CB-60036FBB7E24" class="text-block-content">
+    <p>a. &nbsp;vCloud Director vAppTemplate / vPod</p>
+<p>The vAppTemplate you wish to use for delivery should be in the Livefire-Delivery-Catalog / Livefire-Delivery-OnDemand-Catalog as per:</p>
+<p><a data-internal-link-id="1853782" data-internal-link="article" href="../../124967/l/1853782-how-to-copy-vapptemplate-to-delivery-org" target="_blank">How To: Copy vAppTemplate to Delivery Org</a></p>
+  </div>
+</div>
+ 
+  </div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_E0919DB3-78DA-4956-90AA-739EBED68251" class="text-block-content">
+    <p><sup>BEFORE YOU START:</sup></p>
+<ul>
+<li><sup>Be sure you have updated the dwuser###/isuser### password (This should have been done after the last class completed to prevent unauthorized access to the lab environment)</sup></li>
+<li><sup>Be sure you have updated/current template attached in VLP deployment pool.</sup></li>
+<li><sup>Be sure the class status is showing as "Pending Delivery - Reg Closed" in smartsheet and attendee roster file is attached in ".CSV" format, if not please download attendee roaster which is available in ".xlsx" format and save the file as "MS Dos comma separated(.CSV) and attach it to the same class, make sure the name of the file should remain the same as earlier only the file extension needs to be changed."</sup></li>
+</ul>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="login-to-vra-portal-with-your-respective-credentials" data-step-uuid="41473EE7-70B2-45C5-810F-5A1DF896D2D0">
+    <h2 id="login-to-vra-portal-with-your-respective-credentials" class="step-title screensteps-heading">2. Request vRA catalog</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C617460C-17F1-43DF-8BFE-2C5E454991D1" class="text-block-content">
+    <p>a. Log in to <a href="https://vra.lab.livefire.dev/catalog/#/library" target="_blank">vRA</a> using Lab Username (domain should be <strong>lab.livefire.dev</strong>) and password.</p>
+<p>b. Select Service Broker from Livefire Automation Portal - Cloud Services Console.</p>
+<p><br></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/220/original/Screenshot%202565-09-22%20at%204.42.05%20PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b962c7cb07d36c74b0ac7ef5f4573710bd75b000ae7c792c4386cae0bf12d986" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/220/medium/Screenshot%202565-09-22%20at%204.42.05%20PM.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e94c2b1e468fde67bfd248563607ff624ea32676c9c9691bc9577e32bd076253" srcset="" alt="" height="577" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E9828530-D473-4B2A-824E-9B996BD37558" class="text-block-content">
+    <p>c. select <strong>Create EUC/IS Class and Capture details</strong> and click on REQUEST .</p>
+<p>This catalog will capture upcoming class related details from smartsheet based on class status as "<strong>Pending Delivery - Reg Closed</strong>" and session name as "<strong>EUC/IS" .</strong></p>
+<ul>
+<li>
+<strong>Class Time Zone :&nbsp;</strong>shows the Time Zone of the class AMER/APJ/EMEA</li>
+<li>
+<strong>Session Start Date</strong> : Shows the start date of the class, it can be modified based on requirement. It should be in the YYYY-MM-DD format</li>
+<li>
+<strong>Session Start Time</strong> : shows the lab start time, which can't be modified at the moment.</li>
+<li>
+<strong>Session End Date&nbsp;</strong>: Session end date is showing the class end date which is already extended by one day from the date mentioned in smartsheet, it can be modified based on requirement. It should be in the YYYY-MM-DD format.</li>
+<li>
+<strong>Session End Time</strong> : &nbsp;Session end time is fixed and showing lab end time as per the time zone.</li>
+<li>
+<strong>Maximum number of attendees allowed :&nbsp;</strong>it shows how many attendees allowed for this class.</li>
+<li>
+<strong>Primary Instructor email</strong> : shows the email address of instructor1 mentioned in smartsheet.</li>
+<li>
+<strong>Secondary Instructor email</strong> : shows the email address of instructor2 mentioned in smartsheet.</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/213/original/1536301c-36a8-4cab-bfea-1d55a87b9125.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=576f5b983e51f104b4405e305ec3de4f2d17a87a5953a481d461736db56afc73" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/213/medium/1536301c-36a8-4cab-bfea-1d55a87b9125.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=41ff8d847123725e8b6be2551b7ac02b03d647e41e661c054cbb8d5d80f3690b" srcset="" alt="" height="834" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_41539E74-922B-46CA-B98D-C9CE18D69ECD" class="text-block-content">
+    <p>In case of IS class it shows Third, Fourth, Fifth and Sixth Instructor Emails, as this class is getting delivered by all six instructors.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/216/original/362291ca-3c42-48a2-b390-bb643d978db5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=80b45a7c0bb44905370efb6fd0d5d1d4dbabd1f9de96a0cbc708d3c8e972b6f0" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/216/medium/362291ca-3c42-48a2-b390-bb643d978db5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=540c31939289a446273d2ba473163f830abfa3d35e4402cbe7fd6509ceda4d70" srcset="" alt="" height="690" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_70858DA3-E359-4D42-9A95-10EB87B0CCF1" class="text-block-content">
+    <p>d. verify all the mentioned details captured from smartsheet, modify if required and click on submit.</p>
+<p>e. Only in case of <strong>EUC,&nbsp;</strong>this catalog will deploy Route 53 subzones in AWS, based on the selected Pod range and identifier.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_9E94997D-B53A-46B0-AF98-57280DF74188" class="text-block-content">
+    <p>As this is a mandatory step for EUC class, vRA will not allow to submit the request without providing pod and subzone related details</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/214/original/16b2f04e-778d-4a1f-9977-3c3cb3f319bd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b4b8632fd9a0288f70db21681976f33dc0062872d4f57387ce6855175b30f74d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/214/medium/16b2f04e-778d-4a1f-9977-3c3cb3f319bd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=651553c8a2e3ce2a31d3fbd7a82fb9698496ec84214f2f0d26248a514a282863" srcset="" alt="" height="627" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7EBC61D9-94FA-452E-B069-BDC85F524C09" class="text-block-content">
+    <p>e. Click on "Pod Details" tab to generate attendee pod related informations </p>
+<ul>
+<li>
+<strong>Select Pod Range for Upcoming class :</strong> select a range from list of ranges for upcoming class.</li>
+<li>
+<strong>Sub Zone Range based on selected range: </strong>based on selected range it will automatically populate formated sub zone range. Example Corp##-Corp##</li>
+<li>
+<strong>Class Identifier</strong> : enter class identifier from a-z range.</li>
+<li>
+<strong>Schedule created sub zone deletion :</strong> Enter date and time to schedule created hosted zone deletion. If nothing mentioned it will delete newly created zones after 7 days.</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/215/original/093390df-a6e1-4508-8915-b38a1a2ad305.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1909adb9893eb4b778914cbb4fa008b09e2e16c304ec51afbeff878dc14bcc03" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/215/medium/093390df-a6e1-4508-8915-b38a1a2ad305.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e45136dc3954abd0f6946f60cf0bbbdc296c63f98209f8e6ebb1d05b3e786609" srcset="" alt="" height="627" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7D224046-C3B6-4B0A-BB83-38AAA17ED35B" class="text-block-content">
+    <p>click on submit.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="3-email-notification-to-instructors" data-step-uuid="81B29558-8D0F-41FE-B423-D30C0BFF871B">
+    <h2 id="3-email-notification-to-instructors" class="step-title screensteps-heading">3. Email notification to instructors</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9E7E4CB0-047F-4166-8CDE-ECA951DE82C6" class="text-block-content">
+    <p>After half an hour primary and secondary instructors will receive an email with attendee details.</p>
+<p>This email contains First Name, Last Name, Landing Desktop Username, Landing Desktop Password, Landing Desktop IP and vApp Name and few extra fields only for EUC instructors pod and provisioned sub zone related details, like Pod Ids, Horizon Console Accounts, Horizon Console Password, Assigned Domain.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/217/original/7cd30584-aecb-4be9-b6f6-cc0d55991f74.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=263d51ab9394a73b1382122a7df302fb87a653eacbc223e9a312d59fde99006e" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/217/medium/7cd30584-aecb-4be9-b6f6-cc0d55991f74.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=fe0a1814c57492ab12453e46b0ffe872a142670a12d437cfbebd7a99bc75f57a" srcset="" alt="" height="694" width="855">
+      </a>
+  </div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/218/original/30db7454-b977-46fd-836a-4e0d8a454157.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a81e864752d20f4fd1116eb895f8354d518a81374e697a028c3778e1df7cd088" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/218/medium/30db7454-b977-46fd-836a-4e0d8a454157.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=22a6300348a4d2bdbbb6669ce41e491eb407c564e651b06b7eb7830dcb44a2bb" srcset="" alt="" height="430" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_105F8588-7D6A-4F40-955E-3D74D2CF89D2" class="text-block-content">
+    <p>As part of Intrinsic Security class it spins up VeloCloud SaaS tenants for every individual attendees who has registered for this class and they receive email notification with tenant related details in their respective email id.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/219/original/89ec7bba-7be4-4bb4-aaf7-4e6357beb45d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ba45273064586dc39c7d7120ced9e66a9c277757d9081aadac87442a5d673b11" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/219/medium/89ec7bba-7be4-4bb4-aaf7-4e6357beb45d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194406Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=82e357e1a96e34988543b227e839577aa7143d604eeb6c40ef49ffaeb060f6f7" srcset="" alt="" height="381" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+

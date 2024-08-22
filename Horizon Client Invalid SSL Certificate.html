@@ -1,0 +1,265 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+  <div class="hide" data-role="workflow-container">
+        <div class="step screensteps-section screensteps-depth-1" id="horizon-client-says-invalid-ssl-certificate" data-step-uuid="F6643AA5-EFEB-4AD3-8CF8-74F051CCAFF6">
+    <h2 id="horizon-client-says-invalid-ssl-certificate" class="step-title screensteps-heading">Horizon Client Says Invalid SSL Certificate</h2>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_82F39BF5-08A6-4550-BA83-ADBF53AD8BD8" class="text-block-content">
+    <p>The Load Balancers in front of our Horizon UAGs are using Wildcard SSL Certificates issued by Sectigo (formerly "COMODO"). While web browsers seem to trust this CA server, the user's OS may not and the Horizon client appears to rely on what the OS trusts.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_B0B769FC-21D2-4392-85C1-FA83D8D6A3FB" class="text-block-content">
+    <p>It is recommended to put a copy of some or all of this article in your Lab Manual!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_B5B9AEDD-B95F-44D7-81E9-EB0D4CFCAEF9" class="text-block-content">
+    <p>The CA Certificate bundle has been placed on our blog for easy access: <a href="https://livefire.solutions/ca-bundle.crt" target="_blank">https://livefire.solutions/ca-bundle.crt</a></p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="workflow-article--step workflow-article--step_question" data-workflow-step-uuid="E2115D0B-50EB-4B4E-8A6E-90D916A7815C">
+  <p class="workflow-article--step-question">Which Operating System?</p>
+  <div data-workflow-block-body-uuid="E2115D0B-50EB-4B4E-8A6E-90D916A7815C">
+     
+  </div>  
+  <div class="screensteps-textblock--actions">
+      <div class="screensteps-answer"
+     data-answer-uuid="7A8C70B0-791E-444D-A63C-4066A20E86AE"
+     data-next-action-uuid=""
+     data-parent-question-uuid="E2115D0B-50EB-4B4E-8A6E-90D916A7815C">
+  <button class="workflow-article--button " >
+    <span class="screensteps-textblock--text">MacOS</span>
+  </button>
+</div>
+
+
+      <div class="screensteps-answer"
+     data-answer-uuid="B6C30962-F355-413E-9E5A-06F476B538B0"
+     data-next-action-uuid=""
+     data-parent-question-uuid="E2115D0B-50EB-4B4E-8A6E-90D916A7815C">
+  <button class="workflow-article--button " >
+    <span class="screensteps-textblock--text">Windows</span>
+  </button>
+</div>
+
+
+      <div class="screensteps-answer"
+     data-answer-uuid="81109390-0D5A-4E1F-8723-760176E994EA"
+     data-next-action-uuid=""
+     data-parent-question-uuid="E2115D0B-50EB-4B4E-8A6E-90D916A7815C">
+  <button class="workflow-article--button " >
+    <span class="screensteps-textblock--text">Ubuntu</span>
+  </button>
+</div>
+
+
+      <div class="screensteps-answer"
+     data-answer-uuid="30C4C69F-0CF5-4BC9-99F8-9E9D05FAFF6A"
+     data-next-action-uuid=""
+     data-parent-question-uuid="E2115D0B-50EB-4B4E-8A6E-90D916A7815C">
+  <button class="workflow-article--button " >
+    <span class="screensteps-textblock--text">Manjaro (Arch) Linux</span>
+  </button>
+</div>
+
+
+  </div>
+</div>
+  <div data-workflow-step-uuid="7A8C70B0-791E-444D-A63C-4066A20E86AE" data-answer-contents-uuid="7A8C70B0-791E-444D-A63C-4066A20E86AE">
+</div>
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_26A53D7E-E73F-44AE-9039-2845B094FDFF" class="text-block-content">
+    <ol>
+<li>Download the <a href="https://livefire.solutions/ca-bundle.crt" target="_blank">ca-bundle.crt</a> file from our blog</li>
+<li>Double-click the pem file - MacOS should open the <strong>Keychain Access</strong> application </li>
+</ol>
+  </div>
+</div>
+
+    <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/099/original/529d2091-b729-42f9-a2d5-394371209853.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194316Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e589014a11b9e93928ddf2edf1986c8fd7d27c5988f3d76805375147cfa6128e" srcset="" alt="" height="496" width="800">
+  </div>
+
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0AEBB819-6F88-4AAB-AC6B-21BABF2A26AD" class="text-block-content">
+    <ol>
+<li>Locate the "<em><strong>Sectigo RSA Domain Validation Secure Server CA</strong></em>" entry in your list of Certificates and <strong>double-click</strong> it</li>
+<li>The certificate should show as valid</li>
+<li>(Optionally) Change the "When using this certificate" dropdown to <strong>Always Trust</strong>
+</li>
+</ol>
+  </div>
+</div>
+
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_84241994-1E26-4C53-88EE-F17B972ACF1B" class="text-block-content">
+    <p>After re-launching the Horizon Client with the Preferences set as:</p>
+<ul>
+<li>Never connect to untrusted servers</li>
+<li>Allow connection via an SSL Proxy</li>
+</ul>
+<p>The client should no longer complain of an invalid SSL Certificate</p>
+  </div>
+</div>
+
+    <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/100/original/0e326a8a-1d5e-47d1-a7fb-cc698a2b9886.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194316Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=90c24b15b9833d1f0d7ce1c76a2ea564c7d72e85b9c44cecd25a423bf4759e12" srcset="" alt="" height="289" width="501">
+  </div>
+
+<div data-workflow-step-uuid="7A8C70B0-791E-444D-A63C-4066A20E86AE-end">
+</div>
+
+  <div data-workflow-step-uuid="B6C30962-F355-413E-9E5A-06F476B538B0" data-answer-contents-uuid="B6C30962-F355-413E-9E5A-06F476B538B0">
+</div>
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C6539D2F-AEB0-4EDC-A1C4-C319B15627A2" class="text-block-content">
+    <ul>
+<li>Download the <a href="https://livefire.solutions/ca-bundle.crt" target="_blank">ca-bundle.crt</a> file from our blog</li>
+<li>Double-click the .crt file to open it</li>
+</ul>
+  </div>
+</div>
+
+    <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/101/original/61a264dd-0a83-4c3c-9b4c-084d8459988d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194316Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e68b8229f39244ba43a012f532295bd0ecbefd3cadc320413d9ffecb139bfd6c" srcset="" alt="" height="523" width="416">
+  </div>
+
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_07C557EC-2985-4A50-8961-770F0389A571" class="text-block-content">
+    <ul>
+<li>Click the <strong>Install Certificate</strong> button</li>
+<li>When prompted, select <strong>Local Machine</strong> for the Store Location and click <strong>Next</strong> </li>
+</ul>
+  </div>
+</div>
+
+    <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/102/original/ce301c77-4be6-41d6-88e7-6561cd59a997.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194316Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=862b904b0e005ed45d9c5d77302a48f616b37962de80fb8dabc76852a9cc42be" srcset="" alt="" height="528" width="542">
+  </div>
+
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C218F62E-FD24-405D-9124-4AC21B024E2B" class="text-block-content">
+    <ol>
+<li>Select <strong>Place all certificates in the following store</strong> </li>
+<li>Click <strong>Browse</strong> </li>
+<li>Select <strong>Trusted Root Certificate Authorities</strong>
+</li>
+<li>Click <strong>OK</strong>
+</li>
+<li>Click <strong>Next</strong>, then click <strong>Finish</strong>
+</li>
+</ol>
+<p>Click <strong>OK</strong> on the confirmation window, then <strong>OK</strong> to close the Certificate details window</p>
+  </div>
+</div>
+
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_081ECE8D-0372-411D-8414-4D51CECE07EB" class="text-block-content">
+    <p>After re-launching the Horizon with the Preferences set as:</p>
+<ul>
+<li>Never connect to untrusted servers</li>
+<li>Allow connection via an SSL Proxy</li>
+</ul>
+<p>The client should no longer complain of an invalid SSL Certificate</p>
+  </div>
+</div>
+
+<div data-workflow-step-uuid="B6C30962-F355-413E-9E5A-06F476B538B0-end">
+</div>
+
+  <div data-workflow-step-uuid="81109390-0D5A-4E1F-8723-760176E994EA" data-answer-contents-uuid="81109390-0D5A-4E1F-8723-760176E994EA">
+</div>
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1988691D-6D57-448D-BBB7-8569B0CDA862" class="text-block-content">
+    <p>From a console, run the following commands from the folder with the file:</p>
+<p>The following commands have been validated on Ubuntu 20.04 Desktop</p>
+  </div>
+</div>
+
+  <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_7C37A126-AF0F-482B-8E81-3F3FB7FAFC14"><code>curl https://livefire.solutions/ca-bundle.crt -o ca-bundle.crt
+sudo cp ca-bundle.crt /usr/local/share/ca-certificates
+sudo update-ca-certificates</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_7C37A126-AF0F-482B-8E81-3F3FB7FAFC14">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_FB1F56B0-03A0-4332-A134-628FF1F311C1" class="text-block-content">
+    <p>After re-launching the Horizon Client for Linux with the Preferences set as:</p>
+<ul>
+<li>Never connect to untrusted servers</li>
+<li>Allow connection via an SSL Proxy</li>
+</ul>
+<p>The client should no longer complain of an invalid SSL Certificate</p>
+  </div>
+</div>
+
+<div data-workflow-step-uuid="81109390-0D5A-4E1F-8723-760176E994EA-end">
+</div>
+
+  <div data-workflow-step-uuid="30C4C69F-0CF5-4BC9-99F8-9E9D05FAFF6A" data-answer-contents-uuid="30C4C69F-0CF5-4BC9-99F8-9E9D05FAFF6A">
+</div>
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_BF976C88-903B-41C2-947B-F57870D5436B" class="text-block-content">
+    <p>From a console, run the following commands from the folder with the file:</p>
+  </div>
+</div>
+
+  <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_19200EB7-071E-46B6-9353-2BDD3C409D66"><code>curl https://livefire.solutions/ca-bundle.crt -o ca-bundle.crt
+sudo trust anchor --store ca-bundle.crt
+sudo update-ca-trust</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_19200EB7-071E-46B6-9353-2BDD3C409D66">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+
+  <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6DE86B7D-F5FF-4830-9AB1-40900C90B556" class="text-block-content">
+    <p>After re-launching the Horizon Client for Linux with the Preferences set as:</p>
+<ul>
+<li>Never connect to untrusted servers</li>
+<li>Allow connection via an SSL Proxy</li>
+</ul>
+<p>The client should no longer complain of an invalid SSL Certificate</p>
+  </div>
+</div>
+
+<div data-workflow-step-uuid="30C4C69F-0CF5-4BC9-99F8-9E9D05FAFF6A-end">
+</div>
+
+
+
+  </div>
+  <div data-role="workflow-presenter">
+  </div>
+  <div class="workflow-article--step workflow-article--completion hide"
+      data-role="completion-message">
+    Congratulations, you are done! 
+  </div>
+  <button class="legacy-button action-block-copyclipboard--button clipboard-button hide" data-role="copyclipboard-button">Copy Progress to Clipboard </button>
+

@@ -1,0 +1,215 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_A7A77AEA-238A-4394-A487-2220F4CD6430" class="text-block-content">
+    <p>In this chapter we will be further modifying our YAML to align with the company requirements. &nbsp;We are going to take a look at the resource object requirements, and after we have a valid blueprint, we will be versioning and releasing it to <strong>Service Broker</strong>. </p>
+<p>Later on in the <strong>Code Stream</strong> lab we will be automating the Version &amp; Release Management process for Tito application builds, therefore it is important that you understand this process. &nbsp;</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="setting-up-the-blueprint-inputs" data-step-uuid="1CD1BBCA-4E08-4919-A285-3BAF35C4C25F">
+    <h2 id="setting-up-the-blueprint-inputs" class="step-title screensteps-heading">Setting up the Resource Objects</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_F4FADFAB-10C5-46A4-9C97-3D6C405E8560" class="text-block-content">
+    <p>Let's take a look at all the objects in resources section and what our company requirements are.</p>
+<p><strong>applb&nbsp;</strong>resource object requirements :</p>
+<ul>
+<li>Object must or must not be provisioned based on the user selection in the <strong>loadBalancer</strong> input.</li>
+</ul>
+<p><strong>applb, web-tier, db-tier, volume1</strong> and <strong>volume2</strong> all have the following resource object requirements :</p>
+<ul>
+<li>These objects should get both the Optional and Required tags specified in the user inputs: <strong>tagsOptional&nbsp;</strong>and<strong>&nbsp;tagsRequired</strong>
+</li>
+<li>The resource group property for these objects should take as a value a custom property named <strong>resourceGroupNameProp</strong>. Further details for the <strong>resourceGroupNameProp</strong> are given below</li>
+</ul>
+<p>There should be two custom properties defined in the YAML and referred to throughout the BP as follows:</p>
+<ul>
+<li>
+<strong>resourceGroupNameProp</strong> custom property - Represents the the Azure Resource Group value based on the <strong>resourceGroupType&nbsp;</strong>and<strong>&nbsp;resourceGroupName&nbsp;</strong>user inputs. Value should meet the following criteria:</li>
+</ul>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_2B19620D-44D9-4C63-B678-5F5265E3681E"><code>&lt;p&gt;If (ondemand and AWS){
+  do not specify RG name 
+} else if (predefined and AWS){
+  do not specify RG name 
+} else if (predefined and Azure){
+	Group name should be &quot;elasticsky-dev/test/prod-rg&quot;. Dev/test/prod should depend on which environment the deployment is being provisioned. 
+} else if (existing and AWS){
+  do not specify RG name
+} else if (existing and Azure){
+  Use the RG name specified in the resourceGroupName input
+} else {
+ do not specify RG name
+}&lt;/p&gt;</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_2B19620D-44D9-4C63-B678-5F5265E3681E">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9C302170-D2A8-4B75-9A85-35B440816E0A" class="text-block-content">
+    <p>You can find more about what expressions are available in Cloud Assembly here:</p>
+<p><strong>Cloud Assembly blueprint expression syntax<br></strong><a href="https://docs.vmware.com/en/VMware-Cloud-Assembly/services/Using-and-Managing/GUID-12F0BC64-6391-4E5F-AA48-C5959024F3EB.html">https://docs.vmware.com/en/VMware-Cloud-Assembly/services/Using-and-Managing/GUID-12F0BC64-6391-4E5F-AA48-C5959024F3EB.html</a></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8C4C42B5-0682-4830-9DB4-1D0032E5B0C6" class="text-block-content">
+    <ul>
+<li>
+<strong>sshKeyProp</strong> custom property - Represents the SSH key that will be used in the Remote Authentication method for all machine resources. You can define any random value for the property as we will not be logging with SSH key for the time being. In a later lab you will be injecting the value from a GitLab repo SSH key. For now you can set example value such as "ToBeDefinedLater"</li>
+</ul>
+<p>The if/else loop that you are going to build is commonly used to specify vCenter or VMC deployment folder in addition to Azure RGs. In this way we can specify in which Azure RG a deployment will go if it gets provisioned on Azure, but at the same time can specify in which vCenter folder if it is provisioned on vCenter, etc... The vCenter folder option is not added in the loop as we do not have a vCenter Cloud Account configured.</p>
+<p>Why do we need these custom properties?</p>
+<p>When we have values that commonly repeated and referred through the YAML, it make things easier if we centrally define these as custom properties and then refer them throughout the YAML code. In this way for example if we need to change the SSH key on 10 different machine resource objects we only need to change it in the ssh key custom property. The property is being referred to by all the machine objects . Although you can configure custom properties on a Project level, those custom properties cannot take user inputs as values and are applied for all BP's within a project.</p>
+<p><strong>web-tier, db-tier</strong> all the the following resource object requirements :</p>
+<ul>
+<li>The SSH key value for the remote authentication method should take the sshKeyProp as input.</li>
+</ul>
+<p>Our company also has a requirement that the web server is being auto-scaled based on the following conditions:</p>
+<ul>
+<li>Increase the Web Servers number when scaling is required .</li>
+<li>Add 2 Web Servers &nbsp;each time a scaling policy gets triggered.</li>
+<li>Wait 60 seconds before performing another scale activity.</li>
+<li>when average CPU Utilization metric goes above 1</li>
+<li>Measure the average CPU based over &nbsp;3 periods x 60 seconds = 180 seconds</li>
+</ul>
+<p>Use the <strong>Properties</strong> tab in the blueprint editor to achieve this requirement .</p>
+<p><br><strong>db-tier</strong> resource object requirements :</p>
+<ul>
+<li>Should be connected to all additional disks, if any are specified.</li>
+</ul>
+<p>Once you've built your blueprint, make sure to make a couple of deployments to test the different input options. You can use the solution below if you hare having difficulties building a valid blueprint. Once you have a valid blueprint that you've deployed successfully , proceed to the next part to release it in Service Broker.<br><br>You will be testing the autoscale configuration later on when you build a Code Stream pipeline. If you want to test it now as well you can follow the steps outlined in the <a href="http://kaloferov.com/blog/skkb1048/" target="_blank"><em>Using Cloud Assembly Native Auto-Scale Functionality</em></a> article provided in the Solutions section. It will guide you how to stress the VM so that the scale operation gets triggered.</p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="solution" data-step-uuid="C0125BDB-5340-4B9D-B630-AEEFCC586E12">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#solution" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-C0125BDB-5340-4B9D-B630-AEEFCC586E12" 
+          data-target-step-uuid="C0125BDB-5340-4B9D-B630-AEEFCC586E12">
+          SOLUTION
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="C0125BDB-5340-4B9D-B630-AEEFCC586E12" id="nested-step-C0125BDB-5340-4B9D-B630-AEEFCC586E12">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3A107170-7277-4DAE-8D86-7BC745FC8A7A" class="text-block-content">
+    <p>The solution YAML representing all the resources part of the blueprint Big_Blueprint_v8_(BB8)_resources.yaml can be found on the Dropbox share. Take a look at it and go back to the requirements to see how each end every requirement was met in the YAML code. Make sure to note the following things and ask your instructor if the answers are not obvious to you: </p>
+<ul>
+<li>Why were the custom properties configured on the network resources object and not anywhere else? </li>
+<li>How are these being referred to from within the rest of the YAML?</li>
+<li>How is the IF Else statement being accomplished?</li>
+<li>How we have used the map_to_object() function for the additionalDisks db-tier property to add any additional disks that may be provisioned by the user. </li>
+</ul>
+  </div>
+</div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_52825419-FB33-467B-B7CE-20DDBDB1D9BC" class="text-block-content">
+    <p>We will be testing out the Auto Scale functionality later on when we build our Code Stream Tito Pipeline. More about the AutoScaling configuration can be found here:<br><br><strong>Using Cloud Assembly Native Auto-Scale Functionality</strong> <br><a href="(SKKB1048)http://kaloferov.com/blog/skkb1048/The">http://kaloferov.com/blog/skkb1048/<br></a><br>As we mentioned the Custom Properties in the YAML can take user inputs as values. This makes them very useful when we need to configure Custom Naming machine naming convention on a Project level and make it possible for the naming convention to be calculated based on user inputs. Within our project level we can refer these Properties in the Custom Naming field. To learn more visit, </p>
+<p><strong>Extending Custom Naming with Custom Properties in Cloud Assembly</strong> (SKKB1046)<br><a href="http://kaloferov.com/blog/skkb1046/">http://kaloferov.com/blog/skkb1046/</a></p>
+<p>If you want to test this out please do not configure Custom Naming for the dev-tito project as this project is being shared by all attendees. Instead create a new project, and test it there. <br><br> The final version of this BP will also be provided in Dropbox for your convenience. </p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="publishing-the-bp-in-service-broker" data-step-uuid="96F5FE39-F6FA-4F72-97B7-7E2B4F337E71">
+    <h2 id="publishing-the-bp-in-service-broker" class="step-title screensteps-heading">Publishing the Blueprint in Service Broker. </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_FE4EDAFF-3940-4AAB-B0D1-D15D7AAACC85" class="text-block-content">
+    <ol>
+<li>Now that we have completed building our blueprint, let's version it, release it to the Service Broker catalog, and test it. &nbsp;If you haven't completed the previous lab, import and use the &nbsp;<strong>Big Blueprint v8 (BB8) - Final.YAML</strong> version of the blueprint from Dropbox. If you are importing the Blueprint name it <strong>Big Blueprint v8 (BB8) - Final - yourname</strong>
+</li>
+<li>Open the blueprint and navagate to <strong>Version History </strong>and click <strong>Version</strong>. Select a version number for example <strong>1.0</strong> . Select the option to release this version to the catalog and click <strong>Create. </strong>
+</li>
+<li>In<strong>&nbsp;Service Broker</strong> navigate to <strong>Content &amp; Policies &gt; Content Sources&nbsp;. </strong>As<strong> </strong>you can see a Blueprint Content source for the tito-dev project has already been configured. </li>
+<li>To speed up the version synchronization process open the <strong>Cloud Assembly - Tito (Dev)</strong> content source and click <strong>Save &amp; Import</strong>. </li>
+<li>(Optional) Navigate to Content, find your Blueprint , select the three dots next to the name and click <strong>Configure item</strong>. Change the icon and select the<strong> SB_BB8_icon.jpg</strong> icon file from the lab Dropbox folder .</li>
+<li>Navigate to the <strong>Catalog</strong> tab. You should see the blueprint being displayed. </li>
+</ol>
+<p>Feel free to run a couple of deployments with different inputs to test the blueprints. </p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="solution_1" data-step-uuid="993C0BA6-6DA7-4B1A-9B14-5467AF9D2F57">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#solution_1" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-993C0BA6-6DA7-4B1A-9B14-5467AF9D2F57" 
+          data-target-step-uuid="993C0BA6-6DA7-4B1A-9B14-5467AF9D2F57">
+          SOLUTION
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="993C0BA6-6DA7-4B1A-9B14-5467AF9D2F57" id="nested-step-993C0BA6-6DA7-4B1A-9B14-5467AF9D2F57">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2AA37AA4-3D76-4022-ACF2-3ABFC0277958" class="text-block-content">
+    <p>Go to <strong>Version History </strong>and click <strong>Version</strong>. Select a version number for example 1 . Select the option to release this version to the catalog and click <strong>Create. </strong></p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/285/original/4c3fe155-d478-4e7f-9b4b-a66c610e033b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194457Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=10bbab64e6181d47493361dd7f4834783b695623d62da9e31e206f5334152734" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="268" width="764">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/286/original/a0a4dc09-5885-46e7-a19b-45510564a5e5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194458Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=af3f312ce32b10144eb4100c2659ed57fae7d3520f8a36168e24c5e83e80de35" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="354" width="596">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/287/original/870685a5-a80d-485a-be60-e49200ddfeba.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194458Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8d047c98c7108b834ce231177a77ce0284eb9e99a77d428269b79b249b8c1d62" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="601" width="606">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C0DADA3F-2E60-4BB7-AD92-5034F2576463" class="text-block-content">
+    <p>In<strong>&nbsp;Service Broker</strong> navigate to <strong>Content &amp; Policies &gt; Content Sources&nbsp;. </strong>As<strong> </strong>you can see a Blueprint Content source for the tito-dev project has already been configured. </p>
+<p>To speed up the version synchronization process open the <strong>Cloud Assembly - Tito (Dev)</strong> content source and click <strong>Save &amp; Import</strong>. </p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/288/original/5841ff29-5835-4487-a96e-65cf734c5436.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194458Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=26d21f156d3a4908677e545c9dff17371b5510078a476058c832c538cb0803b2" srcset="" alt="Service Broker - Mozilla Firefox" height="367" width="810">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/289/original/c0bffa3f-ef5a-4d70-b143-87e6ed6f92cd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194458Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b43726878673ff4594df29413a695fb891f8172dd57a44002c5191a4d6c34823" srcset="" alt="Service Broker - Mozilla Firefox" height="626" width="661">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_02064C08-05E9-45D8-A49C-C2C956A7D699" class="text-block-content">
+    <p>Navigate to the <strong>Catalog</strong> tab. You should see the &nbsp;Blueprint being displayed. Feel free to deploy couple of instances to test the inputs. </p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/290/original/b83fe6aa-cf62-4ec3-ad70-eb38eae148b7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194458Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=257abd28072c11fdb97f3939d376b9e83564d97cc1779b90b250c042ee724d5b" srcset="" alt="Service Broker - Mozilla Firefox" height="478" width="632">
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+

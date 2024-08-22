@@ -1,0 +1,71 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_06AE4C9B-6E2C-4BEE-99DB-09564112F9C8" class="text-block-content">
+    <p>On occasion, you may login to our Horizon environment and discover that you are not auto-logged in to your Ubuntu Desktop. This brief article will describe the most likely cause and how to resolve the issue.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="what-happened" data-step-uuid="09AD25D8-474C-4526-8182-757FC06E71DA">
+    <h2 id="what-happened" class="step-title screensteps-heading">What happened?</h2>
+  </div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_E1293572-71CF-40CF-B787-70D57B8A07F3" class="text-block-content">
+    <p>This typically happens after you update your Ubuntu desktop.</p>
+<p><strong>Why? </strong></p>
+<p>Because the update has messed up the View Agent configuration. Don't worry, the fix isn't terribly difficult.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="gather-info" data-step-uuid="F7CC9775-75AC-4E4A-B2BC-98F4BE620B9D">
+    <h2 id="gather-info" class="step-title screensteps-heading">Gather Info</h2>
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_B27F2150-3895-4866-8E42-65BBB4B10A09" class="text-block-content">
+    <p>In order to resolve this issue, you'll need to re-run the agent installer from an SSH session to your desktop.</p>
+<p>On the stuck login Screen, go ahead and Click on your name and enter your password to access your desktop.</p>
+<p>Now, get either your desktop name (INS-CS-##) or IP address</p>
+<p>Got it? good - now click the power button at the top right of your screen and Logout of your desktop fully</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="fix-the-issue" data-step-uuid="DD03FF59-869E-4402-89C7-93F13675C266">
+    <h2 id="fix-the-issue" class="step-title screensteps-heading">Fix The Issue</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_03C5E2CF-2D2B-4F7B-882C-5E90CCDA7D87" class="text-block-content">
+    <ul>
+<li>Login to a Windows Instructor Desktop and open Putty</li>
+<li>Connect to your Desktop via putty as yourself:<br>LAB\&lt;yourusername&gt;</li>
+<li>Enter your password</li>
+<li>Change to root: <code>sudo su -</code>
+</li>
+<li>If necessary, unzip the VMware-horizonagent*.tar.gz file</li>
+<li>Change into the folder VMware-horizonagent*&nbsp;</li>
+<li>Run the install_viewagent.sh script</li>
+<li>type "y" when prompted and hit enter</li>
+<li>If there are no errors about active sessions, reboot your VM:&nbsp;<code>shutdown -r now</code>
+</li>
+<li>If there is an error stating unable to run due to active sessions, then you must first get your system either rebooted or logged out and then try again</li>
+</ul>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="confirm-access" data-step-uuid="6039CF3B-F390-4DC8-AEDF-DA38D2F3790A">
+    <h2 id="confirm-access" class="step-title screensteps-heading">Confirm Access</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D4A705C2-E310-4F4B-9EF5-399FCC74EBC4" class="text-block-content">
+    <p>After re-running that install_viewagent.sh script without error and rebooting, you should now be able to log back into your Instructor Ubuntu Desktop without re-typing your password.</p>
+  </div>
+</div>
+ 
+  </div>
+
+

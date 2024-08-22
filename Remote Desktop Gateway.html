@@ -1,0 +1,255 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="intro" data-step-uuid="D639698B-0137-44BF-A97A-8856D2C89DBE">
+    <h2 id="intro" class="step-title screensteps-heading">Intro</h2>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_62C2B680-AD29-44F9-8B2B-9AB0088FB4F0" class="text-block-content">
+    <p>The Remote Desktop Gateway service has been installed on our WinUtil-lab server.</p>
+<p><strong>Who can use this:</strong> Livefire Lab Engineers and Instructors Only - Instructors will have the ability to RDP to any of our internal RDP-capable hosts through the gateway, whether they are WIndows Servers, vPod External IPs, or Linux VMs running an RDP Server. The RDP Gateway Service defaults to allowing only port 3389 (default RDP port), but I have expanded this to also include 3390-3395 as this may be handy if you have your vPodRouter configured to forward 339? to alternate pods within your VM. For example, a Linux desktop running RDP, a WIn10 VM used during lab exercises, etc...)</p>
+<p><strong>Please note:</strong></p>
+<ul>
+<li>This is not for Take3 or Attendee usage - Use <a data-internal-link="article" data-internal-link-id="1853803" href="../../124968/l/1853803-granting-rdpgw-access-to-attendees">THESE INSTRUCTIONS FOR ATTENDEES</a>.<ul><li>Scripting/Automation is being worked on to be able to grant (for example) nsxusers access to the external IPs of their Pods, ISusers access to the external IPs of their pods, and DWUsers access to the external IPs of their Pods. Unfortunately, the RDP GW does not let you simply specify a range of IPs or CIDR, it is either:<ul>
+<li>List of Individual IP Addresses (We will use this for Attendees/Take3 )</li>
+<li>Group of AD joined Windows Computers (This would only be computers joined to the attendee domain "livefire.lab", so definitely can't use...)</li>
+<li>Any IP Address (We do NOT want Attendees/Take3 to have the ability to use the RDP GW to connect to ANY IP, this is the setting used for the Instructor RDP GW)</li>
+</ul>
+</li></ul>
+</li>
+<li>Performance is quite a bit slower than a Horizon Desktop so <strong>Horizon should always be your preferred entry-point&nbsp;</strong>to our Lab Environment. <strong>This solution is simply an alternative/backup solution&nbsp;</strong>for when there are issues with Horizon.</li>
+</ul>
+<p><strong>Connection Flow:</strong></p>
+<p>Instructor System --&gt; Internet --&gt; HaaS Workload NSX-T -&gt; Traefik Reverse Proxy -&gt; RDPGW (SSL) --&gt; Internal-IP (IE: vPod External IP Address)</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_D0DEC30C-EBF6-4EBB-BC84-6EC830AE1E35" class="text-block-content">
+    <p>Be Sure to read and understand the text ABOVE (in blue) before proceeding!</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="how-it-works" data-step-uuid="AD70F72C-045C-49E3-8557-1B016917E322">
+    <h2 id="how-it-works" class="step-title screensteps-heading">How It Works</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_DBE911D5-4944-4948-BC65-FDEB47E0E74A" class="text-block-content">
+    <p>Instructors will configure an RDP session from their local systems. The RDP session will some details...</p>
+<p>Need a Gateway Specified: </p>
+<ul>
+<li>rdpgw.lab.livefire.dev</li>
+<li>Use HaaS Lab Instructor Credentials: &lt;your-instructor-account&gt;@lab.livefire.dev</li>
+</ul>
+<p>Target System IP Address and Credentials, for example:</p>
+<ul>
+<li>
+<strong>Target System IP: </strong>172.25.x.x<br>Some class vPod External IP, or WIP pod, etc... <br>(optionally specify port. 3389 is default and does not need to be specified</li>
+<li>
+<strong>Username for the target system:</strong> administrator@corp.local <em>(administrator@euc-livefire.com)</em>
+</li>
+<li>
+<strong>Password for the target system:</strong> VMware1! <em>(or whatever is actually used...)</em>
+</li>
+</ul>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_F099D8C4-4628-4AEB-BAC9-F8139886037B" class="text-block-content">
+    <p>As an initial walk-through, I have provided steps and screenshots of the Microsoft Remote Desktop client for MacOS. Other clients should be quite similar. For example, my favorite RDP Client "Royal TSX" available for MacOS and Windows is also capable of utilizing the Remote Desktop Gateway, and I have also found the performance of Royal TSX sessions through the RDP GW to be much better than using the standard Microsoft Remote Desktop client.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-1 screensteps-foldable-step" id="macos-microsoft-remote-desktop-version-10-6-8" data-step-uuid="E7209580-757A-4DBF-A0E6-0A292C994D03">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-1">
+        <a href="#macos-microsoft-remote-desktop-version-10-6-8" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-E7209580-757A-4DBF-A0E6-0A292C994D03" 
+          data-target-step-uuid="E7209580-757A-4DBF-A0E6-0A292C994D03">
+          MacOS: Microsoft Remote Desktop (version 10.6.8+)
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="E7209580-757A-4DBF-A0E6-0A292C994D03" id="nested-step-E7209580-757A-4DBF-A0E6-0A292C994D03">
+            <div class="step screensteps-section screensteps-depth-2" id="setup-user-accounts" data-step-uuid="854D9168-69AD-4937-B056-2555142CA7EA">
+    <h3 id="setup-user-accounts" class="step-title screensteps-heading">Setup User Accounts</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_47EC6526-A97E-490F-966B-B3E4FAD8F800" class="text-block-content">
+    <p>You will need a minimum of 2 user accounts:</p>
+<ol>
+<li>Your Instructor Account for access to the RDP Gateway</li>
+<li>RDP account for target system (For example, vPod Control Center/Main Console)</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/151/original/93c06541-047a-4b1e-a3fd-5fcdff061982.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=34e69673d80b02075338114c2b56c8ec0cc1db2fba57b813c914c699a425413a" srcset="" alt="" height="251" width="455">
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="instructor-account" data-step-uuid="49DE1CBA-7054-4458-97C3-324BC16E7A9A">
+    <h4 id="instructor-account" class="step-title screensteps-heading">1. Instructor Account</h4>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_824C0338-5890-4135-9A3E-5DC88072A8F9" class="text-block-content">
+    <ul>
+<li>Open your Microsoft Remote Desktop Client</li>
+<li>Go into Preferences, then User Accounts</li>
+<li>Click the + in the bottom-left of the window to <strong>Add a User Account</strong>
+</li>
+</ul>
+<ol>
+<li><strong>Enter your HaaS Lab Instructor Account username. Be sure to include the @lab.livefire.dev</strong></li>
+<li><strong>Enter your HaaS Lab Instructor Account Password</strong></li>
+<li><strong>Give a meaningful Friendly name - this will be used when selecting credentials for the Gateway later</strong></li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="vpod-account" data-step-uuid="B3C861F2-1B6C-45AD-8872-720EB46F791B">
+    <h4 id="vpod-account" class="step-title screensteps-heading">2. vPod Account</h4>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_90FD8CAC-9C81-4869-9E83-48232B2A5B77" class="text-block-content">
+    <ul>
+<li>Open your Microsoft Remote Desktop Client</li>
+<li>Go into Preferences, then User Accounts</li>
+<li>Click the + in the bottom-left of the window to <strong>Add a User Account</strong>
+</li>
+</ul>
+<ol>
+<li>
+<strong>Enter your ControlCenter username: </strong>administrator@corp.local</li>
+<li>
+<strong>Enter your Password:</strong> VMware1!</li>
+<li>
+<strong>Give a meaningful Friendly name: </strong>Administrator-HOL<strong><br>this will be used when selecting credentials for the Gateway later</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+ 
+            <div class="step screensteps-section screensteps-depth-2" id="setup-gateway-s" data-step-uuid="309C071C-BC18-4BCF-BA46-5CBD498254F1">
+    <h3 id="setup-gateway-s" class="step-title screensteps-heading">Setup Gateway(s)</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/152/original/0f0aa811-8da7-4260-9014-9e539f7e85c9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a6b4e51bee93d19deeb6e117f9ab7fd1f2a9e556604362880e41c066ecc2224a" srcset="" alt="" height="229" width="453">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_B6720A40-567A-4A89-AB6B-99D50FE2C9C6" class="text-block-content">
+    <ul>
+<li>Open your Microsoft Remote Desktop Client</li>
+<li>Go into Preferences, then Gateways</li>
+<li>Click the + in the bottom-left of the window to <strong>Add a Gateway</strong>
+</li>
+</ul>
+<ol>
+<li>
+<strong>Gateway Name: </strong>rdpgw.lab.livefire.dev</li>
+<li>
+<strong>Friendly name:</strong> Livefire-Instructor-RDPGW</li>
+<li>
+<strong>User account (Use the "Instructor Account" you added in the previous step): </strong>your-username-HaaS-Account</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+            <div class="step screensteps-section screensteps-depth-2" id="create-rdp-connection" data-step-uuid="F2F0E93E-CC1A-49B0-BC4E-9F599C087BCD">
+    <h3 id="create-rdp-connection" class="step-title screensteps-heading">Create RDP Connection</h3>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/153/original/9220f01f-f961-4d29-aa31-f24cd02d40c8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=74e5cd7023ad3333de7b580fe4a58efde192b4258100a28e15e65f262a48e53f" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/153/medium/9220f01f-f961-4d29-aa31-f24cd02d40c8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=085f3cb02e727fd639576e16b37c2f14573c65f86227bb80e6a367833d43b7db" srcset="" alt="" height="491" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4DCF071D-4732-45D2-AA82-740EE1E0511C" class="text-block-content">
+    <ul>
+<li>
+<strong>PC name: </strong>&lt;ip address of target system/vPod External IP&gt;</li>
+<li>
+<strong>User account:</strong> Select your Instructor-HaaS-Account that you created in the previous step</li>
+</ul>
+<p><strong>General Tab:</strong></p>
+<ul>
+<li>
+<strong>Friendly name:</strong> vPodName-MainConsole</li>
+<li>
+<strong>Group: </strong>&lt;create and select a group as desired&gt;</li>
+<li>
+<strong>Gateway:</strong> Livefire-Instructor-RDPGW</li>
+<li>
+<strong>Reconnect if the connection is dropped: </strong>checked</li>
+<li>
+<strong>Connect to an admin session: </strong>checked</li>
+</ul>
+<p>Display and remaining tabs: Specify settings as desired.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+            <div class="step screensteps-section screensteps-depth-2" id="test-rdp-connection" data-step-uuid="41C88D76-B155-4357-B5BA-2940AA3F87CF">
+    <h3 id="test-rdp-connection" class="step-title screensteps-heading">Test RDP Connection</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/154/original/a179b9c5-143a-417d-b8ca-9a7225245142.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e73044f2534f301105ea4ee4b3775d9dcc5c64687404d2814cc2761b12b1aa6d" srcset="" alt="" height="199" width="844">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ECA242C2-D4E7-4E41-AB45-E3FD713EB4CF" class="text-block-content">
+    <ul>
+<li>Double-click your new RDP connection: vPodName-MainConsole</li>
+<li>The screen will start of saying "Configuring Gateway...", then move on to "Configuring remote PC...", and finally may prompt for Certificate</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/155/original/35f6e35d-4121-4e98-b946-bd57a92446fc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ae948f29c2302d83ba60b49416a8695c43b43714391cd6133ef0d41a9ea00e1b" srcset="" alt="" height="196" width="561">
+  </div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/156/original/d19f3dea-1ae5-4444-9c12-d9ab88f931fd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9ba2c642b9273084f8752298e4bf25d02f8fc1c410631f29a28122c4fc55f35d" srcset="" alt="" height="203" width="585">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A2906685-626F-4399-AA50-E7239011D16B" class="text-block-content">
+    <ul>
+<li>When prompted about the certificate, you may optionally click the "Show Certificate" button then check the "Always trust..." checkbox so that you are not prompted the next time you connect.</li>
+<li>Click Continue</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/157/original/1b25463a-ccf2-45a7-924b-747b27f8f7ce.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=393e5bb7a24725b4aa327dfe1b560fd44f1d4101464fdeeed8aaa0e0dfe77b3a" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/157/medium/1b25463a-ccf2-45a7-924b-747b27f8f7ce.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194339Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=07eac886a30d703044a52422eea4fd9ff7c394da6da289b67289e236ac5d89de" srcset="" alt="" height="635" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D024EAD7-3006-4744-937D-0375ACE1D241" class="text-block-content">
+    <p><strong>Screenshot shows:</strong></p>
+<p>Remote Desktop via RDP GW. Windows Server (ControlCenter/Main Console) running MobaXterm, connected to an Ubuntu system that is running oh-my-zsh with the MesloNS fonts installed and functioning. This is one of the only Windows SSH clients capable of using and displaying the necessary fonts for oh-my-zsh! This is far more interesting than a putty based general SSH session.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+
+

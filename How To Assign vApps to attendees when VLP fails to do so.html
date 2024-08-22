@@ -1,0 +1,93 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_AB27511A-1B7B-4A70-9286-B7E784C46C34" class="text-block-content">
+    <p>For several weeks now we are observing failures when VLP assigns the pre-provisioned vApps (prepops) to the entitled users. This results in vApps not being renamed as expected.</p>
+<p>This seems like a bug in VCD and the HaaS Lab Team are working with GSS on confirming that.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="1-symptoms-of-the-problem" data-step-uuid="73A161A4-639B-4181-B49A-5AFDD31A994E">
+    <h2 id="1-symptoms-of-the-problem" class="step-title screensteps-heading">1. Symptoms of the problem</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1C1C5615-F872-4D82-BBC8-3F7315ECB083" class="text-block-content">
+    <p>The following error would be seen in the VLP portal:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/058/original/507caac6-d602-44d3-9cd8-9dacf4bede92.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6560554dc217a307d487d82fdbdeffcf2f9a22a50bf169f39d74eaafbecddc19" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/058/medium/507caac6-d602-44d3-9cd8-9dacf4bede92.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ee8044955b665db8cfc14897aaa411f35c54e4f22ece90d43b985302d1207f15" srcset="" alt="" height="473" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_48E2A463-1A51-48AE-929F-8AE3BFD69F8F" class="text-block-content">
+    <p>And in the Cloud director you could see that the vApps are not renamed reflecting each attendee's e-mail in their name:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/059/original/c64da841-770d-4779-87eb-edf9f3816593.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e25722ec92d5065e2dd2625f31e6ddb94e94816d73e361e0a8762d0bec79fc04" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/059/medium/c64da841-770d-4779-87eb-edf9f3816593.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f83781fac809f3393ee956d98b5afabd518e66888b856f1fdd91b44015922246" srcset="" alt="" height="477" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="2-the-workaround" data-step-uuid="7B52F048-8538-4F62-9015-C267D0761A59">
+    <h2 id="2-the-workaround" class="step-title screensteps-heading">2. The workaround</h2>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_B443ADB4-4780-4709-B435-1F0692F95EF6" class="text-block-content">
+    <p>If you don't see "Cloud Tasks" you are probably using the old VLP navigation. You can switch to the new navigation at the very bottom of the pane on the left or if you prefer using the old UI, the "Cloud Tasks" are located under "Task Management"</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/060/original/54b57b4f-c945-449f-8935-e475b1acc42c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=100d1efa09f2a529bd23a995dfc83fa53ac677c32932ba4bb64d5ad99c37cb0a" srcset="" alt="" height="1119" width="298">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_53653E04-2176-4B1C-9BE4-431674EAAC64" class="text-block-content">
+    <p>Log in to the VLP portal and navigate to Cloud Management -&gt; Cloud tasks. Then click on the vcd.livefire.dev cloud task</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/061/original/1bf69d3b-f8a4-4147-bd87-9aad522a4d78.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=38db5704f7eb8282f25ce0ac9371e064becc894a13fe5b7db89ee4c6f1fbde69" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/061/medium/1bf69d3b-f8a4-4147-bd87-9aad522a4d78.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=184c23ab29b1420693d81dd4f7f3926887bea463e77ee44fcc3182e0113f6e16" srcset="" alt="" height="245" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_97140EE1-83F7-44DB-B681-551077381952" class="text-block-content">
+    <p>On the window that just opened, go to the Failed Tasks tab and sort them by date. The newest ones on should be the ones for your class. Select the three dots menu to the left of each task and select "re-submit". This will re-run each task and will succeed in renaming the vApps.<br>This needs to be done for each task. Unfortunately, there is no way of selecting multiple tasks and performing an action on all selected.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/062/original/b493cc8f-36b1-47ea-abb1-1cc5a5807c7f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=db8dda48c579d75b20a2a1ed053239d4956b5d634067555ed3a83fca320939de" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/062/medium/b493cc8f-36b1-47ea-abb1-1cc5a5807c7f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=fb1b8355f171d192cc93e41e8ec77c8255e71faef8f614a4ea979073dbad937a" srcset="" alt="" height="422" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_99EDE3C1-D085-4402-A88E-421990735803" class="text-block-content">
+    <p>Once all the tasks succeed, you woulds see the vApp getting renamed in the VCD. After this completes, you could inspect the events for a vApp, where you would see that the second attempt for vApp modification succeeds:</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/063/original/c167ec9a-d44c-48ad-a24e-456d205418f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=90462cd4d476c99f69dc487afce135af8a86f47b118abb8f04f4f3e6b6d9270d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/063/medium/c167ec9a-d44c-48ad-a24e-456d205418f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194257Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e623f68399c454c949eb03c195e9915009fc7fc13f85392ed7d94958fbc0db97" srcset="" alt="" height="269" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+

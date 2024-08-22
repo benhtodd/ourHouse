@@ -1,0 +1,132 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_825F56C7-5004-4D89-A0DC-D697F84AAAC1" class="text-block-content">
+    <p>In this lab we&nbsp;are going to add some additional constraints regarding PCI on the database disks. &nbsp;We are going to examine how these affect the deployment engine decisions for resource placement.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="importing-the-blueprint" data-step-uuid="49D5803F-4D4D-4549-923C-C774AACBE97D">
+    <h2 id="importing-the-blueprint" class="step-title screensteps-heading">Fixing the Failing Deployment</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_CBE3DE93-E9C1-4363-99BC-B27E1C22FECF" class="text-block-content">
+    <p>Import the <strong>Tito - Placement</strong> blueprint from the <strong>Dropbox </strong>share provided and name your new blueprint <strong>Tito - Placement&nbsp;</strong><em><strong>- yourname</strong></em>.</p>
+<p>Examine again the blueprint. Note that we have only <strong>image</strong> and <strong>flavor</strong> inputs.</p>
+<p>The data disk of our machine resource&nbsp;must comply with PCI regulations so we've put a constraint on the disk: <strong>'cas.storage.profile.cap:pci'</strong></p>
+<p>Deploy the blueprint with default inputs. <strong>Note that you will receive an error as shown below</strong>.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/257/original/50146988-e73d-44ae-ae4f-1a939b92ab94.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=18641a0b135feb9e88c54959df06d37bbc0dde2d177af72dc1e6a86ea64a326b" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/257/medium/50146988-e73d-44ae-ae4f-1a939b92ab94.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=14fb036aa9f1558d6d3a95b6f8252220cc1fd88cb74b5ccb2be3701db0180653" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="376" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_AC9D37C1-9517-4C2F-8D6B-14296D8805D2" class="text-block-content">
+    <p><strong>Why is the deployment failing?&nbsp;</strong></p>
+<p>Examine the deployment request details from the <strong>Requests</strong> Tab for more info.</p>
+<p>How would you fix the broken deployment?</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_2E2184AE-991F-4CE7-86EF-684D3D5AE174" class="text-block-content">
+    <p>Do not delete the deployment at the end of the lab. </p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="solution-importing-the-blueprint" data-step-uuid="227FAE9B-36F1-4CCB-9AF9-DDA7C1B1C4B8">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#solution-importing-the-blueprint" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-227FAE9B-36F1-4CCB-9AF9-DDA7C1B1C4B8" 
+          data-target-step-uuid="227FAE9B-36F1-4CCB-9AF9-DDA7C1B1C4B8">
+          Solution: Fixing the Failing Deployment
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="227FAE9B-36F1-4CCB-9AF9-DDA7C1B1C4B8" id="nested-step-227FAE9B-36F1-4CCB-9AF9-DDA7C1B1C4B8">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A00D597D-61AF-4F10-86EA-C9682528D394" class="text-block-content">
+    <p>Examine the deployment request details from the <strong>Requests</strong> Tab for more info.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/258/original/322bcb6e-4ccb-4f0d-acb7-6d7c0167f2cb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a6d79ce1b5de15690fc2846094f46cdafa00a6b594f0f287caa1fcae6fe8b541" srcset="" alt="" height="914" width="528">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7020DEA1-05FC-442F-B278-18BABC841EFA" class="text-block-content">
+    <p>Examine the blueprint. Especially the storage constraints on the database resource.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/259/original/dcda4cdb-4b2b-473d-b6ab-ee0280010c1e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ecb860d1b0c9e3f9affa6c4911340cd132edb319fe5f4d04578299a5ae36db17" srcset="" alt="" height="303" width="428">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_94751DC7-F298-495D-BBF2-3DC1DDB5EC8C" class="text-block-content">
+    <p>According to the constraint tags we are looking for a storage profile that contains the following capability tags:</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- tag: 'cas.storage.profile.tier:silver'</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- tag: 'cas.storage.profile.cap:pci'</p>
+<p>Examine the storage profiles. You will notice that there is no storage profile that has both capability constraints.</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/260/original/8f43df2c-80f0-443b-be71-140e92aa2294.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a68678be264062c4e068e916dfcb93fd187277694f2eea3328b545ef854d65cb" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/260/medium/8f43df2c-80f0-443b-be71-140e92aa2294.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f28925982d6906c71f3b56e19eea74f7785899794b1db85d78e8fb281fbee6b4" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="502" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_FB6DCC7D-50E5-4A3F-8D51-94C977AB6C4A" class="text-block-content">
+    <p>To fix this we are going to make the <strong>silver&nbsp;</strong>constraint a <strong>soft&nbsp;</strong>constraint. We want to keep <strong>pci</strong> as we want to comply with PCI standards.</p>
+<p>To fix this, change the <strong>silver</strong> constraint on the <strong>database</strong> resource to:</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- tag: 'cas.storage.profile.tier:<strong>silver:soft</strong>'</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/261/original/ebbb2a37-ee8b-4879-b53e-f930efdd19ae.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c64546b55e003e2b232e87ecab5c777b8cd30a65cce124bf1fc10bd966d3bff9" srcset="" alt="" height="282" width="422">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D0432B55-805D-4D73-84DC-DF4FFAF814E1" class="text-block-content">
+    <p>Deploy the blueprint again. &nbsp;This time deployment should be successful.</p>
+<p>&nbsp;</p>
+<p>Examine the deployment request details. &nbsp;Examine the machine and storage allocation request details. &nbsp;Where was the development placed?</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/262/original/7fb28ca0-62aa-4be6-b8fa-371dda02b955.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6a7e71df41b85f61b0c88750bd184b2fe6a17cf89697eec62d64a0320aba6461" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="1065" width="802">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/263/original/23822407-159f-431a-8bd1-f6e0a0b8a937.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194445Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d1d64202bc8a202e795108463fb35a9a28862b4664ad85af50da121ad164d4c4" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="915" width="692">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_5193D3E7-F613-41A6-A637-D5D98CA54DA5" class="text-block-content">
+    <p>Do not delete the deployment at the end of the lab.</p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+

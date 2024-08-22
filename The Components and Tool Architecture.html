@@ -1,0 +1,155 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="the-components" data-step-uuid="F7F37CFB-78AE-41B5-8992-FA0AA036FBCA">
+    <h2 id="the-components" class="step-title screensteps-heading">The components</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8DFD491C-388D-4421-9D02-58E83ACA5F6E" class="text-block-content">
+    <p>The tool consist out of multiple elements that makes up the full solution.</p>
+<ul>
+<li><em>The Lab Checkers vApp</em></li>
+<li><em>The Lab Checkers Scripts</em></li>
+<li><em>The Student vApps</em></li>
+<li><em>Budibase (Database and Dashboard)</em></li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="the-lab-checkers-vapp" data-step-uuid="7C6FD544-3D2E-42F1-AD59-1B772ED68173">
+    <h3 id="the-lab-checkers-vapp" class="step-title screensteps-heading">The Lab Checkers vApp</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8228E301-D258-4FBC-B4FF-C08027A8BF1D" class="text-block-content">
+    <p>The<em> Lab Checkers vApp</em> is the main control center where the<em> LabCheckers Scripts</em> are initiated from.</p>
+<p>The PowerShell/PowerCLI Scripts are hosted on this vAPP and PSRemoting will be used to execute the scripts on all the <em>Student vApps</em>.</p>
+<p><em>TODO: Create a new vAPP Template, and make a screenshot and post this here.</em></p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="the-lab-checkers-scripts" data-step-uuid="352055CD-B92F-411F-BE6B-2727E19A7333">
+    <h3 id="the-lab-checkers-scripts" class="step-title screensteps-heading">The Lab Checkers Scripts</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_F7B26755-81FC-4799-A822-7B7E4AF0888D" class="text-block-content">
+    <p>This<em> Lab Checkers Scripts</em> consist out of 3 main files:</p>
+<ul>
+<li>
+<strong>Students-v6.csv</strong><ul>
+<li>This CVS file contains the <em>Student vApp</em> names and IP addresses (of the PODS).</li>
+</ul>
+</li>
+<li>
+<strong>CheckMultiplePods-v6.ps1</strong><ul>
+<li>This script will make sure that the <strong>Lab-CNS-Full-v6.ps1</strong> script will run across all <em>Student vAPPs</em> that are provided in the <strong>Students-v6.csv</strong> file.</li>
+<li>This script will make sure that the JSON output (scoring information) that is retrieved from the <em>Student vAPPs</em> will be sent to the <em>Budibase</em> Database.</li>
+</ul>
+</li>
+<li>
+<strong>Lab-CNS-Full-v6.ps1</strong><ul>
+<li>This script contains the actual Lab Task Checking and Grading where a PowerShell script will invoke several different API calls towards several different VMware Products (NSX, Manager, vCenter Server, AVI Controller, etc.) that are present in each <em>Student vApp</em>.</li>
+<li>Once the script has fully been executed, it will place all the information on a per <em>Student vApp</em> basis into the <em>Budibase</em> Database.</li>
+</ul>
+</li>
+</ul>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1F609009-F219-4183-88F4-AF8D12B1AF52" class="text-block-content">
+    <p>The task can have three possible outcomes:</p>
+<ul>
+<li>
+<strong>Pass</strong><ul>
+<li>A Lab task has been successfully configured with no mistakes so 1 point is awarded.</li>
+</ul>
+</li>
+<li>
+<strong>Fail</strong><ul>
+<li>A Lab task has not been successfully configured or a mistakes have been made so 0 point are awarded.</li>
+</ul>
+</li>
+<li>
+<strong>Not Checked</strong><ul>
+<li>Sometimes tasks are configured and this configuration is deleted later in the lab (to make other labs work in the future), in this case the task will not be checked and &nbsp;so 0 point are awarded.</li>
+</ul>
+</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/222/original/ac2f33e4-ae78-4cf7-8f04-e2ede6392a8c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194411Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c58db9d56abfa660cb5caea489b5b5cd06fd869689304b3022cc2ce5585a6813" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/222/medium/ac2f33e4-ae78-4cf7-8f04-e2ede6392a8c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194411Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b25495ae3751d1cf00699122c9ba9b7244711b583011d6e1e027785de819cd65" srcset="" alt="" height="329" width="855">
+      </a>
+  </div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="the-student-vapps" data-step-uuid="7E24F340-AFC9-4782-9E72-03CB170CE1DE">
+    <h3 id="the-student-vapps" class="step-title screensteps-heading">The Student vApps</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_FB2DA560-9D1B-43F1-B43D-B7D1A7E61202" class="text-block-content">
+    <p>The scripts are remotely being executed from the &nbsp;<em>Lab Checkers vApp </em>where the target will be the<em> Student vApps </em>defined in the<em> </em><strong>Students-v6.csv file.</strong></p>
+<p>Each<em> student vAPP</em> needs to have a Control Center VM based on Microsoft Windows Server 2022 Standard. The windows version is important because the older versions will not work well with PSRemoting,</p>
+<p>Each <em>student vApp</em> will have the full lab deployed with various different VMware products that will be used in the Class. (NSX, Manager, vCenter Server, AVI Controller, etc.)</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="budibase" data-step-uuid="533903C7-A1DC-4F22-BB5F-8FD00B4536CE">
+    <h3 id="budibase" class="step-title screensteps-heading">Budibase</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C2683558-1FF2-4FCE-BAF3-59256E19591A" class="text-block-content">
+    <p><em>Budibase</em> is a tool that is considered as a NoCode or LowCode tool to create advanced application tailored to your needs. &nbsp;<em>Budibase</em> works together with the VLP system to provision PODS (<em>Student vApps</em>) for each class. (Burke, Naina and Deyan can tell you all about VLP). <em>Budibase</em> is used for the VLP solution and is also used in the Lab Checkers Solution. </p>
+<p>The data that the<em> Lab Checkers scripts </em>retrieves from the Student vApps will be sent to <em>Budibase</em>, and <em>Budibase</em> will place this into the <em>Budibase</em> Database.</p>
+<p>Once the Data is in the (<em>Budibase</em>) Database a front end will retrieve the data using various different queries to display the data on a (<em>Budibase</em>) web based front-end (the Dashboard).</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="tool-architecture" data-step-uuid="8C0EBECE-4229-4DD4-92CA-04A453EA0781">
+    <h2 id="tool-architecture" class="step-title screensteps-heading">Tool Architecture</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_50EBEEC2-655F-42AF-9341-ECA901546909" class="text-block-content">
+    <p>Below you will see the high level overview of the communication flows of the vApps.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/223/original/4392755e-03d1-48cd-ae54-7181e3a76da5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194411Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e4b327d3b0ac2fde3cc1b980b9b47927bf794fee94a1cec8a58fca91ff877f40" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/223/medium/4392755e-03d1-48cd-ae54-7181e3a76da5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194411Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=aec436c144d8c17e02b77cca88d0def0883cf53e23df239054c6fa59cf20c8eb" srcset="" alt="" height="455" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_675D054F-CF24-48D1-9CD0-6B464ACF83B9" class="text-block-content">
+    <p>Below you will see the high level overview of the communication flows of the vApps and Budibase.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/224/original/e6e5219f-3a0e-49e1-a82c-4eb5143340cf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194411Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=473fe57c03b86bcf6a4af8b10af5b847213f2b6d4c72b9fd4c829c315b3bc170" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/224/medium/e6e5219f-3a0e-49e1-a82c-4eb5143340cf.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194411Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f012feac33b31c45cd10dfffcdacea23cb8f3a5e4904952d81cf50e2a59d4bce" srcset="" alt="" height="491" width="855">
+      </a>
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="the-script-files-recording-additional-notes-for-development" data-step-uuid="BD79F90D-1B77-455E-BDA6-C0F3D4CCE970">
+    <h3 id="the-script-files-recording-additional-notes-for-development" class="step-title screensteps-heading">The script files + Recording + additional notes for development</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_D63CF2B7-4189-406B-86CB-5EE51BDCB13F" class="text-block-content">
+    <p>I have placed all scripts and recording including my personal notes of my previous development cycle in <a href="https://drive.google.com/drive/folders/1Pv5lCLpQ4_HZymHgKYwirkdusNZyg-xp" target="_blank">this folder</a>. </p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+

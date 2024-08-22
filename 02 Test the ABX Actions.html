@@ -1,0 +1,77 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_CD64ECA8-27E9-461C-BD34-F495C54A00EB" class="text-block-content">
+    <p>In this lab, we will create an ABX action that will post a notification message with information about your deployment in a Slack channel.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="testing-the-ssh-key-abx-action_1" data-step-uuid="E84AFF41-1C6B-4E08-AA1A-0BD6E662BA59">
+    <h2 id="testing-the-ssh-key-abx-action_1" class="step-title screensteps-heading">Testing the SSH Key ABX Action </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_18C456EA-14FD-432A-8E86-77FC0EE9F756" class="text-block-content">
+    <p>Go to Design &gt; Blueprints and import the ABX SSH Key.yaml blueprint from Dropbox . For name use <strong>ABX SSH Key - </strong><em><strong>yourname</strong> </em>. <strong>Deploy the blueprint </strong>.</p>
+<p>Go back to the <strong>Extensibility Tab</strong>.</p>
+<p>Navigate to <strong>Activity &gt; Action Runs&nbsp;</strong>and monitor for the action to complete.<strong>&nbsp;</strong></p>
+<p><strong>Open the action run once it has completed.&nbsp;</strong></p>
+<p>On the right side, scroll down to see the outputs in the Details tab. You should see that we have successfully injected the SSH Key into the payload. &nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/339/original/5d7078e2-b0fa-42db-a66f-cd87de27d58d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194517Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5472deab73a0f41a54bbe07e3c275bb204c1766da993fc7601675b44b7677287" srcset="" alt="" height="933" width="806">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EA3A9984-6DA2-4711-B19B-D873CC13996E" class="text-block-content">
+    <p>Go back to the Deployment tab and get the IP of the VM from the deployment details. We are going to need this next to SSH into the VM.</p>
+<p>Go to your Horizon Desktop and SSH to the machine using the private key provided in the Dropbox. You can verify the public key was copied to your server by running the following commands:</p>
+<p>First, fix a permission problem on the private SSH key:</p>
+<p><code>chmod 600 ~/.ssh/id_rsa</code></p>
+<p>Now, attempt to SSH to your server:</p>
+<p><code>ssh centos@[your-server-IP]</code></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/340/original/2a55e7bb-88fa-42d2-85c4-8586f904e4c9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194517Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f21db04a8de8230e89070da7849749c3c2b83ff7f8deb09407cc8f08a0e0fb4b" srcset="" alt="" height="233" width="777">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="testing-the-ssh-key-abx-action" data-step-uuid="94E06B34-38D1-4948-8A64-6BC21B2261A3">
+    <h2 id="testing-the-ssh-key-abx-action" class="step-title screensteps-heading">Testing the Slack Notification ABX Action </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3C97C07E-402D-42B4-9281-163A1F2CA49B" class="text-block-content">
+    <p>Navigate to <strong>Activity &gt; Action Runs&nbsp;</strong>and monitor for the action to complete.<strong>&nbsp;</strong></p>
+<p>Navigate back to Slack and check the <strong>labs</strong> channel. You should see a notification similar to the following with the name of your VM and it's IP address:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/341/original/e4c00b6f-46ac-4370-8fcf-b4e156b32abb.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194517Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6ae55afcd16c37ca449501372c19578c41848daae9d802099d551dc08b84667b" srcset="" alt="" height="294" width="730">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="deactivating-the-subscriptions" data-step-uuid="A94D0AED-F22E-45D8-896E-E82F5892A103">
+    <h2 id="deactivating-the-subscriptions" class="step-title screensteps-heading">Deactivating the Subscriptions</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_235F115E-1D31-434B-B48A-6F86700B6177" class="text-block-content">
+    <p>For now, we will not want the ABX actions to be active. Please disable the subscriptions. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/342/original/ccb16c19-c596-40c2-9522-b05dc2532c88.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194517Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3931d53ae45e64fa0e3a603bede6f5750444851d195d0b157b8878e10407fec9" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/342/medium/ccb16c19-c596-40c2-9522-b05dc2532c88.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194517Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e1d82cec4ce1c40466eceb90fa5f57a7f4fb6286936fbc5807f149cdbfa1d96b" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="315" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+

@@ -1,0 +1,306 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_FD2948EC-D79D-4476-B591-A4FC39DB1088" class="text-block-content">
+    <p>In this lab, you'll be logging into Cloud Assembly and exploring the setup which was configured for you.&nbsp;</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="exploring-the-configuration" data-step-uuid="787F4A18-EA07-4307-B76A-0D29CF92B134">
+    <h2 id="exploring-the-configuration" class="step-title screensteps-heading">Exploring the Configuration</h2>
+  </div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_385633A5-419B-40D4-BD08-8BDB2981133C" class="text-block-content">
+    <p>Please do not change any of the capability tags assigned to different objects throughout Cloud Assembly.&nbsp;By doing so you can break the labs for all students!</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_37916828-E922-410E-91F4-07C0D2A7A51B" class="text-block-content">
+    <p>Let's begin by opening a browser window to <a href="https://console.cloud.vmware.com">https://console.cloud.vmware.com</a> and logging in. You have already logged into the <strong>VMware Cloud Services Portal</strong> once before.&nbsp;</p>
+<p>Make sure to navigate to the<strong>&nbsp;Livefire Labs</strong> org.</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8160AEC4-D3A4-4605-B67D-03D9BFE5F54F" class="text-block-content">
+    <ol>
+<li>Start by opening the <strong>VMware Cloud Assembly</strong> under My Services.</li>
+<li>Explore the following configuration settings:</li>
+<li>Navigate to the <strong>Infrastructure</strong> tab and then click <strong>Cloud Accounts.</strong> View both AWS and Azure accounts.<ol>
+<li>Make note of the <strong>Regions</strong> we have selected.</li>
+<li>Make note of the <strong>Capabilities </strong>tags. </li>
+</ol>
+</li>
+<li>Navigate to the <strong>Cloud Zones</strong> tab. View at least one AWS and one Azure zone.<ol>
+<li>Make note of the <strong>Capability Tags&nbsp;</strong>that are set on the <strong>Summary&nbsp;</strong>tab.&nbsp;You will notice that a zone has either AWS or Azure tag which identifies to which cloud account the zone is going to deploy it. It also has a dev, test or prod tag which tells us that Elastic Sky company considers this cloud zone (region) either test, dev or production one. &nbsp;</li>
+<li>Make note of the computes added on the <strong>Compute&nbsp;</strong>tab. This shows us on which computes within this zone we can provision to.</li>
+</ol>
+</li>
+<li>Navigate to the <strong>Flavor Mapping&nbsp;</strong>tab. View at least one of the Flavor mappings. We will be using mainly the&nbsp;<strong>Micro</strong> mapping for the purpose of the labs. This shows us what VM sizing we consider Micro in each region for each cloud account.</li>
+<li>Navigate to the <strong>Image Mapping&nbsp;</strong>tab. View at least one of the Image mappings. The Image Mapping profile shows which cloud OS image we are going to use for each region to provision resources. We will be using mainly the<strong>&nbsp;centos-74-image&nbsp;</strong>mapping. The <strong>centos-74-livefire-image</strong> and the <strong>ubuntu-16-livefire-image</strong> mappings are custom cloud images created by the Livefire team. Explore at least one more mapping that contains native cloud images.</li>
+<li>Navigate to the <strong>Network Profiles&nbsp;</strong>tab. View at least one AWS and Azure network profile.<ol>
+<li>Make note of the <strong>Capability Tags&nbsp;</strong>that are set on the <strong>Summary&nbsp;</strong>tab. &nbsp;The tags used here identify what Elastic Sky considers a dev, test or prod network profile.</li>
+<li>Make note of the networks under the <strong>Network</strong> tab. Make<strong>&nbsp;</strong>note of the <strong>Capability Tags&nbsp;</strong>applied to those networks. These tags help us identify what Elastic Sky considers a public or private network and where these are coming from: AWS or Azure.</li>
+</ol>
+</li>
+<li>Navigate to the <strong>Storage Profiles</strong> tab. View at least one AWS and Azure profile.<ol>
+<li>Click on at least one storage profile per cloud zone and examine the configuration.</li>
+<li>Make note of the <strong>Capability Tags&nbsp;</strong>applied to those profiles. The tags here identify what Elastic Sky considers <em>PIC, Bronze, Silver</em> and <em>Gold</em> storage profiles.</li>
+</ol>
+</li>
+<li>Navigate to the <strong>Projects</strong> tab.<ol>
+<li>Open <strong>dev-tito.</strong>
+</li>
+<li>Navigate to the <strong>Provisioning</strong> tab and make note of the configuration. More precisely, make note of the Cloud Zones configuration and priority that is set.</li>
+</ol>
+</li>
+<li>Feel free to examine the rest of the interface at your leisure.<br>
+</li>
+</ol>
+  </div>
+</div>
+
+      <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-1 screensteps-foldable-step" id="solution-exploring-the-configuration" data-step-uuid="AB98CB10-54E0-49AC-BCA9-133C1A8D7641">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-1">
+        <a href="#solution-exploring-the-configuration" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-AB98CB10-54E0-49AC-BCA9-133C1A8D7641" 
+          data-target-step-uuid="AB98CB10-54E0-49AC-BCA9-133C1A8D7641">
+          Solution: Exploring the Configuration 
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="AB98CB10-54E0-49AC-BCA9-133C1A8D7641" id="nested-step-AB98CB10-54E0-49AC-BCA9-133C1A8D7641">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ED66F610-C7AD-4A2D-A599-573B7F3705AD" class="text-block-content">
+    <p>Navigate to the <strong>Infrastructure</strong> tab and then click <strong>Cloud Accounts.</strong></p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/236/original/90132037-a23b-4903-a4b7-fd3e0126fc74.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=792fc8c71b816cfd129a2148294424b2816e3b40e81de7729479e73d73e67585" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/236/medium/90132037-a23b-4903-a4b7-fd3e0126fc74.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=bb3574d7f7b304c188e3dfa2f8c4d7e6c8071cc1e51ef7160a175a02f191be96" srcset="" alt="" height="234" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_42C97B16-6B0A-4800-9077-2019300B1F98" class="text-block-content">
+    <p>View both AWS and Azure accounts.</p>
+<p>Make note of the <strong>Regions</strong> we have selected. Make also note of the Capability tags applied. We have a capability tag that describes the type (AWS/Azure/...) of the account and the customer (owner) to which it belongs. &nbsp;If needed we can easily use these as constraints to target deployments to a particular type of cloud account or cloud account that belongs to a particular customer/owner. </p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/237/original/3df1f76e-ebc0-4af9-a25f-268031eeed06.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f896e98994a0acc902d6db8b86bc7b434d24eca5c9cbb785a99bab75b51d8ab7" srcset="" alt="" height="411" width="681">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/238/original/43e0e3f3-5ee8-407c-b80d-393c30ee9197.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a58cf87bce0c81bb5923e33d86e276611461613dcee03e91516443953c8fe918" srcset="" alt="" height="420" width="677">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1C5B813A-04F2-40BC-A7AB-2FC3C59D9691" class="text-block-content">
+    <p>Navigate to the <strong>Cloud Zones</strong> tab. View at least one AWS and one Azure zone.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/239/original/58d31365-7bae-4f74-ae9c-9bc26490c77a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=853114251f6da5a8f86067a26dded47515d92b27a5b7651365ea4a4c70259fbe" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/239/medium/58d31365-7bae-4f74-ae9c-9bc26490c77a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=bcd440b02244c8a1d10658b2d0cb1f13ed0ac19c82137d3db323fb917eaf2615" srcset="" alt="" height="539" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_895B2A4B-E24C-41FA-B467-F9669684FC04" class="text-block-content">
+    <p>Make note of the <strong>Capability Tags&nbsp;</strong>that are set on the <strong>Summary&nbsp;</strong>tab.</p>
+<p>&nbsp;You will notice that a zone has a <strong>dev</strong>, <strong>test</strong> or <strong>prod</strong> tag which tells us that Elastic Sky company considers this cloud zone (region) either <strong>test</strong>, <strong>development </strong>or <strong>production</strong> one. &nbsp;</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/240/original/bc47bfdd-e0d4-4f7c-8624-2dccaad57ca2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c63b03fc0662d791a0ef585d28db0e44bae96ad030036a4ff924f5c99975d68b" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/240/medium/bc47bfdd-e0d4-4f7c-8624-2dccaad57ca2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=357f1f195a9a93e520763647b33524a2341c4e8faadb78315112e414202f7261" srcset="" alt="" height="236" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5CFFE40A-1678-42A4-AAF2-CF33C0C53061" class="text-block-content">
+    <p>Make note of the computes added on&nbsp;the <strong>Compute&nbsp;</strong>tab. This shows us on which computes within this zone we can provision to.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/241/original/303257ad-a0cf-48a1-84fa-46e7f2221e8f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ec7426a81ecd3cf04ad604a54b3d35b83c9aded004e104082de6ed2b119b44bf" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/241/medium/303257ad-a0cf-48a1-84fa-46e7f2221e8f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2ab9f7fc917a4689e9f7443c59fd49a88a4ef7ba671bc6e1d21828a0b540b07a" srcset="" alt="" height="390" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/242/original/665291cf-834e-4c47-8e32-c4b97638b6e5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f19c875adabf6a6b764c8e967114cd977dabd4eb3d9827f8844acc257dedef12" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/242/medium/665291cf-834e-4c47-8e32-c4b97638b6e5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8ca1227c6e09f178ce249c68dc7946d6a170b55da252a6e242c7d00d28da7281" srcset="" alt="" height="340" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_10BF89C6-4DED-468D-92DC-72B36EB57CDB" class="text-block-content">
+    <p>Navigate to the <strong>Flavor Mapping&nbsp;</strong>tab.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/243/original/af1db13f-2ecf-4725-b8f9-eb37b25be4a5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3b6658bb230c7828ca573546740b26338ba9a84386ea2342e6a8b3e3a552c897" srcset="" alt="" height="596" width="753">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7E342532-1630-4317-9CE9-FE01263E52F0" class="text-block-content">
+    <p>View at least one of the Flavor mapping. We will be using mainly the <strong>Micro</strong> mapping for the purpose of the labs. This shows us what VM sizing we consider Micro in each region for each cloud account.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/244/original/9ff7103d-60c6-4751-89da-1eb91f079ad8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b44c5c0b7fce41e552b8519a4de910ee0427188df5da0370d0cf5907d0621d67" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/244/medium/9ff7103d-60c6-4751-89da-1eb91f079ad8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a2d1c88196680e08d2fc6bbb4759fa75ae4432c54d2031860d44bf401bbafe7c" srcset="" alt="" height="547" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1184DAB9-7D5D-4EF2-A99B-FC8DDC92D238" class="text-block-content">
+    <p>Navigate to the <strong>Image Mapping&nbsp;</strong>tab.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/245/original/a5136f79-c3be-4ff0-9223-e4f252cff375.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2445a845c14a91de18517ead3f5a54f78381e8bde9c7a1e4894e932c40432b06" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/245/medium/a5136f79-c3be-4ff0-9223-e4f252cff375.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f4ddc0486cbde3539f4fc389cb711156d64d1a60d70ecd7f16ab8a206b4d5571" srcset="" alt="" height="421" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D74A538C-BB26-4BB9-AFDE-24A0AC2101E5" class="text-block-content">
+    <p>Navigate to the <strong>Image Mapping&nbsp;</strong>tab. View at least one of the Image mappings. The Image Mapping profile shows which cloud OS image we are going to use for each region to provision resources. We will be using mainly the<strong>&nbsp; centos-74-livefire-image&nbsp;</strong>mapping. It is a custom cloud image created by the Livefire team. Explore at least one more mapping that contains native cloud images.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/246/original/547661bd-4ca1-4747-ade7-d2151ecfe68e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1678002eb50f24f419db7710b3ac294aa6fa89b0d36fddcf6366ac70de95cf26" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/246/medium/547661bd-4ca1-4747-ade7-d2151ecfe68e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=45b14be47bc898b5b1cec7d3008bf35be27369419b5744bf222c428f5eb131db" srcset="" alt="" height="428" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_402DFFF2-231E-4B2B-8F6E-25954C95367B" class="text-block-content">
+    <p>Navigate to the <strong>Network Profiles&nbsp;</strong>tab. View at least one AWS and Azure network profiles.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/247/original/7454bebf-bcc4-4137-bb0b-27bc601a864a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=999a3063e469d851bb047bc6456bea3e323be6a28ba60d1fea81b5ee8cd0f437" srcset="" alt="" height="544" width="634">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_DA337184-9808-4BB1-93F6-AEA97A705CF8" class="text-block-content">
+    <p>Make note of the <strong>Capability Tags&nbsp;</strong>that are set on the <strong>Summary&nbsp;</strong>tab.</p>
+<p>The tags used here identify what Elastic Sky considers a <strong>dev</strong>, <strong>test</strong> or <strong>prod</strong> network profile.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/248/original/b82a1b86-df47-4371-bd3a-5c451cc9dad1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6571a615563f78eb63524a370f3c3e8255e5385a6b5cd41b9dc896cb5b0da0ee" srcset="" alt="" height="249" width="640">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_66616052-7D6F-4626-88A1-9B16ADB79508" class="text-block-content">
+    <p>Make note of the networks under the <strong>Network</strong> tab. Make<strong>&nbsp;</strong>note of the <strong>Capability Tags&nbsp;</strong>applied to those networks.</p>
+<p>These tags applied here help us identify what Elastic Sky considers a <strong>public</strong> or <strong>private</strong> network and where are these coming from: <strong>AWS</strong> or <strong>Azure</strong>.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/249/original/faa0eee3-af74-4694-b919-d013061c178d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b344951d34c2ff36ae95cde170ae5b1c5bae09022d9f7cef81df1d22ea730484" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/249/medium/faa0eee3-af74-4694-b919-d013061c178d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b53d90c6f0d758d6ed3bccb33f08585bb8b5c76955bc5699f9a75477e5e60237" srcset="" alt="" height="532" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2D074DEB-5221-43CD-AF66-26AC9CA20437" class="text-block-content">
+    <p>Navigate to the <strong>Storage Profiles</strong> tab. View at least one AWS and Azure profile.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/250/original/a5229a76-ddcf-47ef-ae0d-fb175ddddc26.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4d7e132d21e18a34b62a0326fcc03c57229632f7d0f1c98f0dc070420af06da3" srcset="" alt="" height="565" width="599">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3A3E7F8E-207A-4B15-82A5-9DA92390ECE2" class="text-block-content">
+    <p>Make note of the <strong>Capability Tags&nbsp;</strong>applied to those profiles.</p>
+<p>The tags here identify what Elastic Sky considers <strong>Bronze</strong>, <strong>Silver</strong> and <strong>Gold</strong> storage profiles.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/251/original/a0a63bca-73a6-48e5-92cd-8f34d9a74ce7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=91b483807464140848dbb7250073fccede8ffef61ec8e1a8aab3c28eddbca025" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/251/medium/a0a63bca-73a6-48e5-92cd-8f34d9a74ce7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5407234126fc04aa2e64de516852e61d5ccfb59a4e9d123ec9e86942add60200" srcset="" alt="" height="421" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/252/original/10a0e5b1-e865-487a-9958-67dd20746f0f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=36b64a8c903fec7e109daa371f98442a354996f525be9de423509a8b05ba1d10" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/252/medium/10a0e5b1-e865-487a-9958-67dd20746f0f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2fcd15f93c05df6eca3cdc355d93be16b7a69f5f6d1ff35c32cf155844214af8" srcset="" alt="" height="493" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_AFB51CA4-6CA8-46D2-8B2A-26C54A85A230" class="text-block-content">
+    <p>Click on at least one storage profile per cloud zone and examine the configuration</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/253/original/2691d6af-8de0-4753-93c5-2a4194196e2b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=89cd33cba44735d744cc0808266e6cff9bf317dd62d5147cc05b52b7b4b29e38" srcset="" alt="" height="735" width="630">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/254/original/17319e8e-4f98-4574-a968-cd18fbf2b11f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=addbb386dca4b08ef677b879ac0726eb829e926f3710ab7d0e1d17331f944b07" srcset="" alt="" height="591" width="627">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3F7F545B-2CAA-448D-86DD-C924DAA1A57B" class="text-block-content">
+    <p>Navigate to the <strong>Projects</strong> tab.</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/255/original/ea65b42f-3abe-4033-866c-5bdc1044db57.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=aa198f23102084db7d4af0e3c1bda78b89ba89929e864861b8c62c2290970b90" srcset="" alt="" height="518" width="636">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_957AE6A4-3B3F-41A3-8829-24A9E12873D0" class="text-block-content">
+    <p>Navigate to the <strong>Provisioning</strong> tab and make note of the configuration. More precisely, make note of the Cloud Zones configuration and priority that is set.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/256/original/9916ee4f-407c-4f41-bdf4-4fabbd989f15.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=44508c2154e0d88a0393dd3f4df4798804255b33ac5e1ff6fb29c9daed30626d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/256/medium/9916ee4f-407c-4f41-bdf4-4fabbd989f15.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194437Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=928ceb673f86fd801f0efa907e8749d7edb2555f7cb2101efdd778211b24e06a" srcset="" alt="" height="603" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_CAA50504-0A53-4735-8BB1-0781012EA4EB" class="text-block-content">
+    <p>Feel free to examine the rest of the interface for the time remaining.</p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+
+

@@ -1,0 +1,273 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_D89CC547-AD8F-4C03-A209-CD0551BD2DD4" class="text-block-content">
+    <p>Now that we have deployed few deployments we can explore how these are represented in the different public clouds. Also how some Assembly configuration objects like Network Profiles are configured in the cloud accounts as well. Feel free to go to the AWS or Azure portal at any point while any of the vRealize Automation Cloud labs. </p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="log-in-to-vmware-cloud-services" data-step-uuid="9EA64451-FF73-4604-BF0E-1C914F157362">
+    <h2 id="log-in-to-vmware-cloud-services" class="step-title screensteps-heading">Log-in to AWS</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A41FD294-90C3-42D0-A82A-1906DF55D002" class="text-block-content">
+    <p>Let's begin by opening a browser window to <a href="https://livefire-solutions.signin.aws.amazon.com/console">https://livefire-solutions.signin.aws.amazon.com/console</a> . Log-in with the credentials below:</p>
+<ul>
+<li>Account ID or Alias: <strong>livefire-solutions</strong>
+</li>
+<li>Username: <strong>view-only@livefire.solutions</strong>
+</li>
+<li>Password: <strong>Ask your instructor(s)</strong>
+</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/291/original/197c2679-e0e6-4bab-8ebd-26d42198bd5a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7e6b74419e947b4b4e3c5de6805913f3050ad0bc56398f0450daebd86e18e7fd" srcset="" alt="" height="459" width="362">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="exploring-the-configuration" data-step-uuid="68DED6DD-E83E-443D-983E-5B3861DC85C8">
+    <h2 id="exploring-the-configuration" class="step-title screensteps-heading">Exploring the AWS configuration  </h2>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_BF22701D-F7B6-4813-AAA3-2A0ABAB97A45" class="text-block-content">
+    <p>During the labs, you will be referring back to these steps over and over again to explore the objects deployed in the cloud. The steps below outline the parts of the configuration that are of interest for the labs</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_777DD32E-8DAF-4EBC-A572-E0AF23686083" class="text-block-content">
+    <p>All attendees are sharing the same <strong>view-only@livefire.solutions</strong> user account to access AWS and Azure consoles. Therefore please, <span style="text-decoration:underline;"><strong>oh pretty please</strong></span>, do not modify views or attempt to change anything else as you may affect the experience for everyone else in the class.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0047ADCE-FD36-4EDC-83C8-E76705FE6E99" class="text-block-content">
+    <p>We will be working in 3 regions :</p>
+<ul>
+<li>US East (Ohio)</li>
+<li>US West (N. Carolina)</li>
+<li>US West (Oregon) &nbsp;</li>
+</ul>
+<p>Everything you deploy from the VMware Cloud Services Portal (CSP) will land in one of those regions. All regions have exactly the same configuration. Make sure you are in the correct regions when you are looking for a particular deployment.</p>
+<p>To switch regions click on the upper right corner</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/292/original/405707ed-8545-4032-bd8b-e7edd8bfeede.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2c4f7384b5fd6f75ef8024a4cb6dc4c7881186f484dca9e50d35af135d19e168" srcset="" alt="" height="304" width="401">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0B0E6B4C-E7BA-4C60-A8A9-401A8978D0A1" class="text-block-content">
+    <p>Go to <strong>Services</strong> and under <strong>Compute</strong>, select <strong>EC2</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/293/original/092204af-5641-4fda-81a4-756517551f00.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2cac5a5190b2adbf869bca90eb4168cb15b8e804de0e79605765fc9fd102929d" srcset="" alt="" height="269" width="489">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4DBBEE61-BF5D-434A-8C44-FE98E888AADE" class="text-block-content">
+    <p>Navigate to <strong>Instances</strong>. Here you will see the deployed instances. You may not see any instances now because you have not deployed any. You will see these later on when you deploy the Tito application for the first time.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/294/original/4ed26a09-e437-4bde-a15f-2152682a3d18.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=cb06c1283201e402aa37af08cadc69e356a64b895c50587dbf5f85964aac8016" srcset="" alt="" height="301" width="685">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4E710EA0-2D7A-4893-B9D5-01D62A4ACB31" class="text-block-content">
+    <p>Select an instance and navigate to the <strong>Tags</strong> tab. Here you can see all the tags assigned to the instance.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/295/original/65d23225-3f46-464a-bbcb-0b54a967f96d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f5a7ec9ad51bcae6fcfab1904821b6b2dbcf7d9f10c6b19da44daadaaa8e8566" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/295/medium/65d23225-3f46-464a-bbcb-0b54a967f96d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9137b607c2406314b49d1713b63de667f3a431e42fce2439d6a069e95631778d" srcset="" alt="" height="326" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D75FFD19-52A9-4F0D-9953-3AC371FCE309" class="text-block-content">
+    <p>Go to <strong>Services</strong> and Search for <strong>VPC</strong>&nbsp;then select the <strong>VPC</strong> service.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/296/original/95614373-03f4-42d8-8b5e-7e6828892656.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f71b02cf2d4c8f4a54ad0191006655a916995aeeda6518f8a05ab6ba9cb163c9" srcset="" alt="" height="236" width="424">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_121D09D9-8AE5-4807-B9E8-1D5E1CDC046F" class="text-block-content">
+    <p>Select <strong>Subnets</strong>. Here you can see all the subnets that are synced to the Cloud Assembly inventory.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/297/original/77f982c3-1aaa-45db-ad4b-87fee89213d2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d12452e9bc6681ab128168b82a62d4f1d1a886c909b903b9ca68d9fde17a9cfb" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/297/medium/77f982c3-1aaa-45db-ad4b-87fee89213d2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0d17d79bf4dd1653efe7b6f9eafc8a2f0b650f2cefcdd8664ad100865c46d4f6" srcset="" alt="" height="403" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8E821982-3F8A-4DFD-ABA9-F1BEB52A8C82" class="text-block-content">
+    <p>You can explore the Auto scale configuration by navigating to <strong>Auto Scaling</strong> and selecting <strong>Lunch Configuration</strong> and <strong>Auto Scaling Groups</strong> </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/298/original/51845a0a-cd6b-4751-a3cd-9d8bca3be7ab.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=dcc723a2763a53e94687f070980bac22893560bb06c18880c39468330781253a" srcset="" alt="EC2 Management Console - Mozilla Firefox" height="785" width="685">
+  </div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/299/original/7ba4d90b-5a2a-4d3b-934c-aaba7997aa8e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f31278b312f2c1c1e61d37585b52d9b9622024653665d65a4e6796d818d668e3" srcset="" alt="EC2 Management Console - Mozilla Firefox" height="689" width="631">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="log-in-to-azure" data-step-uuid="7C08E94E-59BB-4F5B-9720-2210F2EAF20C">
+    <h2 id="log-in-to-azure" class="step-title screensteps-heading">Log-in to Azure</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_F00D6EE1-D3A9-4764-BA8B-33E18954D8A5" class="text-block-content">
+    <p>Let's begin by opening a browser window to <a href="https://portal.azure.com/#home">https://portal.azure.com/#home</a> . Log-in with the credentials below:</p>
+<ul>
+<li>Username/email: <strong>view-only@livefire.solutions</strong>
+</li>
+<li>Password: <strong>Ask you instructor(s)</strong>
+</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/300/original/34b19d8e-51e8-4486-896e-127c3b0fe6f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=846eb2e3fb39d9bbe40237c72ba62b4c3cae3a85f0703e88e8e9d8b45e2981f4" srcset="" alt="" height="459" width="502">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_97CD61A5-D9DF-4922-B7B8-36E04FD17106" class="text-block-content">
+    <p>The Azure portal should open up.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/301/original/d3b44ad1-200a-4406-bb2d-74cf89855db2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4476cec2d825081b55a28de017f80f8a74154ff4b443400f3c5487224ba81aa2" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/301/medium/d3b44ad1-200a-4406-bb2d-74cf89855db2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b78e2818671516416b2b99c84ccb06e8409b0ad43cd3a5c091c4269a5f4ccd28" srcset="" alt="" height="593" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="exploring-the-azure-configuration" data-step-uuid="4E917E83-2603-439D-9B8C-951B34F32E10">
+    <h2 id="exploring-the-azure-configuration" class="step-title screensteps-heading">Exploring the Azure configuration  </h2>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_9890FBCD-3C3B-4086-B530-A78C2D169806" class="text-block-content">
+    <p>All attendees are sharing the same <strong>view-only@livefire.solutions</strong> user account to access AWS and Azure consoles. Again please, <span style="text-decoration:underline;"><strong>oh pretty please</strong></span>, do not modify views or attempt to change anything else as you may affect the experience for everyone else in the class.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A974656D-84EB-43A3-A2AD-92D1FA18B909" class="text-block-content">
+    <p>We will be working in 3 regions :</p>
+<ul>
+<li>US East (Ohio)</li>
+<li>US West (N. Carolina)</li>
+<li>US West (Oregon) &nbsp;</li>
+</ul>
+<p>Everything you deploy from the VMware Cloud Services Portal (CSP) will land in one of those regions. All regions have exactly the same configuration.</p>
+<p>Navigate to <strong>Resource Groups</strong>. Here you can see the three resource groups you will be deploying into during the delivery. One group per each region:</p>
+<ul>
+<li>elasticsky-dev-rg</li>
+<li>elasticsky-test-rg</li>
+<li>elasticsky-prod-rg</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/302/original/a12925a8-b2e3-4f35-aab6-98528f154d21.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=95274061d429f76230d3d8ddcfa2373fa0ae803abed3f479fb16fc56e9a4a68b" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/302/medium/a12925a8-b2e3-4f35-aab6-98528f154d21.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=765b174e9c3147bc101ff7ae97868ca1ce59121216bcca20b214b8bd87bf4a29" srcset="" alt="" height="457" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_86358C7C-C102-44A5-8E03-DE0B5B702204" class="text-block-content">
+    <p>Navigate to <strong>Virtual machines.</strong>&nbsp;Here you will see all the deployed virtual machines. you can also see the <strong>Tags</strong> associated with these machines.</p>
+<p>You may not see any instances now because you have not deployed any. You will see these later on when you deploy the Tito application for the first time.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/303/original/9a2d55dc-6618-43a1-8b86-658ad3701530.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8ae0ace0b8c39a7238324ede8ecfdc2be6cee01681ecd9bef7a55e757bcdb218" srcset="" alt="" height="359" width="810">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0EA04F8E-CF54-4253-A5B3-1ECE206981F7" class="text-block-content">
+    <p>Navigate to <strong>Virtual networks</strong>. Here you can see the virtual networks which are pre-configured for the labs to work.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/304/original/f9399e3a-0d5c-4ca6-8642-f5c26317c5f9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=047c1fa070bec1c62b9ed0dd3de3cd1de600463ef15270c943d371099b0516ab" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/304/medium/f9399e3a-0d5c-4ca6-8642-f5c26317c5f9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3667803c2824aa52a9df5c2adc9c04b4f79b005e55bc708fda1a8b46af1b1535" srcset="" alt="" height="360" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_098A1A4B-D838-4807-869A-A3C1138F7350" class="text-block-content">
+    <p><strong>Select&nbsp;</strong>one of the networks and explore it. Navigate to <strong>Subnets</strong>. Here you can see the subnets from that network that are being synced to Cloud Assembly.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/305/original/0d0ec136-2b98-44c8-81ff-a809b785a308.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b0feeebfe075140f75c7919a72d7f0e3ebb1de85faa418c8dac0e3e06ced9c9c" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/305/medium/0d0ec136-2b98-44c8-81ff-a809b785a308.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a21410a32566abf1ccf239bd3667919d8b1a05ad428f593fbb1e0441fa880875" srcset="" alt="" height="449" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6B2CCAF6-CF4B-48D3-AF7E-FC8FE928A280" class="text-block-content">
+    <p>Navigate to <strong>Network Security Groups</strong>. Here you can see the virtual networks which are pre-configured for the labs to work.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/306/original/e58b227f-0d92-41bc-9da6-d6459b5699d9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=632aa66a636105ccefa09284eb1fde4bf9d3d47f2fc4ff2de56a19c5a1d0e7f8" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/306/medium/e58b227f-0d92-41bc-9da6-d6459b5699d9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3804e621b32922606e100153b72d93a3c22ad3ff0aca96a7ac3fe84fa1516bd2" srcset="" alt="" height="388" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2B280579-36DC-4CFA-91EF-52EB796025D3" class="text-block-content">
+    <p>Explore one of the networks. You can see inbound and outbound rules created to allow your app to be reachable from the internet.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/307/original/db006246-50e0-424f-a497-f6e0cd55364f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c9c7436577e414f77db1cfec50d8e0187ff91b640332f0bb8b366c2c430f46e3" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/307/medium/db006246-50e0-424f-a497-f6e0cd55364f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a17af54fe5c358a4335bd6741b76d75e49069d490f49ca1b9bc3a10f0295096d" srcset="" alt="" height="651" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_BA3E6EFD-31F2-4768-A5D2-46DECB9D1BB9" class="text-block-content">
+    <p>Navigate to <strong>Disks</strong>. Here you can see the disks that are associated with deployed virtual machines.<br>You may not see any disks now because you have not deployed any VMs yet. You will see these later on when you deploy the Tito application for the first time.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/308/original/eb627c3b-87f7-492b-b47d-e788df3afe59.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4b89cd78891da03b02db40b8f964344ec297c43c70c1445c1e08bdb68d41a366" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/308/medium/eb627c3b-87f7-492b-b47d-e788df3afe59.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194500Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9dc98ce318d896c1e1c9992c3506ceeec7452e53cda7a4bfdc528be4d64fa5a3" srcset="" alt="" height="430" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+

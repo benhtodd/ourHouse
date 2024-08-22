@@ -1,0 +1,768 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_33438A18-9FBC-4EB5-8356-9CEC97BA163D" class="text-block-content">
+    <p>The Instructions in this article are identical for either of the VLP delivered classes. The <strong>only</strong> differences are:</p>
+<ul>
+<li>Horizon Windows Desktop Pool</li>
+<li>Desktop User Accounts</li>
+<li>Deployment Pool Name / Class Name in VLP</li>
+</ul>
+<p>All examples/screenshots for this article were done using the Intrinsic Security details as that was an active class at the time of article creation. Please substitute correct info where appropriate if dealing with a Zero-Trust delivery.</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_3115F87E-1902-4A79-B1B2-6E101B1C733F" class="text-block-content">
+    <p>Delivery Resources:</p>
+<ol>
+<li>
+<strong>vCloud Director: </strong>Delivery Org ( <a href="https://vcd.livefire.dev/tenant/Delivery">https://vcd.livefire.dev/tenant/Delivery</a> )</li>
+<li>
+<strong>Horizon Windows Desktop (ISEC):</strong> ATT-W10-IS (Windows 10 Desktop) <br><strong>Horizon Windows Desktop (Zero-Trust): </strong>ATT-W10-DW (Windows 10 Desktop) </li>
+<li>
+<strong>Horizon Desktop User Account (ISEC):</strong> &nbsp;isuser001 - isuser100<br><strong>Horizon Desktop User Account</strong> (Zero-Trust): dwuser001 - dwuser100</li>
+<li>
+<strong>Available vROps Dashboard(s):</strong> HaaS vCD Dashboard</li>
+</ol>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="vcloud-director-vapptemplate-vpod" data-step-uuid="EBDA69E6-F146-46CA-8697-31C18E9472D5">
+    <h2 id="vcloud-director-vapptemplate-vpod" class="step-title screensteps-heading">1. vCloud Director vAppTemplate / vPod</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_03BB216D-DD98-4E65-A62C-8CEA15B14105" class="text-block-content">
+    <p>The vAppTemplate you wish to use for delivery should be in the Livefire-Delivery-Catalog as per:</p>
+<p><a data-internal-link-id="1853782" data-internal-link="article" href="../../124967/l/1853782-how-to-copy-vapptemplate-to-delivery-org" target="_blank">How To: Copy vAppTemplate to Delivery Org</a></p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="set-v2t-class-template-if-necessary" data-step-uuid="191B1214-45D1-40D5-9644-83A467015196">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#set-v2t-class-template-if-necessary" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-191B1214-45D1-40D5-9644-83A467015196" 
+          data-target-step-uuid="191B1214-45D1-40D5-9644-83A467015196">
+          1.1. Update the vAppTemplate (if necessary)
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="191B1214-45D1-40D5-9644-83A467015196" id="nested-step-191B1214-45D1-40D5-9644-83A467015196">
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_4693983D-7455-44E3-9957-FC6E428B00D3" class="text-block-content">
+    <p>NOTE: This is ONLY required if you have just updated your vAppTemplate and have a new version in the Livefire-Delivery-Catalog</p>
+  </div>
+</div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_CCD8D1EF-7838-4384-8743-34E654E411A2" class="text-block-content">
+    <p>Log in to the<a href="https://admin.prod.learningplatform.vmware.com/login?tenant=livefire" target="_blank"> VMware Learning Platform - livefire tenant</a> </p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/184/original/448456fa-68b4-4aca-9bce-6e9171b4635f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=adebecd6293bb02d081e7f0f239e7a4004b5fda4b8edf32426c54977ca845a59" srcset="" alt="" height="485" width="629">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_82B98365-07E6-40C6-BA3E-CBFBAE8C8EE7" class="text-block-content">
+    <ol>
+<li>Make sure that <strong>Advanced Options</strong> is enabled</li>
+<li>Expand <strong>Cloud Management</strong>
+</li>
+<li>Select <strong>Clouds</strong>
+</li>
+<li>Click the triple-dot menu</li>
+<li>Select <strong>Full Resync vApp Template</strong>
+</li>
+<li>Verify that your updated vApp Template is now visible by checking in <strong>vApp Templates</strong>
+</li>
+</ol>
+<p>These steps will update VLP's knowledge of what vAppTemplates are currently available in the Livefire-Delivery-Catalog</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/185/original/33ebbcaf-29ee-4cc5-b818-63c77cbfbc6c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=035008f101f444fc8d53886945de0b9fc5bbc4a8cb289766ca7eb3bf0a6e51db" srcset="" alt="" height="647" width="651">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_99D0F954-72C4-4123-9C2C-2226E7287EED" class="text-block-content">
+    <p>Now we must update the Deployment Pool to use the updated vApp Template: </p>
+<ol>
+<li>Click <strong>Deployment Pools</strong>
+</li>
+<li>Find the appropriate Deployment Pool that needs to be updated, and click the triple-dots to access the menu (There should be one deployment pool per VLP class. As of this manual, these are: "Digital-Workspace-Zero-Trust" and "LSS-IS-Intrinsic-Security"</li>
+<li>Click Edit vApp Templates</li>
+</ol>
+  </div>
+</div>
+ 
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_87DDBC8C-6408-4F47-9A50-4071DD21E3E0" class="text-block-content">
+    <p>DO NOT DO THE NEXT STEP DURING AN ACTIVE CLASS OF THE SELECTED DEPLOYMENT POOL</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/186/original/86c641eb-3b5c-4386-817a-9afea417240b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=beecc34f948363e2014bb2d6bffa4c3dce19329578800bbea28c696317dd79de" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/186/medium/86c641eb-3b5c-4386-817a-9afea417240b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a0d846af9807d6353aad057104603c21019ece465eb0d165c33d288c74ef2901" srcset="" alt="" height="547" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C352F1E4-E9E6-436D-AEBC-6CF0F7F79557" class="text-block-content">
+    <ol>
+<li>Delete (or optionally Disable) the currently specified <strong>Template</strong>
+</li>
+<li>Uncheck the <strong>VM Equality Check</strong> box</li>
+<li>Click the <strong>UPDATE DEPLOYMENT POO</strong>L button</li>
+<li>Click the <strong>ADD VAPP TEMPLATES</strong> button</li>
+<li>In the <strong>Add vApp Templates</strong> window, select the updated vApp Template and </li>
+<li>Click the <strong>ADD</strong> button</li>
+<li>Click the <strong>UPDATE DEPLOYMENT POO</strong>L button</li>
+</ol>
+  </div>
+</div>
+ 
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_E67552BB-1E94-4FF2-8C60-1F6029D995E6" class="text-block-content">
+    <p>The next scheduled class wil now use the updated vApp Template</p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="deploy-v2t-class" data-step-uuid="C924125C-0CA2-4909-A22E-707C3F1A4AAD">
+    <h3 id="deploy-v2t-class" class="step-title screensteps-heading">1.2. Schedule Intrinsic Security Class</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_5C9A7498-332F-40D7-9503-6A6751507EBE" class="text-block-content">
+    <p>The steps below show how to schedule the Intrinsic Security Class lab resources.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D4484D27-1AEA-48F6-8377-2EAABF3B1001" class="text-block-content">
+    <p>Log in to the<a href="https://admin.prod.learningplatform.vmware.com/login?tenant=livefire" target="_blank"> VMware Learning Platform - livefire tenant</a> </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/187/original/1380093a-60d0-4f93-b7b4-b7cd516b3030.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=53e5df75ac25d9d973c4f87fc62a9d85d03e0a01aaa88e4bcfcf95c35e0e0637" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/187/medium/1380093a-60d0-4f93-b7b4-b7cd516b3030.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6324ca05961258ed0452f779943e8ad107066cd84103f9e7918880d3494f2523" srcset="" alt="" height="586" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9F2976BA-8E5C-4D18-A464-4F2625643B7E" class="text-block-content">
+    <ol>
+<li>Click on <strong>Classes</strong> (Advanced Options not required)</li>
+<li>Locate the last instance of the <strong>Intrinsic Security Livefire</strong> "Class" and click the triple-dots to activate the menu</li>
+<li>Click <strong>Duplicate</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/188/original/be346e02-f233-4fc0-9645-e7b42fd4a258.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f8d90566c7972197177e267b0eea077e9329f047a0828697dc0b0c929e5ee685" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/188/medium/be346e02-f233-4fc0-9645-e7b42fd4a258.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=40821eb746e37a320f335de25fcffb14001a69b4b825989f7cfd2168aab06779" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9AD60B72-FB58-459C-8F41-F7C2A1E4791C" class="text-block-content">
+    <p>On the <strong>Basic Details </strong> step of the Create Class dialog;</p>
+<ol>
+<li>Keep the class name of <strong>Intrinsic Security Livefire (</strong>Optionally update if the class title has changed. This title will appear in e-mail notifications)</li>
+<li>Update the Unique Class ID: [GEO]-ddMMMYY-islf (For example: amer-3may21-islf) The suffix is essentially the initials of "Intrinsic Security Livefire"</li>
+<li>Add the assigned (and supporting) Instructors as needed. Include Burke &amp; Erika as well please</li>
+<li>(OPTIONAL) Include description of the class. This REALLY isn't required and is typically left blank</li>
+<li>Click <strong>NEXT</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/189/original/e7cf4189-7283-4f91-8a79-2a58d56fbd31.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=dddb99738fea501017aa3886515d2ec9dca963b117800d3757631e9d462f4885" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/189/medium/e7cf4189-7283-4f91-8a79-2a58d56fbd31.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=cd2e9fd0b597d4c9c31e0ceb601f880d3ca766219a71101462955348098d166e" srcset="" alt="" height="507" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_91E5D23F-502F-486A-A134-E6575C2D97D0" class="text-block-content">
+    <p>No changes should be required on the <strong>Lab Details</strong> step since the <strong>Intrinsic Security Livefire</strong> lab should already be selected. If, for any reason, it is not then be sure it is selected!</p>
+<ol>
+<li>Click <strong>NEXT</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/190/original/47817194-0c7e-43d7-bdea-496f85f665d5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9d2b280c7a4a7f14aa62328a96eff06f8e4068baa6aae77d9080aab3c8ca58fd" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/190/medium/47817194-0c7e-43d7-bdea-496f85f665d5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=769c83d32ef676c6d7ac6cdbd1654608516b7bcf2d2ce6640e2b5ef3103ed5e5" srcset="" alt="" height="511" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3F5DE083-4918-4F6E-89FD-020F91CEB232" class="text-block-content">
+    <p>On the <strong>Schedule</strong> step;</p>
+<ol>
+<li>Select the appropriate <strong>Timezone</strong> for the scheduled delivery</li>
+<li>Set the start Date and Time</li>
+<li>Set the End Date and Time to 1 DAY AFTER the actual scheduled delivery time (Ideally 8PM for the scheduled timezone. The screenshot shown above was actually for a US Central Timezone delivery.</li>
+<li>Click <strong>NEXT</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_C81256EC-A649-4ED6-ADBD-E16C6334DFBC" class="text-block-content">
+    <p>WARNING: When the End Date/Time is reached, VLP will automatically SHUTDOWN and DELETE all the Entitlements. This results in all the vCloud Director vApps being that are associated with the entitlements get deleted AND the UEM Cleanup Callback is executed.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/191/original/8fcc9877-69bc-4961-91b0-5a7a50489a17.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=85ec71b37b8be44e91349fcd9d14df187bfd6c086485c0578d59161b8d7f523a" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/191/medium/8fcc9877-69bc-4961-91b0-5a7a50489a17.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=558ea3f7555d4f5922099946f286fdb5827d0665ec4b7832d2aa1872d1753098" srcset="" alt="" height="512" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_02B72B60-B6EB-4785-8CC9-D9761557C7FA" class="text-block-content">
+    <p>On the <strong>Students</strong> step;</p>
+<ol>
+<li>Set the <strong>What is the max limit for the class</strong>?<strong> </strong>value to 2 more than the confirmed number of attendees (This allows for a couple spare vApps)</li>
+<li>If testing, use the +ADD STUDENT to add your test account(s)</li>
+<li>Erika is responsible for Uploading the CSV for actual deliveries (she can always come in later and EDIT the class to upload the CSV, this is how the delivery in the screenshot was done)</li>
+<li>Click <strong>NEXT</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/192/original/52420a98-771d-4e35-937a-7b13f182d90a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=79167eb03c852f0cc5155234b76d3581c08f75432623bf1537fcf7cf594fce03" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/192/medium/52420a98-771d-4e35-937a-7b13f182d90a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=91527b6becadc51c0472c4b857a4ca2a685cddd93f1abc36e2651856fe137a29" srcset="" alt="" height="508" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_494B5AB1-59A7-40E0-9580-B92CB6DF8414" class="text-block-content">
+    <p>On the <strong>Resource Mgmt </strong>step;</p>
+<ol>
+<li>Set the Warm-up labs to<strong> 23</strong> Hours (cannot be more than 24 due to platform limitation)</li>
+<li>Set Keep additional to <strong>2</strong>
+</li>
+<li>Disable <strong>Resource saving options</strong>
+</li>
+<li>Click <strong>NEXT</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/193/original/47197492-cef0-48a5-8176-d393f744e7a6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=52555392a3b38f9a7dfb09f66bd4c55a1eefbc3c77e78512941621efd18da0a1" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/193/medium/47197492-cef0-48a5-8176-d393f744e7a6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=bc6452cdcc700a0f033fb076c753e6538ff8ae23651081049bb46b1bd1f78b70" srcset="" alt="" height="508" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E4978298-0D83-477E-A11D-91802F5536EA" class="text-block-content">
+    <p>On the <strong>Publish</strong> step;</p>
+<p>Click <strong>CREATE CLASS</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/194/original/350644da-ddbd-478b-87ac-e1f54e3990f3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=feff8d5b3daae9e1854c60efacbbb87445ccb23c99977e39f29cc255bcbc8702" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/194/medium/350644da-ddbd-478b-87ac-e1f54e3990f3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0782935d0e5eda0fe30393ee30a7fc8034bec616258049add6eeee3295739486" srcset="" alt="" height="153" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6FD6A479-D4F6-46DD-8640-3BFF0B35AC43" class="text-block-content">
+    <p>Carefully review the Start Date and End Date of the class that you scheduled. The End Date can be a bit unpredictable! I had multiple issues with it not showing the actual selected date. If it does not show accurately, give it several minutes and then Refresh. If still an issue, update the class again to adjust the end date.</p>
+<p><span style="color:rgb(255,38,0);"><strong>We DON'T want a class to accidentally END and clean itself up a day early! ! !</strong></span></p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="provision-entitlements-earlier-than-23hrs-prior-to-class-start-optional" data-step-uuid="1220BDEB-6B72-4CAA-A205-5AFDF4B49DFC">
+    <h3 id="provision-entitlements-earlier-than-23hrs-prior-to-class-start-optional" class="step-title screensteps-heading">1.3. Provision Entitlements Earlier than 23hrs prior to class start (OPTIONAL)</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_49DB44BD-A65C-4A5E-87FF-A9703FC26234" class="text-block-content">
+    <p>NOTE: This only needs to be done if you wish to pre-deploy the class more than 23 hrs before class start. If you have a start day of Tuesday (and Monday is not a holiday), it may be a good idea to do this process on Saturday or Sunday prior to class in order to have the deployment CPU hit have minimal effect on the vCD Cluster.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A40C76CA-3CD0-4926-B901-EFAA9496E5E3" class="text-block-content">
+    <p>The VLP system will automatically deploy all vApps 23 hours prior to the schedule start time (Assuming the directions in this guide were followed.) In some cases (such as the NOTE just above this text), it may be desirable to pre-deploy the pods even earlier. The process is actually pretty simple:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/195/original/b8e09553-1c3f-4f3c-9748-a41916e37a5d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9b0b3fbbc7c1cfa5f3aee239e60b0fab2ac20975d90b5a946576b75afb38e57c" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/195/medium/b8e09553-1c3f-4f3c-9748-a41916e37a5d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=888ad2abb53084ba5f8135b6f26f5007ebc29b602c2938ca1b1fc55438c955e2" srcset="" alt="" height="664" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1B81AB3E-3972-4C4B-BCA8-F95C1CA65580" class="text-block-content">
+    <p>Log in to the<a href="https://admin.prod.learningplatform.vmware.com/login?tenant=livefire" target="_blank"> VMware Learning Platform - livefire tenant</a> </p>
+<ol>
+<li>Click on Classes</li>
+<li>Locate the class and click on the triple-dots to activate the menu</li>
+<li>Click <strong>Provision Entitlements</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/196/original/95a8df16-8262-43b6-9b4c-4d39745fc30a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e8e89079d41784c6118331e02ee7108b3a059f44320a9c905506d58f034a1043" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/196/medium/95a8df16-8262-43b6-9b4c-4d39745fc30a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1f820ddadee3fff2e9617ef305adfb612d488ff66ba654df799064e08ab9fab9" srcset="" alt="" height="402" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8D4BF788-2F40-4D8E-BC21-D7F7B0F01B03" class="text-block-content">
+    <p>The screenshot above simply shows the view from the <a href="https://vcd.livefire.dev/tenant/Delivery" target="_blank">Delivery org in vCloud Director </a>after a class has been provisioned via VLP</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_E79350EB-C1EC-4042-B1E1-2BD5D8048BD1" class="text-block-content">
+    <p>What Happens during Provisioning of the Entitlements (whether manual as shown here or scheduled):</p>
+<ol>
+<li>VLP will check the Specified Lab, Deployment Pool, and then deploy and power on a copy of the specified vAppTemplate for each of the confirmed attendees. </li>
+<li>Once the vApp has been provisioned, it is then immediately entitled which results in the vApp name in vCloud Director showing as VLP-LSS-IS-CLASS-NAME-NEE-ENTITLEMENT-ID-Attendee-Email</li>
+<li>As each of those Entitlements are set, VLP will then execute the UEM Callback automation</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="get-external-pod-ips" data-step-uuid="7E72D720-02CC-479C-9FE4-2B81DE761EC8">
+    <h3 id="get-external-pod-ips" class="step-title screensteps-heading">1.4. Get External Pod IPs</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_46345AE3-2464-40BF-840B-C3F3FAD8D595" class="text-block-content">
+    <p>We use vRealize Automation and a custom vRealize Orchestrator Workflow to perform this step. This environment is running in our lab, but can be accessed from your local system if desired.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_F1F344DB-C7F5-4F31-B24F-227CED58C2B2" class="text-block-content">
+    <p>Log in to the <a href="https://vra.lab.livefire.dev/catalog" target="_blank"><strong>Livefire Automation Portal - Service Broker</strong></a><strong> </strong>( <a href="https://vra.lab.livefire.dev/catalog" target="_blank">https://vra.lab.livefire.dev/catalog</a> )</p>
+<p>If you are not already logged in, you will be redirected to woa.lab.livefire.dev - please select "LAB.LIVEFIRE.DEV' as your domain before logging in.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/211/original/f47bb4b0-55c1-40a8-9a32-62246ca66975.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5da1845fa32cd3b8ef9ec49ae48588519f1c440490a156e247bd0660d8e76ac3" srcset="" alt="" height="661" width="492">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_15B3FEB8-2733-4E75-A394-E2FCBAFB4974" class="text-block-content">
+    <p>Locate and Request the <strong>Get &lt;CLASS&gt; IP...</strong> catalog item for the CLASS you have deployed</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/212/original/fd5ad992-2d3e-45c5-8049-68060ef8e7df.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7459fc5c7964035ef54db343c1e72cb26b253eeb03e9d6f8a03603ec302dc057" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/212/medium/fd5ad992-2d3e-45c5-8049-68060ef8e7df.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3d0ab5a8523be0665d5043752788d15a2374299c557acc5664b82cd6eb512e2e" srcset="" alt="" height="279" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_A3ED8787-6B68-44E3-96DB-D22E2E6587F6" class="text-block-content">
+    <p>This catalog item will process all currently running vApps in the Livefire Delivery org that begin with VLP-LSS-???. </p>
+<p>If the ??? = DW, then dwuser001 -&gt; dwuser025 (or however many vApps are found) will be assigned to the users who are entitled to the vApps.</p>
+<p> If the ??? is IS then isuser001 -&gt; isuser025 (or however many vApps are found) will be assigned to the entitled users. </p>
+<p>This information is gathered and formatted into an e-mail that is sent to the Instructor E-mail addresses that were entered by the person submitting the form</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_A11D74F0-35EE-4428-8474-BF670A00C606" class="text-block-content">
+    <p>BEFORE YOU CONTINUE:</p>
+<ul>
+<li>Be sure you have <a data-internal-link-id="1853801" data-internal-link="article" href="../../124968/l/1853801-how-to-change-attendee-passwords" target="_blank">updated the isuser### password</a> (This should have been done after the last class completed to prevent unauthorized access to the lab environment)</li>
+<li>Be sure that the VLP Deployment process has completed - can be verified by logging in to the <a href="https://vcd.livefire.dev/tenant/Delivery" target="_blank">Livefire Delivery Org in vCloud Director</a>
+</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/197/original/7a78ce88-3af4-432a-ab8b-717add2852a6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b16adce9f2934e26d455d84ebea2e7797e490f9928bf8339f6514cfa728b8091" srcset="" alt="" height="626" width="640">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_AAAA0A70-2257-48BF-A9B9-008435E6B7E2" class="text-block-content">
+    <p>For class type, enter either: VLP-LSS-IS or VLP-LSS-DW &lt;- No spaces before or after, must be EXACT</p>
+<p>Add each of the Instructor E-mail addresses that should receive the list of Pod IP Addresses for all of the VLP Deployed vApps</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/198/original/9033a30d-0b89-4a37-a966-6c93e14a91f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9cf20b4dc7bce0bfc2a8b18d50e16e43df328df604056d1f265033c58021012d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/198/medium/9033a30d-0b89-4a37-a966-6c93e14a91f1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5c90de6a15ed42e9be142a73d8454bb653c3b25d646022819caca19a1bacad4b" srcset="" alt="" height="694" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_B282314C-4341-49D7-A37F-49BB069FB1C4" class="text-block-content">
+    <p>Within a few minutes of submitting the request, the specified recipients should receive an e-mail similar to what is shown above.</p>
+<p>Regarding the Horizon Login -- this is NOT bound in any way to the vApps/vPod IP/or the attendees at this stage. You can copy/paste the Login/Password/IP info to the Class Roster. The piece that IS BOUND is the vPod IP -&gt; vApp and those vApps are tied to the attendee that it is entitled to. </p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_EC032883-46D7-42DB-B4FA-65C3B32E0B44" class="text-block-content">
+    <p>DO NOT REASSIGN an existing vApp to another user as the result of a drop/cancel/no-show. Instead, END the entitlement for the drop/cancel/no-show and Add the replacement attendee in VLP in order for that person to have their own entitlement.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="horizon-desktop-user-account" data-step-uuid="B8635E47-35FD-4A9C-92E1-DC1AE8FC9BE4">
+    <h2 id="horizon-desktop-user-account" class="step-title screensteps-heading">2. Horizon Windows Desktop</h2>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/183/original/cc26bd97-ecb9-42c9-a40f-e31718afccfa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d50f4f918708d89703c5dc31421b469094bb247bb431b7e760c413d8ecfacca0" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/183/medium/cc26bd97-ecb9-42c9-a40f-e31718afccfa.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3864cbf83aa2a77f518ccb5f2763da33143dc8d85a89e96fc0df78c1fd6f16c8" srcset="" alt="NSX Attendee Desktop Pool" height="362" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0DC802E6-60CB-4C4D-B3C9-7975C1602CB1" class="text-block-content">
+    <p>Intrinsic Security Attendees will login to a floating assignment Windows 10 pool as shown in the screenshot above.</p>
+<p>When a user logs out of their desktop, that desktop is deleted. Upon logging back in, the user gets a new desktop from the pool. The pool is configured to automatically maintain a minimum number of desktops as well as spares.</p>
+<p>As of this article, the pool</p>
+<ul>
+<li>maintains 5 "spare" machines</li>
+<li>has a maximum of 25 machines</li>
+<li>auto-logs off 4 hours after disconnect (resulting in desktop deletion)</li>
+</ul>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="horizon-desktop-user-account_1" data-step-uuid="357CD109-FB31-49CA-9D49-EA044D429D08">
+    <h2 id="horizon-desktop-user-account_1" class="step-title screensteps-heading">3. Horizon Desktop User Account</h2>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_825F2A37-3957-46B0-8459-2AE222701238" class="text-block-content">
+    <p>The ISUSER### Passwords should be changed after every delivery to prevent extended, unauthorized access to our lab environment.</p>
+<p>PLEASE ALWAYS RESET PASSWORDS </p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_841ABF08-2E9A-4F23-829A-525EECEECC92" class="text-block-content">
+    <p>If you are not yet familiar with the process of retrieving the current attendee password for your team or how to change the attendees password, see the following articles:</p>
+<p>The NSX team Attendee user accounts are:</p>
+<p><strong>isuser001 -&gt; isuser100</strong></p>
+<ul>
+<li><a data-internal-link-id="1853800" data-internal-link="article" href="../../124968/l/1853800-how-do-i-get-the-current-password-for-my-team-s-attendees" target="_blank">How do I get the current password for my team's attendees?</a></li>
+<li><a data-internal-link-id="1853801" data-internal-link="article" href="../../124968/l/1853801-how-to-change-attendee-passwords" target="_blank">How to Change attendee passwords</a></li>
+</ul>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="available-vrops-dashboard-s" data-step-uuid="6C0E5089-E23F-4DC6-9AE5-AEDDF8BBC0AE">
+    <h2 id="available-vrops-dashboard-s" class="step-title screensteps-heading">4. Available vROps Dashboard(s)</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8DC19F17-32F5-4CE4-834D-F17E3EAFB19B" class="text-block-content">
+    <p><a href="https://vrops.lab.livefire.dev/ui?t=h7ck3zi2n9#n882lmjjf4" target="_blank">HaaS vCD Dashboard</a> - Provides underlying Cluster CPU health as well as list of running vApps and a few top-10 lists (CPU/Memory/Storage)</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-1 screensteps-foldable-step" id="reference-info-for-adding-new-deployment-pool" data-step-uuid="19885D81-A708-461A-BAEA-29DA46B6E681">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-1">
+        <a href="#reference-info-for-adding-new-deployment-pool" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-19885D81-A708-461A-BAEA-29DA46B6E681" 
+          data-target-step-uuid="19885D81-A708-461A-BAEA-29DA46B6E681">
+          5. Reference Info for Adding New Deployment Pool
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="19885D81-A708-461A-BAEA-29DA46B6E681" id="nested-step-19885D81-A708-461A-BAEA-29DA46B6E681">
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_E2886C4F-F68B-470B-9177-336061313657" class="text-block-content">
+    <p>The primary purpose of Livefire using VLP for our deliveries is the Callbacks for the UEM integration. In order for the callbacks to work, there are couple requirements. </p>
+<ol>
+<li>We worked with the team to validate that our new "livefire" VLP tenant can make the necessary callback as long as the entitled vApps have the following Naming syntax: The Lab SKU Must Start with "LSS-DW", "LSS-IS", or "LSS-AW" so that the Entitlements Callbacks will function<br><br>For Example, the AW Zero-Trust vApps, when entitled, are named VLP-LSS-DW-Zero-Trust-NEE-197562058023-user@example.com. </li>
+<li>The <strong>LF-airwatch</strong> callback item must be added to the VLP "Lab" under "Entitlement Callbacks"</li>
+</ol>
+  </div>
+</div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_83D7D156-6BFE-40AD-8E89-A87590E2D832" class="text-block-content">
+    <p>In order to add a new delivery in VLP, start by making sure the vAppTemplate has been added to the Delivery Org and Sync'd to VLP.</p>
+<p>Next, you must:</p>
+<ol>
+<li>Create a Deployment Pool</li>
+<li>Create a Lab</li>
+</ol>
+<p>Then you are ready to create and schedule a class (Not going to document this as it is simply a create process nearly identical to the steps above for "Schedule Intrinsic Security Class")</p>
+  </div>
+</div>
+ 
+            <div class="step screensteps-section screensteps-depth-2" id="create-a-deployment-pool" data-step-uuid="1634BF05-53BD-48E5-A366-722F64954C33">
+    <h3 id="create-a-deployment-pool" class="step-title screensteps-heading">5.1. Create a Deployment Pool</h3>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/200/original/289c6763-1bb7-4e81-8329-9fccd1d38698.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3b89e6bdb826c9fe0f9bf300a33ac204ee4d3ad44e80c127064700d9dedddde3" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/200/medium/289c6763-1bb7-4e81-8329-9fccd1d38698.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b40cd1afa2f303a673cb51d1000d37d33ff6d1546c3a651add98a96a0645fb47" srcset="" alt="" height="365" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_51069B79-1129-4D3D-8E31-801DE07B8EFF" class="text-block-content">
+    <p>In order to make sure that vApps are properly named upon being entitled:</p>
+<ol>
+<li>Make sure that <strong>Advanced Options </strong>is enabled</li>
+<li>Expand <strong>Cloud Management</strong>
+</li>
+<li>Select <strong>Deployment Pools</strong>
+</li>
+<li>Click the <strong>+ CREATE DEPLOYMENT POOL </strong>button</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/201/original/91fc858a-58bf-4fc5-ae32-58022a7288a4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4ab26c7183c8b467f76f4b60db69fdc39f4277642662a1c3b96783b5d0daaa6f" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/201/medium/91fc858a-58bf-4fc5-ae32-58022a7288a4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=aaa2dee09788a1d0d5bbf36fa1f66777ec6cb4fcf71e36d744c949685ff5e3d9" srcset="" alt="" height="647" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_65D5C8AB-9BD0-4FCC-89CC-5E3FBC9825F4" class="text-block-content">
+    <ol>
+<li>Give the deployment pool a name and description</li>
+<li>Select the vApp Template that will be used for this delivery</li>
+<li>Click <strong>CREATE DEPLOYMENT POOL</strong> </li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/202/original/d1149b65-a696-464b-af77-c644e0ca5f61.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5ec0dac55001f9233e2c753257e6de84f52c05f2d093a10fb9fd269898572852" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/202/medium/d1149b65-a696-464b-af77-c644e0ca5f61.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=bd5435f59b03a1fdc09abf9d74c097f54fd462c0133b00c2f21f23e92ba4e214" srcset="" alt="" height="651" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EE055DA1-7654-4384-BF8A-F38503F2C2D7" class="text-block-content">
+    <ol>
+<li>No changes required on the Edit vApp Templates page, click <strong>NEXT</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/203/original/4d901ae5-1cb4-4d6e-b014-fb94ff4aa264.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0629d2f8703039f138cc8f6dafba0149f34db0aa0cd59af2284ac043d5d769ce" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/203/medium/4d901ae5-1cb4-4d6e-b014-fb94ff4aa264.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0ba4f146c02633efca9ba89ed609d1ae31e553c89231c75716b70edbac41245a" srcset="" alt="" height="651" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_31B3DCD9-1ECF-4660-B9A7-948E48630C8E" class="text-block-content">
+    <ol>
+<li>On the Edit VMs page, locate the Main Console/ControlCenter VM and place a check in the <strong>Initial console</strong> checkbox</li>
+<li>Click <strong>FINISH</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="update-the-vapp-naming-template" data-step-uuid="6E581E6C-4FAA-47DC-A7BF-8252CA53AA39">
+    <h4 id="update-the-vapp-naming-template" class="step-title screensteps-heading">5.1.1. Update the vApp Naming Template</h4>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/204/original/c88f933e-3c7c-4211-bd31-b04ddd79778a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c2cec678bb2540c15d7734e593066ae4ebc28b1106847c161212f291bacfbd6c" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/204/medium/c88f933e-3c7c-4211-bd31-b04ddd79778a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a092c1422cfcb3b601df64d7fa73d3baf61cc8bdc431442721f68e2509abe8ed" srcset="" alt="" height="365" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_226E6FBA-A5CE-48E6-8CB3-2CEBEE5E2FB9" class="text-block-content">
+    <p>In order to make sure that vApps are properly named upon being entitled:</p>
+<ol>
+<li>Make sure that <strong>Advanced Options</strong> is enabled</li>
+<li>Expand <strong>Cloud Management</strong>
+</li>
+<li>Select <strong>Deployment Pools</strong>
+</li>
+<li>Select the <strong>Deployment Pool</strong> that you wish to update </li>
+<li>Click the <strong>Triple-dots</strong> menu at the top right</li>
+<li>Select <strong>vAppNaming Template</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/199/original/1051edd9-bc2f-441b-9042-17d409eccbb4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ffa401940f46808f94ac0ad9a33b5465f7f8f77fd77c1221c7b51eed34b0f378" srcset="" alt="" height="896" width="600">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6DA460E3-96F9-4CBF-A41A-8A2AB75819C4" class="text-block-content">
+    <ol>
+<li>In the Naming Template box, use this EXACT String (this should be the default. If it is not, then update it):</li>
+</ol>
+<p><code>VLP-[labSku]-[entitlementId]-[username]</code></p>
+<ol>
+<li value="2">Click the VAPP NAMING TEMPLATE (or CANCEL if no changes required) button to save and close the window</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+ 
+            <div class="step screensteps-section screensteps-depth-2" id="create-a-lab" data-step-uuid="701B5D2F-DC31-47F2-AD8C-E933FD38F676">
+    <h3 id="create-a-lab" class="step-title screensteps-heading">5.2. Create a Lab</h3>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/205/original/c3634d5f-2fea-4c0f-8d86-6cddd412d451.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0246fa8a246b0c720b4d462365146a1dd338582ff100d2315ac8ecc48b6dd8ba" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/205/medium/c3634d5f-2fea-4c0f-8d86-6cddd412d451.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=056d98885729e6398f4fc444ef8c8c53a0acac866fbfa8719b787963af401180" srcset="" alt="" height="655" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D2B0A5B1-F184-4B34-965B-F7D79D62BE83" class="text-block-content">
+    <ol>
+<li>Make sure the <strong>Advanced Options</strong> is enabled</li>
+<li>Start the <strong>SKU</strong> with "LSS-DW", "LSS-IS", or "LSS-AW" then add team abbreviation and class-type abbreviation or name. In this case, it is an "Anywhere Workspace Horizon Integration" lab so I specified: <em>LSS-AW-HI&nbsp;</em>-- this could also be changed to <em>LSS-AW-Horizon-Integration</em>
+</li>
+<li>Give the lab a Readable <strong>Name</strong>, such as:<em>&nbsp;Anywhere Workspace Horizon Integration</em>
+</li>
+<li>Select the <strong>Deployment Pool</strong> that will be used for this lab</li>
+<li>Set the <strong>Valid Period</strong> and <strong>Time Allotted</strong> to <em>12 Days 1 hour</em> - this allows for the lab to be created the Thurs/Fri before a scheduled delivery</li>
+<li>Click <strong>CREATE LAB</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_AD30EFBE-F707-435D-8E26-247C0B643159" class="text-block-content">
+    <p>REMINDER: SKU MUST match as follows in order for the callback to function!</p>
+<p>The configured SKU wildcards for your team are:</p>
+<p>· LSS-DW</p>
+<p>· LSS-IS</p>
+<p>· LSS-AW</p>
+<p>If the Lab SKU doesn't match one of those, the callbacks won't work unless I add the SKU to the engine</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/206/original/cba861e4-9cf0-407e-afde-8f4a175406c4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3984cbd736f2633c523b7383ee5595022507abed9f353b62a9d06b5613a8a8c7" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/206/medium/cba861e4-9cf0-407e-afde-8f4a175406c4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0e381397845e44bfd54f7807a0d6c6c9b0aac20b36e252f3e29decc517ae6287" srcset="" alt="" height="655" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_51A8F6EA-794C-43F8-8A19-ACF8A11F0E55" class="text-block-content">
+    <p>Don't make any changes to the first half of the Update Settings page:</p>
+<ol>
+<li>Scroll Down</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/207/original/335aac71-a15c-4839-b56d-d3ad163764ac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a26364018eded7d3d28901f2f8390ce5f750ffd5cf3de68966df21434e43a5fd" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/207/medium/335aac71-a15c-4839-b56d-d3ad163764ac.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e667792d315eeb839e699e1c887a2972ae17cce8edb269101536e15d18a9021b" srcset="" alt="" height="653" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_BC0FEB30-8D81-4143-9729-D21070B6522F" class="text-block-content">
+    <p>The only change required on this entire page is:</p>
+<ol>
+<li value="2">Add the<strong> LF-airwatch, url=url </strong>callback to Entitlement Callbacks</li>
+<li>Click <strong>NEXT</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/208/original/d0288164-fcb5-4e5d-ab0c-b68ae82e0b93.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2d8dd303376357b615bf41d392275aaadfd7e46a328826b3029a534c2d4c637a" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/208/medium/d0288164-fcb5-4e5d-ab0c-b68ae82e0b93.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a25c47d464a390be156c22ef31ac6c09913ec3088abb01255d38d9aa95121ce2" srcset="" alt="" height="650" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_790E1513-E350-41C3-9DD3-8E379E440494" class="text-block-content">
+    <ol>
+<li>No changes are required on the Update Content page, click <strong>NEXT</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/209/original/9407c7c8-1006-410e-97f3-d3a3e4c36507.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1f56dccb8d7d8a2a2e2fa5cde6ee7142c4755cda8f6dd0d1424a74fd3b143911" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/209/medium/9407c7c8-1006-410e-97f3-d3a3e4c36507.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194354Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4866e94edbac88849249172fd930b354c011b1e198fe969f1aae620f39aaf4c3" srcset="" alt="" height="650" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A2FDE9DD-0C2C-4A39-BE70-419658C185D5" class="text-block-content">
+    <ol>
+<li>Place a check in the <strong>Use from Deployment Pool</strong> box for Initial Console</li>
+<li>Scroll down...</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/210/original/a68b03ba-44fb-4320-89aa-75cc4f11157b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194355Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5edeeeeab6fb75d5fcb1e67baaa54d71291034954d1866a8e97404fd3ab49bd2" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/210/medium/a68b03ba-44fb-4320-89aa-75cc4f11157b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194355Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e8e41e5ade61e982a48258f20387ced3926de20a7ae738383f22caaa39daca3c" srcset="" alt="" height="651" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7D647D27-A6DF-45E3-9A6F-C918031C25BC" class="text-block-content">
+    <ol>
+<li value="3">Click the <strong>Use Deployment Pool value (False) </strong> for the Use individual VM power on settings</li>
+<li>Click <strong>FINISH</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+
+

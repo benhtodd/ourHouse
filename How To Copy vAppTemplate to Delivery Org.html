@@ -1,0 +1,261 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_F7D1C831-074C-4093-B96E-1FD69E02941C" class="text-block-content">
+    <p>The Livefire Delivery Org uses the VSAN Datastore for deliveries and has its own catalog that is used for deploying class vApps. In order to prepare for a delivery, you must copy your delivery/WIP vAppTemplate from your development Org (DW/NSX) to the Delivery Org. Please follow the steps below. This applies to ALL vCloud Director Based deliveries: DW, NSX, and IS </p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="team-development-org-dw-nsx" data-step-uuid="696D0A79-0272-48C7-9ABB-E7CD2D2C7161">
+    <h2 id="team-development-org-dw-nsx" class="step-title screensteps-heading">1. Team Development Org (DW/NSX)</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0EBDC193-0B8D-43F3-A38E-B60634DA535F" class="text-block-content">
+    <p>Prior to capturing your vApp to vAppTemplate, there are a number of things you should first confirm:</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="pre-capture-checklist" data-step-uuid="0F1B9091-6093-422D-83E1-D1FDD879464A">
+    <h3 id="pre-capture-checklist" class="step-title screensteps-heading">1.1. Pre-Capture Checklist</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_32DA6424-325E-4C3F-B671-4258A84A8A9E" class="text-block-content">
+    <p>Please ensure that you have:</p>
+<ul style="list-style-type:circle;">
+<li>Set ControlCenter to Forward DNS to 172.25.0.10 and 172.25.0.11</li>
+<li>Configured vPod NTP to use your vPodRouter as the time source (the vPodRouter uses its ESXi host time, which comes from NTP servers in the lab). This will help ensure accurate time throughout your vPod environment</li>
+<li>Confirmed Networking is properly setup at the vCD Level (IE: You successfully get an External IP and are able to RDP from an Instructor Desktop to your pod)</li>
+<li>Have configured your DesktopInfo to retrieve External IP Address ( http://my-ip.livefire.lab/ip )</li>
+<li>Are using EXPIRING licenses for any license that can be visible to attendees</li>
+<li>Have updated your c:\hol\labStartup.ps1 script to check your vCenter server(s), ESXi hosts, Lab URLs, Lab IPs, etc... (You all should have years of experience with this already)</li>
+<li>Have configured proper SSL Certificates within your environment - The ControlCenter should be a Certificate Authority (CA) that issues certs for most products/websites within your pod. The vCenter is its own CA - the easiest way to handle this is to download the CA bundle from <a href="https://vcsa-01a.corp.local">https://vcsa-01a.corp.local</a> , extract the zip file, then go into the "WIN" folder and import/trust all the *.crt files as Trusted Root at the OS level and Importing them to browser as Trusted as needed (Some browsers use their own trusts, others use the OS trust)</li>
+<li>Have cleaned up log files, large downloads not needed for deliveries, etc... make sure that All VMs have plenty of free space! VCSA Log directory is a common one that fills up during lab dev.</li>
+<li>Have performed a Graceful shutdown of all nested VMs in the lab followed by a graceful shutdown of all Tier-1/non-nested VMs</li>
+</ul>
+<p><br></p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="capture-to-team-catalog" data-step-uuid="B0B433DE-9AF5-42EA-BA0F-A47372BC2342">
+    <h3 id="capture-to-team-catalog" class="step-title screensteps-heading">1.2. Capture to Team Catalog</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_13AC6EC8-D89B-4CB2-A481-CC31B10C327C" class="text-block-content">
+    <p>Every development org has a second OVDC with thin provisioning and fast provisioning disabled. In each development org there is also a catalog called "Consolidate", which is backed up by that specific OVDC.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_1DD61A76-F44D-44AF-8EF1-ECCD73AC2B4C" class="text-block-content">
+    <p>Make sure that the VMs of your template are consolidated as this will provide the best chance of a successful copy to the Delivery Org </p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8F39A9CF-C90D-4720-9A06-16AE6E6DBCF6" class="text-block-content">
+    <p>To consolidate the VMs within your template one of the 3 methods is to be used:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/023/original/77e0c07c-4e48-4e1c-8be0-e89335823c3b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5cd016bc185e4706e75cdba16c4c8924f74ef7d4ec8aa3c3b822eb5f789ad881" srcset="" alt="" height="504" width="251">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_281B816B-0946-44FD-BAE9-EB428EBEEC79" class="text-block-content">
+    <ol>
+<li style="margin-left:0px;">Consolidate every VM in your vApp before capturing it as a template.<ul><li style="margin-left:0px;">Click the three dots to the left of your VM, then select <strong>Consolidate</strong>
+</li></ul>
+</li>
+<li style="margin-left:0px;">Copy the template from the Team Catalog to the <strong>Consolidate</strong> catalog in your org. As thin and fast provisioning are disabled for the OVDC backing up the catalog, consolidation will be forced upon copy of the template.</li>
+<li style="margin-left:0px;">Move the template from the Team Catalog to the <strong>Consolidate</strong> catalog in your org. As thin and fast provisioning are disabled for the OVDC backing up the catalog, consolidation will be forced upon move of the template.</li>
+</ol>
+<p>Once you have confirmed everything in the checklist above, you may proceed with capturing your vApp to your team Catalog</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/024/original/3ff4d969-7906-4af4-8484-d4de85424ef9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=bbdba252d669d0ab334550d53d7cbfd1bdd806df41cd6ee2817610534030f6dc" srcset="" alt="" height="564" width="230">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_31392812-ED63-486F-B3FD-A967896E77AF" class="text-block-content">
+    <p>Click the three dots to the left of your vApp, then select <strong>Add to Catalog</strong></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_740CAA12-C3E7-4173-971F-CAFD3BE99547" class="text-block-content">
+    <p>If <strong>Add To Catalog</strong> is greyed out, then the vApp is likely not fully powered off. In that case, check the <strong>Power Off </strong>and/or <strong>Stop</strong> menu items and use them to fully power off the vApp. This commonly happens when all the VMs within your vApp have been shut down, but the Edge appliance is still deployed/configured.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/025/original/dbf888e5-7b56-4e7c-abe7-6a903267c468.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0d992212bb9acb3a90b7c2aea07b63afde85ed90f83d2a0c0912ca5e0085a474" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/025/medium/dbf888e5-7b56-4e7c-abe7-6a903267c468.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=37c1e816ded6169f0aa5241cbf173530fa8b1294668ba6e377c966f7ce5859a1" srcset="" alt="" height="700" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0BFB9D5D-5E09-4C50-A046-4A97FB3E720F" class="text-block-content">
+    <p>When the Add to Catalog screen comes up, please do the following:</p>
+<ol>
+<li>Set <em><strong>When using this template: </strong></em>field to <strong>Make Identical copy </strong> &lt;-- This is VERY IMPORTANT ! ! ! ! ! ! </li>
+<li>Click the <em><strong>Select Catalog</strong></em> dropdown to show a list of the available catalogs</li>
+<li>Select the appropriate Catalog for your vAppTemplate to be placed in. In this screenshot, I am logged into the NSX Org so the two Catalogs I could possibly add to are NSX-Team-Catalog and ISEC-Team-Catalog. Since the vApp I have selected is for the Intrinsic Security class, I would choose the <strong>ISEC-Team-Catalog</strong>
+</li>
+<li>Specify an appropriate name for the vAppTemplate: <br>(<em><strong>NOTE: IS and DW labs use VLP provisioning and automation. As such, they should be prefixed as follows as it serves as a reminder for the VLP configurations)<br></strong></em>- ALL Intrinsic Security templates in the Delivery Org should be prefixed with: LSS-IS- &nbsp; &nbsp; &nbsp;(you may then place a version after that prefix to indicate your template version)<br>- ALL DW templates in the Delivery Org should be prefixed with: LSS-DW- &nbsp; &nbsp; </li>
+<li>Optionally provide a Description for your vAppTemplate</li>
+<li>When you have completed steps 1-5 and then Re-Confirmed step 1, proceed by clicking the <strong>OK</strong> button</li>
+</ol>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_EBFB402E-B2C4-4488-A5E0-1BE007106535" class="text-block-content">
+    <p>Depending on the recent changes/additions to your vApp prior to capture, the Add to catalog process can take anywhere from: 15 minutes to 3 hours or more. Generally that HOURS capture time is due to adding a new VM/VMDK to your vApp that has not yet had a shadow copy created on the Datastore backing the catalog.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="special-note-you-may-only-capture-to-catalogs-within-your-org" data-step-uuid="5FA7CAB3-5F91-483D-8EA2-F5AD98ACC99C">
+    <h3 id="special-note-you-may-only-capture-to-catalogs-within-your-org" class="step-title screensteps-heading">1.3. Special Note: You may ONLY capture to catalogs within your Org</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/026/original/a5eb5750-9781-4e02-943e-ca1c54c9e76e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6939934d09fb52024029205e7bc8c22b9ad897d9a961ee4dba01be45dbc528a4" srcset="" alt="" height="157" width="852">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_74202851-73EC-479D-A10B-6CB03309411C" class="text-block-content">
+    <p>NOTE that you may not add your vApp Directly to the Livefire-Delivery-Catalog from your Development Org. The vCD platform only allows READ ONLY access between Orgs. This means you may only Capture vApps to your own Org's Catalog. You can, however COPY a vAppTemplate from any visible Catalog to a catalog in the Org you are currently logged into.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="clean-up-old-vapptemplates" data-step-uuid="0746DF63-4021-4038-81C7-A48826C9E534">
+    <h3 id="clean-up-old-vapptemplates" class="step-title screensteps-heading">1.4. Clean Up Old vAppTemplates</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_BCFDEB74-C7C7-4145-80C2-CB0A81B4FA90" class="text-block-content">
+    <p>Be sure to frequently Capture/Update your vAppTemplate to your team's catalog in your team Org. </p>
+<p><strong>NOTE:</strong> Please <span style="color:rgb(255,38,0);"><strong>DELETE OLD versions</strong></span> of your template (IE: Don't keep 10 dot versions of a template that you've updated over the last 10 weeks &nbsp;just keep the last 2 or 3 per Delivery template.)</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="delivery-org" data-step-uuid="6338BF2D-1EF7-4849-8F0E-B240272814B8">
+    <h2 id="delivery-org" class="step-title screensteps-heading">2. Delivery Org</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5C48406A-F49B-4DC3-ADD1-77EEE8243406" class="text-block-content">
+    <p>As noted at the end of the previous section, you must be logged in to the Delivery Org in order to get a copy of your vAppTemplate into the the Delivery Org's catalog.</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="log-in-to-the-delivery-org" data-step-uuid="0D912657-5A8A-4D7F-BB5F-B115EAAC1609">
+    <h3 id="log-in-to-the-delivery-org" class="step-title screensteps-heading">2.1. Log In to the Delivery Org</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1834F740-881F-4489-BD6D-647982544120" class="text-block-content">
+    <p>If you are a member of the Digital Workspace, NSX, or Intrinsic Security Class Development teams then you have access to the Livefire Delivery Org in vCloud Director. You may login here:</p>
+<p><a href="https://vcd.livefire.dev/tenant/Delivery">https://vcd.livefire.dev/tenant/Delivery</a></p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="locate-and-copy-template" data-step-uuid="4B924107-42B5-4D0F-B3A0-496AA1E57AC5">
+    <h3 id="locate-and-copy-template" class="step-title screensteps-heading">2.2. Locate and Copy Template</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_CC4331D1-1D62-440F-90F3-FCE01E449D6C" class="text-block-content">
+    <p>Once you have logged in to the Delivery Org, you'll need to go to the Libraries and find your vAppTemplate in your Team's Catalog</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="locate-vapptemplates" data-step-uuid="003F1BA9-3F5D-490E-858A-FD80C1081CA9">
+    <h4 id="locate-vapptemplates" class="step-title screensteps-heading">2.2.1. Locate vAppTemplates</h4>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/027/original/25773740-4940-45f2-b1e8-a87261828385.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7ad458f46fb67e10d61605de069d1792fadde0a7e37bc063742b3b3116dfc4c2" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/027/medium/25773740-4940-45f2-b1e8-a87261828385.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=49ca4d566bd6dcb1c5e903fc25d03032a6fa12760f94a147e3608b27218db547" srcset="" alt="" height="405" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_DB201293-2757-4AAC-A8F2-570879D3A933" class="text-block-content">
+    <ol>
+<li>Click <strong>Libraries</strong> </li>
+<li>In the Left panel, click <strong>vApp Templates</strong>
+</li>
+<li>Optionally Sort by Created On so that the most recent templates are at the top</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="select-your-template" data-step-uuid="3B29B8F3-F63F-4119-9D97-FA86DE8A228D">
+    <h4 id="select-your-template" class="step-title screensteps-heading">2.2.2. Select your Template</h4>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/028/original/796045e6-c645-4439-9071-90bdc52eb37b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2764319dc0a3ffc978fc63bc9dfcef2116ec3e04044cbbaaaef75d2d9bd05dbd" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/028/medium/796045e6-c645-4439-9071-90bdc52eb37b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b6172796de92b1e251f7374596afe7be3cef7c5b8fcde763fda5881eb3361ecf" srcset="" alt="" height="379" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E0F24630-0287-4B87-B1BC-5C4D57EEFC58" class="text-block-content">
+    <ol>
+<li>Select the vAppTemplate from your Team's Catalog that you wish to copy to the Livefire-Delivery-Catalog</li>
+<li>Once you have it selected, additional action links will appear above the table. Click the <strong>COPY TO...</strong> link to begin</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="copy-the-template" data-step-uuid="E13AC6BA-B825-46A7-9AF5-D2DE100EDE09">
+    <h4 id="copy-the-template" class="step-title screensteps-heading">2.2.3. Copy the template</h4>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/029/original/13e7f323-519e-4b10-a543-a02eeb46e698.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e14b5726abc0f8a5a564f3c9c07b842c09e51e0957a58ac490954c46a426d879" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/029/medium/13e7f323-519e-4b10-a543-a02eeb46e698.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194242Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8f8c26fcbcbbf6c8f7604826cfa73935844462487c5ac111d2f2f523c431f509" srcset="" alt="" height="276" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D2355232-7760-4754-B69F-FB761A1507EC" class="text-block-content">
+    <p>Select the <strong>Livefire-Delivery-Catalog </strong> and click <strong>SAVE</strong></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_1C532918-B121-47FA-9CA8-AE06DB9CA94D" class="text-block-content">
+    <p>The Development Orgs are using an NFS Datastore while the Delivery Org uses VSAN. As a result, the COPY process will take a few hours (Anywhere between 1.5-6hrs). This is expected behavior. </p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="confirm-your-template" data-step-uuid="EDCF1177-7628-4189-85BB-8762AF4103ED">
+    <h3 id="confirm-your-template" class="step-title screensteps-heading">2.3. Confirm your Template</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E7271FFD-2352-4E0B-A990-363CFC37AF53" class="text-block-content">
+    <p>Once your Template has completed copying into the Livefire-Delivery-Catalog, manually deploy a copy to confirm that it is fully functional.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_9CBCDC8C-CF69-45B8-9041-4E104A54CA4C" class="text-block-content">
+    <p><strong>FYI: </strong>Unlike Copying from OneCloud to FEL, copying from one Org to another within our own vCD environment does NOT typically require any network changes since we are using the same External Network for all Orgs.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+

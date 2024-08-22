@@ -1,0 +1,122 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_43951B12-2FB1-483A-BA9E-D40919D2B48C" class="text-block-content">
+    <p>We frequently need to be able to quickly get a new or updated binary onto desktops for Lab use or development. The following process applies to both Instructor Ubuntu Desktops AND Attendee Ubuntu Desktops since they run the same login scripts.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="how-to-place-new-updated-binaries" data-step-uuid="84F1E5AF-7505-485E-9BD5-59AB7DB781C7">
+    <h2 id="how-to-place-new-updated-binaries" class="step-title screensteps-heading">1. How To Place new/updated binaries</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_53354B0A-B5E9-4C23-8A77-86194E6DA175" class="text-block-content">
+    <ol>
+<li>Log in to an Instructor Ubuntu Desktop</li>
+<li>Download/extract/prepare the binary files (or scripts) you wish to be present at next login for all Attendees/Instructors. COPY the binary files to your clipboard</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/127/original/be2dbc77-be7b-48de-8703-5c5b7bc82c05.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194328Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=663e503a93a97fb34145ee22f282238caeb0240dfb37f1e9542c1ef35deb9886" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/127/medium/be2dbc77-be7b-48de-8703-5c5b7bc82c05.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194328Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3e416c479aedb7b4d68a9ca31d7f966e258da2d80749c2a0e0dc4c851028ce5d" srcset="" alt="" height="680" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EF15E057-BBEA-44B9-AD83-A963F7AF9C31" class="text-block-content">
+    <ol>
+<li>Open the File Manager</li>
+<li>Paste the new binaries/scripts into the <strong>bin</strong> folder</li>
+</ol>
+<p>That's It - YOU ARE DONE - no need to mark the script executable or mess with permissions. The next time an Instructor or Attendee LOGS IN to one of our Livefire Ubuntu Desktops, the binaries will be copied to /usr/local/bin and marked executable !</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-1 screensteps-foldable-step" id="how-it-works-no-need-to-continue-this-is-simply-fyi" data-step-uuid="9C5203D0-3696-4DF9-9AC0-FFD05194D9CB">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-1">
+        <a href="#how-it-works-no-need-to-continue-this-is-simply-fyi" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-9C5203D0-3696-4DF9-9AC0-FFD05194D9CB" 
+          data-target-step-uuid="9C5203D0-3696-4DF9-9AC0-FFD05194D9CB">
+          2. How it works - No need to continue, this is simply FYI
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="9C5203D0-3696-4DF9-9AC0-FFD05194D9CB" id="nested-step-9C5203D0-3696-4DF9-9AC0-FFD05194D9CB">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7EE11DD4-A760-4E7D-BFDE-4E1A66C3095E" class="text-block-content">
+    <p>During Initial Log In to the Ubuntu Operating System, a number of system scripts are run as well as admin-defined scripts that have been placed in /etc/profile.d</p>
+<p>In order to reduce the base image build frequency, and allow for Instructors to more easily add necessary files to the Attendee desktops, Burke created a custom login.sh file in /etc/profile.d</p>
+  </div>
+</div>
+ 
+          <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_A4C5F865-B6F0-4D4A-8121-F0A8D3AA918B"><code>#!/bin/bash
+if [ &quot;$USER&quot; != &quot;root&quot; ]; then
+  # Reload systemd docker config to recognize the docker.sock setting
+  # to be owned by LIVEFIRELAB\horizonusers
+  sudo systemctl stop docker
+  sleep 2
+  sudo systemctl daemon-reload
+  sleep 2
+  sudo systemctl start docker
+  sudo rm -f /var/crash/*
+  # Now mount the Attendee-share - this is a read only share
+  mount=&quot;/mnt/attendee-share&quot;
+  if grep -qs &quot;$mount&quot; /proc/mounts; then
+    echo &quot;It&#39;s mounted.&quot;
+  else
+    echo &quot;It&#39;s not mounted.&quot;
+    mount &quot;$mount&quot;
+    if [ $? -eq 0 ]; then
+      echo &quot;Mount suceess!&quot;
+    else
+      echo &quot;Something went wrong with the mount: $mount&quot; &amp;gt; $HOME/mounterror.txt
+    fi
+  fi
+
+  # Get updates:
+  if [ -f $mount/.admin/client-updates.sh ]; then
+    cp $mount/.admin/client-updates.sh $HOME
+    chmod +x $HOME/client-updates.sh
+    bash $HOME/client-updates.sh
+  fi
+fi
+</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_A4C5F865-B6F0-4D4A-8121-F0A8D3AA918B">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9E2C3378-9962-4F0B-AFD7-2EE319F39DD3" class="text-block-content">
+    <p>There are 3 main purposes of the login.sh script:</p>
+<ol>
+<li>
+<strong>Maintain the Docker Daemon </strong>- due to the fact that we are using Active Directory authentication, the docker daemon's sock file and ownership must be modified so that if/when a lab requires the attendees to issue <strong>docker</strong> commands, they can do so without running sudo. The permissions have been set, but the daemon must be reloaded upon login in order for things to work properly. The login script addresses this requirement.</li>
+<li>
+<strong>Mount the Read-Only attendee-share</strong> - The Windows File server (hzn-fs-01.livefire.lab) has a share named attendee-share that is configured as follows:<br>- Allow READ-ONLY access to the local windows account hzn-fs-01\vmware with password VMware1! ... this allows for SIMPLE access to scripts, updated files, etc...<br>- Allow FULL CONTROL access to all Livefire Instructor accounts. This allows us to place files on the share as well as update the update script as needed.</li>
+<li>
+<strong>Copy and Launch the client-updates.sh script </strong>- This script is visible in the hidden .admin folder of the attendee-share. As such, we should never include any confidential information in it. The script can be updated by Livefire Instructors if/when needed but caution should be taken since this script runs &nbsp;for ALL ATTENDEES and INSTRUCTORS that use the Ubuntu Desktops. The script has code in it to:<br>- Detect different parts of the Desktop name: IE Instructor vs. Attendee desktop (based on the first 3 characters of the hostname)<br>- Detect the Desktop Type: IE: Cloud Services Livefire (CSL) or VCF (Based on second set of characters after the - in the hostname)<br>- Detect username logged in<br>- Detect Active Director/LDAP User ID<br>- Re-Mount attendee-share/instructor-share with AD Credentials (Must have been saved permanently by Instructor before this works consistently)<br>- Log process in $HOME/.login.txt</li>
+</ol>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+
+

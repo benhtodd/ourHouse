@@ -1,0 +1,420 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_26BAF73C-2B32-49B6-B208-8B8CB271D459" class="text-block-content">
+    <p>In this lab, we will learn how to build <strong>Action-Based Extensibility</strong> (ABX) actions and subscribe them to deployment lifecycle event topics. We will build two actions that will accomplish the following:</p>
+<ul>
+<li>An ABX action that will take an SSH key published in GitLab and inject it into the machine resources part of a deployment, therefore allowing us to SSH to all newly deployed VMs.</li>
+<li>An ABX action that will post a notification message with information about the deployment in a Slack channel.</li>
+</ul>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="importing-the-blueprint" data-step-uuid="152E3965-403F-4AAA-AA4E-3AC719854F6B">
+    <h2 id="importing-the-blueprint" class="step-title screensteps-heading">Creating an SSH Key ABX Action</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D4407552-5DB1-4AB3-ABEC-472251B8A0D3" class="text-block-content">
+    <p>As we have learned during the presentation, there are multiple ways to enable remote access for the machines resources we deploy through Cloud Assembly. Most of these require the SSH Key Pair to be either hard-coded in the blueprint YAML code, randomly generated during provisioning time, or saved in AWS. All of these methods have advantages and disadvantages and bring some complexity to maintain. &nbsp;In this first part of the lab, we will learn how we can dynamically set the sshkey custom property in our deployments payload via ABX Action. This action will pull the ssh key from a GitLab repo.</p>
+<p>Let's begin by using the Blueprint from the previous lab. &nbsp;Note that currently the sshKey value points to a custom property that holds the SSH key.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/321/original/a96b40c2-9e23-4f6c-b01f-55ece85df6ff.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=78f96af7467059d3553623d455a5ba91acc85e43d7fc716ae7c5874a80a0acf2" srcset="" alt="" height="115" width="475">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0128BBA8-8E2D-4B48-983E-B623A97D6FEA" class="text-block-content">
+    <p>Navigate to the <strong>Extensibility</strong> tab</p>
+<p>Navigate to <strong>Actions</strong> and click <strong>New Action</strong>. Supply the following values:</p>
+<ol>
+<li>
+<strong>Name</strong>: sshSetKeyFromUrl-<em><strong>yourname</strong></em>
+</li>
+<li>
+<strong>Project</strong>: Select <strong>your Project</strong>.</li>
+<li>
+<strong>Load Template</strong>: Select <strong>Rename VM</strong>.</li>
+<li>
+<strong>Runtime</strong>: Python</li>
+<li>
+<strong>Inputs</strong>: customProperties : ["sshKey"]</li>
+<li>
+<strong>Dependency</strong>: requests</li>
+<li>
+<strong>FaaS Provider</strong>: AWS</li>
+</ol>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint" data-step-uuid="B43A70BA-254C-4700-A1AC-898B002CEACE">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-B43A70BA-254C-4700-A1AC-898B002CEACE" 
+          data-target-step-uuid="B43A70BA-254C-4700-A1AC-898B002CEACE">
+          Hint
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="B43A70BA-254C-4700-A1AC-898B002CEACE" id="nested-step-B43A70BA-254C-4700-A1AC-898B002CEACE">
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/322/original/47d5dec0-c9ff-40d7-b39d-ad00ce828c8d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f26bef9b3d5beab666dd7782d1e1f7ae281d0f195d6329baeb0571f4ac2f3aa4" srcset="" alt="" height="363" width="588">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/323/original/be66a26c-a12a-44e6-a4d2-02061706f03a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f20a271646e3ce118f6c203b545c483a13ce3c37fbb94c45019f82ede504fa6c" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/323/medium/be66a26c-a12a-44e6-a4d2-02061706f03a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=624e1938d1d923296044cda24d889ba987fe4649aac90a17f3037cd77bf26129" srcset="" alt="" height="292" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/324/original/5d324e26-8fd2-4775-9410-6fb67d9c5f09.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5c6511e0b14b2a0d95bcda069d6f0a1a9da9fc4baf724316cc38d889183d1716" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/324/medium/5d324e26-8fd2-4775-9410-6fb67d9c5f09.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b4f15b06fac4e45ae90800bba34066c239c4879e47a315e56b3481874b1f3660" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="347" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/325/original/f307ca03-1897-4353-b392-0d0763161273.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8cebbcab6d563c38310959a6d4e988c32770f93f618d217f6ddec8ae6a190556" srcset="" alt="" height="480" width="828">
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_95026939-AF99-4A71-A23B-56BD4FDC0608" class="text-block-content">
+    <p>Copy the code below in the script field.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1F8B6805-95E6-47DC-BD0D-9ADF6C64225E" class="text-block-content">
+    <pre><code>#--------------------------------------------------------#
+#                 Author: Spas Kaloferov                 #
+#               https://livefire.solutions               #
+#--------------------------------------------------------#
+  #
+  # VMware Cloud Assembly ABX Code Sample
+  # - Set SSH Key from URL
+  # - Subscription Info: compute.allocation.pre, blocking: yes
+  # 
+import requests
+def handler(context, inputs):
+    # Modify the URL to point to your Gitlab, Github or any other URL that holds the ssh key
+    response = requests.get('http://gitlab.elasticskyholdings.com/class-delivery/lab-files/raw/master/cc_public')
+    # Set encoding to UTF-8
+    response.encoding = 'utf-8'
+    # Remove new line breaks from the text
+    ssh_key = response.text.replace("\n","")
+    print(ssh_key)
+    # Read the sshKey value from the Properties section of the blueprint payload
+    old_key = inputs["customProperties"]["sshKey"]
+    new_key = ssh_key
+    
+    # Create outputs and assigning new key value
+    outputs = {}
+    outputs["customProperties"] = inputs["customProperties"]
+    outputs["customProperties"]["sshKey"] = new_key
+    print("Setting machine sshKey value from {0} to {1}".format(old_key, new_key))
+    return outputs</code></pre>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_01D83808-B47D-4AE3-9B39-353DD8D09483" class="text-block-content">
+    <p>Click <strong>Save</strong> to save the action.</p>
+<p>If you want to take a look at the SSH Key in GitLab you can do so by opening the following URL:</p>
+<p><a href="http://gitlab.elasticskyholdings.com/class-delivery/lab-files/raw/master/cc_public">http://gitlab.elasticskyholdings.com/class-delivery/lab-files/raw/master/cc_public</a></p>
+<p>Examine the script code. Note how we are have specified the <strong>context</strong> and <strong>inputs&nbsp;</strong>objects in the function. &nbsp;These will allow us to authenticate and get the payload of the deployment.</p>
+<p>Further in the script, we are:</p>
+<ol>
+<li>Making an HTTP GET call to get the SSH Key</li>
+<li>Doing some string replacement to remove new line separators from the response</li>
+<li>Assigning this as a value to the sshKey property</li>
+<li>Sending back the output to the payload. &nbsp;</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="subscribing-the-ssh-key-abx-action-to-an-event-topic" data-step-uuid="69FD4965-CD02-49AB-8E10-364E2403BCD5">
+    <h2 id="subscribing-the-ssh-key-abx-action-to-an-event-topic" class="step-title screensteps-heading">Subscribing the SSH Key ABX Action to an Event Topic</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6F8C180E-9951-4842-B1CA-F67FA3857CBF" class="text-block-content">
+    <p>Now that we have built an action, we have to subscribe it to an Event Topic in order for it to run as part of the deployment lifecycle.</p>
+<p>Navigate to <strong>Subscriptions</strong> and click <strong>New Subscription</strong></p>
+<p>Provide the &nbsp;following values:</p>
+<ol>
+<li>
+<strong>Name</strong>: e.g.<strong> sshSetKeyFromUrl-</strong>subs<em><strong>-yourname</strong></em>
+</li>
+<li>
+<strong>Event Topic:</strong> compute allocation</li>
+<li>
+<strong>Condition:</strong> enable<strong>&nbsp;Filter events in topic. &nbsp;</strong>Add code to run subscription for your specific user. &nbsp;Modify the following syntax by replacing <code>username@example.com</code> with <strong>your</strong> account.</li>
+</ol>
+<pre style="margin-left:40px;"><code><span style="color:rgb(0,0,0);">event.userName =='username@example.com'</span></code></pre>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/326/original/d9346474-7fbc-48ef-9906-0bb01bf68201.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7e257ad5784ac3448970168500fc679a033db397e2764980759991d9c011ed6b" srcset="" alt="" height="185" width="685">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C434DB61-AA15-4036-942C-7DCBB75A405E" class="text-block-content">
+    <p>&nbsp;</p>
+<ol>
+<li>
+<strong>Runnable Item</strong>: the action you created</li>
+<li>
+<strong>Blocking</strong> : Enable</li>
+</ol>
+<p>Click <strong>Save.</strong>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint_1" data-step-uuid="FC625E12-0C22-49B2-A349-402A31A3912E">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint_1" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-FC625E12-0C22-49B2-A349-402A31A3912E" 
+          data-target-step-uuid="FC625E12-0C22-49B2-A349-402A31A3912E">
+          Hint
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="FC625E12-0C22-49B2-A349-402A31A3912E" id="nested-step-FC625E12-0C22-49B2-A349-402A31A3912E">
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/327/original/1a5cf0f9-3292-4b9b-bd64-ccfb29355447.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=dd7e96607200c04d0ee6065520347ed20250de2ad526d075ed55c4a6960d8c2c" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/327/medium/1a5cf0f9-3292-4b9b-bd64-ccfb29355447.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=929f9ace1ed9e2b55d71f7f84d114d2b26f284001ac486c1e22099b99b38ec79" srcset="" alt="" height="525" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/328/original/35aea954-f1c7-4b4d-8dc1-bbcc6df05a37.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5c47bd3c06d1a5fca96c96048b1f4fe8d70b83fabd29ef01c1700fe86c78f4c7" srcset="" alt="" height="185" width="685">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/329/original/26bf71f2-e30c-4363-886e-2ff86fa87f4b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f49543eaf346530012b786b3c07417a350ed5e5d30a671de921b822c8abe5e11" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/329/medium/26bf71f2-e30c-4363-886e-2ff86fa87f4b.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4f395792e1a77fc78812826777ac82e3584b614f83b932259452028e19dda2bd" srcset="" alt="" height="296" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/330/original/e95ccde5-e98e-4694-b146-f185f6a3d4e9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=01f34034fb7c0f193cc0daaf5b7c8543ab5b64b3ba697e7b03c67a9a1b28a7e4" srcset="" alt="" height="495" width="724">
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="verify-slack-access" data-step-uuid="2856BAD2-FF4D-4B9A-9277-F090BAE6DA94">
+    <h2 id="verify-slack-access" class="step-title screensteps-heading">Verify Slack Access</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3CB67E97-3C3E-463A-95A2-5F085C43B9BD" class="text-block-content">
+    <p>Sign in to slack</p>
+<ol>
+<li>
+<strong>URL</strong>: <a href="https://slack.com/signin">https://slack.com/signin&nbsp;</a>
+</li>
+<li>
+<strong>Workspace</strong>: livefire-solutions.slack.com</li>
+<li>
+<strong>Email</strong>: view-only@livefire.solutions</li>
+<li>
+<strong>Password</strong>: Your instructors will provide the password.</li>
+</ol>
+<p>Verify that you can see the <strong>labs</strong> channel in the <strong>Livefire Solutions</strong> Slack workspace.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/331/original/73ffc9c3-ff9d-4505-8931-2e028a445bef.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=029ce187ac9d06ec8a522041bcb4ac39f3ac4450f662cdfccaa1334b5cbd4c2c" srcset="" alt="" height="378" width="449">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="creating-an-slack-notification-abx-action" data-step-uuid="1097DD4D-7615-4ED9-A465-E7B1BE7CB5C5">
+    <h2 id="creating-an-slack-notification-abx-action" class="step-title screensteps-heading">Creating an Slack Notification ABX Action</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_63B43BD9-F8CC-44C3-88B3-A57C807CC891" class="text-block-content">
+    <p>You already created one ABX action in the previous lab so this process should be familiar.</p>
+<p>Let's start.</p>
+<p>From the <strong>Extensibility</strong> tab, navigate to <strong>Actions</strong> and click <strong>New Action</strong>. Supply the following values:</p>
+<ol>
+<li>
+<strong>Name</strong>: slackPostWithHook-<em><strong>yourname</strong></em>
+</li>
+<li>
+<strong>Project</strong>: Select <strong>your Project</strong>.</li>
+<li>
+<strong>Template</strong>: Select Custom Script.</li>
+<li>
+<strong>Runtime</strong>: Python</li>
+<li>
+<strong>Inputs</strong>: Delete all default inputs</li>
+<li>
+<strong>Dependency</strong>: <strong>requests&nbsp;</strong>and <strong>datetime (enter on separate lines)</strong>
+</li>
+<li>
+<strong>FaaS Provider</strong>: Amazon Web Services</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint_2" data-step-uuid="CF9FDCC9-5CF0-41D8-AF3A-23E07E73AD08">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint_2" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-CF9FDCC9-5CF0-41D8-AF3A-23E07E73AD08" 
+          data-target-step-uuid="CF9FDCC9-5CF0-41D8-AF3A-23E07E73AD08">
+          Hint
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="CF9FDCC9-5CF0-41D8-AF3A-23E07E73AD08" id="nested-step-CF9FDCC9-5CF0-41D8-AF3A-23E07E73AD08">
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/332/original/f2bda309-1eaf-4753-b17c-511dd13cf9a3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5f59a20d335b44913fe50dff3454e8ed10d8219fbf8d2eab01daaddecb3ef48a" srcset="" alt="" height="367" width="581">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/333/original/4dcf0d33-96ba-4f04-8d24-67e4e4cd38ae.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=02f751515a03fdf7f3fa946cb656b6bc615abb09bc9736179c30750526cc3e7d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/333/medium/4dcf0d33-96ba-4f04-8d24-67e4e4cd38ae.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7ad34da6d81f0593f6bad9bc6998e36813312ec539e5ab7b0f6c588cb980841b" srcset="" alt="" height="276" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/334/original/4acfb76b-290d-4cf1-b3cf-3a16006c446c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=86936f3fb1065361d16827319cb89e3e2ada2e9350e0ed2224bd46a93be5517b" srcset="" alt="" height="467" width="853">
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_12709EA8-78E7-4346-B25E-7C44694A4D51" class="text-block-content">
+    <p>Copy the code below in the script field.&nbsp;</p>
+<p>Change the value "<strong>Tito-YOURNAMEHERE"&nbsp;</strong>to reflect your name - for example "Tito-Marc"</p>
+<p>This will allow you to easily recognize<strong>&nbsp;your</strong> Slack message after it has been processed.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9A7DE018-8BEA-4748-8B91-F4E6CDCCE7B1" class="text-block-content">
+    <pre><code>#--------------------------------------------------------#
+#                 Author: Spas Kaloferov                 #
+#               <a href="https://livefire.solutions">https://livefire.solutions</a>               #
+#--------------------------------------------------------#
+  #
+  # VMware Cloud Assembly ABX Code Sample
+  # - Posts in a slack Channel 
+  # - Add to Subscription: compute.provision.post
+  #
+import requests
+import json
+import datetime
+def handler(context, inputs):
+   print('Action started.')
+   
+   now = datetime.datetime.now()
+   slackMsg = '*Name:* {0} \n *IP Address:* {1} \n *Date:* {2}'.format(inputs["resourceNames"][0], inputs["addresses"][0], now.strftime("%Y-%m-%d %H:%M"))
+   
+   body = {
+    "attachments": [
+        {
+            "fallback": "Cloud Assembly deployment",
+            "color": "#36a64f",
+            "text" : slackMsg ,
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; "author_name": "Tito-YOURNAMEHERE",
+            "author_link": "http://gitlab.elasticskyholdings.com/class-delivery/tito",
+            "author_icon": "http://gitlab.elasticskyholdings.com/class-delivery/lab-files/raw/master/images/tito-v2-app-icon.png"
+        }
+    ]
+}
+   requests.post('https://hooks.slack.com/services/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', data=json.dumps(body), verify=False)
+   </code></pre>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7B953642-2CB1-4B6A-88C1-464812FD9F57" class="text-block-content">
+    <p>Click <strong>Save</strong> to save the action.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="subscribing-the-slack-notification-abx-action-to-an-event-topic" data-step-uuid="868A3EB0-5683-4048-BBA7-1B6366184AFA">
+    <h2 id="subscribing-the-slack-notification-abx-action-to-an-event-topic" class="step-title screensteps-heading">Subscribing the Slack Notification ABX Action to an Event Topic</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_DDC0B14E-2750-4C93-B21A-BD1CB3CB03C7" class="text-block-content">
+    <p>Navigate to <strong>Subscriptions</strong> and click <strong>New Subscription</strong></p>
+<p>Provide the &nbsp;following values:</p>
+<ol>
+<li>
+<strong>Name</strong>: slackPostWithHook-subs<em><strong>-yourname</strong></em>
+</li>
+<li>
+<strong>Event Topic:</strong> compute post provision</li>
+<li>
+<strong>Runnable&nbsp;Item</strong>: the action you created</li>
+<li>
+<strong>Condition:</strong> enable<strong>&nbsp;Filter events in topic. &nbsp;</strong>
+</li>
+<li>Add code in the <strong>Condition</strong> to run the subscription for your specific user. &nbsp;Modify the following syntax by replacing <code>username@example.com</code> with <strong>your</strong> account.</li>
+</ol>
+<pre style="margin-left:40px;"><code>event.userName =='username@example.com'</code></pre>
+<p>Note that this time we are subscribing to a different event topic, one that will have the VM's IP address in its payload.</p>
+<p>&nbsp;</p>
+<p>Click <strong>Create.</strong></p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint_3" data-step-uuid="CC57C2AF-2EA6-4D73-8E2B-54BBFDB15B07">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint_3" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-CC57C2AF-2EA6-4D73-8E2B-54BBFDB15B07" 
+          data-target-step-uuid="CC57C2AF-2EA6-4D73-8E2B-54BBFDB15B07">
+          Hint
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="CC57C2AF-2EA6-4D73-8E2B-54BBFDB15B07" id="nested-step-CC57C2AF-2EA6-4D73-8E2B-54BBFDB15B07">
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/335/original/0ad2a3b1-b634-43b4-b905-9cbd668da50c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8f9e5d5b11da196d545a3252ee58956accf79d33489c675506cd6934bd5a78e2" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/335/medium/0ad2a3b1-b634-43b4-b905-9cbd668da50c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8adc2fbd85a58cb7d0132df922e85503f297d0a5e429075425d13de4f4ddbf87" srcset="" alt="" height="525" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/336/original/2d906540-a0da-48f9-bdce-2b7439a65afc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c1f563e1445996362a236f5acff9d301603e6db4d44fa432cf57c8a2d81c20e9" srcset="" alt="" height="160" width="782">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/337/original/b3bde779-4d3d-457c-91db-5c52c3ee34d6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=4f0f20d9569b9c733a9b4794e38260c39e2e6f5f342cf358562183d233bd5f52" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/337/medium/b3bde779-4d3d-457c-91db-5c52c3ee34d6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d58c7044c43531ad6f062608781f53c4b009fae852252df9a7e8890095469df3" srcset="" alt="" height="296" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/338/original/bebfd465-7453-485c-be2f-3cab7c43710d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194511Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=800e11151ff6d8cc90552a9d4b0f547e309ccd53b87a0d25ccda97b678786db7" srcset="" alt="" height="311" width="716">
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+

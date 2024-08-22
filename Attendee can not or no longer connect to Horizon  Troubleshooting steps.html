@@ -1,0 +1,255 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_80F87574-0B3E-482E-8A64-B627FF320081" class="text-block-content">
+    <p>Attendees frequently have a variety of issues on their initial and/or subsequent connection attempts for the Horizon Desktops. Symptoms/Causes can include:</p>
+<p><strong>Individual Attendee: (may happen to one or more attendees/instructors)</strong></p>
+<ul>
+<li>Old Horizon Client <ul>
+<li>All attendees should be encouraged to install a more current version of the client - especially if currently running anything less than 8.0.0</li>
+<li>The current Horizon Client version as of this article is 8.2.0</li>
+</ul>
+</li>
+<li>SSL Issues</li>
+<li>General routing/connectivity (client/ISP side)</li>
+<li>HTTP error 504 - attendee tried to reconnect too quickly</li>
+</ul>
+<p><strong>All Attendees / Instructors: (Happens to Many/All attendees/Instructors)</strong></p>
+<ul>
+<li>Unified Access Gateway (UAG) issue(s) - in the past, our UAGs disks filled up, preventing successful connection to Horizon Connection Servers and desktops</li>
+<li>Connection Server(s) issue - <em>we have not yet had an issue with the connection servers</em>
+</li>
+<li>Datacenter Connectivity - <em>we have not yet had this come up as an issue</em> </li>
+<li>
+</li>
+</ul>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_67810B2C-2D6D-453C-9423-D58D2CAA261E" class="text-block-content">
+    <p>If <span style="color:rgb(255,38,0);"><strong>Nobody (including Instructors) can access</strong></span> the Horizon Desktops (even after trying different VPN endpoints and/or Attempting RDP via our RDP Gateway), immediate escalation to lab team is required. If this becomes the case during delivery, the best thing to do is continue on with Lecture and/or provide iSIM content (or VMware Hands On Labs recommendations) for attendees to keep their time from being wasted while the issue is addressed with Lab team and/or Corporate HaaS team.</p>
+<p>If several people <strong>CAN</strong> access the lab environment, and <strong>only some cannot</strong>, then the following steps should be taken:</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="common-issues" data-step-uuid="E35F5503-4992-4A29-A40E-0C7C79E1BE8F">
+    <h2 id="common-issues" class="step-title screensteps-heading">Common Issues</h2>
+        <div class="step screensteps-section screensteps-depth-2" id="the-connection-to-the-remote-computer-ended" data-step-uuid="25DD1C1F-1996-4BC6-B936-FBD4D1150A62">
+    <h3 id="the-connection-to-the-remote-computer-ended" class="step-title screensteps-heading">1. The connection to the remote computer ended</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/103/original/ccb177bf-7aa7-48a1-a556-8e1ef10145b9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3797e3345bfa194eb7f7236fc909e312b669aafc04097bef3f58f22ebbce5db7" srcset="" alt="" height="161" width="347">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1CB1E32E-332C-4E78-85DC-A24892E7FC94" class="text-block-content">
+    <p>This has happened in the past when the "Allow connection via SSL Proxy" option was not checked when it was supposed to be.. after checking the box and trying again, attendees can usually connect. This info is already covered in the Lab Manuals.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="the-connection-to-the-remote-computer-has-been-closed-due-to-a-new-connection-request" data-step-uuid="C475D3AD-A740-4BD6-AAA6-F7CF515BCAAC">
+    <h3 id="the-connection-to-the-remote-computer-has-been-closed-due-to-a-new-connection-request" class="step-title screensteps-heading">2. The connection to the remote computer has been closed due to a new connection request</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/104/original/37eefae3-d954-47cb-b229-cf0434e953c3.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=91fdee327ba58d27c01e1c2e5333985190310b3c44ace5605e08fa0d5e9b80ed" srcset="" alt="" height="250" width="273">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ECE05E32-6758-45C6-86C5-0C7F54B5709E" class="text-block-content">
+    <p>This typically happens when a user connects to your desktop... For example, mduser010 is logged in and working... suddenly this message pops up and the user is disconnected. Meanwhile, another attendee (say mduser019, for example) logs in using mduser010 credentials accidentally.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="error-http-error-504-failed-to-connect-to-the-connection-server" data-step-uuid="25550C57-0CAD-4CDD-A224-9DFDDA7A4056">
+    <h3 id="error-http-error-504-failed-to-connect-to-the-connection-server" class="step-title screensteps-heading">3. Error: HTTP error 504 / Failed to connect to the Connection Server</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/105/original/2d94a8bd-ff15-4ef4-b7b7-bbd4efa43690.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=44e4ba57c89d09f2ec632f1a51023c62ca55a9401d566b317bda7497bd14a460" srcset="" alt="" height="814" width="551">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_88BD075A-F459-4AE8-BB47-7EB3202508BE" class="text-block-content">
+    <p>This error occurs when a user disconnects (or is disconnected from) their Horizon Desktop and they attempt to immediately reconnect.<br><br><strong>Solution: </strong>Patience; wait a minute or two and then reconnect</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="assigned-desktop-source-for-this-desktop-is-not-currently-available" data-step-uuid="84E3C3E2-A1C4-40C6-AF47-B0905ABD96AC">
+    <h3 id="assigned-desktop-source-for-this-desktop-is-not-currently-available" class="step-title screensteps-heading">4. Assigned desktop source for this desktop is not currently available</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/106/original/ddccc61a-a779-492d-bfbc-1dd8acde4fb2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=fa379c32e1880d0b3844bc85227b60cbf407c636fbdb636199d703419ed1ab0a" srcset="" alt="desktop source for this desktop is not currently available" height="508" width="499">
+  </div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/107/original/2892678b-b284-4f1a-9ed1-c9998caa41e7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7a767c0ae4c3dc63005eb64554ef16ef11d80276b10a6f603b55f18b8967d7ed" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/107/medium/2892678b-b284-4f1a-9ed1-c9998caa41e7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=35a7d52001ec9a89d3ce3afaddc26ed86433906d1901928449ebe840b308cf92" srcset="" alt="" height="54" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_99771E33-5095-418C-8236-952C6353F86E" class="text-block-content">
+    <p>This error most commonly occurs when the View Agent has stopped responding. This can be verified by checking the Horizon Management UI, Desktops view, then filtering on the desktop id.</p>
+<ol>
+<li>The <em>Agent Version</em> will display as <strong>Unknown</strong>
+</li>
+<li>The <em>Status</em> will display as <strong>Agent Unreachable</strong>
+</li>
+</ol>
+<p><strong>How to proceed: </strong></p>
+<p><strong>Scroll down to: </strong><a data-internal-link="article" href="#instructor/lab-team-check-attendee-desktop-viewage" target="_self" data-internal-anchor="instructor/lab-team-check-attendee-desktop-viewage">Instructor/Lab-Team check attendee desktop viewagent service</a> and begin troubleshooting from that step.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="failed-to-resolve-proxying-route-for-request" data-step-uuid="9A6BBAED-B4AF-4887-94DB-9B0EC442CBCA">
+    <h3 id="failed-to-resolve-proxying-route-for-request" class="step-title screensteps-heading">5. Failed to resolve proxying route for request</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C6111C58-D8AC-467C-A86B-9229B796B735" class="text-block-content">
+    <p>This error applies only the the HTML Client and most commonly occurs on MacOS when using Safari or Firefox.</p>
+<p><strong>Solution: </strong>Use a Chromium based browser such as: Google Chrome, Chromium, or Microsoft Edge - this nearly always works</p>
+<p>Encourage the use of the Installable Horizon Client since this is preferable and provides a better overall user experience (especially with copy/paste) than the HTML client</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="all-available-desktop-sources-for-this-desktop-are-currently-busy" data-step-uuid="D01A89CE-0033-4E4C-830A-410BA649433B">
+    <h3 id="all-available-desktop-sources-for-this-desktop-are-currently-busy" class="step-title screensteps-heading">6. All available desktop sources for this desktop are currently busy</h3>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/108/original/e0d4a30a-aeac-4646-8dcf-aa473133c611.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c13eaf310940a9befa60a44daeadca0a2468e230763f52e88d34f10d87b4ea2d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/108/medium/e0d4a30a-aeac-4646-8dcf-aa473133c611.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6c4952284c87c53093f8ef5008040597b68fb98d27c0712edb7a85cad831bdc1" srcset="" alt="" height="283" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_294969AA-CAFD-477D-A8A4-D4719DB359A4" class="text-block-content">
+    <p>This error means that there aren't enough desktops in the Horizon Desktop Pool to meet the demand. This error was experienced by the NSX team when the pool was set to a maximum of 30 Desktops and a second class was launched concurrently. Since then, the max Desktops per Pool for Windows has been set to 75. The Ubuntu Pool maxes are set to 60.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="error-putting-route-reason-connection-refused-localhost-127-0-0-1-8123" data-step-uuid="E6CC942B-18EA-455D-B444-6807E334EE5C">
+    <h3 id="error-putting-route-reason-connection-refused-localhost-127-0-0-1-8123" class="step-title screensteps-heading">7. Error putting route. Reason - Connection refused: localhost/127.0.0.1:8123</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/109/original/4c2482a9-aed3-48a5-bfee-b15aea9914d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ab6731a67ca2c2e621d4379854edc7048ec1888f22da0d4b871e301943b9ee9b" srcset="" alt="" height="431" width="515">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_401CFD86-AE12-4A66-92AC-0283298EACE5" class="text-block-content">
+    <p>This was the connection error that was experienced when both of our UAGs had their disk fill up due to a log file consuming all disk space. This was determined to be an engineering error where the version of UAG we were using did not have logrotate configured for the 20.12 version of the appliance. After installing version 21.03, we found that a logrotate did exist. Full e-mail explanation was sent by Burke to the team on Monday, May 31st, 2021 after working all weekend on this (and other) lab issue.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="http-error-429" data-step-uuid="0DDE4A2D-754F-416D-8AC5-C5C93AECD43F">
+    <h3 id="http-error-429" class="step-title screensteps-heading">8. HTTP error 429</h3>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/110/original/7eee76dc-77b0-423a-b435-059bc953ee74.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=046ed2f81d8ae932f91e9388bcf97726e9748b46dde7f7cb1b146515847cdcfe" srcset="" alt="" height="223" width="275">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_10593FB5-3201-4969-9A6A-E6B51893D92F" class="text-block-content">
+    <p>This error seems to appear every once in a while randomly. When you click OK and try connecting to the desktop pool, the error appears again. In order to get logged back into the desktop:</p>
+<ol>
+<li>Disconnect from the Horizon Endpoint</li>
+<li>Re-Connect to desktop.livefire.dev</li>
+<li>Access Desktop Pool</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="general-troubleshooting-steps" data-step-uuid="CA9A6D88-6009-4BD3-9FAF-4A3783755BFC">
+    <h2 id="general-troubleshooting-steps" class="step-title screensteps-heading">General Troubleshooting Steps</h2>
+        <div class="step screensteps-section screensteps-depth-2" id="instructor-lab-team-should-attempt-login-as-attendee" data-step-uuid="10B67B89-0F41-4A71-9B14-6670B96A2914">
+    <h3 id="instructor-lab-team-should-attempt-login-as-attendee" class="step-title screensteps-heading">1. Instructor/Lab-Team should attempt login as attendee</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_53939032-A349-48F5-B4AD-B77FDB560CB3" class="text-block-content">
+    <p>Instructor or Lab team should attempt to login as the attendee account using either the HTML client or the Installable client. This is the FASTEST way to determine if there is a potential issue that exists only on the Attendee side (IE: SSL Certs, mis-configured client, old client, internet (ISP) routing, firewall, etc...)</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="instructor-lab-team-can-login-client-side-issue" data-step-uuid="C4B018F9-AD3E-40C6-BCDE-F2919A55A69D">
+    <h4 id="instructor-lab-team-can-login-client-side-issue" class="step-title screensteps-heading">1.1. Instructor/Lab-Team can login: Client Side issue</h4>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EB75828A-3E88-42EF-8517-8067EF5CBF4E" class="text-block-content">
+    <p>If any instructor, lab-team, or other attendee member can login to the desktop a particular attendee cannot access, then the issue must be on the attendee's side:</p>
+<ol>
+<li>If possible, have attendee attempt to access <a href="https://desktop.livefire.dev">https://desktop.livefire.dev</a> from another device and/or network. <br>For example, in a July 2021 class an attendee suddenly could not access the Horizon Environment via their computer on their home network. After switching their phone's wifi off and using phone to connect, they were successful. This isolated the connectivity issue to their ISP.</li>
+<li>Verify Client version &gt;= 8.1.0</li>
+<li>All security settings good?</li>
+<li>Has the Horizon Client been uninstalled, rebooted, fresh install &amp; configure?</li>
+<li>Is attendee on VPN? if so, try disconnecting?</li>
+<li>Can attendee try using VPN or Different VPN endpoint (IE: we have had German attendees suddenly unable to connect. After changing the VPN connection to a North America based VPN endpoint, they were able to reconnect)</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-3" id="unable-to-login-to-the-specified-desktop" data-step-uuid="6A4DCC49-46FB-49BA-B9EE-F4A05C0C089D">
+    <h4 id="unable-to-login-to-the-specified-desktop" class="step-title screensteps-heading">1.2. Unable to login to the specified Desktop</h4>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2CE3A369-167E-49EA-BB03-9C8A82AAA3DD" class="text-block-content">
+    <p>If nobody can login to this particular desktop using the Horizon Client or the HTML Client, but CAN login to other desktops, then continue with troubleshooting steps below.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="instructor/lab-team-check-attendee-desktop-viewage" data-step-uuid="2D24750F-E4FF-4D19-95F7-3F55505BAD0A">
+    <h3 id="instructor/lab-team-check-attendee-desktop-viewage" class="step-title screensteps-heading">2. Instructor/Lab-Team check attendee desktop viewagent service</h3>
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/111/original/23801550-b99e-4f63-a03c-2debe9336ab4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=876a23596a1b2d78e4a81fdc395684659aa75faf57b06d3a88bc72743283a487" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/111/medium/23801550-b99e-4f63-a03c-2debe9336ab4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194318Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9ea43315f97eaeba1b3e72617504cc62ffd1d298c115ab901f5a1e9929e4abf2" srcset="" alt="" height="574" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EC674BDA-FB2C-4401-9E02-E814D478A5C8" class="text-block-content">
+    <p>All instructor desktops can ssh to attendee desktops. Once connected, check the viewagent service to make sure it is still running:</p>
+<p><code>sudo systemctl status viewagent --no-pager</code></p>
+<p>This should show the "Active: (active (running)" like the screenshot above. If anything other than "active (running)" is output, try restarting the service:</p>
+<p><code>sudo systemctl restart viewagent</code></p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="instructor-lab-team-check-horizon-management-ui" data-step-uuid="929B5255-E4D4-4E09-8C0F-033F55CBCE36">
+    <h3 id="instructor-lab-team-check-horizon-management-ui" class="step-title screensteps-heading">3. Instructor/Lab-Team check Horizon Management UI</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_F40920A3-19D7-4F1C-843D-344B4814B5E8" class="text-block-content">
+    <p>If nobody can login to a particular attendee desktop, the next step is to check the Horizon Management UI, Machines Page to see if the Agent Version is showing.</p>
+<p>For instructions on logging in, restarting, resetting, and Recovering Horizon Desktops, see this article:<br><a data-internal-link-id="1853792" data-internal-link="article" href="../../124968/l/1853792-how-to-login-and-restart-reset-recover-attendee-desktop" target="_blank">How To Login and Restart/Reset/Recover Attendee Desktop</a></p>
+<p>If the "Agent Version" column shows anything other than a valid Version number, then the Desktop most likely needs to be Restarted (Guest Os Restart) or Reset (Guest OS Power-Off/On).</p>
+<p><span style="color:rgb(255,38,0);"><strong>As a LAST RESORT:</strong></span></p>
+<p>If, even after a restart of the Desktop, the desktop still cannot be logged into, then the only remaining option is to "Recover" the desktop( Sets Desktop back to fresh base image ). This will result in the loss of any data files (configs, scripts, etc...) that have been created on that desktop. As an instructor, you could SCP those files to a temp folder on your Instructor desktop and then scp them back tot he attendee desktop once it has been recovered.</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="this-article-is-currently-a-wip-instructors-please-help-with-additional-screenshots-and-troubleshooting-guidance" data-step-uuid="238EB2C3-2CAD-4E24-A632-FA336BD0DA2E">
+    <h2 id="this-article-is-currently-a-wip-instructors-please-help-with-additional-screenshots-and-troubleshooting-guidance" class="step-title screensteps-heading">THIS ARTICLE IS CURRENTLY A WIP - Instructors - please help with additional Screenshots and troubleshooting guidance</h2>
+  </div>
+
+

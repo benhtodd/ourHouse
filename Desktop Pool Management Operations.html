@@ -1,0 +1,317 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_407F29CF-F977-47E0-ACC5-A3525F76C09D" class="text-block-content">
+    <p>We are using vRealize Suite for overall Lab Environment Management and Automation. This article will step you through the process of logging in and managing Horizon Desktop Pools i.e Recover, Reset, or Restart any VM in the pool OR Recover the entire pool back to base image.</p>
+<p>Desktop Pool Management catalogs are available for the teams using Linux based VMs for the Attendees Labs. Catalog names and it's respective teams are listed below:</p>
+<ul>
+<li>
+<strong>ModernApp Dev Desktops Catalog </strong>is for Modern Applications Livefire : Cloud Native Developer </li>
+<li>
+<strong>ModernApp Infra Desktops Catalog</strong> is for Modern Applications Livefire : Cloud Native Infrastructure</li>
+<li>
+<strong>VCF Desktops</strong> Catalog is for VCF Livefire : Architecture &amp; Automation</li>
+<li>
+<strong>TAKE3 Desktops</strong> is for Take3 Users Virtual Machines</li>
+<li>
+<strong>Instructor-Ubuntu-Desktops</strong> is for Instructor Desktops</li>
+</ul>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="1-log-in-to-our-livefire-automation-portal-catalog" data-step-uuid="83B5B25C-BEBA-4526-A2D3-0B01683CC1E0">
+    <h2 id="1-log-in-to-our-livefire-automation-portal-catalog" class="step-title screensteps-heading">1. Log in to our Livefire Automation Portal Catalog</h2>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/112/original/c8f1ea73-6c8f-480d-8658-d1b6c1fef19e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a7b9d2c8c09d94ea6d21faa2b0b62d5571660269289f36bf7d0a0ea4bc4ddd81" srcset="" alt="" height="599" width="412">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_DE60F7C2-4527-4C0A-B0DE-90AD0207AC20" class="text-block-content">
+    <ol style="list-style-type:lower-alpha;">
+<li>Log in to <a href="https://vra.lab.livefire.dev/catalog" target="_blank">https://vra.lab.livefire.dev/catalog</a> using Lab Username (domain should be lab.livefire.dev) and password.</li>
+<li>Select Service Broker from Livefire Automation Portal - Cloud Services Console</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/113/original/5f226470-de78-425b-90a8-ae24675a52e6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b812781459ca4b89890fd2cc5b5de68629f6a6670efe490b5c08fec37eca9860" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/113/medium/5f226470-de78-425b-90a8-ae24675a52e6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9a97ee699beb49f845a9b50f372758470ed3ef4d1d593d80ab1890786127c62f" srcset="" alt="" height="416" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="2-request-desktop-pool-management-catalog" data-step-uuid="C0F37F5E-8DDE-4013-B1C1-934626378EA7">
+    <h2 id="2-request-desktop-pool-management-catalog" class="step-title screensteps-heading">2. Request Desktop Pool Management Catalog </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_BD4BA326-8D27-41BD-8975-4347270A5C0C" class="text-block-content">
+    <p>Select the catalog item, based on respective teams and tagged Horizon Desktop Pools.</p>
+<p> The below icon is used to identify the Desktop Pool Management Catalogs:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/114/original/3ddfc144-090b-4d92-9f2a-22f82d0bfb00.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=79ae5610226bd6e38c265a32fab468e7f63df8f9e5db949e53392f99274f4ab6" srcset="" alt="" height="217" width="326">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_37359EF7-695E-4CD5-A6FE-4BB91EAFC106" class="text-block-content">
+    <p>Available Catalogs with the tagged Horizon Desktop Pools:</p>
+<ul>
+<li>Modern App Infra Desktops - <strong>ATT-MIL</strong>
+</li>
+<li>Moder App dev Desktops - <strong>ATT-MDL</strong>
+</li>
+<li>Cloud Services Desktops - <strong>ATT-UBUNTU</strong>
+</li>
+<li>VCF Desktops - <strong>ATT-VCFL</strong>
+</li>
+<li>TAKE3 Desktops - <strong>ATT-TAKE3</strong>
+</li>
+<li>Instructor-Ubuntu-Desktops - <strong>Instructor-Ubuntu-Desktops</strong> </li>
+</ul>
+<p>After selecting the correct catalog, click on request.</p>
+<p><em>For the below example Modern App dev Desktops is used.</em></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/115/original/9c51de92-fc2e-43ad-ae38-935092e36164.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=45a3d7f3170ed1180e1e69e731bb38349136157e232fce6d63f4bdfd2a83af0a" srcset="" alt="" height="410" width="788">
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="3-select-the-required-action" data-step-uuid="2F3383DE-5EE6-46DF-990B-49CD16FE19D6">
+    <h2 id="3-select-the-required-action" class="step-title screensteps-heading">3. Select the required action</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8D84CEB6-D54B-402D-B3C5-0431AAC727FE" class="text-block-content">
+    <p>The below actions are available to manage the desktop pools with their corresponding virtual machines </p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_9F41A874-92F1-4295-B152-C2CE2BFCDC11" class="text-block-content">
+    <p>Note : Be cautious while selecting the below actions as proceeding will result in the loss of any saved and unsaved user data of the Virtual Machine</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E9AB958C-36D5-4193-A361-9B5ABE859999" class="text-block-content">
+    <p>Available Actions:</p>
+<ol style="list-style-type:lower-alpha;">
+<li>
+<strong>Recover Entire Pool</strong> : Recovers the entire pool back to base image.</li>
+<li>
+<strong>Recover Multiple Machines : </strong>Recovers the selected multiple virtual machines from the available machines of the respective pool back to base image.</li>
+<li>
+<strong>Recover an Individual Machine : </strong>Recovers the selected individual virtual machines from the available machines of the respective pool back to base image.</li>
+<li>
+<strong>Reset an individual Machine: </strong>Resets the selected individual virtual machines from the available list of machines.</li>
+<li>
+<strong>Restart an Individual Machine : </strong>Restarts the selected individual virtual machines from the available list of machines.</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/116/original/7dd7d927-d9ce-4575-9b15-bbbf01da04dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ea95b9f067c3fcd52e06f1800c6dd8a8220b862b18dcc81c609fc996d451b35e" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/116/medium/7dd7d927-d9ce-4575-9b15-bbbf01da04dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=637ca84d67a7e9f24caf581e8a28f1ae40f501358d0af1e23d14aab94c8875d1" srcset="" alt="" height="498" width="855">
+      </a>
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="a-recover-entire-pool" data-step-uuid="73D20683-8862-41A2-8CCE-96A2CD655B7A">
+    <h3 id="a-recover-entire-pool" class="step-title screensteps-heading">a. Recover Entire Pool</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6B0FF581-6684-4724-8C3B-D300D1CDAAD8" class="text-block-content">
+    <p>Select "Recover Entire Pool" to recover the entire pool(all the available virtual machines of the respective pool) back to base image. Aafter selection of this action, it adds a new tab next to General tab, for the desktop pool name confirmation.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_65374C57-7F47-4A4D-8B72-1420C4917A09" class="text-block-content">
+    <p>Are you sure you want to go with "Recover Entire Pool", as proceeding will result in the loss of all saved and unsaved user data as well as disconnects from all active sessions, if yes click on "Confirmation" tab and provide the Desktop Pool name.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/117/original/5fc6fe92-c366-44bd-adf6-3cfe7e1791b0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=842010785bd126e4f57fdd43012c56d77443c6498ddcef9a4a1b2f895cd3610a" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/117/medium/5fc6fe92-c366-44bd-adf6-3cfe7e1791b0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=518dce1ff1e16aa6d7241ca2cae3675767d4040ff007d6f8026dda5b5ac8a9a2" srcset="" alt="" height="498" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1FEB6517-5CED-4B79-81C7-1C7A6AE7177F" class="text-block-content">
+    <p><strong>Desktop Pool Name Confirmation</strong> : &nbsp;Type the correct &nbsp;desktop pool name in the same format as it displayed in the General tab against "Horizon Pool Name" for which "RECOVER" action needs to be taken.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_1DB4C713-1F92-4A26-9872-E58CE9833B21" class="text-block-content">
+    <p>Note : Desktop Pool Name Confirmation is a mandtory field which appears only in case of entire pool recovery.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/118/original/d671510b-0a1f-4e24-ae41-c31c43225db7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=47897a63eceeba0bb4a18426f6de613a0fe1cdd26add40589bfa9e411670efe8" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/118/medium/d671510b-0a1f-4e24-ae41-c31c43225db7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a2a8a745916e2bf2e3c82fae072555932a860f5849d8e40831b7ab7e839e7bb3" srcset="" alt="" height="498" width="855">
+      </a>
+  </div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="b-recover-multiple-machines" data-step-uuid="B721EEB8-3E48-4BFA-99F4-355B8ED66506">
+    <h3 id="b-recover-multiple-machines" class="step-title screensteps-heading">b. Recover Multiple Machines</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4BAA4A45-2DEB-4026-9CCC-8536C7F0CBE7" class="text-block-content">
+    <p>To recover multiple virtual machines, select machine names from the displayed list of available machines.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_F17DCBD6-68D5-4E83-BB22-ECC237C7BE8D" class="text-block-content">
+    <p>Are you sure you want to go with Recover Virtual Machine, as proceeding will disconnect from all active sessions and loss of all saved/unsaved user data and converts back to the base image.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/119/original/6386a75b-92db-4a47-8121-9342ba3001ab.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0abfff536139ac7b287d9d88a63ce80bde53a929e3aaf934e76b5b27209aa1cb" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/119/medium/6386a75b-92db-4a47-8121-9342ba3001ab.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f93bbb5086cade003a07ce838aa17c5b0b019c42cc6f22356ff6391ed98494a9" srcset="" alt="" height="498" width="855">
+      </a>
+  </div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="c-recover-an-individual-machine" data-step-uuid="CFCD6DFA-B9FF-4880-A90E-16D9A3AD13B7">
+    <h3 id="c-recover-an-individual-machine" class="step-title screensteps-heading">c. Recover an Individual Machine</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_F9AC6D31-C5C6-4AD1-B370-B408639AF441" class="text-block-content">
+    <p>To recover an individual machine, select a machine name from drop down of available machines which needs to be recovered.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/120/original/28356c3a-f4a5-4234-b421-2fba1530f32e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0e330b2263cb738dd804358c43fc369f26f58d8a14e9df6b5edbc7c4e849d37e" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/120/medium/28356c3a-f4a5-4234-b421-2fba1530f32e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194321Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=755337d55c458614829970491595ce14d99dd93838a653a148dd4347699f7499" srcset="" alt="" height="498" width="855">
+      </a>
+  </div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="d-reset-an-individual-machine" data-step-uuid="21A82CDE-E0CF-4658-9C2A-FB369CB4F822">
+    <h3 id="d-reset-an-individual-machine" class="step-title screensteps-heading">d. Reset an Individual Machine</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_F3B67BBF-7946-42C3-BFE8-9F2767B9F64E" class="text-block-content">
+    <p>To reset an individual machine, select a machine name from drop down of available machines which needs to be reset .</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_5B6519CA-12EC-498F-9788-9E498744A5D7" class="text-block-content">
+    <p>Are you sure you want to go with Reset Virtual Machine, as proceeding will result in the loss of all unsaved user data as well as disconnects all active sessions.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/121/original/9380a649-9596-4f52-880d-221e4604a58e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c98192b2781a1b9e77fcf130be4c361ae094daf1e42a498d1f8cc8121115e284" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/121/medium/9380a649-9596-4f52-880d-221e4604a58e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b22977ca87339afb3ea42da4f027e3aa12366ffa4013de0ff3b0993302937e6a" srcset="" alt="" height="498" width="855">
+      </a>
+  </div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="e-restart-an-individual-machine" data-step-uuid="51C4B099-3EA2-4261-9AC6-F2E9899FCD09">
+    <h3 id="e-restart-an-individual-machine" class="step-title screensteps-heading">e. Restart an Individual Machine</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2F9009A0-40A0-4CB9-A18C-39D5F4B1C7F5" class="text-block-content">
+    <p>To restart an individual machine, select a machine name from drop of available machines which needs to be restarted .</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_73371F2D-EDE9-4D76-8067-8B9DB2B446FE" class="text-block-content">
+    <p>Are you sure you want to go with Restart Virtual Machine, as proceeding will result in the loss of all unsaved user data as well as disconnects all active sessions.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/122/original/2c89f347-8c27-478a-aaab-1346188cfb3d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d81f603648f501ae9f82ffc8c63cc5a905d1d8ee20bbadcdcc24a0039ae5ad4b" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/122/medium/2c89f347-8c27-478a-aaab-1346188cfb3d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=034f5dd70cfd41681339a7e58ccdae47c227a4f42aff0b3e10254555cabac95d" srcset="" alt="" height="498" width="855">
+      </a>
+  </div>
+ 
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="4-submit-the-request" data-step-uuid="D2EC82F4-9C11-4D9A-83BA-490F245BA00E">
+    <h2 id="4-submit-the-request" class="step-title screensteps-heading">4. SUBMIT the Request</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8C66FC96-BAC9-4AFC-8575-9D099786E44E" class="text-block-content">
+    <p>After cross verifying all the selected options and it's corresponding inputs click on submit.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/123/original/d6a3a7fb-bc26-4f02-b38c-5219d0fe680d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=dafa11081af8574d079f6cbaaddf8c44e557118a233fe80a65d90214dd3fbe5d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/123/medium/d6a3a7fb-bc26-4f02-b38c-5219d0fe680d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=693ec06584132e928f2b48bd677926a15c9a9c682f2bce675b289513f9e929a4" srcset="" alt="" height="498" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="5-confirmation-on-successful-failed-deployment" data-step-uuid="DA1946C7-CE5C-460F-B366-46756665A364">
+    <h2 id="5-confirmation-on-successful-failed-deployment" class="step-title screensteps-heading">5. Confirmation on successful/failed deployment </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_F9D5426E-5847-44D6-9680-38A9F8711EC7" class="text-block-content">
+    <p>The above mentioned actions take few seconds to complete and displays the result in the Deployments tab, select the appropriate deployment (catalog name plus the deployment time).</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/124/original/9946a6bb-10e9-4e2e-944d-ac110b6e6041.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=46751c4e109dfca6ce3aeecffc9d7a802a467fa8e1b915e34880e07295e4314b" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/124/medium/9946a6bb-10e9-4e2e-944d-ac110b6e6041.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=34c75a2b146c674c220527f9cac2705fe7d9d7752d9e856de0e83a8c07f1d3bb" srcset="" alt="" height="176" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C3DAFA1F-CB86-497E-8A35-29E18A0695A5" class="text-block-content">
+    <p>Select the deployment to verify the details and see <strong>Create Successful</strong> with the list of events performed.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/125/original/bd4c6cf6-7427-46fb-ac0a-b2072daed906.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e4a7adbd78affc0c8ae9b8922203f99caff2fbb8df8bd8589d00b541ee92076a" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/125/medium/bd4c6cf6-7427-46fb-ac0a-b2072daed906.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0eebbe5d996bc42ec52d62a355fda9e5b7a1a4aa6ab24d2ca3b694a6502188c0" srcset="" alt="" height="332" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7E4A46F8-749B-4625-A19D-AF8692319605" class="text-block-content">
+    <p>To cross verify the request details select <strong>Request Details</strong> next to Events tab and confirm the Action Name, Machine Name and Horizon Pool Name etc.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/126/original/21749d00-7188-40da-b00c-a00ad653694e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=257f365b9336e48fa15410aac34eb70258566eb0eb29a15afa99864b89d16a37" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/126/medium/21749d00-7188-40da-b00c-a00ad653694e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194322Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e069ee53a6b0b47023d21d6441bb4c449353555bb89912c582e28b605a051ba6" srcset="" alt="" height="290" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="deployment-completes" data-step-uuid="F65C1BEE-6A4D-4E93-9978-F1FEB86F904C">
+    <h2 id="deployment-completes" class="step-title screensteps-heading">Deployment Completes </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_848B4B42-F257-46D4-9D77-CDE88FA926C1" class="text-block-content">
+    <p>Now the virtual machines should function as expected with a fresh login.</p>
+  </div>
+</div>
+ 
+  </div>
+
+

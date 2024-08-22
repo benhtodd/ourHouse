@@ -1,0 +1,287 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_1D5C675F-F515-46E1-927B-3708FDC9A31C" class="text-block-content">
+    <p>In this chapter we will Clone (or Import) a base Blueprint that we will use as a skeleton and build upon. We will also start configuring the Blueprint inputs to match our company needs. </p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="importing-the-blueprint" data-step-uuid="EBC73A1F-8A42-4CEA-8D1B-C03F8BF343FE">
+    <h2 id="importing-the-blueprint" class="step-title screensteps-heading">Importing the Blueprint </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_070F3A6B-DC50-421A-8EB1-7C997A50896F" class="text-block-content">
+    <ol>
+<li>The <strong>Big Blueprint v8 (BB8) - Start.yaml</strong> should be available in the Design tab in Cloud Assembly. Alternatively you can also find it in Dropbox. If it is not there, ask your instructor(s) for the blueprint.</li>
+<li>Clone the existing blueprint or update the copy from Dropbox.</li>
+<li>In<strong>&nbsp;Cloud Assembly</strong> navigate to the <strong>Design</strong> tab to manage Blueprints and&nbsp;select <strong>Upload.</strong>
+</li>
+<li>Name your blueprint <strong>Big Blueprint v8 (BB8) -&nbsp;</strong><em><strong>yourname</strong></em><strong>&nbsp;</strong>and add it to the existing <strong>dev-tito&nbsp;</strong> project.</li>
+</ol>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="solution-importing-the-blueprint" data-step-uuid="3DD68FDF-DE30-422C-9BA9-3DD30D5763B1">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#solution-importing-the-blueprint" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-3DD68FDF-DE30-422C-9BA9-3DD30D5763B1" 
+          data-target-step-uuid="3DD68FDF-DE30-422C-9BA9-3DD30D5763B1">
+          Solution: Importing the Blueprint 
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="3DD68FDF-DE30-422C-9BA9-3DD30D5763B1" id="nested-step-3DD68FDF-DE30-422C-9BA9-3DD30D5763B1">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9C1309AD-D835-4ECC-99D6-15F0A8CD3F9D" class="text-block-content">
+    <p>In<strong>&nbsp;Cloud Assembly</strong> navigate to the <strong>Design</strong> tab and &nbsp;select <strong>Upload</strong>&nbsp;</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/271/original/1125ad9a-0bfd-4699-b771-ba1bbdcd6b08.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=75c5d3754d27d29720c2169a702395970da13b257e2f82406fb06de08368f117" srcset="" alt="Design Screen" height="188" width="735">
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_93BA9BEA-3EC2-4FDE-A08D-8821CA532818" class="text-block-content">
+    <p>Name your blueprint <strong>Big Blueprint v8 (BB8) -&nbsp;</strong><em><strong>yourname</strong></em><strong>&nbsp;</strong>and add it to the existing <strong>dev-tito&nbsp;</strong>project. Browse for the file and click <strong>upload</strong></p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/272/original/1cb80f8e-a3b8-419f-9d65-bdef81e45ac6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d87d19a37b65b006dabd9f4c427ce3548faa283fad67bdc3a4852cbc309633b9" srcset="" alt="Blueprint Upload Form" height="560" width="588">
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="setting-up-the-blueprint-inputs" data-step-uuid="DFE56FD9-2B48-4C2B-9BCE-3580F929EDDA">
+    <h2 id="setting-up-the-blueprint-inputs" class="step-title screensteps-heading">Setting up the Blueprint Inputs</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EBA0DB16-5691-411B-B192-BD8403847495" class="text-block-content">
+    <p>If you try to deploy the BP you will notice that , although the inputs have been defined, they are lacking a lot of properties. In this section will will modify the attributes to meet our company needs for the BP. </p>
+<p>Let's start with the looking at the inputs and what our company requirements are. </p>
+<p><strong>flavor </strong>input requirements: </p>
+<ul>
+<li>flavor input must be a <strong>dropdown</strong> field with a list of all available flavors. </li>
+<li>Default choice listed should be the <strong>smallest flavor</strong>.</li>
+</ul>
+<p><strong>environment </strong>input requirements: </p>
+<ul>
+<li>The Input must be a<strong> dropdown</strong> field with a list of all available cloud zone environments. </li>
+<li>The dropdown should also present an option to <strong>select any</strong> of the available cloud zone environments. </li>
+<li>Items in the dropdown list should use use <strong>friendly names</strong> for the cloud zone environments: e.g. Production, Test, ...</li>
+<li>Default choice listed should be the <strong>Development</strong> environment. </li>
+</ul>
+<p>We are giving you a hint with a preview of the environment input presentation. Most of the remaining inputs have similar presentation. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/273/original/c035a99e-6b3e-42df-8c2f-5749c25c9f4a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ae33868e248fa8def1b391a1676071cfcf7f92b02967b2c08c8091d5cf7249c8" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="164" width="419">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_63867029-90AA-433A-A502-58894D39D3A7" class="text-block-content">
+    <p><strong>cloudZone&nbsp;</strong>input requirements:</p>
+<ul>
+<li>The Input must be a <strong>dropdown</strong> field with a list of all available cloud zones types.</li>
+<li>The dropdown should also present an option to <strong>select any</strong> of the available cloud zone types.</li>
+<li>Items in the dropdown list should use use <strong>friendly names</strong> for the cloud zone types: e.g. AWS, Azure</li>
+<li>Default choice listed should be <strong>AWS</strong>
+</li>
+</ul>
+<p><strong>network&nbsp;</strong>input requirements:</p>
+<ul>
+<li>The Input must be a <strong>dropdown</strong> field with a list of all available network types.</li>
+<li>The dropdown should also present an option to <strong>select any</strong> of the available network types.</li>
+<li>Items in the dropdown list should use use <strong>friendly names</strong> for the cloud zone types: e.g. Public, Private</li>
+<li>Default choice listed should be <strong>Public&nbsp;</strong>
+</li>
+</ul>
+<p><strong>loadBalancer&nbsp;</strong>input should present the user with an option to deploy or not to deploy a load balancer. Later on when you work on the Load Balancer section in the BP you can revise these requirements if you cannot determine what should be configured now:</p>
+<ul>
+<li>The Input must be a <strong>dropdown</strong> field giving a Yes/No list option to deploy or not to deploy a load balancer.</li>
+<li>Default choice listed should be <strong>Yes&nbsp;</strong>
+</li>
+</ul>
+<p><strong>storageTier&nbsp;</strong>input requirements:</p>
+<ul>
+<li>The Input must be a <strong>dropdown</strong> field with a list of all available storage tiers.</li>
+<li>The dropdown should also present an option to <strong>select any</strong> of the available storage tiers.</li>
+<li>Items in the dropdown list should use use <strong>friendly names</strong> for the cloud zone types: e.g. Silver , Bronze, ...</li>
+<li>Default choice listed should be <strong>Silver</strong>
+</li>
+</ul>
+<p><strong>resourceGroupType&nbsp;</strong>should enable the user to select between<strong>&nbsp;</strong>creating&nbsp;an&nbsp;on-demand&nbsp;Azure resource&nbsp;group&nbsp;(RG) for&nbsp;each&nbsp;deployment, use a&nbsp;predefined&nbsp;Azure RG&nbsp;for&nbsp;the&nbsp;deployment&nbsp;Region, or use an existing RG Group. Name&nbsp;must&nbsp;be&nbsp;provided&nbsp;in&nbsp;next&nbsp;field.<strong>&nbsp;&nbsp;</strong>If existing RG group is used the name must be specified in the resourceGroupName input.</p>
+<p><strong>resourceGroupType&nbsp;</strong>input requirements:</p>
+<ul>
+<li>The Input must be a <strong>dropdown</strong> field with a list that includes the following resource group types : predefined, ondemand, existing</li>
+<li>Default choice listed should be <strong>ondemand</strong>
+</li>
+</ul>
+<p><strong>resourceGroupName&nbsp;</strong>input requirements:</p>
+<ul>
+<li>The Input must be a string field where users will enter name for an Azure RG when the <strong>resourceGroupType&nbsp;</strong>is <strong>Existing</strong>
+</li>
+<li>The input should have an <strong>empty&nbsp;</strong>default value</li>
+<li>Valid value for the input should allow only: alphanumeric characters, periods, underscores, hyphens and parenthesis.</li>
+</ul>
+<p><strong>tagsOptional&nbsp;</strong>input requirements:</p>
+<ul>
+<li>The Input must be an <strong>array of string&nbsp;</strong>objects. &nbsp;</li>
+<li>It must provide the user to <strong>optionally</strong> enter key value pairs that later on will be used in the BP and applied to all objects as tags.</li>
+<li>The input should have no initial value.</li>
+<li>When specifying the optional tags a description should be available for the Key and Value inputs. The description should provide the following information:<span style="color:rgb(255,38,0);"><em><strong> Only hyphens (-), underscores (_), lowercase characters, and numbers are allowed.</strong></em></span>
+</li>
+</ul>
+<p><strong>tagsRequired&nbsp;</strong>input requirements:</p>
+<ul>
+<li>The Input must be an <strong>array of string&nbsp;</strong>objects. &nbsp;</li>
+<li>As these are required tags, user must not be able to add, remove or modify these tags during deployment.</li>
+<li>The input should contain 2 key value pairs: <strong>cas-resource-desc:class-delivery</strong> and <strong>cas-resource-source:vra-cloud</strong>
+</li>
+</ul>
+<p>The blueprint input presentation should looks something like this.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/274/original/560c217e-708d-46ad-8472-88444b837ac5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=56a72f0c84c98a0445f955f958f9602a9498fff53a0b19b761a00cea5fae064f" srcset="" alt="Tags dialog" height="413" width="493">
+  </div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/275/original/3fd558e2-b106-4caa-877c-ed459599fb15.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a54280709356235c8c2f66fb90d5573a748ae412dd76e3621d65fe24b57253da" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="202" width="815">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_06F342F7-76A0-4E4C-8D5D-49A927CB73D9" class="text-block-content">
+    <p>As you may have noticed in the BP there are 2 additional disks part of the blueprint. During provisioning type user could specify one or more additional disks to be provisioned as part of the deployment. As we may want different storage tiers for the additional disks, two volume storage inputs are available. &nbsp;These are very similar to the <strong>storageTier&nbsp;</strong>defined previously.</p>
+<p><strong>volume2storage</strong> and <strong>volume1storage&nbsp;</strong>input requirements:</p>
+<ul>
+<li>same as <strong>storageTier&nbsp;</strong>input</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint_1" data-step-uuid="72AE832F-B20D-4901-A8AA-8B3D95E8DF7D">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint_1" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-72AE832F-B20D-4901-A8AA-8B3D95E8DF7D" 
+          data-target-step-uuid="72AE832F-B20D-4901-A8AA-8B3D95E8DF7D">
+          HINT
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="72AE832F-B20D-4901-A8AA-8B3D95E8DF7D" id="nested-step-72AE832F-B20D-4901-A8AA-8B3D95E8DF7D">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6B0DBE5F-A169-4253-9E0F-67137052ED0E" class="text-block-content">
+    <p>If you are very unfamiliar with inputs this public documentation offers good examples and should get you started:<br><a href="https://docs.vmware.com/en/VMware-Cloud-Assembly/services/Using-and-Managing/GUID-6BA1DA96-5C20-44BF-9C81-F8132B9B4872.html" target="_blank">https://docs.vmware.com/en/VMware-Cloud-Assembly/services/Using-and-Managing/GUID-6BA1DA96-5C20-44BF-9C81-F8132B9B4872.html</a></p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint" data-step-uuid="3EF32B24-F9FD-477A-A707-34ADBA55AFA1">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-3EF32B24-F9FD-477A-A707-34ADBA55AFA1" 
+          data-target-step-uuid="3EF32B24-F9FD-477A-A707-34ADBA55AFA1">
+          HINT 
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="3EF32B24-F9FD-477A-A707-34ADBA55AFA1" id="nested-step-3EF32B24-F9FD-477A-A707-34ADBA55AFA1">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3A025E06-F5B3-44AA-8686-25413F7EE3B6" class="text-block-content">
+    <p>Here are screenshots of the input presentation. Lets see if this will help you out to progress in the lab. </p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/276/original/54c81211-46d3-47ec-a5cb-4d46d7d0dad8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7fc08597950cb7a4bc9fce31f88725fdbdb8853ab1d31b279df212e91118ca7f" srcset="" alt="Flavor Input Dropbdown" height="188" width="455">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/277/original/6e20cdba-a28e-4587-83d3-875c1459b392.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7be2e117c54c9ad51d7e886c3e9330380e0ad019046268ec2cf4a8c00d5e7eae" srcset="" alt="Environment Input Dropdown" height="186" width="425">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/278/original/51de4be6-a0e0-4e9d-8bd8-9dc2c6ceec18.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=db5c7f83fc3990b19eeff870a409bfa7ca96bfa4703659dffdcd8c1eb63bfef9" srcset="" alt="Cloud Input Dropdown" height="168" width="440">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/279/original/5fc59003-f5e4-4c07-8cd3-db6010603352.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f9f8ecbf5cc6dfc035bbfcb9b15b4824b6443c18d43c436bcd5f1d24ba68f63f" srcset="" alt="Network Input Dropdown" height="166" width="441">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/280/original/4ddfe672-6f1e-4a68-aada-1526c8f55e41.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=10c7c207e6173ab434e518d2ab513bbd250f7315d983b13f1727d53dc2de9c74" srcset="" alt="Deploy LB Input Dropdown" height="141" width="436">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/281/original/c645a065-3416-41e7-979b-d3295ded2aef.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0716eb1085d0ff06f2203095cfd1fcfe802f12179dbfa8f582200259ea06194b" srcset="" alt="Storage Tier Input Dropdown" height="218" width="444">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/282/original/026e7c1e-ee92-46eb-a001-fb603a5b20b9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=fb03e612b3c2a18445c6979ce2b9c8ce1033c26be226858e20e40faf53c0ee92" srcset="" alt="RG Type Input Dropdown" height="171" width="441">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/283/original/f1d492b5-8d69-44a9-9c2b-f6afc3c3a1f8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=91882a61acd6b36ef4528ace66768a249e2494550744161341820e5a5c700906" srcset="" alt="Optional Tags screen" height="413" width="493">
+  </div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/284/original/70f602aa-c6d1-401e-b82b-971924521fe2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194453Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f2cbf558199e920b80d09e0eb790c325c0faab44b9a63711c407819e64f58c00" srcset="" alt="Storage Tier Dropdown" height="445" width="450">
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="solution" data-step-uuid="2BEA69A4-5715-4381-A743-BFAAF21D5539">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#solution" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-2BEA69A4-5715-4381-A743-BFAAF21D5539" 
+          data-target-step-uuid="2BEA69A4-5715-4381-A743-BFAAF21D5539">
+          SOLUTION
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="2BEA69A4-5715-4381-A743-BFAAF21D5539" id="nested-step-2BEA69A4-5715-4381-A743-BFAAF21D5539">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_34A306B4-33C5-4C78-BF2C-B9C8FF88C8B3" class="text-block-content">
+    <p>The solution YAML representing all the resources part of the blueprint Big_Blueprint_v8_(BB8)_inputs.yaml can be found on the Dropbox share. Take a look at it and go back to the requirements to see how each end every requirement was met in the YAML code.</p>
+  </div>
+</div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_FA7B3D1D-B77C-4759-8BF7-DB30EDB721D3" class="text-block-content">
+    <p>When comparing your code vs the solution code make sure to note: </p>
+<ul>
+<li>How we've used <strong>oneOf</strong> property to provide the dropdown list with friendly names</li>
+<li>How we've created an <strong>array of string objects</strong> for the Tag inputs. </li>
+<li>How we've locked/made read only&nbsp;the <strong>tagsRequired</strong> input so that it cannot be changed by a user. </li>
+<li>How we've used <strong>empty '' value</strong> for all inputs that we use as constraints for deployment. In this case no constraint is passed and the company requirement to be able to select "any of the" is fulfilled. </li>
+</ul>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+

@@ -1,0 +1,103 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_27B1FC87-82A7-4914-BC41-E94FE23D9D08" class="text-block-content">
+    <p>In this lab, we are going to put a DMZ constraint to our blueprint for the networks. We are going to examine how these affect the deployment engine decisions for resource placement.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="importing-the-blueprint" data-step-uuid="C9C18132-B0FB-41D8-942B-5079405F6B61">
+    <h2 id="importing-the-blueprint" class="step-title screensteps-heading">Adding DMZ Network Capability Constraint</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A8FEADAD-0BB5-40FF-AB05-11390E0B94D3" class="text-block-content">
+    <p>Open the <strong>Tito - Placement </strong><em><strong>- yourname&nbsp;</strong></em>blueprint. Add/Uncomment the following Constraint Tag for the app-public-net network:</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;- tag: 'cas.network.cap:dmz'</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/266/original/aada3349-1dcf-4f21-ae23-9d996c37a1e2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194449Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c6a7ad1522f931179efe77ab36ab6f5e3e337b05e4efe8bafb4b90ec776aea98" srcset="" alt="" height="415" width="408">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A0272285-E98F-4574-B513-7C37E8914270" class="text-block-content">
+    <p>Deploy the blueprint with default inputs.</p>
+<p>Examine the deployment request details from the <strong>Requests</strong> tab for more info.</p>
+<p>Why did the deployment engine decide to place the deployment in PROD?</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_FDEDE7D1-D5A7-48E2-8441-89F6328F5C39" class="text-block-content">
+    <p><strong>DO NOT&nbsp;</strong>delete the deployment at the end of the lab.</p>
+  </div>
+</div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint-1" data-step-uuid="78F40332-CFCA-418F-B42B-A8207421A5DE">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint-1" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-78F40332-CFCA-418F-B42B-A8207421A5DE" 
+          data-target-step-uuid="78F40332-CFCA-418F-B42B-A8207421A5DE">
+          HINT 1
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="78F40332-CFCA-418F-B42B-A8207421A5DE" id="nested-step-78F40332-CFCA-418F-B42B-A8207421A5DE">
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_7DDCA91A-9D10-49B4-B69A-4F0979A03655" class="text-block-content">
+    <p>Answer is on the Network Profiles tab.</p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="solution-importing-the-blueprint" data-step-uuid="71DD273C-02AC-48A6-91AB-4B09459B4A7D">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#solution-importing-the-blueprint" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-71DD273C-02AC-48A6-91AB-4B09459B4A7D" 
+          data-target-step-uuid="71DD273C-02AC-48A6-91AB-4B09459B4A7D">
+          Solution: Adding DMZ Network Capability Constraint
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="71DD273C-02AC-48A6-91AB-4B09459B4A7D" id="nested-step-71DD273C-02AC-48A6-91AB-4B09459B4A7D">
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4856EC22-3F07-4A9D-AD8E-0D5BAF50A104" class="text-block-content">
+    <p>From the previous lab, we saw that after adding the PCI constraint the available regions for deployment were TEST and PROD. &nbsp;TEST was the preferred choice by the deployment engine as it has higher priority for the project.</p>
+<p>After adding the DMZ constraint we limited the deployment option to only PROD. If you examine the network profiles you will notice that only the <strong>prod</strong> <strong>profiles</strong> have the <strong>cas.network.cap:dmz</strong> capability tag.</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/267/original/a25e1c48-f4dc-42a0-bc29-8e3696a43a3f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194449Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b71d31d7bd98add06e6a3e134d51c153c53ea2c46fd4e066ce4632f1f58690b7" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/267/medium/a25e1c48-f4dc-42a0-bc29-8e3696a43a3f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194449Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=e02810e4b3a2eeff70c29e5e9ec1329c00f3af641afd38b3eaa74ce43d12633c" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="390" width="855">
+      </a>
+  </div>
+ 
+            <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/445/268/original/841801a3-c324-4b80-9a7d-48527cdec5fc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194449Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=9b82a3a093b999e102c955691fc4a98bb14bd61ddf3d77d577ece471934ffb0f" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/445/268/medium/841801a3-c324-4b80-9a7d-48527cdec5fc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194449Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=232db06083248fe89cd7b332f8edf581ef72856a756532e6484fee1d1de4c064" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="289" width="855">
+      </a>
+  </div>
+ 
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_BEBF1799-EA1A-435D-8713-3F038CB5DAEA" class="text-block-content">
+    <p><strong>DO NOT&nbsp;</strong>delete the deployment at the end of the lab.</p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+

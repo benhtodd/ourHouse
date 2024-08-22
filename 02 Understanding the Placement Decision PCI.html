@@ -1,0 +1,105 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_58F3D069-71D6-4872-B66F-FA07A6D11EF4" class="text-block-content">
+    <p>In this lab, we are going to try to figure out how the placement engine made the decision to place the deployment where it did.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="importing-the-blueprint" data-step-uuid="1EA78ACF-546A-430B-8F90-DCF3E97A5634">
+    <h2 id="importing-the-blueprint" class="step-title screensteps-heading">Understanding the Placement Decision</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_223573C9-31F9-47C6-BFA7-447CA34BDEF7" class="text-block-content">
+    <p>Examine again the deployment request details from the previous lab. Examine the database resource request details.</p>
+<p>Your deployment ended up in either AWS TEST (us-west-1) or AZURE TEST (westus1). &nbsp;<strong>Why?</strong></p>
+<p>Why didn't the deployment engine place the deployment in DEV or PROD&nbsp;in any of the public clouds?</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/264/original/24c9e8bc-602d-4180-b2ee-3156769b8443.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194448Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=755612cd4fda283e42cba1bdd5786b03cd996887a5ff34c32f389c1beaa8c76a" srcset="" alt="" height="849" width="588">
+  </div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint-1" data-step-uuid="4914DB6B-0DB1-4927-85E7-FFB3358C9BB7">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint-1" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-4914DB6B-0DB1-4927-85E7-FFB3358C9BB7" 
+          data-target-step-uuid="4914DB6B-0DB1-4927-85E7-FFB3358C9BB7">
+          HINT 1
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="4914DB6B-0DB1-4927-85E7-FFB3358C9BB7" id="nested-step-4914DB6B-0DB1-4927-85E7-FFB3358C9BB7">
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_D011461F-652C-4518-971F-B091187D0CAC" class="text-block-content">
+    <p>Review the Getting Started with <strong>Cloud Assembly</strong>&nbsp;chapter. The answer is there.</p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="hint-2" data-step-uuid="A05EFC68-CA4A-4D1B-B4DD-5C27E337EEDD">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#hint-2" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-A05EFC68-CA4A-4D1B-B4DD-5C27E337EEDD" 
+          data-target-step-uuid="A05EFC68-CA4A-4D1B-B4DD-5C27E337EEDD">
+          HINT 2
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="A05EFC68-CA4A-4D1B-B4DD-5C27E337EEDD" id="nested-step-A05EFC68-CA4A-4D1B-B4DD-5C27E337EEDD">
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_FF57ED2C-814E-447F-B719-166AF70871A5" class="text-block-content">
+    <p>The answer is in the <strong>Project configuration.&nbsp;</strong>Review the Tito project configuration.</p>
+  </div>
+</div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+        <div class="screensteps-child-wrapper">
+    <div class="step screensteps-section screensteps-depth-2 screensteps-foldable-step" id="solution-importing-the-blueprint" data-step-uuid="221B155A-E880-4AC2-A8B2-123057FBADE7">
+      <span class="step-title screensteps-heading screensteps-foldable-title screensteps-foldable-title-depth-2">
+        <a href="#solution-importing-the-blueprint" 
+          class="screensteps-foldable-content-parent screensteps-foldable-trigger" 
+          id="screensteps-step-221B155A-E880-4AC2-A8B2-123057FBADE7" 
+          data-target-step-uuid="221B155A-E880-4AC2-A8B2-123057FBADE7">
+          Solution: Understanding the Placement Decisions
+        </a>
+      </span>
+      <div class="screensteps-nested-content" data-step-uuid="221B155A-E880-4AC2-A8B2-123057FBADE7" id="nested-step-221B155A-E880-4AC2-A8B2-123057FBADE7">
+          <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_3058B374-730B-4C00-814C-B4D15A722143" class="text-block-content">
+    <p>Come on, give it another try before reading the solution!!!</p>
+  </div>
+</div>
+ 
+          <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8609048A-FB9C-48A6-A197-83AD15F8E058" class="text-block-content">
+    <p>Navigate to <strong>Infrastructure &gt; Projects</strong>, open the <strong>Project</strong> configuration and navigate to the <strong>Provisioning</strong> tab.</p>
+<p>Our DEV environment doesn't have storage profiles that fit the blueprint constraint requirement: 'cas.storage.profile.cap:pci'. &nbsp;This leaves TEST and PROD as options, both of which have Storage Profiles that have the pci capability requirement above.</p>
+<p>All deployments will land in TEST, and not PROD because the TEST regions have a higher priority set in the Project.</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+            <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/445/265/original/cb33da23-a15e-468a-87ce-fd9f47fa6aad.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194448Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c9340eddcf51f212c510bf89c501e3cf7e274281943678132cfcfae633e4eca9" srcset="" alt="Cloud Assembly - Mozilla Firefox" height="570" width="807">
+  </div>
+ 
+      </div>
+    </div>
+  </div>
+ 
+  </div>
+
+

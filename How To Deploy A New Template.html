@@ -1,0 +1,274 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_B96E5DC5-A369-4E32-8492-1087C603045B" class="text-block-content">
+    <p>This is an automated solution to prepare for a delivery, with the help of vRA catalog you can deploy a new template in Delivery/Delivery On-demand Org and also update the respective deployment pool in VLP.</p>
+<p>This Article explains about below catalogs:</p>
+<p>1. <a data-internal-anchor="catalog--template-copy-" data-internal-link="article" href="#catalog--template-copy-" target="_self">&nbsp;<strong>Template Copy</strong></a><a href="https://vmware-gts.screenstepslive.com/admin/v2/sites/21763/toc/manuals/103856/chapters/355737?showArticle=1623704#catalog--template-copy-" target="_blank"><strong>&nbsp;</strong></a>: This catalog is useful for capturing vApp from development org and return a vApp template in selected delivery org (on-demand/delivery) with attached delivery network.</p>
+<p>2.<a data-internal-anchor="catalog--update-vlp-pool" data-internal-link="article" href="#catalog--update-vlp-pool" target="_self">&nbsp;<strong>Update VLP Pool&nbsp;</strong></a>: This Catalog Sync lab templates in VLP with the vCD templates and updates selected deployment pool.</p>
+<p>3.<a data-internal-anchor="deploy-new-template" data-internal-link="article" href="#deploy-new-template" target="_self">&nbsp;<strong>Deploy new template</strong></a><strong>&nbsp;:&nbsp;</strong>This catalog is a combination of "Template copy" and "Update VLP pool" and it &nbsp;executes all the steps mentioned in the above two catalogs.</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_F56C2C2C-2120-4784-8EA4-169259A791AF" class="text-block-content">
+    <p>Rename your development vApp with the same name you want to store your template.</p>
+<p>As per this solution vRO takes approx 15 minutes to sync newly deployed/Updated vApps, if you can't see your vApp in the list, you must wait for sometime and try again.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="login-to-vra" data-step-uuid="7E26B4E3-1734-4E29-9BA3-1A4D2B3B651C">
+    <h2 id="login-to-vra" class="step-title screensteps-heading">Login to vRA </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_80E637DC-7BFC-40F4-80A4-BC9064B062CC" class="text-block-content">
+    <p>a. Log in to <a href="https://vra.lab.livefire.dev/catalog/#/library">vRA </a>using Lab Username (domain should be <strong>lab.livefire.dev</strong>) and password.</p>
+<p>b. Select Service Broker from Livefire Automation Portal - Cloud Services Console.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/050/original/ba7a3bef-601d-4cea-9c5c-ada13a00e1c4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a5c4b56e3082fd53e5a36adc8f5b7392f34cfe4b06dcdb4ae851c7faaa04f42d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/050/medium/ba7a3bef-601d-4cea-9c5c-ada13a00e1c4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f12249f7c08d0e811935f47d22d38a6a43abd4298997a6d58adedb421976a539" srcset="" alt="" height="344" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="catalog--template-copy-" data-step-uuid="37DB56EA-5D5B-409E-951B-D4B3AED36E93">
+    <h2 id="catalog--template-copy-" class="step-title screensteps-heading">Catalog : Template Copy </h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2D6DB9CD-F160-4326-80C7-98EA50A912EC" class="text-block-content">
+    <p><strong>&nbsp;</strong>To capture vApp from development org and return a vApp template in selected delivery org (on-demand/delivery) with attached network.</p>
+<p>Steps included as part of this catalog:</p>
+<ul style="list-style-type:circle;">
+<li>Search for selected vApp in development org</li>
+<li>Captures a temporary vApp template in development-consolidate org</li>
+<li>Clone the temporary vApp template in selected destination vcd</li>
+<li>Deploys a temporary vApp from the template</li>
+<li>Attach external network with the temporary vApp</li>
+<li>Captures the final template with the same name as the vApp</li>
+</ul>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_32E35163-9161-49D2-8F24-2A5DC45415D4" class="text-block-content">
+    <p>After successfully capturing the required template it deletes temporary template from selected delivery org, development consolidate org, and also deletes the temporary vApp.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/051/original/d8175529-cef0-4fde-8485-22234d418b9e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=36136eba735546baa3a95bc1f4d4eced9219263b11a2781da9e9d7ff4e9ef5ba" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/051/medium/d8175529-cef0-4fde-8485-22234d418b9e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b1dcd19e73c89442127804389771afcf1ca5a07ee04ad261c199a98cb02a3477" srcset="" alt="" height="335" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_787E7836-FC1A-4F25-B603-DE274E2DDE8A" class="text-block-content">
+    <p>Request for Template Copy catalog from the list of items, if you can't see the catalog move to next page or use the search bar.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/052/original/9198d92c-38ed-4fe7-b615-8b6bb16bb944.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2302347c07d0367021608e768e097d815dd079f1655c7d9005368ab3ad831203" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/052/medium/9198d92c-38ed-4fe7-b615-8b6bb16bb944.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=fb25f5d3417df3a3633add69c3b23446404efc1a82b5135b741f8b86139b0f67" srcset="" alt="" height="356" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E1C03146-5359-42A8-A58A-8F19A5FD1F05" class="text-block-content">
+    <p>This catalog has two inputs :</p>
+<p>1. <strong>Select vApp Name</strong> : from the drop down list of development vApps.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_B028D501-D7A0-4BF4-B097-E9800F223359" class="text-block-content">
+    <p>Rename your vApp with the same name you want to store your template.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/041/original/0b5578ba-b1ab-4be4-a850-d3afa1e3be50.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=eed067c6ddf1494b275065800aca6454623d97d3f40c4b276678c9ffb8c50e47" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/041/medium/0b5578ba-b1ab-4be4-a850-d3afa1e3be50.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=64441e5799d5d19c744055ae33906f5352193666b1de566abf98f95e725bc7e1" srcset="" alt="" height="401" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1C4F5B21-69BD-4489-89CE-5B0E656A0D98" class="text-block-content">
+    <p>2. <strong>Select Destination vCD</strong>: where you want to copy your template to either Livefire-Delivery Org or Livefire-Delivery-OnDemand Org.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/053/original/c8093264-cac7-4e3d-b9de-0f5d594f520e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=87e3ef0d9f9d97376e09571b83d94408136f2477718b828f6c4db6a4e747f29d" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/053/medium/c8093264-cac7-4e3d-b9de-0f5d594f520e.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=0326708b1d16c9e8464dcf732979708708f413ddee4dd5b054fc4b0eda295c64" srcset="" alt="" height="402" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_59E67E52-49E0-49B1-B184-DCF6E216A747" class="text-block-content">
+    <p>Click on submit, after providing correct inputs.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_26614356-D976-459E-90CA-77CA62F24354" class="text-block-content">
+    <p>This process takes time, as it includes multiple subprocess.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/054/original/6bef1de4-59c8-40d7-8cc8-d6fd10d751b9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d992ebd5b967b9c55b0945e557ba967d09ef04d9695ad8e7e710501f53bb74d7" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/054/medium/6bef1de4-59c8-40d7-8cc8-d6fd10d751b9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7e4e2a424d5a74c65f89a97fa07a2278db5bf19ab5978890d9350b1a5acc273a" srcset="" alt="" height="466" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9460DA35-8F7E-409B-A5D6-6C8D6EA9F0FD" class="text-block-content">
+    <p>Monitor progress of your request in Resources tab and after successful completion, verify your delivery ready template.<br>In case of failure contact HaaS team or follow manual approach.</p>
+<p><a href="https://haas-faq.livefire.solutions/a/1395065-how-to-copy-vapptemplate-to-delivery-org" target="_blank"><strong>How To: Copy vAppTemplate to Delivery Org</strong></a></p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="catalog--update-vlp-pool" data-step-uuid="B3705959-C7AB-4FDD-8CF6-C7144108F9E0">
+    <h2 id="catalog--update-vlp-pool" class="step-title screensteps-heading">Catalog : Update VLP Pool</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EB7615A6-44BF-4BEF-B206-706C6C45B777" class="text-block-content">
+    <p>This catalog Syncs all (Delivery/Delivery-OnDemand) vApp templates in VLP. It updates the selected Deployment Pool with the selected vApp template and deletes existing template from the deployment pool.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/049/original/9bb92eb7-5436-438a-9526-d0c661bd9eb5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1d742dbe7407a6e4ceb069aebd81cf98011c0ab10cf2b5b875cd6531b2a967e9" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/049/medium/9bb92eb7-5436-438a-9526-d0c661bd9eb5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=78210dc1a9eea9d2204cac8aacb2cab3cc1d2c851d7a79608b86936880515af9" srcset="" alt="" height="359" width="855">
+      </a>
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_B3149BBB-21F4-4263-9F01-80194CAA6F3D" class="text-block-content">
+    <p>Click on request. It display's vApp templates based on selected vCD Delivery Org.</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/055/original/08b3dbd8-3a55-46eb-bb95-44daa73af94a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f342cf90619580910bd6c5765a6bf29582fbd834d8229b2118f53e17932c2363" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/055/medium/08b3dbd8-3a55-46eb-bb95-44daa73af94a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b05484ff3f851b70d383c6b4fb878e0fb77381300d40f81abcd385c15514f407" srcset="" alt="" height="467" width="855">
+      </a>
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7DBB8DEB-C943-4D90-9A2F-34F89A40FAB8" class="text-block-content">
+    <p>Based on selected org, it shows list of template names. Select your template which should be updated to VLP deployment pool.</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/042/original/485e6395-2825-48d9-8731-33bdc7b982a7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b0d50fa364d4d37cc9d4d1e503e215a344e3b9b93c21a4e2ccf05399f8defdc3" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/042/medium/485e6395-2825-48d9-8731-33bdc7b982a7.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ef7b182a3122274cc9be26fa0550bdfaa6d0075643c2008f0425bfad875c9a2d" srcset="" alt="" height="465" width="855">
+      </a>
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_581F9D44-F651-4489-9BFF-90B300C5B4B0" class="text-block-content">
+    <p>Select your deployment pool which is part of VLP class deployment.</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/043/original/1b9d0550-82c2-497f-835b-101ceab36537.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d254788ddce31d4135626442aa57e4e9db7359010b50a0a2ba8748f58dcadddf" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/043/medium/1b9d0550-82c2-497f-835b-101ceab36537.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2ea3fa62513bda8652bf04ae628d1e0ac732befe0ab73cf9a347adf85fbd9127" srcset="" alt="" height="465" width="855">
+      </a>
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4EB6F1E3-B3E9-4211-8E24-EDBD412F8B61" class="text-block-content">
+    <p>After submitting the request, monitor the progress in resource tab and verify the details.</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/044/original/362d3ae8-3c9a-4e88-a6b5-324f45eb0521.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=ac985b9962f7862d5759ba5e3c62ee7f9e4724debd8067d00a46c0ccc4f423d4" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/044/medium/362d3ae8-3c9a-4e88-a6b5-324f45eb0521.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=cfdc3914db92c6a4ed297dcaff6da56adae39ff7cd6ee93fc37a315feb5f8901" srcset="" alt="" height="466" width="855">
+      </a>
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="deploy-new-template" data-step-uuid="247F825E-5598-4788-8054-6CB3B5F4999B">
+    <h2 id="deploy-new-template" class="step-title screensteps-heading">Catalog : Deploy New Template</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_334CA28B-D86A-4BE5-9C2C-9B2F63573C34" class="text-block-content">
+    <p>This catalog is a combination of "Template copy" and "Update VLP pool", as it executes all the steps mentioned in the above two catalogs.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/056/original/cf68ba57-c4fd-4a47-8f26-cac7ced12861.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d1910aaa68781fcbf49f73b48a08987c5b9b67989e86a2b0e8d6197b7b0251d5" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/056/medium/cf68ba57-c4fd-4a47-8f26-cac7ced12861.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=441cddb769b93bdb621485d9732d1466a3d4d9ce597ae8e043ca18f2e4ede948" srcset="" alt="" height="335" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_AFE96991-2BC6-4C9D-9C75-608CA79DB14B" class="text-block-content">
+    <p>Select vApp from the drop-down list, which you will be using for the upcoming delivery.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/045/original/4928af1c-db4b-4a24-aa97-4b8c3356a0ae.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8d312d8a94ffa5c08a9fcbcc9798a52bdc8271107c78ea294d31e1d02159d508" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/045/medium/4928af1c-db4b-4a24-aa97-4b8c3356a0ae.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1b704a93b974b4952a950509e1b02286299b682e18e2cf54050a594dd46cf5c8" srcset="" alt="" height="465" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_19336336-0F4F-45BE-A38D-B88D65051940" class="text-block-content">
+    <p>Select vCD Destination where you want to provision your vApps.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/046/original/7b768bb0-24fd-4963-9d86-082356827a91.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=5a4100c0eca8ac73229258bf530902c0f99ff7dd188b64f39f87b79ee1273957" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/046/medium/7b768bb0-24fd-4963-9d86-082356827a91.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=30d02b75f733e2e798fdb7db15192162d11319c82096b31c98f51f99abc167c2" srcset="" alt="" height="466" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4FD49ED9-4128-4E70-8F27-C66489378E60" class="text-block-content">
+    <p>Select VLP deployment pool where you want to map your vApp template.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/047/original/dfff2165-f5ca-42f2-bb6c-54b578630ebd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=bec23e9021c83b1dbe041716a0baf17658868295ea7aa63ba1723d246c420fa4" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/047/medium/dfff2165-f5ca-42f2-bb6c-54b578630ebd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=14f3c9b30a12b64dd6fb37499267c1a2ed899918f73c862e50640eb01a9e6c1c" srcset="" alt="" height="466" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_21C3794E-26D2-4452-8979-3D3E571AD17E" class="text-block-content">
+    <p>After cross verifying your inputs click on submit.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/048/original/2cd6830d-e1b1-488d-a8a9-a4b3c5e3f5b8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6062e68484d942af9450505c52111f6a02ac69fa1ccedbea3a08f53062b055e9" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/048/medium/2cd6830d-e1b1-488d-a8a9-a4b3c5e3f5b8.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194249Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=120440f672d0da9d22a05a143842337a095c11f7b4a161fd596b4ca2165a9e3d" srcset="" alt="" height="625" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0239DA4F-7E1B-4BD6-AEA4-70352E946203" class="text-block-content">
+    <p>Monitor the progress of this request in the resource tab. Verify the availability of your vApp template in the destination vCD. Also validate for updated template in VLP deployment pool.<br><br>In case of any concern, please contact Haas Team.</p>
+  </div>
+</div>
+ 
+  </div>
+
+

@@ -1,0 +1,43 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6F1AB26C-BCCA-466C-BDAD-E986245F5CF7" class="text-block-content">
+    <p>An <a href="https://github.com/mpolden/echoip" target="_blank">EchoIP container</a> is running in the lab environment. This service provides the visitor with the IP address. In the case of accessing the service from within a vPod, you will see your "External IP" address - the address needed for RDP to your pod from a Horizon Desktop.</p>
+<p>EchoIP Address: http://my-ip.livefire.lab&nbsp;</p>
+<p>Usage via curl:&nbsp;</p>
+<p><code>curl http://my-ip.livefire.lab/ip</code></p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_6DF585BD-D4AF-49F9-8F43-BE06089E6BCD" class="text-block-content">
+    <p>This service is ONLY available within the Lab Environment.</p>
+<p>There is a public instance of this same code running at: <a href="https://ifconfig.co" target="_blank">https://ifconfig.co</a>&nbsp;</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3139434F-89CC-49CF-A1C9-D3FEC2B4A663" class="text-block-content">
+    <p>A properly configured ControlCenter should display the Public IP Address as shown in the following Screenshot:</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/057/original/74067802-56b9-4a7b-9425-08018afb037d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194256Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=477b555e2c9dac2557a800e133d604bbfcc6b03f372e83e3303e0e69fb351c33" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/057/medium/74067802-56b9-4a7b-9425-08018afb037d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194256Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=81ce5f029abf9dd4b06f55f14ea0ad02447a86db3697c463749290546ea84624" srcset="" alt="" height="538" width="855">
+      </a>
+  </div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_80E71737-075B-464F-98B9-FAC46C37EC81" class="text-block-content">
+    <p>Please DO NOT rely on your Public IP being consistently 4.1-4.254 as the overall range for Public IPs is: </p>
+<p>172.5.4.5 -&gt; 172.25.7.254</p>
+<p>This range is provided to vCD and it randomly chooses which IP it assigns to the Edge serving the Public IP of your pod. </p>
+  </div>
+</div>
+
+

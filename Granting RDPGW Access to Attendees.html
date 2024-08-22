@@ -1,0 +1,257 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_3787CB44-199A-4008-82D4-AEC0D3B1FAD3" class="text-block-content">
+    <p>We are using vRealize Suite for overall Lab Environment Management and Automation. This article will step you through the process of granting RDP gateway access to attendees via dedicated RDP Gateway which is restricted to specific IPs.</p>
+<p>Grant RDPGW Access catalogs are available for all the teams like : NSX Users access to the external IPs of their Pods, IS Users access to the external IPs of their pods, and DW Users access to the external IPs of their Pods, to provide RDP gateway access, please select the user from the list, enter external POD IPs and the email address in which details needs to be sent, by default it’s granting access for all the respective ports : 3389,3390,3391,3392,3393,3394,3395</p>
+<p>Unfortunately, the RDP GW does not let you simply specify a range of IPs or CIDR, it is list of Individual IP Addresses, only starting with "172.25.X.X"</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_AF219330-D644-460D-A7B5-E62418F05D1E" class="text-block-content">
+    <p>Performance is quite a bit slower than a Horizon Desktop so&nbsp;<strong>Horizon should always be your preferred entry-point&nbsp;</strong>to the Lab Environment.&nbsp;<strong>This solution is simply an alternative/backup solution&nbsp;</strong>for when there are issues with Horizon.</p>
+  </div>
+</div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="1-log-in-to-livefire-automation-portal-catalog" data-step-uuid="E52A6F17-7946-438B-B827-68ADE4506469">
+    <h2 id="1-log-in-to-livefire-automation-portal-catalog" class="step-title screensteps-heading">1. Log in to Livefire Automation Portal Catalog</h2>
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/158/original/d1dda216-deff-459d-8542-e7b71ca6c339.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=b1db1f1688449a58e3790f52fa1836d5b874251ad5ebd3d7bbad180dbc15d9c2" srcset="" alt="" height="574" width="394">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9A5A9413-C428-4EE9-A395-A2D57E3373C7" class="text-block-content">
+    <ol style="list-style-type:lower-alpha;">
+<li>Log in to <a href="https://vra.lab.livefire.dev/catalog" target="_blank">https://vra.lab.livefire.dev/catalog</a> using lab Username (domain should be lab.livefire.dev) and password.</li>
+<li>Select Service Broker from Livefire Automation Portal - Cloud Services Console</li>
+</ol>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="2-request-grant-rdpgw-access-catalog" data-step-uuid="6BAA8E44-D1A6-430B-8B49-7CA2F2EE84A5">
+    <h2 id="2-request-grant-rdpgw-access-catalog" class="step-title screensteps-heading">2. Request Grant RDPGW Access Catalog</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A91D991C-E7E6-42C8-8542-68F1CE24CE72" class="text-block-content">
+    <p>Select the Grant RDPGW Access catalog item, based on respective teams. The below icon is used to identify RDPGW Catalogs:</p>
+<p>&nbsp;</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/159/original/0a969fca-0509-4796-a577-db71f1253ba1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=56ff22b331c502cc514dd54a9344d36d6eb38c240a0f7aec1884f994c315835a" srcset="" alt="" height="151" width="151">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1FE6D2C2-7107-4E29-9E32-60B6CEC6F15A" class="text-block-content">
+    <p>Catalog names and it's respective teams are listed below:</p>
+<ul>
+<li><strong>Grant RDPGW Access - NSX Users</strong></li>
+<li><strong>Grant RDPGW Access - IS Users</strong></li>
+<li><strong>Grant RDPGW Access - DW Users</strong></li>
+</ul>
+<p>After selecting the correct catalog, click on request.</p>
+<p><em>For the below example </em><strong>Grant RDPGW Access - NSX Users</strong><em> is used.</em></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/170/original/f312e32b-6e6c-49ed-903b-b18972ebead6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a4b67fcf8167cf0452e95d86f48178ec4f94314a59933c5b718a39551829e664" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/170/medium/f312e32b-6e6c-49ed-903b-b18972ebead6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c04901e380890b7a4a08b051c0a010da581be00bb4292afb9eb021682942973d" srcset="" alt="" height="456" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_B6C56976-A03D-497D-9E15-90ADDF76AD4A" class="text-block-content">
+    <p>Provide the below input details like:</p>
+<ul>
+<li>select the user for which RDPGW access to be granted</li>
+<li>mention the IPs</li>
+<li>e-mail in which login details needs to be sent and the access revocation date</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/160/original/b5238fa4-a4ab-4fa0-b6b4-31f1636689d6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8e6039108ac48aa66bfd2bd818a8e46421ca0eebde90d889266a0f5058e7df31" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/160/medium/b5238fa4-a4ab-4fa0-b6b4-31f1636689d6.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=f6646102bb6b2a9c6e2842abea1ece3cd49907ebf0571c30b905b09f12eb3528" srcset="" alt="" height="456" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A22728CB-6C80-43BE-AE48-426A6203EC9A" class="text-block-content">
+    <p><strong>Select User:</strong> &nbsp;select attendee username from the available list of users.</p>
+<p><em>for this deployment nsxuser099 is selected.</em></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/171/original/af876ebd-b18b-4a4d-bdc8-1a4ebd1c4222.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=866a8449ac44ef9248ffa176449ec9874699a8e635781e5346cc4523ba489932" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/171/medium/af876ebd-b18b-4a4d-bdc8-1a4ebd1c4222.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=7127e5890772f93756554a80e6bc77af84b200b6506935e66982293c345a52e2" srcset="" alt="" height="456" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2724B033-C994-490A-AF6D-7ACC0655742C" class="text-block-content">
+    <p><strong>Primary IP Address:</strong> Provide Pod IP address for which RDPGW access needs to be granted. It's mandatory to provide IP in the format of "172.25.X.X", or else it will throw error saying "Invalid format".</p>
+<p><strong>Secondary IP Address:</strong> In case of two pods, specify the second pod ip in the secondary IP address field with the same format "172.25.X.X"</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/161/original/b7b3800a-d052-4765-a6c1-4ac8441c1dea.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2f25187e14252f0bacc78f6bc7c4a61231f25efb659cc327ab16d241342e2cc1" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/161/medium/b7b3800a-d052-4765-a6c1-4ac8441c1dea.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6089ad1a753f0893f73e5eb9e9b20847c7621a6d8a5c29de6082d0092a34dd4d" srcset="" alt="" height="456" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6CC75109-083E-46A5-BFA5-A279620BC90B" class="text-block-content">
+    <p><em>For this deployment just one pod is used so filled the ip in the Primary IP Address field.</em></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/172/original/dabb0c63-8639-4e9f-969a-6b55d6917b90.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d06d4cc614d478445d5b1ddd294929ca4e0f1608632c0656347f172bdd5b63af" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/172/medium/dabb0c63-8639-4e9f-969a-6b55d6917b90.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=6fc201650565d1e6e123e1a72691d3fb3b300b491697fd0a07289e4b541ca270" srcset="" alt="" height="456" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_67302741-D6FA-4CE6-A1DE-D872DBF6EE45" class="text-block-content">
+    <p><strong>E-mail Addresses:</strong> Provide Instructors email address in which RDP file and login related details needs to be sent, if it's more than one e-mail click on plus next to the text input and enter the address.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/162/original/5358152e-9287-4272-949a-d74cd6525e86.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=69a3843f1f42b51df45ef03cc30b2f78d75740c2acdcf4cc8c90a39b34ba03f7" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/162/medium/5358152e-9287-4272-949a-d74cd6525e86.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8b48a56750474be7038290b159bbf2c319c53ce5e841701e6a92983912ef3fc5" srcset="" alt="" height="457" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5E3C163E-88F8-4A06-9797-7B79E48C9DAF" class="text-block-content">
+    <p><strong>Revoke RDPGW Access on Date :</strong> select the RDPGW access revocation date and time from the calendar and clock. In case of no selection the workflow will remove access on 7th day.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/163/original/dcd0cfc3-785a-4f0d-b4bc-47be1d9b22ff.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a391ca0f5737d3b54102b13c2cfe28c7285d8205c64f9196667f767315e835c9" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/163/medium/dcd0cfc3-785a-4f0d-b4bc-47be1d9b22ff.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d00488749a18a306ccc732ba52df74e21b9834a33cd3214c0a7d276356e59ad7" srcset="" alt="" height="456" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_12438BB5-84D0-4124-85B6-B4AD48FA5EEA" class="text-block-content">
+    <p>Click on SUBMIT, after the request submission you can track the request details on the Deployments tab.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/173/original/47d5a614-cb63-4cbf-990b-58573cbcd16f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=c7652522b1a58a425f769ec12b6e7b266c15e7e86169636aa358bae2643bedb5" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/173/medium/47d5a614-cb63-4cbf-990b-58573cbcd16f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=caadabbb44dce1d951d8ba48b12ddfaeb3c47a0ed75f6717b60a0fedac21f36c" srcset="" alt="" height="143" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="3-access-rdp-server" data-step-uuid="0C09CCBB-7CB0-4AC4-9DE8-D3BCA44B06EE">
+    <h2 id="3-access-rdp-server" class="step-title screensteps-heading">3. Access RDP Server</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0913EE5F-1A65-4AFA-86F6-9154F5CF3536" class="text-block-content">
+    <p>Once the request is granted vRO sends an e-mail from "<strong>Livefire-Haas-vRO &lt;vro-alerts@lab.livefire.dev&gt;</strong>" , to the address mentioned in the form while submitting the request. </p>
+<p>As the subject of the mail explains it contains "Livefire RDP server details", download the RDP file from the attachment (Livefire Desktop.rdp), share the login details with the attendee.</p>
+<p>In case for two POD IPs, the e-mail will show two attachments:</p>
+<p>1. <strong>Livefire Desktop.rdp</strong> contains the details of primary pod (Primary IP Address) related details. </p>
+<p>2. <strong>Livefire Desktop2.rdp</strong> contains the details of secondary pod (Secondary IP Address) related details.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/169/original/77f62ac0-1a75-4265-a259-e365624e137c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=820c2c78b795539efc35e7840ab9e224882a973ecad497ba4510bd2c05655b38" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/169/medium/77f62ac0-1a75-4265-a259-e365624e137c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=d5c359ec45a7cd2644000dad1d39733197651790a7c8b4753dc5b43653e51fb5" srcset="" alt="" height="724" width="855">
+      </a>
+  </div>
+ 
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0A826A98-EA0C-47BD-BBB2-E6F035E42E94" class="text-block-content">
+    <p>Open the dowloaded RDP file, it will ask for attendee password, it's already shared with the attendee and instructor.</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_C61C3B7B-B5A9-4ECE-8975-DFFF4BB4F59A" class="text-block-content">
+    <p>For instructions on <strong>How to Change attendee passwords</strong>, see this article: &nbsp;<a href="https://haas-faq.livefire.solutions/a/1396003-how-to-change-attendee-passwords" target="_blank"><strong>How to Change attendee passwords</strong></a></p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/164/original/39b41f33-b53b-41ab-8eee-6a20df08b54f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=3bcfa754555042280b1646ef160046b1d466fa4192368a4ada005cd42fa9f15f" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/164/medium/39b41f33-b53b-41ab-8eee-6a20df08b54f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8fad727e96dcc5f1ef7aef1bd79ebdbc5ec159d6e2b807dd3622a4d7e98fef44" srcset="" alt="" height="383" width="855">
+      </a>
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_AB60D9AE-C5FC-4CA3-862C-F362B79AC3B6" class="text-block-content">
+    <p>After continuing with the correct attendee password it throws another popup to provide "administrator@corp.local" password, the correct password is &nbsp;"VMware1!", as displayed in the e-mail.</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/165/original/c3048133-b830-495e-aaa2-90714875e5d4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=a3e46ee762c6829b3d5b1daf14482a59604dae4af993eb231269dbd843e90d53" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/165/medium/c3048133-b830-495e-aaa2-90714875e5d4.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=71af6cd694338984089fa7b8e31d38f16b0764e66671082200b52e28875765b1" srcset="" alt="" height="383" width="855">
+      </a>
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_86924F50-F58A-46B5-A0E9-EDBBDF518CB4" class="text-block-content">
+    <p>It starts configuring remote PC.</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/166/original/31e6cc32-a003-44fb-ac9a-d7d16c88e942.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2709582e81002e4f2a0b82b07e319e4962fa680e862422e512557a600d5cfb13" srcset="" alt="" height="203" width="569">
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3CFF8298-0E3F-4093-95C8-6294DAFD7A45" class="text-block-content">
+    <p>Confirm the certificate informations and click on continue.</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <img src="https://media.screensteps.com/image_assets/assets/008/427/167/original/b7f74d4f-4251-4214-aa19-1603c6d5be50.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=8216f557a082ff06f8ac5a76fdbdbe38d1bbe65ed62feac595023b3f26f0de51" srcset="" alt="" height="228" width="609">
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_45E8B24C-5D24-4E3B-9DD6-0AA549DF3D3C" class="text-block-content">
+    <p>In few seconds your RDP will be loaded.</p>
+  </div>
+</div>
+
+      <div class="image screensteps-image">
+      <a href="https://media.screensteps.com/image_assets/assets/008/427/168/original/dc9e84a4-fc53-4aad-995a-af019b3538a5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=2dcf3953f7ffa3d5c681e7cf91aa3b41240e7e2f459250befebfbfb805591792" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/427/168/medium/dc9e84a4-fc53-4aad-995a-af019b3538a5.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Credential=AKIAVNY36S4EK3YMWFAE%2F20240822%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Date=20240822T194342Z&amp;X-Amz-Expires=300&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Signature=1c9f22d9339ca0f23f83b0c019d34c4b3a0fc63592af0407c044ab01c23d4b90" srcset="" alt="" height="705" width="855">
+      </a>
+  </div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_AB707E6E-9058-4D04-882C-0945201B9741" class="text-block-content">
+    <p>The RDPGW access will be revoked as per the revocation date mentioned while submitting the request.</p>
+  </div>
+</div>
+
+    <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3154CBC2-496F-4EDC-9C7A-254AAA507515" class="text-block-content">
+    
+  </div>
+</div>
+
+
