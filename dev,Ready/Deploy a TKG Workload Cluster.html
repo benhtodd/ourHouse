@@ -1,0 +1,314 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="task-description-and-objectives" data-step-uuid="19005BF4-FFFF-48BF-A8C5-737B6D60E99E">
+    <h2 id="task-description-and-objectives" class="step-title screensteps-heading">1. Task description and objectives</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_163F2C19-1C0A-4F0A-8EF6-6DBA6992846C" class="text-block-content">
+    <p>Add text</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="create-storage-policy" data-step-uuid="DAA7BC1D-BECE-4D4B-983B-8A7DFF2CD901">
+    <h2 id="create-storage-policy" class="step-title screensteps-heading">2. Deploy a TKG Workload Cluster using LCI</h2>
+        <div class="image screensteps-image">
+      <a href="images/5b957d49-368a-4432-9d88-2e9a5f9db76e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/476/medium/5b957d49-368a-4432-9d88-2e9a5f9db76e.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="501" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_73664D3F-921E-432A-8BB7-96D89E3A4EA1" class="text-block-content">
+    <p>If when you click the <strong>Resources</strong> Tab under the <em><strong>lf-tdd-namespace</strong></em> <strong>NAMESPACE</strong>, you get no activity, or a form that tells you to install the <strong>Local Consumption Interface</strong> on this Supervisor, Log out and back into the vCenter.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/8dae3df9-a207-47d0-97f7-1ba70cbe49b3.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/478/medium/8dae3df9-a207-47d0-97f7-1ba70cbe49b3.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="500" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_778b9b20-2ef7-4a83-9fff-41f766ef8605" class="text-block-content">
+    <p>Click <strong>OPEN</strong> on the <strong>Tanzu Kubernetes Grid</strong> Box</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/89cd69f5-4912-486c-8649-aeccbac6c1f6.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/480/medium/89cd69f5-4912-486c-8649-aeccbac6c1f6.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="500" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_50350951-12af-47d6-8b83-f30033c62b28" class="text-block-content">
+    <p>Click <strong>CREATE</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/1a44e1db-763d-40e9-848c-9c4080908dd9.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/673/733/medium/1a44e1db-763d-40e9-848c-9c4080908dd9.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="500" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a6068f01-c87d-4702-8fa7-024374480936" class="text-block-content">
+    <p>Select the <strong>TanzuKubernetesCluster API</strong> Radio button</p>
+<p>Select the <strong>Custom Configuration</strong> Radio button</p>
+<p>Click <strong>NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/994433fb-effb-4543-93f6-7cea24b45550.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/681/895/medium/994433fb-effb-4543-93f6-7cea24b45550.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="500" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_81c0b0a4-596a-4111-a90b-bd95a00af70b" class="text-block-content">
+    <p>1. Give the cluster a name, i.e.</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_a6246860-be45-4611-9bbf-652194d39657"><code>tkg-cluster-lf001</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_a6246860-be45-4611-9bbf-652194d39657">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c9d7edaf-2acc-467f-a916-07e04b8a9fd2" class="text-block-content">
+    <p>2. Leave Tanzu Kubernetes Release as default</p>
+<p>3. Select <strong>Photon</strong> from the<strong> TKR OSImage Format</strong> dropdown</p>
+<p>For the <strong>Persistant Storage Classes (optional)</strong> section, select</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_1330035f-4a4f-4c8e-b3ad-6078212c94f4"><code> vsan-tanzu-storage</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_1330035f-4a4f-4c8e-b3ad-6078212c94f4">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1c22c087-c94d-4e76-9286-dacc75dab92b" class="text-block-content">
+    <p>Click <strong>ADD</strong></p>
+<p>Click<strong> NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/d490aa53-d756-47e9-8a3a-f34f0dbe67bd.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/486/medium/d490aa53-d756-47e9-8a3a-f34f0dbe67bd.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="500" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c7c04335-83da-491b-84e3-1d8c63f9ce4f" class="text-block-content">
+    <p>Leave the <strong>Control Plane Replica</strong> count at 1</p>
+<p>Check the Radio button for <strong>best-effort-small</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/621b5a39-38c3-4e44-ba3a-efde1bb18cb6.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/673/737/medium/621b5a39-38c3-4e44-ba3a-efde1bb18cb6.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="517" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d30639d2-c48f-40b6-b7db-081e07d11b24" class="text-block-content">
+    <p>Scroll down and click <strong>NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/bb2f3da6-f861-43a1-83a5-dec9ccf0907f.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/673/739/medium/bb2f3da6-f861-43a1-83a5-dec9ccf0907f.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="543" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_948483bc-e54b-47b3-87ea-14f9b42e7a87" class="text-block-content">
+    <p>Worker nodes are grouped in NODEPOOLS</p>
+<p>Click <strong>+ ADD NODEPOOL</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/2611ffd8-25ee-48aa-976c-f22014be58a3.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/673/741/medium/2611ffd8-25ee-48aa-976c-f22014be58a3.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="551" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e520234c-5966-48d8-b4a6-b9726d8638bc" class="text-block-content">
+    <p>Set the Replicas count to 3</p>
+<p>In Labels enter</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_91bc3c11-885b-46ca-be80-de00694c067c"><code>use:lf-tdd</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_91bc3c11-885b-46ca-be80-de00694c067c">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f7c17823-cb9e-45c5-88c5-4eb9eaa4e068" class="text-block-content">
+    <p>Click ADD to add this key:value pare as a label to the <strong>NODEPOOL</strong></p>
+<p>Click<strong> NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/39ca957d-d2b6-4c8f-aeb9-edf5dc75d0b3.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/494/medium/39ca957d-d2b6-4c8f-aeb9-edf5dc75d0b3.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="551" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8ebb1be8-24a5-44af-9b5f-90fbdbf8c285" class="text-block-content">
+    <p>Click <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/876762fb-9f86-44ee-926f-27a959c97e80.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/681/897/medium/876762fb-9f86-44ee-926f-27a959c97e80.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="543" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_58e5bf06-8ff8-4508-afaa-62f17fafbd18" class="text-block-content">
+    <p>Click <strong>NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/2ad48a0c-1e06-4f86-9095-9c54833324c6.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/498/medium/2ad48a0c-1e06-4f86-9095-9c54833324c6.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="543" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0c7d6597-c3e2-4373-9407-d53923b4779d" class="text-block-content">
+    <p>Click <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/51875dbc-73c8-4c2a-8660-be0166caa87e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/681/899/medium/51875dbc-73c8-4c2a-8660-be0166caa87e.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="543" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7c76f405-0184-4f14-b578-e16bc485dfb8" class="text-block-content">
+    <p>From here you can make sure you are on the correct Namespace</p>
+<p>Then Confirm under <strong>Summary</strong> --&gt; <strong>Tanzu Kubernetes Grid</strong> shows 1 new cluster</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/27f82d0a-beee-44bb-ba64-225cec417d75.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/681/901/medium/27f82d0a-beee-44bb-ba64-225cec417d75.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="294" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3a21e08c-44ab-4626-b3bf-dbc82d761cee" class="text-block-content">
+    <p>Click <strong>Compute</strong></p>
+<p>Click <strong>Tanzu Kubernetes</strong> clusters</p>
+<p>you can see your new TKGs cluster being Created</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/57c312bf-f874-4141-87ec-68ceb432009f.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/504/medium/57c312bf-f874-4141-87ec-68ceb432009f.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="543" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1825348b-422f-4282-9efa-abc65445cdc1" class="text-block-content">
+    <p>Switch to <strong>Inventory</strong> --&gt; <strong>Hosts and Clusters</strong> view and drill down into <strong>Namespaces</strong> --&gt; <em><strong>your namespace </strong>--&gt;<strong> Your new tkgs cluster</strong></em></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e94ae305-59ed-46ca-b81b-9cb062ece1d4.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/673/745/medium/e94ae305-59ed-46ca-b81b-9cb062ece1d4.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="543" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a31c1f6b-3a1a-41e6-ac65-067357f1ed84" class="text-block-content">
+    <p>You can follow the deployment of the <strong>controlplane</strong> and <strong>workload</strong> cluster nodes</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/5849cf46-1fe5-43a7-acc0-acbc185a36c7.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/673/747/medium/5849cf46-1fe5-43a7-acc0-acbc185a36c7.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.1" height="294" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_22db236d-bbd9-4605-9c45-a52b8897d7a8" class="text-block-content">
+    <p>And in a few minutes (30 or so in this lab) you should have a TKGs cluster running</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="login-to-vsphere-client" data-step-uuid="6677132A-D3F4-46F9-A28B-6F4629825CB6">
+    <h3 id="login-to-vsphere-client" class="step-title screensteps-heading">2.1. Log in to Supervisor with CLI</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E9E46E9D-4247-47F4-95FC-5CB7325F3940" class="text-block-content">
+    <p>Add text</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="install-harbor" data-step-uuid="362FCDAF-425A-47CB-8978-19825E66AC89">
+    <h3 id="install-harbor" class="step-title screensteps-heading">2.2. Create a TKG Workload Cluster</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_A4FF16A4-4DA6-4FD0-A2CF-791F8FAB0F21" class="text-block-content">
+    <p>Add text</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+

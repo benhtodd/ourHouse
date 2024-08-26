@@ -1,0 +1,1461 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="task-description-and-objectives" data-step-uuid="07C81B3D-9778-48FE-B9A7-2C867F452638">
+    <h2 id="task-description-and-objectives" class="step-title screensteps-heading">1. Task description and objectives</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2794FF11-48EE-4ABD-A7E0-782106848067" class="text-block-content">
+    <p>Supervisor Services are vSphere certified Kubernetes operators that deliver Infrastructure-as-a-Service components and tightly-integrated Independent Software Vendor services to developers. You can install and manage Supervisor Services on the vSphere IaaS control plane environment so that to make them available for use with workloads.</p>
+<p>When Supervisor Services are installed on Supervisors, DevOps engineers can consume them in different ways:</p>
+<p>Shared Supervisor Services such as Harbor, directly provide functionality to workloads running in TKG clusters, vSphere Pods, or VMs.</p>
+<p>Supervisor Services that include an operator, such as MinIO, typically provide API or graphical interfaces, which DevOps engineers can use to create and manage instances of the service in a vSphere Namespace through CRDs. For example, to create a MiniIO bucket, you use a CRD to create the bucket in a vSphere Namespace.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/d36fb2c6-2d34-459b-9900-5210e45c1429.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/655/836/medium/d36fb2c6-2d34-459b-9900-5210e45c1429.png" srcset="" alt="" height="419" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2b501480-8afe-457d-a992-4d5af1dba0ab" class="text-block-content">
+    <p>New service will be added overtime with the goal to continue to empower your DevOps communities.</p>
+<p>Prior to vSphere 8 Update 1, the Supervisor Services are only available with Supervisor Clusters enabled using VMware NSX-T. With vSphere 8 U1, Supervisor Services are also supported when using the vSphere Distributed Switch networking stack.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="create-storage-policy" data-step-uuid="C6AC27B8-2E30-4EE1-A8D0-9256756C9A32">
+    <h2 id="create-storage-policy" class="step-title screensteps-heading">2. Install Supervisor Services</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_076442BC-0F36-41B4-9847-7E1A562D36D3" class="text-block-content">
+    <p>Supervisor services can be installed from their catalog, located at <a href="https://vsphere-tmm.github.io/Supervisor-Services/">https://vsphere-tmm.github.io/Supervisor-Services/</a></p>
+<p>Each one of these goes along with predefined manifest files of two stages: one manifest (service-name.yaml) for the service registration with the Supervisor, and second manifest (config-values.yaml) for particular service settings you need to apply in accordance with the environment.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_bc627574-302c-4e79-be15-7b5dacca85ec" class="text-block-content">
+    <p>With vSphere 8.0 u3 and VCF 5.2 onwards, couple of services are automatically deployed when you enable the Supervisor:</p>
+<p>- VM Service</p>
+<p>- Tanzu Kubernetes Grid Service</p>
+<p>- Velero vSphere Operator</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="login-to-vsphere-client" data-step-uuid="61C44CCE-5C2D-42DC-9136-43F1285F13C7">
+    <h3 id="login-to-vsphere-client" class="step-title screensteps-heading">2.1. Install Kubernetes Ingress Controller Service (Contour)</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3912F44E-44A7-46D9-BF61-22EE8A962EBC" class="text-block-content">
+    <p>For a <strong>Kubernetes Ingress Controller Service </strong>you can use <strong>Contour</strong>.</p>
+<p>Contour is an Ingress controller for Kubernetes that works by deploying the Envoy proxy as a reverse proxy and load balancer. Contour supports dynamic configuration updates out of the box while maintaining a lightweight profile.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/b3f89681-b840-4c4d-b50b-fd5dec2aec81.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/658/309/medium/b3f89681-b840-4c4d-b50b-fd5dec2aec81.png" srcset="" alt="" height="420" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4f5b1a2a-4ac7-4e53-beaa-51bc11c8b1bf" class="text-block-content">
+    <p>Download the latest available manifests for Contour to your Downloads folder</p>
+<p>1. contour.yml</p>
+<p>2. contour-data-values.yml</p>
+<p><a href="https://vsphere-tmm.github.io/Supervisor-Services/#kubernetes-ingress-controller-service">https://vsphere-tmm.github.io/Supervisor-Services/#kubernetes-ingress-controller-service</a></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/43289da9-690a-45ad-bc2f-e84fdbf6d5af.png" srcset="" alt="" height="139" width="779">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3c8a0532-0a01-4634-ac7a-a9e4df95620b" class="text-block-content">
+    <p>You are ready to deploy Contour as a Supervisor service!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/ded34dfa-bd8c-4869-a725-c4bc2fac207a.png" srcset="" alt="" height="237" width="227">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_581fcd48-917f-48d7-a250-b4c3922416d4" class="text-block-content">
+    <p>From the vSphere Client home menu, select <strong>Workload Management</strong>.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/133f88fb-e2f9-4ce0-943f-ed9b92ca78ed.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/369/medium/133f88fb-e2f9-4ce0-943f-ed9b92ca78ed.png" srcset="" alt="" height="438" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0907b119-e21e-468b-8983-4991c997aff0" class="text-block-content">
+    <p>In the <strong>Workload Management</strong> section, select <strong>Services</strong>.</p>
+<p>Locate the <strong>Add New Service</strong> card and click on <strong>ADD</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/d203f8d8-be2f-4882-b42c-996cad2c1bf7.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/371/medium/d203f8d8-be2f-4882-b42c-996cad2c1bf7.png" srcset="" alt="" height="516" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4bdf1995-35fe-47e1-a969-7dfa3324ecfa" class="text-block-content">
+    <p>In the <strong>New Service</strong> wizard, for <strong>Register Service</strong> select <strong>UPLOAD</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/f3378bd3-c812-416d-80e5-e6922055b5e7.png" srcset="" alt="" height="315" width="788">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a7667a64-8b4f-4e4c-bb52-3b724e1f11d2" class="text-block-content">
+    <p>In the Chrome <strong>Open</strong> menu go to <strong>Downloads</strong> folder and select the <strong>contour.yml </strong>you downloaded recently.</p>
+<p>Confirm with clicking on <strong>Open</strong> button</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/cd159925-5280-4910-8754-462f98549de7.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/375/medium/cd159925-5280-4910-8754-462f98549de7.png" srcset="" alt="" height="516" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4b2c2500-da4e-448f-9744-25c773e97348" class="text-block-content">
+    <p>In the <strong>New Service</strong> wizard, for <strong>Register Service</strong> make sure you can see the aforementioned <strong>contour.yml</strong> file. </p>
+<p>Its displayed version should match the one you downloaded.</p>
+<p>Confirm with <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/3433ddd6-7bf6-4fe3-bc59-2c086389f506.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/377/medium/3433ddd6-7bf6-4fe3-bc59-2c086389f506.png" srcset="" alt="" height="449" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_cc802760-e63c-4789-baac-627c26860c90" class="text-block-content">
+    <p>In a while you will see a displayed message for the Contour service successfully registered with your Supervisor. </p>
+<p>You need to activate it with particular configuration settings.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_0b4485e0-4605-4dab-aeb7-b14b594238ad" class="text-block-content">
+    <p>You can safely close the message in green.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/1896c0b8-684e-4e8e-ab0f-293ddd176927.png" srcset="" alt="" height="476" width="788">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_39a86108-5a9c-4ec4-951e-f8abb2e694bc" class="text-block-content">
+    <p>Let's examine the particular file. You can review/edit it with any available editor</p>
+<p>In Windows Explorer, navigate to your <strong>Downloads</strong> folder and locate the recently downloaded file <strong>contour-data-values.yml</strong>.</p>
+<p>Right click and <strong>Open with Code</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/5648179b-89ac-41e4-9736-d787a59fb6b5.png" srcset="" alt="" height="493" width="448">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_053b7787-27b8-41cb-bcce-e42630c18b6b" class="text-block-content">
+    <p>For Contour data values you don't need to edit anything.</p>
+<p>Don't close the file, you will need the values shortly!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/9bd0e75a-2c09-4031-b97b-d4536fcae1b2.png" srcset="" alt="" height="399" width="402">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_99d45cdd-8a64-423e-9bf3-d83f814a078f" class="text-block-content">
+    <p>Go back to Chrome -&gt; vSphere UI -&gt; Workload Management -&gt; Services</p>
+<ol>
+<li>Locate your recently registered <strong>contour</strong> service</li>
+<li>From <strong>Actions</strong> drop down menu </li>
+<li>select <strong>Manage Service</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9afe3570-6b78-4081-b056-3041de47ca3b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/385/medium/9afe3570-6b78-4081-b056-3041de47ca3b.png" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_893128a5-c6c6-44f2-a6ca-dbca097c9314" class="text-block-content">
+    <p>In the <strong>Manage</strong> wizard, from <strong>Configure</strong> select your <strong>Supervisor</strong> and confirm <strong>NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ea5af21a-923e-49d4-92ec-ea16a5b049a8.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/690/556/medium/ea5af21a-923e-49d4-92ec-ea16a5b049a8.png" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4c129a89-0aa4-4c8f-85d9-17b606e93761" class="text-block-content">
+    <p>You need to provide the service configuration values.</p>
+<p>Copy these from the <strong>Visual Studio Code</strong>, where you lastly reviewed <strong>contour-data-values.yml</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/dde1af78-01ef-48d7-82b6-d88d2499cf62.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/389/medium/dde1af78-01ef-48d7-82b6-d88d2499cf62.png" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4cd77fb3-03ed-4f55-b9d3-eda6f4de046c" class="text-block-content">
+    <p>Select all and paste into the<strong> YAML Service Config</strong> section in the UI wizard.</p>
+<p>Confirm with <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ba11f1d7-d423-4fa3-8575-1084e7ffe1b0.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/391/medium/ba11f1d7-d423-4fa3-8575-1084e7ffe1b0.png" srcset="" alt="" height="239" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9863f07e-39be-455b-8aba-9581a388058e" class="text-block-content">
+    <p>Go back in the <strong>Workload Management</strong> section</p>
+<p>Select<strong> Supervisors</strong> and click on <strong>View</strong> under <strong>Services</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9b12802b-acf0-4be8-967d-f917d690e0f3.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/393/medium/9b12802b-acf0-4be8-967d-f917d690e0f3.png" srcset="" alt="" height="254" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_79b04e4e-681c-410a-b55f-7edb55af119c" class="text-block-content">
+    <p>In a couple of minutes, the <strong>contour</strong> service <strong>Status</strong> will change from Configuring to <strong>Configured</strong></p>
+<p>Click on the <strong>svc-contour-domain-c9</strong> under <strong>Deployment Namespace</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/32895b13-3f6c-4701-b3ea-f2a833131ddd.png" srcset="" alt="" height="109" width="765">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1df75141-5567-4c56-b439-b4c34d220a32" class="text-block-content">
+    <p>For the <strong>svc-contour-domain-c9</strong> Namespace, click on <strong>Compute</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/2cbba092-8c6e-4d8b-9f8e-5734e40f6496.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/597/medium/2cbba092-8c6e-4d8b-9f8e-5734e40f6496.png" srcset="" alt="" height="285" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5fe10616-7b2c-43e5-975d-d82a3f70a527" class="text-block-content">
+    <p>Under <strong>Compute</strong>, you can review all the <strong>Kubernetes Core</strong> configurations for harbor.</p>
+<p>Select <strong>Pods</strong> and you will see all the <strong>contour</strong> needed pods, &nbsp;running as <strong>vSphere Pods</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/f967d28e-8c7a-4f64-94b0-eca43c6cb2f5.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/599/medium/f967d28e-8c7a-4f64-94b0-eca43c6cb2f5.png" srcset="" alt="" height="165" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c602c78a-e903-4a8b-a215-1e055e466c07" class="text-block-content">
+    <p>Select <strong>Deployments</strong> and you will see all the <strong>contour</strong> needed deployments in place</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/90e6b2de-9573-4c5d-b027-ee4709ec6c06.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/601/medium/90e6b2de-9573-4c5d-b027-ee4709ec6c06.png" srcset="" alt="" height="165" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ee7729ea-0f68-4200-9454-b7a1aa209a1e" class="text-block-content">
+    <p>Select <strong>Daemon Sets</strong> and you will see all the <strong>contour</strong> needed daemon sets in place: for envoy</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/818dbe95-2d7e-4cc0-adfc-7bba584d31f3.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/603/medium/818dbe95-2d7e-4cc0-adfc-7bba584d31f3.png" srcset="" alt="" height="165" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_439f095e-6ae4-42c3-b592-a76edab9f460" class="text-block-content">
+    <p>Select <strong>Replica Sets</strong> and you will see all the <strong>contour</strong> needed replica sets in place</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f72caefb-d4c7-4eb3-9310-a6441db4ac9b" class="text-block-content">
+    <p>Okay, let's switch to the Network configurations for <strong>contour</strong> service:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/c01601f3-f084-4fd6-a6b2-a8735d962c5d.png" srcset="" alt="" height="109" width="765">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_75b8d8be-f000-4411-825d-da4e2ef306b5" class="text-block-content">
+    <p>For the <strong>svc-contour-domain-c9</strong> Namespace, click on <strong>Network</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/142d88b1-5b1d-40e9-a2e5-7aebddd15b12.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/607/medium/142d88b1-5b1d-40e9-a2e5-7aebddd15b12.png" srcset="" alt="" height="179" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a04c407d-9710-4038-b574-c3f908f82f34" class="text-block-content">
+    <p>Under <strong>Network</strong>, you can review all the configured settings.</p>
+<p>Select <strong>Services</strong> and you will see the <strong>External IP Address</strong> that should be used as <strong>LoadBalancer</strong>, in this case it is <strong>10.80.0.3</strong></p>
+<p>Remember this value, you are going to use it shortly!</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="install-externaldns" data-step-uuid="2faa7b93-fab0-4d90-8a5e-ae31651cda6b">
+    <h3 id="install-externaldns" class="step-title screensteps-heading">2.2. Install ExternalDNS</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_28963207-b0e9-4e4b-9f89-ded78c61d122" class="text-block-content">
+    <p>For publishing <strong>DNS records for Applications</strong> to DNS servers, <strong> </strong>you can use <strong>ExternalDNS</strong> Service.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/8a48f7d1-9780-45f0-ba2a-5201c587959b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/027/medium/8a48f7d1-9780-45f0-ba2a-5201c587959b.png" srcset="" alt="" height="456" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7cdfdacc-33cf-4702-b3e5-ea5e9259af45" class="text-block-content">
+    <p>Download the latest available manifests for External DNS to your Downloads folder</p>
+<p>1. external-dns.yml</p>
+<p><a href="https://vsphere-tmm.github.io/Supervisor-Services/#external-dns-service">https://vsphere-tmm.github.io/Supervisor-Services/#external-dns-service</a></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/79b9d0f1-994c-4043-8e36-b893027ee706.png" srcset="" alt="" height="184" width="759">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_bf9653b5-a317-4cd0-b5d6-9abbe8caa81d" class="text-block-content">
+    <p>You are ready to deploy External DNS as a Supervisor service!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/440fbb65-b9c6-4874-94a4-6403fa16f676.png" srcset="" alt="" height="237" width="227">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a6a8193a-1fd6-4911-a740-3417b2dc6a80" class="text-block-content">
+    <p>From the vSphere Client home menu, select <strong>Workload Management</strong>.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/779afaf1-b93c-48be-8c45-a1865f4f8578.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/401/medium/779afaf1-b93c-48be-8c45-a1865f4f8578.png" srcset="" alt="" height="446" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8a9090d2-a581-429f-9804-ca5fbd13370a" class="text-block-content">
+    <p>In the <strong>Workload Management</strong> section, select <strong>Services</strong>.</p>
+<p>Locate the <strong>Add New Service</strong> card and click on <strong>ADD</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/82342150-b210-4cd6-b38c-fc93e8762b41.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/403/medium/82342150-b210-4cd6-b38c-fc93e8762b41.png" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d16739ba-57cb-4cf1-a242-f5de4387ba74" class="text-block-content">
+    <p>In the <strong>New Service</strong> wizard, for <strong>Register Service</strong> select <strong>UPLOAD</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/bdef6045-93be-409e-b815-27d731abdd84.png" srcset="" alt="" height="317" width="788">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7d6b88c0-3515-41b1-a0f2-d0108af62d3b" class="text-block-content">
+    <p>In the Chrome <strong>Open</strong> menu go to <strong>Downloads</strong> folder and select the <strong>external-dns.yml </strong>you downloaded recently.</p>
+<p>Confirm with clicking on <strong>Open</strong> button</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/1faf07b2-3573-4838-9787-05cd28b0ee3b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/407/medium/1faf07b2-3573-4838-9787-05cd28b0ee3b.png" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f052c980-f9a7-4c7f-acea-352d4d413dc0" class="text-block-content">
+    <p>In the <strong>New Service</strong> wizard, for <strong>Register Service</strong> make sure you can see the aforementioned <strong>external-dns.yml</strong> file. </p>
+<p>Its displayed version should match the one you downloaded.</p>
+<p>Confirm with <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/3b489df7-9776-4257-902f-ba87cc8151dc.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/409/medium/3b489df7-9776-4257-902f-ba87cc8151dc.png" srcset="" alt="" height="450" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_59a911a6-1f5d-4e16-87af-448e77feef58" class="text-block-content">
+    <p>In a while you will see a displayed message for the ExternalDNS service successfully registered with your Supervisor. </p>
+<p>You need to activate it with particular configuration settings.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_1279b5a5-b33f-4bb9-909e-ec6700d82bcd" class="text-block-content">
+    <p>You can safely close the message in green.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/cfe365fe-b718-4d89-8bf1-fd9f28be4ff9.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/045/medium/cfe365fe-b718-4d89-8bf1-fd9f28be4ff9.png" srcset="" alt="" height="265" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_a484821e-4db3-4e66-8352-da56751ada1b" class="text-block-content">
+    <p>OPTIONAL: You need to create the <strong>ExternalDNS</strong> data values manifest file on your own, in alignment with the short example provided in the documentation.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/7e9c18db-76d4-4086-bede-6c2546099d50.png" srcset="" alt="" height="575" width="586">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4a7314e5-5503-4e91-b3f8-bf37ae4dc31e" class="text-block-content">
+    <p>In Visual Studio Code editor, create a new empty text file and save it as:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_13ee71c1-df63-4fbb-9170-0553bed4bf3b"><code>C:\Downloads\external-dns-data-values.yml</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_13ee71c1-df63-4fbb-9170-0553bed4bf3b">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/f465cbfb-f12f-456e-bffe-10857dd8fd30.png" srcset="" alt="" height="363" width="468">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_bb89b467-5478-4022-ac31-cb7e0aa51127" class="text-block-content">
+    <p>Enter the values, as per the list bellow:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_0d1d69bd-059c-449d-9ebc-36517961caeb"><code>deployment:
+  args:
+  - --registry=txt
+  - --txt-prefix=external-dns-
+  - --txt-owner-id=tanzu
+  - --provider=rfc2136
+  - --rfc2136-host=10.0.0.201
+  - --rfc2136-port=53
+  - --rfc2136-zone=vcf.holo.lab
+  - --rfc2136-insecure
+  - --rfc2136-tsig-axfr
+  - --source=service
+  - --source=contour-httpproxy
+  - --source=ingress
+  - --domain-filter=vcf.holo.lab
+namespace: svc-external-dns-domain-c9</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_0d1d69bd-059c-449d-9ebc-36517961caeb">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_cf017c8b-85f6-4e43-b331-726da839ab8e" class="text-block-content">
+    <p>Save the file!</p>
+<p>Don't close it, you will need the values shortly!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/864e19cd-ac42-4b94-991d-ff4cd109d146.png" srcset="" alt="" height="397" width="397">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_41af28de-ae9c-409a-849c-cfda564dc120" class="text-block-content">
+    <p>Go back to Chrome -&gt; vSphere UI -&gt; Workload Management -&gt; Services</p>
+<ol>
+<li>Locate your recently registered <strong>external-dns</strong> service</li>
+<li>From <strong>ACTIONS</strong> drop down menu </li>
+<li>select <strong>Manage Service</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/cd02274e-0d50-47f0-bab9-039ecb5b67d4.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/455/medium/cd02274e-0d50-47f0-bab9-039ecb5b67d4.png" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9ff5cdb3-bcf1-4a22-a4c9-b61035719a56" class="text-block-content">
+    <p>In the <strong>Manage</strong> wizard, from <strong>Configure</strong> select your Supervisor and confirm <strong>NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/42f3d475-2142-4d39-9af8-b48fd6861654.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/457/medium/42f3d475-2142-4d39-9af8-b48fd6861654.png" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1f38535c-a791-46ef-81f2-9a4c3219eaaa" class="text-block-content">
+    <p>You need to provide the service configuration values.</p>
+<p>Copy these from the Visual Studio Code, where you lastly edited <strong>external-dns-data-values.yml</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ec8f3a12-9a64-4209-9506-eac2debdac3b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/459/medium/ec8f3a12-9a64-4209-9506-eac2debdac3b.png" srcset="" alt="" height="515" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_37a1da40-28b3-4d81-af4a-ee2718600cbc" class="text-block-content">
+    <p>Select all and paste into the<strong> YAML Service Config</strong> section in the UI wizard.</p>
+<p>Confirm with <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/141b5732-f5db-473e-a7b6-586d6976e520.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/461/medium/141b5732-f5db-473e-a7b6-586d6976e520.png" srcset="" alt="" height="243" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_718d5a7a-6a12-4534-85e2-41314ea1a1ba" class="text-block-content">
+    <p>Go back in the <strong>Workload Management</strong> section</p>
+<p>Select<strong> Supervisors</strong> and click on <strong>View</strong> under <strong>Services</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/0f59976a-47ea-4472-86de-b4fbe5537697.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/463/medium/0f59976a-47ea-4472-86de-b4fbe5537697.png" srcset="" alt="" height="266" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9541ef9e-dbce-41ff-a2e2-15aa07e12e79" class="text-block-content">
+    <p>In a while the <strong>external-dns</strong> service Status will change from Configuring to <strong>Configured</strong></p>
+<p>Click on the <strong>svc-external-dns-domain-c9</strong> under <strong>Deployment Namespace</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/634e4539-5692-402d-9cb3-e170f33ccd32.png" srcset="" alt="" height="108" width="766">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0eebbaf3-4f2e-4591-ac80-3c6aefdd4b65" class="text-block-content">
+    <p>For the <strong>svc-external-dns-domain-c9</strong> Namespace, click on <strong>Compute</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/8d5e88ef-72fe-4721-bf5e-672bf7586269.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/467/medium/8d5e88ef-72fe-4721-bf5e-672bf7586269.png" srcset="" alt="" height="181" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a3c5f971-9de5-4868-ba9c-0cfd2be7ad5b" class="text-block-content">
+    <p>Under <strong>Compute</strong>, you can review all the <strong>Kubernetes Core</strong> configurations for ExternalDNS.</p>
+<p>Select <strong>Pods</strong> and you will see all the <strong>ExternalDNS</strong> needed pods, &nbsp;running as <strong>vSphere Pods</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/605c1a30-df4c-43b7-9fba-d63754a4ab28.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/469/medium/605c1a30-df4c-43b7-9fba-d63754a4ab28.png" srcset="" alt="" height="181" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_884c787f-0e9a-487d-8d9a-307122c038e5" class="text-block-content">
+    <p>Select Deployments and you will see all the <strong>harbor</strong> needed deployments in place</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/efa8ca0b-2404-4c68-a275-cd093a8624b5.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/471/medium/efa8ca0b-2404-4c68-a275-cd093a8624b5.png" srcset="" alt="" height="167" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_38e25d9d-aed2-44e2-a5ea-637942e08cf7" class="text-block-content">
+    <p>Select Replica Sets and you will see all the ExternalDNS needed replica sets in place</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_88235f1d-8645-44f3-b5d1-dacaa1e534b6" class="text-block-content">
+    <p>Please, note: With the configuration provided, ExternalDNS is on par with <a href="https://datatracker.ietf.org/doc/html/rfc2136" target="_blank">RFC2139</a> , hence you might need to consider the default behaviour, which is providing non-secure dynamic Updates in Domain Name System.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/5f5a32bc-903a-412e-a697-619fae97986f.png" srcset="" alt="" height="505" width="760">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d16d58a4-69b5-4d2d-8e1d-08de34a0a9a3" class="text-block-content">
+    <p>From your Windows desktop: start the DNS Manager, expand the Forward Lookup Zones under VCFAD</p>
+<ol>
+<li>right click on the <strong>vcf.holo.lab</strong> domain, select <strong>Properties</strong>
+</li>
+<li>in the <strong>Properties</strong> window, under <strong>General</strong>, Change the <strong>Dynamic updates</strong> option to <strong>Nonsecure and secure</strong>
+</li>
+<li>confirm with <strong>OK</strong>
+</li>
+</ol>
+<p>Now the DNS server is ready to accept Dynamic updates from our <strong>external-dns</strong> service.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="install-harbor" data-step-uuid="f614006e-fd8a-4418-a347-d59f26cfd549">
+    <h3 id="install-harbor" class="step-title screensteps-heading">2.3. Install  Cloud Native Registry Service (Harbor)</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_25cc5ed8-4b02-44e9-ad18-3a6a9c2a155a" class="text-block-content">
+    <p>For a <strong>Cloud Native Registry Service </strong>you can use <strong>Harbor</strong>.</p>
+<p>Harbor is an open source trusted cloud native registry project that stores, signs, and scans content. Harbor extends the open source Docker Distribution by adding the functionalities usually required by users such as security, identity and management. Having a registry closer to the build and run environment can improve the image transfer efficiency. Harbor supports replication of images between registries, and also offers advanced security features such as user management, access control and activity auditing.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/b9993d2b-b1c6-460d-b2e0-3c9a45685e6d.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/658/311/medium/b9993d2b-b1c6-460d-b2e0-3c9a45685e6d.png" srcset="" alt="" height="534" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_592363f3-2d44-422b-a4d8-4eb6c97457b5" class="text-block-content">
+    <p>Download the latest available manifests for <strong>harbor</strong> to your <strong>Downloads</strong> folder</p>
+<p>1. harbor.yml</p>
+<p>2. harbor-data-values.yml</p>
+<p><a href="https://vsphere-tmm.github.io/Supervisor-Services/#cloud-native-registry-service">https://vsphere-tmm.github.io/Supervisor-Services/#cloud-native-registry-service</a></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/4ddc533a-dfae-48fa-be1d-b3df32d8cd9d.png" srcset="" alt="" height="216" width="742">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_269671e1-e9dc-42a8-be08-39243bbf6f95" class="text-block-content">
+    <p>You are ready to deploy Harbor as a Supervisor service!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/14f80946-ffef-4736-8dac-aac510b676b1.png" srcset="" alt="" height="237" width="227">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_bc77af78-bde8-457a-9738-775e5924845a" class="text-block-content">
+    <p>From the vSphere Client home menu, select <strong>Workload Management</strong>.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e0cf1ca7-25b0-4a2d-82be-ea42337615e7.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/656/001/medium/e0cf1ca7-25b0-4a2d-82be-ea42337615e7.png" srcset="" alt="" height="444" width="855">
+      </a>
+  </div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/b37341f4-a285-4325-8210-59e58259647b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/499/medium/b37341f4-a285-4325-8210-59e58259647b.png" srcset="" alt="" height="444" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4f2cec34-8700-414a-b121-1c5e6f9d0449" class="text-block-content">
+    <p>In the <strong>Workload Management</strong> section, select <strong>Services</strong>.</p>
+<p>Locate the <strong>Add New Service</strong> card and click on <strong>ADD</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/b3b054ff-456b-4342-9cbf-100c7dc04c5a.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/501/medium/b3b054ff-456b-4342-9cbf-100c7dc04c5a.png" srcset="" alt="" height="514" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_04242e3d-4879-4d83-af45-dee6f2fe0cec" class="text-block-content">
+    <p>In the <strong>New Service</strong> wizard, for <strong>Register Service</strong> select <strong>UPLOAD</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/34ad68d1-4d1b-4e9a-a024-0704ce635ee7.png" srcset="" alt="" height="362" width="789">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a99bd268-e270-4cb7-b0cf-249661828b0a" class="text-block-content">
+    <p>In the Chrome <strong>Open</strong> menu go to <strong>Downloads</strong> folder and select the <strong>harbor.yml </strong>you downloaded recently.</p>
+<p>Confirm with clicking on <strong>Open</strong> button</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/72e8962c-cc3d-410d-a7ee-701ed98ad4dc.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/505/medium/72e8962c-cc3d-410d-a7ee-701ed98ad4dc.png" srcset="" alt="" height="512" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_680f5e65-c808-45c6-a01c-3d9f91f90df1" class="text-block-content">
+    <p>In the <strong>New Service</strong> wizard, for <strong>Register Service</strong> make sure you can see the aforementioned <strong>harbor.yml</strong> file. </p>
+<p>Its displayed version should match the one you downloaded.</p>
+<p>Confirm with <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/5dc25f4a-b4a0-47d7-b4ed-574ab796b1ee.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/507/medium/5dc25f4a-b4a0-47d7-b4ed-574ab796b1ee.png" srcset="" alt="" height="451" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_12b31050-c479-46b8-bb59-a771110da615" class="text-block-content">
+    <p>In a while you will see a displayed message for the <strong>harbor</strong> service successfully registered with your <strong>Supervisor</strong>. </p>
+<p>You need to activate it with particular configuration settings.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_c210f20c-91a5-486e-b496-c0f444b12b2f" class="text-block-content">
+    <p>You can close the message in green field.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/e70137cc-2d3d-48c3-9961-532e238de504.png" srcset="" alt="" height="471" width="764">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_531854ff-4410-414e-bf74-22dc14f68a12" class="text-block-content">
+    <p>Let's examine the particular file. You can review/edit it with any available editor</p>
+<p>In Windows Explorer, navigate to your <strong>Downloads</strong> folder and locate the recently downloaded file <strong>harbor-data-values.yml</strong>.</p>
+<p>Right click and <strong>Open with Code</strong></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_72306a02-d35d-4c0c-8560-68f72b11bf67" class="text-block-content">
+    <p>For Harbor data values you need to edit a little bit.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/fa1ce91a-de03-4b08-bfcd-e509443895b1.png" srcset="" alt="" height="843" width="760">
+  </div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/24fbcfc0-172b-448d-9218-cd704421b834.png" srcset="" alt="" height="915" width="760">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6dc4a1ba-b14e-45d3-a266-c112c7c8921f" class="text-block-content">
+    <p>You need to edit accordingly, from the default values:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_8fe8c65c-9a75-4fca-9557-4626d48da66f"><code>hostname: yourdomain.com
+
+harborAdminPassword: Harbor12345
+
+storageClass: &quot;insert-storage-class-name-here&quot;
+</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_8fe8c65c-9a75-4fca-9557-4626d48da66f">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a3b3bf76-63fa-4a20-a2b7-45c482f98bbc" class="text-block-content">
+    <p>to new values as following:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_64cb0ac6-4ac2-4129-afdf-58b54e69745f"><code>hostname: harbor.vcf.holo.lab
+
+harborAdminPassword: VMware1!
+
+storageClass: &quot;vsan-tanzu-storage&quot;
+</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_64cb0ac6-4ac2-4129-afdf-58b54e69745f">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ba7923fb-2e80-43e0-b581-ad160ef1a78e" class="text-block-content">
+    <p>Save the file!</p>
+<p>Don't close it, you will need the values shortly!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_6c03a22e-9d60-40c4-aad5-65253d850ad1" class="text-block-content">
+    <p>OPTIONAL: Check there is no DNS record for harbor service, available before its install:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/c3c8bbdd-4e48-44d4-ae20-64156feef0d5.png" srcset="" alt="" height="179" width="580">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_114836e6-586f-4603-a2a8-54fbdb23f0ed" class="text-block-content">
+    <p>Open a Command Prompt in your Windows desktop</p>
+<p>enter the check command</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_04d135f8-d85e-497c-a46c-348a685ed832"><code>nslookup harbor.vcf.holo.lab</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_04d135f8-d85e-497c-a46c-348a685ed832">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_810a99ad-8d23-4985-b13a-b7cd563210ee" class="text-block-content">
+    <p>Once the harbor install is finished, you can check if external-dns has created the dynamic DNS update for it.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/9737dd48-1c10-4def-8526-3f9062db6356.png" srcset="" alt="" height="395" width="397">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a3a8dee6-624f-497b-a546-790d2492cf3a" class="text-block-content">
+    <p>Go back to Chrome -&gt; vSphere UI -&gt; Workload Management -&gt; Services</p>
+<ol>
+<li>Locate your recently registered <strong>harbor</strong> service</li>
+<li>From <strong>Actions</strong> drop down menu </li>
+<li>select <strong>Manage Service</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/8710483a-fb15-40a9-a86a-cfb895c6b23c.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/519/medium/8710483a-fb15-40a9-a86a-cfb895c6b23c.png" srcset="" alt="" height="514" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8cbf76b1-a1c4-46ec-894e-dc6b906a313d" class="text-block-content">
+    <p>In the <strong>Manage</strong> wizard, from <strong>Configure</strong> select your <strong>Supervisor</strong> and confirm <strong>NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/2923cdae-a442-4c5b-9cb6-1bbbe7ef8c9d.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/521/medium/2923cdae-a442-4c5b-9cb6-1bbbe7ef8c9d.png" srcset="" alt="" height="514" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_591302bf-5a70-4c80-b2e6-96878ccf4c9c" class="text-block-content">
+    <p>You need to provide the service configuration values.</p>
+<p>Copy these from the Visual Studio Code, where you lastly reviewed <strong>harbor-data-values.yml</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/f8f13c4e-fa40-4e8c-b2ca-c7b3a781ab6b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/523/medium/f8f13c4e-fa40-4e8c-b2ca-c7b3a781ab6b.png" srcset="" alt="" height="514" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3c80fe0b-1b5e-4782-aad8-e06742d7cbc2" class="text-block-content">
+    <p>Select all and paste into the<strong> YAML Service Config</strong> section in the UI wizard.</p>
+<p>Confirm with <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/41b18923-5939-4d30-965c-2f26e05b4346.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/525/medium/41b18923-5939-4d30-965c-2f26e05b4346.png" srcset="" alt="" height="245" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_53aee1ff-6840-4123-a514-36b6a2e93ea5" class="text-block-content">
+    <p>Go back in the <strong>Workload Management</strong> section</p>
+<p>Select<strong> Supervisors</strong> and click on <strong>View</strong> under <strong>Services</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/de92f60b-d2d4-4f84-b9a8-55130933e391.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/527/medium/de92f60b-d2d4-4f84-b9a8-55130933e391.png" srcset="" alt="" height="289" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_aa6c943a-329d-4ee1-85e2-f3d03c10237e" class="text-block-content">
+    <p>In a couple of minutes the <strong>harbor</strong> service Status will change from Configuring to <strong>Configured</strong></p>
+<p>Click on the <strong>svc-harbor-domain-c9</strong> under <strong>Deployment Namespace</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/411b0b5f-c54b-405d-935b-dbde9d785457.png" srcset="" alt="" height="115" width="765">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9a280947-036f-4bc1-a546-2067f78a632f" class="text-block-content">
+    <p>For the <strong>svc-harbor-domain-c9</strong> Namespace, click on <strong>Compute</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/47703310-3bfe-4198-afcf-c57ead602e9c.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/531/medium/47703310-3bfe-4198-afcf-c57ead602e9c.png" srcset="" alt="" height="334" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_52a446a1-d484-4e61-b9f7-818a1f8f333a" class="text-block-content">
+    <p>Under <strong>Compute</strong>, you can review all the <strong>Kubernetes Core</strong> configurations for harbor.</p>
+<p>Select <strong>Pods</strong> and you will see all the <strong>harbor</strong> needed pods, &nbsp;running as <strong>vSphere Pods</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/7fd1d78a-c36b-4f3c-b9a7-b70f80cd65a7.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/533/medium/7fd1d78a-c36b-4f3c-b9a7-b70f80cd65a7.png" srcset="" alt="" height="258" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_36c8ea36-05a8-4b58-872c-823a527636a8" class="text-block-content">
+    <p>Select <strong>Deployments</strong> and you will see all the <strong>harbor</strong> needed deployments in place</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/2305a95d-3167-4308-925d-58db644626f1.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/535/medium/2305a95d-3167-4308-925d-58db644626f1.png" srcset="" alt="" height="258" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d7264b52-273e-4b56-a685-992b3a668cd0" class="text-block-content">
+    <p>Select <strong>Replica Sets</strong> and you will see all the <strong>harbor</strong> needed replica sets in place</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9dd45b20-f997-468f-b16f-8ef577bb51e1.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/537/medium/9dd45b20-f997-468f-b16f-8ef577bb51e1.png" srcset="" alt="" height="184" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_941db366-2a48-4887-bb33-fbdad7bcf9ee" class="text-block-content">
+    <p>Select <strong>Stateful Sets</strong> and you will see all the <strong>harbor</strong> needed stateful sets in place: for harbor-database, harbor-redis and harbor-trivy</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_43ea8b50-7591-4c54-8dd4-03629c1fd991" class="text-block-content">
+    <p>Since the harbor service got installed, let's check if external-dns had provided a dynamic update for it in DNS</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/8fbfaf8f-e903-4e3a-a96d-c7c880d010d6.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/541/medium/8fbfaf8f-e903-4e3a-a96d-c7c880d010d6.png" srcset="" alt="" height="316" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6aaf8442-efbf-49a3-b00a-1f105dfdacdc" class="text-block-content">
+    <p>Go back to your Windows command prompt box and check again the resolution</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_8f4c7c12-ffd2-47fe-8a0e-e2a87b77f667"><code>nslookup harbor.vcf.holo.lab</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_8f4c7c12-ffd2-47fe-8a0e-e2a87b77f667">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6cd5021b-6999-4d73-afee-7bb392025709" class="text-block-content">
+    <p>Looks good!</p>
+<p>Now, let's get to the harbor UI</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/c56166a7-4bd6-4472-bbf5-e388e26eb112.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/543/medium/c56166a7-4bd6-4472-bbf5-e388e26eb112.png" srcset="" alt="" height="548" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f8372bd1-9d08-4d66-8139-7648d2cc9281" class="text-block-content">
+    <p>Open a <strong>new</strong> tab in <strong>Chrome</strong> and:</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a3af8c9e-c846-4be5-b086-26b7cc1d3f7f" class="text-block-content">
+    <ol>
+<li>Go to <a href="https://harbor.vcf.holo.lab" target="">https://harbor.vcf.holo.lab </a>
+</li>
+<li>Click on <strong>Proceed</strong> </li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/caa18380-a05d-4572-b9fc-6352d4598a54.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/545/medium/caa18380-a05d-4572-b9fc-6352d4598a54.png" srcset="" alt="" height="548" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a475a08a-4fbd-4a9c-89a9-1596727d1dde" class="text-block-content">
+    <p>In Harbor Log In page, Populate the credentials and click on <strong>LOG IN</strong></p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_c25d6b34-7630-4816-849e-ba9a45817377"><code>user: admin
+password: VMware1!</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_c25d6b34-7630-4816-849e-ba9a45817377">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/54bc6739-bfc9-439b-92a9-e2dd84e77112.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/659/547/medium/54bc6739-bfc9-439b-92a9-e2dd84e77112.png" srcset="" alt="" height="488" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2ee00470-0972-4dab-ade5-6b3fe8ea3868" class="text-block-content">
+    <p>The Harbor is ready!</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="install-local-consumption-interface" data-step-uuid="12e463ad-73c8-46fb-b00f-d371b86ff94e">
+    <h3 id="install-local-consumption-interface" class="step-title screensteps-heading">2.4. Install  (Local) Consumption Interface</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3dc9ea97-e132-40cb-a2df-cccc9c229663" class="text-block-content">
+    <p>Provides the Local Consumption Interface (LCI) for Namespaces within vSphere Client. This also includes the Single Sign On (SSO) component required by the Cloud Consumption Interface (CCI) in Aria Automation within VMware Cloud Foundation.</p>
+<p>The minimum required version for using this interface is vSphere 8 Update 3.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/74819c74-262b-459d-9e53-c0516e306554.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/179/medium/74819c74-262b-459d-9e53-c0516e306554.png" srcset="" alt="" height="509" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_52ba7c08-c7f7-4f1d-b628-8094405a49be" class="text-block-content">
+    <p>Download the latest available manifests for Consumption Interface to your <strong>Downloads</strong> folder</p>
+<p>cci-supervisor-service.yml</p>
+<p><a href="https://vsphere-tmm.github.io/Supervisor-Services/#consumption-interface">https://vsphere-tmm.github.io/Supervisor-Services/#consumption-interface</a></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/6ed038f2-ac84-4779-99ca-3b725e7e0b65.png" srcset="" alt="" height="216" width="742">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_fa319f59-5eb0-451b-9377-42f3b8d1dd1b" class="text-block-content">
+    <p>You are ready to deploy Local Consumption Interface as a Supervisor service!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/53315a44-be30-4650-bbcf-9dda7480fd06.png" srcset="" alt="" height="237" width="227">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_58d254c3-0b50-4953-97de-286741fb71a4" class="text-block-content">
+    <p>From the vSphere Client home menu, select <strong>Workload Management</strong>.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/8579b9e6-0b5d-4525-b090-fd3a312d7e13.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/185/medium/8579b9e6-0b5d-4525-b090-fd3a312d7e13.png" srcset="" alt="" height="444" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_81f859f8-be20-4566-ba09-68893dd2ea35" class="text-block-content">
+    <p>In the <strong>Workload Management</strong> section, select <strong>Services</strong>.</p>
+<p>Locate the <strong>Add New Service</strong> card and click on <strong>ADD</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e23056ea-966a-451d-8be9-6b3170602912.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/187/medium/e23056ea-966a-451d-8be9-6b3170602912.png" srcset="" alt="" height="514" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8986e56d-492e-44db-90d5-0b06d6ea3934" class="text-block-content">
+    <p>In the <strong>New Service</strong> wizard, for <strong>Register Service</strong> select <strong>UPLOAD</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/0edb5262-3926-4374-af84-d8c26f5ce92e.png" srcset="" alt="" height="405" width="801">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d08052c9-ae74-4c0e-96d7-698c86da6a85" class="text-block-content">
+    <p>In the Chrome <strong>Open</strong> menu go to <strong>Downloads</strong> folder and select the <strong>cci-supervisor-service.yml </strong>you downloaded recently.</p>
+<p>Confirm with clicking on <strong>Open</strong> button</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/7a934f3a-896a-4e3f-a3f3-d287ea2a9480.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/670/789/medium/7a934f3a-896a-4e3f-a3f3-d287ea2a9480.png" srcset="" alt="" height="514" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1334016e-77e9-4140-b784-901f8dc8bbd8" class="text-block-content">
+    <p>In the <strong>New Service</strong> wizard, for <strong>Register Service</strong> make sure you can see the aforementioned <strong>cci-supervisor-service.yml</strong> file. </p>
+<p>Its displayed version should match the one you downloaded.</p>
+<p>Confirm with <strong>FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/81d4bfd3-a330-486e-a15c-3f1926c40537.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/663/309/medium/81d4bfd3-a330-486e-a15c-3f1926c40537.png" srcset="" alt="" height="451" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7aa19d3a-3af7-4b87-92bc-03b6a7e620d6" class="text-block-content">
+    <p>In a while you will see a displayed message for the <strong>Consumption Interface</strong> service successfully registered with your <strong>Supervisor</strong>. </p>
+<p>You need to activate it with particular configuration settings.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_23a29840-5867-44ec-bdec-b982f57e0c39" class="text-block-content">
+    <p>You can close the message in green field.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/bed30278-1bd6-4bf3-805a-364928ff053b.png" srcset="" alt="" height="395" width="400">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1e19bb50-c018-4303-b47a-d4cab5bccd74" class="text-block-content">
+    <ol>
+<li>Locate your recently registered <strong>Consumption Interface</strong> service</li>
+<li>From <strong>Actions</strong> drop down menu </li>
+<li>select <strong>Manage Service</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9cc24ab4-c3fd-48a7-85f9-b07c9d1228a1.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/197/medium/9cc24ab4-c3fd-48a7-85f9-b07c9d1228a1.png" srcset="" alt="" height="462" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_dfe1aec7-f71a-4fe4-b3d6-f4323dc43f3f" class="text-block-content">
+    <p>In the <strong>Manage</strong> wizard, from <strong>Configure</strong> select your <strong>Supervisor</strong> and confirm <strong>NEXT</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/d717ceb8-ec81-47ab-b138-f45ddc2cbc3b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/199/medium/d717ceb8-ec81-47ab-b138-f45ddc2cbc3b.png" srcset="" alt="" height="459" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5ae655c3-0bbb-4ae0-8850-6320f7dc20e3" class="text-block-content">
+    <p>No data file to use</p>
+<p>Click<strong> FINISH</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/c9ba1e76-eba6-4946-b202-ae522b75ecc9.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/663/311/medium/c9ba1e76-eba6-4946-b202-ae522b75ecc9.png" srcset="" alt="" height="246" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4a4decff-5179-4da0-9dc8-2b1cfcef5d4f" class="text-block-content">
+    <p>Go back in the <strong>Workload Management</strong> section</p>
+<p>Select<strong> Supervisors</strong> and click on <strong>View</strong> under <strong>Services</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/a7c83dda-122f-413e-88c8-4a9562c9ba7a.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/662/203/medium/a7c83dda-122f-413e-88c8-4a9562c9ba7a.png" srcset="" alt="" height="470" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_abb510d3-e962-41c1-a1a4-ae422681a95b" class="text-block-content">
+    <p>In a couple of minutes the <strong>Consumption Interface</strong> service Status will change from Configuring to <strong>Configured</strong></p>
+<p>Click on the <strong>svc-cci-service-domain-c9</strong> under <strong>Deployment Namespace</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/07abbffa-09b5-4ca5-b99e-4af47bd52114.png" srcset="" alt="" height="98" width="756">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_b9cb9811-5761-494a-a166-262d900e4eaa" class="text-block-content">
+    <p>For the <strong>svc-cci-service-domain-c9</strong> Namespace, click on <strong>Compute</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ddcbe6ff-a4f0-4422-ae4a-35e8ce264eee.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/663/315/medium/ddcbe6ff-a4f0-4422-ae4a-35e8ce264eee.png" srcset="" alt="" height="334" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f4aa7027-60e0-4872-bb98-b48f5a8c6ada" class="text-block-content">
+    <p>Under <strong>Compute</strong>, you can review all the <strong>Kubernetes Core</strong> configurations for <strong>Consumption Interface</strong>.</p>
+<p>Select <strong>Pods</strong> and you will see all the <strong>Consumption Interface</strong> needed pods, &nbsp;running as <strong>vSphere Pods</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/143f4df3-b744-4223-a65e-c98fe77edb6f.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/663/317/medium/143f4df3-b744-4223-a65e-c98fe77edb6f.png" srcset="" alt="" height="258" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ac8784fa-7722-43cc-b2b8-f10178d0196f" class="text-block-content">
+    <p>Select <strong>Deployments</strong> and you will see all the <strong>Consumption Interface</strong> needed deployments in place</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9b4351d9-2cef-45b6-b718-e8da01f52703.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/663/319/medium/9b4351d9-2cef-45b6-b718-e8da01f52703.png" srcset="" alt="" height="163" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f024f1bf-dc47-493a-a604-b328cdf625ef" class="text-block-content">
+    <p>Select <strong>Daemon Sets</strong> and you will see all the &nbsp;<strong>Consumption Interface</strong> needed replica sets in place</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/d7662122-6749-4eb3-9e7d-dbbe3ad9cb5b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/663/321/medium/d7662122-6749-4eb3-9e7d-dbbe3ad9cb5b.png" srcset="" alt="" height="258" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4242bdba-876e-426d-a43a-97e3365af5fe" class="text-block-content">
+    <p>Select <strong>Replica Sets</strong> and you will see all the &nbsp;<strong>Consumption Interface</strong> needed replica sets in place</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_d1a44804-f826-47b5-a78a-a68d9d4ad461" class="text-block-content">
+    <p>IMPORTANT for LCI : <strong>Local Consumption Interface</strong></p>
+<ul>
+<li>LCI is not supported on Multi-Zone Supervisors.</li>
+<li>After installing the service into a supervisor, you should expect a delay while the plugin is installed. If you do not see the plugin listed in the Resources tab under Workload Management -&gt; Namespaces -&gt; your namespace, please wait and then refresh the page. </li>
+<li>After installing the service into a supervisor, <strong>you will need to reload the web page or login in a new window to allow the plugin to load properly.</strong>
+</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/87f9d308-6214-4730-89f6-b399a0b2be59.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/690/558/medium/87f9d308-6214-4730-89f6-b399a0b2be59.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.4" height="54" width="855">
+      </a>
+  </div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/4ec2fb15-5544-4f76-87a5-11a42827773d.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/670/792/medium/4ec2fb15-5544-4f76-87a5-11a42827773d.png" srcset="" alt="" height="382" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8eca34aa-5ed1-4bcd-a47b-822edf17f6ba" class="text-block-content">
+    <ol>
+<li>
+<strong>Reload/Refresh</strong> the vSphere client in your browser</li>
+<li>Under <strong>Namespaces </strong>section go to<strong> svc-tkg-domain-c9</strong>
+</li>
+<li>Notice the new plugin installed under the <strong>Resources</strong> tab</li>
+</ol>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7004ab2a-0325-470e-a185-d6e3b55a16f9" class="text-block-content">
+    <p>You are now ready to proceed to the next section!</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+

@@ -1,0 +1,558 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="task-description-and-objectives" data-step-uuid="00ba32bc-18eb-42c6-ba9e-ece804e48079">
+    <h2 id="task-description-and-objectives" class="step-title screensteps-heading">1. Task description and objectives</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_31d90092-ba0f-472f-99ee-bf91406a26b7" class="text-block-content">
+    <p>With Tanzu Kubernetes Grid on Supervisor, you can provision different styles of workload clusters, includingTanzu Kubernetesclusters with well-defined defaults and Cluster Class clusters with broad definition options.</p>
+<p>With Tanzu Kubernetes Grid on Supervisor, you can provision different styles of workload clusters, including Tanzu Kubernetes clusters with well-defined defaults and Cluster Class clusters with broad definition options.</p>
+<p>With this lab you will provision and manage the life cycle of TKG clusters on using the Supervisor in the Sphere IaaS control plane via the Tanzu CLI.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="tkg-workload-cluster-configuration" data-step-uuid="d775d534-0c78-4185-9baf-b26b68c8333f">
+    <h2 id="tkg-workload-cluster-configuration" class="step-title screensteps-heading">2. TKG Workload Cluster Configuration</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_fa678435-6bea-47a3-99af-930b206690ca" class="text-block-content">
+    <p>TKG Services come with a default ClusterClass definition named<code> tanzukubernetescluster</code>. It provides the template for cluster creation using the <code>v1beta</code> API. </p>
+<p>The <code>tanzukubernetescluster</code> ClusterClass is available in all user namespaces. To create a cluster based on this ClusterClass, you need to reference it in the Cluster specification.</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="default-cluster-class" data-step-uuid="2077e09f-9abc-460f-9cf7-9210307e1ef5">
+    <h3 id="default-cluster-class" class="step-title screensteps-heading">2.1. Default Cluster Class</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e750324e-9502-4a09-9ed0-9bb697adc559" class="text-block-content">
+    <p><strong>IMPORTANT:</strong> This exercise is being done with administrator@vsphere.local permissions set over the lf-tdd-namespace</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_bc893e7f-0177-4732-b9b3-eabf5524db64" class="text-block-content">
+    <p>The default <code>tanzukubernetescluster </code>ClusterClass is immutable. It may be updated with each release of the TKG Service.</p>
+<p>To view the default t<code>anzukubernetescluster</code> ClusterClass that ships with your TKG Service instance, complete the following steps:</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f0df94d6-4ddb-4c9e-a334-b370ae9507f3" class="text-block-content">
+    <p>Make sure you are logged in your <strong>Supervisor</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/0504f73d-6acc-48da-bdf9-720c16224a8f.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/196/medium/0504f73d-6acc-48da-bdf9-720c16224a8f.png" srcset="" alt="" height="303" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_37ce8b3f-1d6c-4ce7-9781-f3419ddedb8a"><code>kubectl vsphere login --server=10.80.0.2 --insecure-skip-tls-verify</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_37ce8b3f-1d6c-4ce7-9781-f3419ddedb8a">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a907e02d-68b0-4c6c-a2fa-e9edca104119" class="text-block-content">
+    <p>Open a<strong> PowerShell prompt </strong>and use it as a<strong> Terminal,</strong> log in your <strong>Supervisor</strong> (you should already be there coming from the previous exercise)</p>
+<p>Username:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_decace4c-a77d-4884-abfb-a2a55f35eb3c"><code>administrator@vsphere.local</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_decace4c-a77d-4884-abfb-a2a55f35eb3c">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_436605bb-f3cc-4606-bc77-6b73fd0d6dc7" class="text-block-content">
+    <p>Password</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_93c5a13a-c151-4223-85c3-7c9ce2886331"><code>VMware123!VMware123!</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_93c5a13a-c151-4223-85c3-7c9ce2886331">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8bbba35a-e4b9-4f69-be28-65fd73316948" class="text-block-content">
+    <p>Navigate to your working Namespace <strong>lf-tdd-namespace</strong> where you will provision an additional <strong>workload cluster</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/bf680313-9b0d-424c-bbe2-ee47cb5a7094.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/334/medium/bf680313-9b0d-424c-bbe2-ee47cb5a7094.png" srcset="" alt="" height="236" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_4d836bda-87ca-40e3-abdf-7bfb1e7a5166"><code>kubectl config get-contexts</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_4d836bda-87ca-40e3-abdf-7bfb1e7a5166">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_240ba750-a8fb-44a9-a12c-5ec031c714a8"><code>kubectl config use-context lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_240ba750-a8fb-44a9-a12c-5ec031c714a8">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c712910d-8916-4d50-afcc-d268025df194" class="text-block-content">
+    <p>Get the default <strong>ClusterClass</strong> and output this to a file named <strong>tkc-dcc.yaml</strong>.</p>
+<p>You can <strong>Review</strong> the file.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/f5b38c5b-e94e-48a5-a3c7-982f6eb7c90c.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/200/medium/f5b38c5b-e94e-48a5-a3c7-982f6eb7c90c.png" srcset="" alt="" height="88" width="855">
+      </a>
+  </div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/22884435-7d49-41b9-a4c7-806ac5219375.png" srcset="" alt="" height="275" width="767">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_08a0651d-3967-4f26-adc3-91c0f0526e85" class="text-block-content">
+    <p>Note: The screenshot of the <strong>tkc-tdd.yaml</strong> file is truncated, showing only the starting ten rows)</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_9da549a3-3b44-4c69-be21-5465fa650280"><code>kubectl get clusterclass tanzukubernetescluster -o yaml &gt; tkc-dcc.yaml</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_9da549a3-3b44-4c69-be21-5465fa650280">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_16bde396-f4a8-400a-b1f0-08ad6bcd3675"><code>code tkc-dcc.yaml</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_16bde396-f4a8-400a-b1f0-08ad6bcd3675">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="tkg-workload-cluster-configuration-file" data-step-uuid="ee6a8bb4-1555-4df1-b42c-124361781cae">
+    <h3 id="tkg-workload-cluster-configuration-file" class="step-title screensteps-heading">2.2. TKG Workload Cluster configuration file</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e5972af6-1b13-4e65-88a2-d52f4497139b" class="text-block-content">
+    <p>You can create a Tanzu Kubernetes Grid <strong>workload cluster configuration file</strong> using the management cluster configuration file as <strong>template</strong>. We have provided a github repository with the files you need. You just need to the clone the repo locally.</p>
+<p>In powershell run the command</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_9642d53c-743b-43ab-b096-135d20d42ef2"><code>git clone https://github.com/Livefire-Labs/dev.ready.tdd.git C:\Users\Administrator\Downloads\class.files</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_9642d53c-743b-43ab-b096-135d20d42ef2">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/b5160390-4f15-44c4-a68c-03ff0997c493.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/690/781/medium/b5160390-4f15-44c4-a68c-03ff0997c493.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.4" height="415" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_96c19b81-68ac-472c-8cdd-21daff8ceeb8" class="text-block-content">
+    <p>Open the file <em>C:\Users\Administrator\Downloads\class.files\tkgs-wkld-template.yaml in <strong>VSCode</strong></em></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_66120d7c-c6bf-45ba-b711-bb0d73d9ef76" class="text-block-content">
+    <p>This template references a <strong>Custom Cluster Configuration Based on the Default ClusterClass</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/95374992-e483-44ef-860c-64b5f4eac268.png" srcset="" alt="" height="883" width="753">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_b37f2a20-f061-4a5c-8f78-38b5d6a51a50" class="text-block-content">
+    <p>Use the <strong>SAVE AS</strong> &nbsp;in VSCode and give the template manifest file a custom name: <strong>tkgs-wkld-c001.yaml. </strong>Livefire did the work for you, if you look at the tkgs-wkld-template.yaml file, or the copy you saved, we have marked the lines you will need to modify to successfully deploy a TKGs cluster to vSphere. Each line that needs to be changed has the Value "CHANGE_IT" followed by a comment with the value to use for the lab.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_39df3ac3-adb4-467a-9dac-e337ac5a14ba" class="text-block-content">
+    <p>Carefully remove all the <strong>CHANGE_IT # </strong>text on each appropriate line by hand</p>
+<p>&nbsp;</p>
+<p>OR</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/7564e8e8-d8e3-4301-83d2-fe77b508cf61.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.4" height="134" width="378">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_473bed53-2c5e-41d8-90ec-839dbf4d9d6d" class="text-block-content">
+    <p>In VSCode highlight one of the <strong>CHANGE_IT # </strong>entries. You will notice that VSCode recognizes that there are more text strings that match what you have slected.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/c3e20630-de79-4e72-baa8-9b4b9a22ed1c.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.4" height="412" width="400">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_dcc353c3-2efb-4802-a83e-740f9067bae6" class="text-block-content">
+    <p>With the <strong>CHANGE_IT # </strong>string still highlighted in VSCode, select <strong>Edit</strong> --&gt; <strong>Replace</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/3fdd4042-df4b-4050-a76b-46210b3b3be6.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/690/789/medium/3fdd4042-df4b-4050-a76b-46210b3b3be6.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.4" height="640" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c9ef5444-b425-4089-a850-fc17ca867bcc" class="text-block-content">
+    <p>VSCode should then highlight ALL of the strings to replace. Leave the bottom value empty</p>
+<p>Click the <strong>Replace All</strong> button</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/2ff9bdd8-161c-46a4-b696-71b852f1fb30.png" srcset="" alt="" height="880" width="753">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_be2f5869-1e51-41ab-aac8-037edd4ed629" class="text-block-content">
+    <p>VSCode should make your configuration file should look exactly as the screenshot above. If not you can always undo and try again.</p>
+<p>Remember to Save the file!</p>
+<p>You are now ready to start provisioning your new workload cluster with CLI.</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="create-a-tkg-workload-cluster" data-step-uuid="6ddd734f-5c93-488f-8498-9d0d1d973b3b">
+    <h2 id="create-a-tkg-workload-cluster" class="step-title screensteps-heading">3. Create a TKG Workload Cluster</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_fae9934f-715a-4fb5-8b9d-7a7403e1e0f3" class="text-block-content">
+    <p>The Kubernetes<a href="https://github.com/kubernetes-sigs/cluster-api/">Cluster API </a>is a suite of tools which provide for the declarative provisioning, upgrading, and operating of Kubernetes clusters. <a href="https://kubernetes.io/blog/2021/10/08/capi-clusterclass-and-managed-topologies/">ClusterClass </a>is an evolution of the Cluster API that lets you define templates for managing the life cycle of sets of clusters. TKG Service supports ClusterClass using the<code> v1beta1</code> API.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ed4b5b1c-f74b-42a3-ad42-a18c03383d67" class="text-block-content">
+    <p>ClusterClass API is the newest Cluster API that should be used to deploy all new Kubernetes clusters using built in ClusterClass definitions.</p>
+<p>TanzuKubernetesCluster API is provided for backward compatibility and a legacy offering, which will be deprecated in a future release.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7dde16d8-bb8d-4c39-b3e9-6fc644aa9152" class="text-block-content">
+    <p>Next step is to provision a workload cluster, using the above described ClusterClass, but also leverage the updated ClusterClass API. This is already configured in your configuration file from the previous step.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_91ecf773-0de0-490b-9e79-69ddfb70242a" class="text-block-content">
+    <p>Let's check you have the correct file in place:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/bce7c9ce-961f-4838-a90a-0a0f32bafd76.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/208/medium/bce7c9ce-961f-4838-a90a-0a0f32bafd76.png" srcset="" alt="" height="161" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_57f713fe-1c27-4846-83a9-417521a2716b"><code>ls c:\Users\Administrator\Downloads\class.files\tkgs-wkld-c001.yaml</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_57f713fe-1c27-4846-83a9-417521a2716b">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0ccb111c-7eca-4351-8a6e-4b5797160441" class="text-block-content">
+    <p>A good idea is to perform an initial dry run before the actual cluster creation, which queries vCenter to ensure that the vSphere resources exist. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/d7ebade5-c27d-4851-9427-0f9d12cff25e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/210/medium/d7ebade5-c27d-4851-9427-0f9d12cff25e.png" srcset="" alt="" height="689" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_700035ac-53ce-4295-b209-96df6b6d63cc" class="text-block-content">
+    <p>Run the command</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_51f0a641-9534-40ec-a0bd-a62aa6ea0736"><code>tanzu cluster create -f .\Downloads\class.files\tkgs-wkld-c001.yaml --dry-run</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_51f0a641-9534-40ec-a0bd-a62aa6ea0736">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_cdb2db9b-3a33-4500-b0fa-d0c839b03c20" class="text-block-content">
+    <p>If the output shows<strong> exit status 1</strong>, you must review the configuration parameters in the <strong>tkgs-wkld-c001.yaml</strong> configuration file.</p>
+<p>If dry run finished okay, go ahead and create the cluster:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/517f0ff0-5f70-422d-bee4-533acd0bb22e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/212/medium/517f0ff0-5f70-422d-bee4-533acd0bb22e.png" srcset="" alt="" height="213" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f09f449e-2b1b-47a0-933f-b5d5d7a87de3" class="text-block-content">
+    <p>Run the same command as before, but without the --dry-run</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_7e1b4274-0aba-4cbd-abf4-68a76eabab35"><code>tanzu cluster create -f .\Downloads\class.files\tkgs-wkld-c001.yaml</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_7e1b4274-0aba-4cbd-abf4-68a76eabab35">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a5e05f2a-67c7-4bc9-b661-bddf6c0d2224" class="text-block-content">
+    <p>When prompted type <code>y</code> to continue!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_71300f99-0543-4cf5-ac69-4bd3afc9ef47" class="text-block-content">
+    <p>The Tanzu Kubernetes Grid cluster takes <strong>approximately 25 minutes</strong> to deploy.</p>
+<p>Wait for &nbsp;the <strong> Workload cluster 'tkg-cluster-c001' created</strong> message to appear.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e200b7c8-bfb8-49a3-889d-70bd34b83dfb" class="text-block-content">
+    <p>While your new workload cluster is being provisioned, you can track some visuals in the vSphere client UI</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d0c4d1eb-4526-49aa-8e10-d5bd3ee716aa" class="text-block-content">
+    <p>In your Workload Management --&gt; Namespaces --&gt; lf-tdd-namespace pane, you will see the new cluster changing phases:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ff7012dd-4a45-43a9-b2f1-e9ebaf6fe758.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/338/medium/ff7012dd-4a45-43a9-b2f1-e9ebaf6fe758.png" srcset="" alt="" height="476" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_20afe011-37ad-422d-88ce-3956a86edb2f" class="text-block-content">
+    <p>- from ... Creating</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/f446030d-3886-4fdc-a4ea-cccde255c6e0.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/340/medium/f446030d-3886-4fdc-a4ea-cccde255c6e0.png" srcset="" alt="" height="472" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a8d2db5f-d233-4f50-9502-cdb251c3fc9b" class="text-block-content">
+    <p>... to Running within 25 mins or so.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/c913d180-30f0-4703-bf63-06c35abe1e2f.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/342/medium/c913d180-30f0-4703-bf63-06c35abe1e2f.png" srcset="" alt="" height="430" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c1d47c75-d477-4fa7-a926-5a2031b23551" class="text-block-content">
+    <p>If you click on the <strong>tkg-cluster-c001</strong> name, you will get visual of all the <strong>Cluster Details</strong></p>
+<p>Scroll down the slide bar in the UI</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ca596dda-422d-4329-b096-e3478d339957" class="text-block-content">
+    <p>Also, you can track the new cluster appearance from <strong>Inventory</strong> --&gt; <strong>VMs and Clusters</strong> --&gt; under<strong> lf-tdd-namespace</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/b563e793-352d-4fa6-b73f-afa1d42fb796.png" srcset="" alt="" height="494" width="561">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e65f5021-27f2-4a64-afa3-ece7172ffcde" class="text-block-content">
+    <p>... starting with the Control Plane provisioning</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/5c3f6f1d-72e5-4078-86ea-c6f9d1cf59a5.png" srcset="" alt="" height="494" width="561">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8b628d94-fd0d-4329-ac81-179a2a81b319" class="text-block-content">
+    <p>... and ending with the Workload nodes added</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_fcbafe8c-7df8-4295-84fc-63c00b701b5d" class="text-block-content">
+    <p>All seems good, so let's get back in the PS Terminal and check the cluster(s) residing in the lf-tdd-namespace</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/1c0ea057-42dc-4349-8306-09e887fd83e3.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/618/medium/1c0ea057-42dc-4349-8306-09e887fd83e3.png" srcset="" alt="" height="99" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_247a9377-8963-4095-9add-2ee821def7fa"><code>kubectl get clusters</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_247a9377-8963-4095-9add-2ee821def7fa">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0f723fc0-11e5-4c68-9ce8-2367e2bd2e18" class="text-block-content">
+    <p>You can do the same, but getting a bit more info with the tanzu cli</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/0bd8d5fd-a85b-475e-81fb-6d051d331424.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/674/620/medium/0bd8d5fd-a85b-475e-81fb-6d051d331424.png" srcset="" alt="" height="87" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_399c000e-a703-4231-8f23-7f959fcaaeef"><code>tanzu cluster list --namespace lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_399c000e-a703-4231-8f23-7f959fcaaeef">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e0b54ec3-5efe-4150-ae55-6821b41eca07" class="text-block-content">
+    <p>Okay, you are now ready to go to the next section!</p>
+  </div>
+</div>
+ 
+  </div>
+
+

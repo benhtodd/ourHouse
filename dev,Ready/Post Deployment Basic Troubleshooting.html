@@ -1,0 +1,508 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="task-description-and-objectives" data-step-uuid="E8D39613-C037-441E-A82B-A737C8FE9DBD">
+    <h2 id="task-description-and-objectives" class="step-title screensteps-heading">1. Task description and objectives</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_CCFF8441-2C24-4980-BEED-DD1E5C9F526A" class="text-block-content">
+    <p>As part of initial troubleshooting you are tasked to perform a thorough health-check of the environment components, to ensure that no issues exist</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="create-storage-policy" data-step-uuid="045B5E7E-4DEC-4243-9D21-F74D4E314CF6">
+    <h2 id="create-storage-policy" class="step-title screensteps-heading">2. Post Deployment Initial Troubleshooting</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ECA80A74-B894-47CB-BA44-D404939C9ACD" class="text-block-content">
+    <p>You need to:</p>
+<p>Collect and inspect Supervisor logs</p>
+<p>Collect and inspect ClusterAPI logs</p>
+<p>Inspect the health of Supervisor's TKG components</p>
+<p>Verify SSH access to Supervisor</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="login-to-vsphere-client" data-step-uuid="1AB1E1AC-8322-4A5D-845E-32702498776D">
+    <h3 id="login-to-vsphere-client" class="step-title screensteps-heading">2.1. Get the Supervisor Logs</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_FEA96551-EF91-4334-BC0D-20E86C45F70B" class="text-block-content">
+    <p>Add text</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/fbb0210c-453b-4f15-b2fa-166f0a46cf7f.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-no-tanzu" height="301" width="515">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_b9532907-4285-4098-ac37-dafad9ba4ce2" class="text-block-content">
+    <p>Open Chrome</p>
+<p>Open the Livefire Labs Bookmark Folder</p>
+<p>Choose --&gt; <strong>MGMT WLD</strong> --&gt;<strong> vCenter</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/80027d34-925c-424c-bd7d-a791eb1e11eb.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-no-tanzu" height="603" width="505">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_bc4d5ff8-9caf-4c2d-bd36-248abbe36692" class="text-block-content">
+    <p>Login:</p>
+<p>User: </p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_99b233dd-ee15-4bbf-a5a5-156c6421347d"><code>Administrator@vsphere.local</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_99b233dd-ee15-4bbf-a5a5-156c6421347d">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7f6a5e54-dc70-422c-8e07-fdde9e70624b" class="text-block-content">
+    <p>Password: </p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_78972f8d-aa09-40d1-aa84-cc301dd38ddd"><code>VMware123!VMware123!</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_78972f8d-aa09-40d1-aa84-cc301dd38ddd">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/db1021de-dbb4-444e-88de-664e48f917e2.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-no-tanzu" height="272" width="227">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_873273a6-08a7-4c40-9a36-5bc18f300183" class="text-block-content">
+    <p>Open the <em><strong>Hamberger</strong></em> Menu</p>
+<p>Choose <strong>Workload Management</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/fe2cae0b-946a-4199-bcba-38929499300f.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/064/medium/fe2cae0b-946a-4199-bcba-38929499300f.png" srcset="" alt="" height="163" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a5dd9ca0-6c67-444d-87e1-d0774bdf78a4" class="text-block-content">
+    <ol>
+<li>Click the <strong>Supervisors</strong> tab</li>
+<li>Select the <strong>lf-tdd-supervisor</strong>
+</li>
+<li>Click <strong>EXPORT LOGS</strong>
+</li>
+</ol>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/d04ad767-04d7-4b6d-b5ea-0bf089d46ac4.png" srcset="" alt="" height="141" width="330">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c7ff62f5-19b4-4403-9626-feedcf20a9ec" class="text-block-content">
+    <p>The logs are downloaded to the <strong>Downloads</strong> folder</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/4a7fc2fa-4b4e-40f1-a35a-506e59178676.png" srcset="" alt="" height="467" width="831">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_4df8f064-111e-4d30-b692-f2537bdffa50" class="text-block-content">
+    <p>IMPORTANT !!!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4dc135de-ffc8-4421-80a8-265fd4a75310" class="text-block-content">
+    <p>This procedure takes significant time, as the logs are being extracted AND compressed at the backend in a TAR file, which comes with a relatively large size!</p>
+<p>You don't need to wait for its completion, just move on to the next exercise</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="install-harbor" data-step-uuid="013B2841-B41F-4DBD-870F-7D13D6E5D138">
+    <h3 id="install-harbor" class="step-title screensteps-heading">2.2. Get the ClusterAPI Logs</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_B465D14C-8FD0-4F7C-A658-B16B505B4FFA" class="text-block-content">
+    <p>Use CLI and log in to Supervisor</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/c87e892c-67d3-4c32-b666-b421cfb6f576.png" srcset="" alt="" height="475" width="705">
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_104c5a4b-a0d9-437a-a2d6-4f267ec45996"><code>kubectl vsphere login --server=10.80.0.2 --insecure-skip-tls-verify</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_104c5a4b-a0d9-437a-a2d6-4f267ec45996">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/7ed1328c-f86c-491b-b112-2a2ba01d0172.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/072/medium/7ed1328c-f86c-491b-b112-2a2ba01d0172.png" srcset="" alt="" height="190" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_c71f8da9-e73a-42f1-8565-3958a3791a2a"><code>kubectx 10.80.0.2</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_c71f8da9-e73a-42f1-8565-3958a3791a2a">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_9e198e4a-dea5-412d-af42-de86d7e4be1b"><code>tanzu context list</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_9e198e4a-dea5-412d-af42-de86d7e4be1b">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_df034135-a44b-4ff3-9595-1b42e798021b"><code>tanzu context use lf-tdd-supervisor</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_df034135-a44b-4ff3-9595-1b42e798021b">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0c141a58-d998-4a4d-8004-93d3a1846840" class="text-block-content">
+    <p>Examine &nbsp;the ClusterAPI logs</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/7c36204e-eb50-4dfc-9068-686495a0fa15.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/074/medium/7c36204e-eb50-4dfc-9068-686495a0fa15.png" srcset="" alt="" height="351" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d6e2d6a4-30c4-4c85-b12b-82cd3820114d" class="text-block-content">
+    <ol>
+<li>Get the <strong>name</strong> of the <code>capw-controller-manager</code> <strong>pod</strong> and the <strong>namespace</strong> it is running in</li>
+<li>Get the logs from it</li>
+</ol>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_f898086e-3f1e-4b18-8270-831d22125d2c"><code>kubectl get pods -A |grep capw-controller</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_f898086e-3f1e-4b18-8270-831d22125d2c">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_f5ca4f0d-868b-419a-a98f-cae7c4d054d3"><code>kubectl logs -n svc-tkg-domain-c9 -c manager capw-controller-manager-86b544c949-5x7p4</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_f5ca4f0d-868b-419a-a98f-cae7c4d054d3">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="add-content-library-to-namespace" data-step-uuid="F70256E8-9386-41CE-BC83-37A7AA2511D0">
+    <h3 id="add-content-library-to-namespace" class="step-title screensteps-heading">2.3. Get the Health Status for TKG Components on the Supervisor</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_EF7CEDC6-F861-49C2-8C45-C3D35663C300" class="text-block-content">
+    <p>You can get the Health Status of TKG components simply inspecting if all pods are in Running state</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/deeba35c-f0d3-4755-aa57-09d426403c26.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/076/medium/deeba35c-f0d3-4755-aa57-09d426403c26.png" srcset="" alt="" height="324" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_624627d2-72dd-489b-9a19-bda37d14d254"><code>kubectl get pods -A | more</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_624627d2-72dd-489b-9a19-bda37d14d254">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5e6d8f55-cf10-49bc-b4c9-ef61cd411204" class="text-block-content">
+    <p>Pressing the space bar on your keyboard will pass the information to you on portions.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e4d1af52-462a-4253-a223-d8717badc6bb" class="text-block-content">
+    <p>However, you can simply filer out the pods that are NOT in a Running state:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/41ae4777-a83e-407d-811e-77aa9e7f30fc.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/078/medium/41ae4777-a83e-407d-811e-77aa9e7f30fc.png" srcset="" alt="" height="58" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_59120b73-7e5c-4031-885d-9d3745675358"><code>kubectl get pods -A | grep -v Running</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_59120b73-7e5c-4031-885d-9d3745675358">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="ssh-to-a-tanzu-kubernetes-grid-node" data-step-uuid="e95d1ca9-9278-4b56-b631-e3c3ff4dbef8">
+    <h3 id="ssh-to-a-tanzu-kubernetes-grid-node" class="step-title screensteps-heading">2.4. SSH to a Tanzu Kubernetes Grid Node</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d39ae190-cf1f-4701-96fd-537793ed2e90" class="text-block-content">
+    <p>Let's check which TKG workload clusters are available in the relevant namespace</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ad634e65-aa32-4728-8556-680b215a8d9b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/080/medium/ad634e65-aa32-4728-8556-680b215a8d9b.png" srcset="" alt="" height="73" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_359ed263-ba40-418c-8041-959598c5000f"><code>tanzu cluster list -n lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_359ed263-ba40-418c-8041-959598c5000f">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_b5000318-a5f7-485d-8946-ff92ededd287" class="text-block-content">
+    <p>Use the terminal to identify the secret that contains the SSH password for the cluster nodes</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/349e942b-9be5-443b-9128-fd30c87cf495.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/082/medium/349e942b-9be5-443b-9128-fd30c87cf495.png" srcset="" alt="" height="527" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_9105479d-fd16-42e0-85d5-ad8e54f4119f"><code>kubectl get secrets -n lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_9105479d-fd16-42e0-85d5-ad8e54f4119f">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f2b4345d-22f4-448f-86f4-cdc62d34162b" class="text-block-content">
+    <p>That sohuld be <code>tkg-cluster-c001-ssh-password</code></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f93dde16-3cf9-4132-a0e2-8a0afd64e653" class="text-block-content">
+    <p>Now you can retrieve the <code>ssh-passwordkey </code>value from the secret:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/4818bf3c-0166-401e-b655-f448dad05346.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/084/medium/4818bf3c-0166-401e-b655-f448dad05346.png" srcset="" alt="" height="84" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_16a00d0d-1805-4871-bbfe-7121706f86ca" class="text-block-content">
+    <p>Record the value in VCD and save it like C:\Downloads\<strong>ssh-password.txt</strong> file</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/e279bbcd-63ba-48b3-8c98-1d7968cfbb11.png" srcset="" alt="" height="72" width="585">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_12fc49de-0ca5-48f3-a26f-142731b0e425" class="text-block-content">
+    <p>Just as an example:</p>
+<p><span style="color:rgb(0,150,255);"><strong>ssh-passwordkey</strong></span>: czNTaS9MWk1pRWdhY1h6ZW5rMFd3UnRTcER1VDBBU2EydGlOZ1gwTjlvOD0=</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9e215d5c-3f1f-4859-af57-4c8c20cbe003" class="text-block-content">
+    <p>Double check you the file is saved:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/5dbfdfbf-1013-41a8-b548-ddab4868cba0.png" srcset="" alt="" height="200" width="628">
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_525998f8-ab14-415f-937f-75759649257a"><code>ls .\Downloads\ssh-password.txt</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_525998f8-ab14-415f-937f-75759649257a">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3597bfbd-b842-42d0-aa4d-5c747348da5f" class="text-block-content">
+    <p>Decode this password in an output file</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/370b991d-c66e-404d-9e23-75c462d6dbf3.png" srcset="" alt="" height="139" width="826">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_40a54206-fd01-4ef3-a596-eb5dc2ee8545" class="text-block-content">
+    <p>Open the decoded password in VCD</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/b705782f-6f31-426f-98df-9c474c977823.png" srcset="" alt="" height="78" width="598">
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_b131f472-5680-400e-9899-823faf298958"><code>code .\Downloads\ssh-password-decoded.txt</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_b131f472-5680-400e-9899-823faf298958">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d3fd28a5-6964-4609-92db-edc5200bda9a" class="text-block-content">
+    <p>Okay, you have the SSH password now:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/1b39a17e-b032-4e43-a48c-07d9f92b3f73.png" srcset="" alt="" height="85" width="483">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7eb2c559-1466-4867-a7bb-080adbeb238f" class="text-block-content">
+    <p>Next, you can get the IP addresses of the TKG workload cluster nodes:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/5c22a88c-7caf-4007-aa8d-1401af2b0689.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/692/096/medium/5c22a88c-7caf-4007-aa8d-1401af2b0689.png" srcset="" alt="" height="96" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_fb23eca4-993a-4f25-ba02-6a5b68c6be75" class="text-block-content">
+    <p>SSH FAILS &gt;?&lt;</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/136c3df5-b13c-4299-afd1-71228679458c.png" srcset="" alt="" height="152" width="693">
+  </div>
+ 
+  </div>
+ 
+  </div>
+
+

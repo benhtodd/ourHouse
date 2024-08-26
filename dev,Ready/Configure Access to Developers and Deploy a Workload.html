@@ -1,0 +1,710 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="task-description-and-objectives" data-step-uuid="46DAA0F6-1350-4C6D-8A59-E60F466BF8FE">
+    <h2 id="task-description-and-objectives" class="step-title screensteps-heading">1. Task description and objectives</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_65FEDF2C-01E1-4DF6-BF40-4262E48A21C0" class="text-block-content">
+    <p>As a cluster administrator you can grant cluster access to other users, such as developers. </p>
+<p>Developers can deploy pods to clusters directly using their user accounts, or indirectly using service accounts.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="create-storage-policy" data-step-uuid="6045FA83-B011-4B34-9D39-B7DD2B8475D1">
+    <h2 id="create-storage-policy" class="step-title screensteps-heading">2. Configure Access to Developers</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_E26F1891-4CAF-45A4-AB8C-042727BC94B9" class="text-block-content">
+    <p>For user account authentication, Tanzu Kubernetes clusters support vCenter Single Sign-On users and groups. The user or group can be local to the vCenter Server, or synchronized from a supported directory server.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7a2e024e-74cc-434b-8077-9fc35532c404" class="text-block-content">
+    <p>For service account authentication, you can use service tokens</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_491a762a-f519-467c-a5ff-898e269e38f1" class="text-block-content">
+    <p>To grant cluster access to developers:</p>
+<p>You have to:</p>
+<ul>
+<li>Define a Role or ClusterRole for the user or group and apply it to the cluster. </li>
+<li>Create a RoleBinding or ClusterRoleBinding for the user or group and apply it to the cluster</li>
+</ul>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="install-harbor" data-step-uuid="0DAA8AE7-5794-4D52-ACFE-99FB6D96A577">
+    <h3 id="install-harbor" class="step-title screensteps-heading">2.1. Create a Namespace for the Developer</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7192728B-0FDF-499A-909F-EED90867E050" class="text-block-content">
+    <p>To create objects such as namespaces, you must be logged in as a user that is assigned the cluster admin role. </p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_827c7f48-d4f8-4256-8831-df1860d8fa20" class="text-block-content">
+    <p><strong>IMPORTANT:</strong> &nbsp;</p>
+<p>The steps below should already be in place, perform them only in case your<strong> kubeconfig</strong> context is not set to the <strong>tkg-workload-c001</strong> cluster!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_33ef042a-26ed-403a-aba7-b0a4734110dd" class="text-block-content">
+    <p><strong>IMPORTANT:</strong> This exercise is being done with administrator@vsphere.local permissions set over the <strong>lf-tdd-namespace</strong></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_de575216-2f90-4b69-b92c-ab696e3791d3" class="text-block-content">
+    <p>Make sure you are logged in your <strong>Supervisor</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/04e11734-29b0-49d9-93d9-3f4b0fd1c0cf.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/542/medium/04e11734-29b0-49d9-93d9-3f4b0fd1c0cf.png" srcset="" alt="" height="303" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_6c67807f-c410-4c7b-bc40-9d94a02f04cc"><code>kubectl vsphere login --server=10.80.0.2 --insecure-skip-tls-verify</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_6c67807f-c410-4c7b-bc40-9d94a02f04cc">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f9900cfc-2263-4347-b549-fdea569b5ef0" class="text-block-content">
+    <p>Open a<strong> PowerShell prompt </strong>and use it as a<strong> Terminal,</strong> log in your <strong>Supervisor</strong> (you should already be there coming from the previous exercise)</p>
+<p>Username:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_2a0015f2-a5a0-4297-bc8b-d8650f46667c"><code>administrator@vsphere.local</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_2a0015f2-a5a0-4297-bc8b-d8650f46667c">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e09ebfdf-15db-4c6d-9714-82963b893080" class="text-block-content">
+    <p>Password:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_963afd98-e303-403c-a8a2-6d9a8461db03"><code>VMware123!VMware123!</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_963afd98-e303-403c-a8a2-6d9a8461db03">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c2ea03d5-123f-4743-8cb4-5cbbebb22b2d" class="text-block-content">
+    <p>Navigate to your working Namespace <strong>lf-tdd-namespace</strong> where you will provision an additional <strong>workload cluster</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/4690e821-32cc-44d7-9995-987a6ba2f1a2.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/544/medium/4690e821-32cc-44d7-9995-987a6ba2f1a2.png" srcset="" alt="" height="236" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_71290851-99c9-4838-bd31-0f1a210a4997"><code>kubectl config get-contexts</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_71290851-99c9-4838-bd31-0f1a210a4997">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_3b0063d0-e430-4006-9e58-e89ba2a78c76"><code>kubectl config use-context lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_3b0063d0-e430-4006-9e58-e89ba2a78c76">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_54124b9b-809b-4640-bbca-ce4ec325ecf4" class="text-block-content">
+    <p>Make sure to log in to your Supervisor context with Tanzu CLI as well</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9b7e94cd-39cd-4b1e-a5fe-be54d2878337.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/546/medium/9b7e94cd-39cd-4b1e-a5fe-be54d2878337.png" srcset="" alt="" height="91" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_44c6c8fa-8c33-49fb-a71b-51377080376d"><code>tanzu context use lf-tdd-supervisor</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_44c6c8fa-8c33-49fb-a71b-51377080376d">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4ac66c43-1b8d-4c79-84e4-652a41cb54bd" class="text-block-content">
+    <p>Once again, assure your workload clusters are in place:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e491b4d2-3af3-40aa-8997-dbfbbfc7954a.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/548/medium/e491b4d2-3af3-40aa-8997-dbfbbfc7954a.png" srcset="" alt="" height="87" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_63a07c65-96e0-47be-9f26-ce5e8f898777"><code>tanzu cluster list --namespace lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_63a07c65-96e0-47be-9f26-ce5e8f898777">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_97647a9a-5bad-4bdc-aeec-a29235ff336e" class="text-block-content">
+    <p>Retrieve the administrator <strong>kubeconfig</strong> file for the <strong>tkg-cluster-c001</strong> workload cluster.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/7a356eb4-5f81-4b85-83c2-385efea1abfe.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/550/medium/7a356eb4-5f81-4b85-83c2-385efea1abfe.png" srcset="" alt="" height="81" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_d405bd91-f929-4bed-95e6-0c6a6b90c571"><code>tanzu cluster kubeconfig get tkg-cluster-c001 --namespace=lf-tdd-namespace --admin</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_d405bd91-f929-4bed-95e6-0c6a6b90c571">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/227329a3-c1fb-421e-9b4f-4dbaa91fa785.png" srcset="" alt="" height="316" width="831">
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_2ed43180-c304-48f2-8291-4109ef34ef4c"><code>kubectx tkg-cluster-c001-admin@tkg-cluster-c001</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_2ed43180-c304-48f2-8291-4109ef34ef4c">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_174457c8-fa46-45c4-a269-3c85ce85d818"><code>kubectx</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_174457c8-fa46-45c4-a269-3c85ce85d818">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/cd8bb691-b5ab-4ada-8a69-1b141a8b1a69.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/588/medium/cd8bb691-b5ab-4ada-8a69-1b141a8b1a69.png" srcset="" alt="" height="55" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4acef60f-8a04-4aac-9856-c92578a25cfe" class="text-block-content">
+    <p>Create a namespace called dev-ns in tkg-cluster-c001</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_1779829a-27b7-4897-b474-e8b6f04c2c2e"><code>kubectl create ns dev-ns</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_1779829a-27b7-4897-b474-e8b6f04c2c2e">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c58bc514-f538-4a1b-9486-a6ee4184c109" class="text-block-content">
+    <p>Verify that the namespace was created successfully. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/80bb17a8-e56e-4d16-8323-2031f5890134.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/556/medium/80bb17a8-e56e-4d16-8323-2031f5890134.png" srcset="" alt="" height="222" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_2cb1b77c-524b-40f4-85e0-d3702c0dc3aa"><code>kubectl get ns</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_2cb1b77c-524b-40f4-85e0-d3702c0dc3aa">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="add-content-library-to-namespace" data-step-uuid="01254980-150F-49A7-8A77-734E0FE9999C">
+    <h3 id="add-content-library-to-namespace" class="step-title screensteps-heading">2.2. Create a RBAC for the Developer&#39;s Account</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_36e3ce92-18b8-4e0b-911d-a14403c04f27" class="text-block-content">
+    <p>To grant access to a vCenter Single Sign-On user or group, the subject in the RoleBinding must contain either of the following values for the <code>name</code> parameter</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_738bb0cb-aafa-46d6-9298-86097ca2b301" class="text-block-content">
+    <p><strong>Supported User and Group Fields</strong></p>
+  </div>
+</div>
+ 
+      <div class="screensteps-table">
+  <table style="width:100%;">
+<thead><tr>
+<th style="width:50.0000%;">Field</th>
+<th style="width:50.0000%;">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="width:50.0000%;">sso:USER-NAME@DOMAIN</td>
+<td style="width:50.0000%;">For example, a local user name, such as sso: <a href="mailto:administrator@vsphere.local">administrator@vsphere.local</a>&nbsp;<br>
+</td>
+</tr>
+<tr>
+<td style="width:50.0000%;">sso:GROUP-NAME@DOMAIN<br>
+</td>
+<td style="width:50.0000%;">For example, a group name from a directory server integrated with the vCenter Server, such as <a href="mailto:sso:gg-kube-devs@vcf.holo.lab">sso:gg-kube-devs@vcf.holo.lab</a>&nbsp;<br>
+</td>
+</tr>
+<tr>
+<td style="width:50.0000%;"><br></td>
+<td style="width:50.0000%;"><br></td>
+</tr>
+</tbody>
+</table>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f7e75042-f95a-4ee5-a5f4-65bb945ee8b3" class="text-block-content">
+    <p>Open the file <em>C:\Users\Administrator\Downloads\<strong>devs-gr-rb-template.yaml</strong> in <strong>VSCode</strong></em></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c1d29a97-1db9-4e3e-984a-b51b0498cf5d" class="text-block-content">
+    <p>The following template <strong>RoleBinding</strong> binds the vCenter Single Sign-On SSO integrated AD group named <strong>gg-kube-devs@vcf.holo.lab</strong> to the default ClusterRole named <code>edit</code>. </p>
+<p>This role permits read/write access to most objects in a namespace, in this case the <code>dev-ns</code> namespace..</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/e346286a-ce9a-41b6-b263-8aae72bd33a9.png" srcset="" alt="" height="340" width="562">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_97fa9c64-da40-44fa-9a0a-5d9ad141eb92" class="text-block-content">
+    <p>Use the <strong>SAVE AS</strong> &nbsp;in VSC and give the template manifest file a custom name: <strong>devs-gr-rb.yaml</strong></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_758cf0bc-589a-4ff0-8ea7-d1ec31db47f2" class="text-block-content">
+    <p>Please note the "<strong>CHANGE_IT</strong>" strings, you will need to substitute these and provide actual values</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/7e74f412-d885-498d-91ce-0afed21173be.png" srcset="" alt="" height="340" width="562">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9fed2f06-fcb4-40cd-910e-ed5e05c91e33" class="text-block-content">
+    <p>Your configuration file should look exactly as the screenshot above.</p>
+<p>Save the file!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_df6f53bf-b392-4d7d-aeeb-6c663f9806df" class="text-block-content">
+    <p>Double check you have the manifest in place:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/92e0613d-a0d9-4848-a1f3-a061aa1cd0a9.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/562/medium/92e0613d-a0d9-4848-a1f3-a061aa1cd0a9.png" srcset="" alt="" height="204" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_fcb9731f-0bfa-45a5-ba5e-79056d066be1"><code>ls .\Downloads\devs-gr-rb.yaml</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_fcb9731f-0bfa-45a5-ba5e-79056d066be1">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6152f78a-1725-44ea-9116-0201b069a2d6" class="text-block-content">
+    <p>You are now ready to implement the role in Terminal:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e7088efa-f4bf-464d-9e41-d6ca618f6bd4.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/564/medium/e7088efa-f4bf-464d-9e41-d6ca618f6bd4.png" srcset="" alt="" height="92" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_c863da00-b44e-40c3-8ae9-6baae679e76d"><code>kubectl apply -f  .\Downloads\devs-gr-rb.yaml</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_c863da00-b44e-40c3-8ae9-6baae679e76d">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="create-a-vm" data-step-uuid="DD05D520-2343-4A73-A6E7-ADD78C26E449">
+    <h3 id="create-a-vm" class="step-title screensteps-heading">2.3. Test Permissions for the Developer</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_96aa286b-7216-4ab8-af1f-a3227adfca30" class="text-block-content">
+    <p>In Terminal, log out as <strong>administrator@vsphere.local</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/5b107f7e-3fa2-4a20-af36-aa6113dea0d2.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/566/medium/5b107f7e-3fa2-4a20-af36-aa6113dea0d2.png" srcset="" alt="" height="92" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_8f3842d6-0cb3-4f01-be0b-c182a1688354"><code>kubectl vsphere logout</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_8f3842d6-0cb3-4f01-be0b-c182a1688354">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1AF64891-ABBA-437F-B639-A403E204C6B3" class="text-block-content">
+    <p>Log in as an SSO user, member of the AD group you configured rolebinding earlier.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/c8cb882c-c182-4e35-9869-dd1f0449e586.png" srcset="" alt="" height="178" width="413">
+  </div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/dc622d2c-5385-49ef-bd10-d0d26a68fb45.png" srcset="" alt="" height="399" width="413">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_67144874-732a-47f8-a33b-5a3c456e6f4a" class="text-block-content">
+    <p>Test the permissions of the objects in the cluster</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ba53b6e7-b424-4510-b2f8-f78547378639.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/572/medium/ba53b6e7-b424-4510-b2f8-f78547378639.png" srcset="" alt="" height="245" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_c967c4d0-f58c-4f66-ae29-aef64002a1c4"><code>kubectl vsphere login \ 
+--vsphere-username kub-dev@vcf.holo.lab \ 
+--server=10.80.0.2 \ 
+--tanzu-kubernetes-cluster-name tkg-cluster-c001 \ 
+--tanzu-kubernetes-cluster-namespace lf-tdd-namespace \ 
+--insecure-skip-tls-verify
+</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_c967c4d0-f58c-4f66-ae29-aef64002a1c4">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5e58ea74-c222-42d3-9024-24c2bdea99de" class="text-block-content">
+    <p>Change working context to the workload TKG cluster</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/6fe2d844-6f79-4d9f-adb4-eee2b63a4de8.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/574/medium/6fe2d844-6f79-4d9f-adb4-eee2b63a4de8.png" srcset="" alt="" height="61" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_37818350-2769-4fdd-ade7-c28c81127ab0"><code>kubectx tkg-cluster-c001</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_37818350-2769-4fdd-ade7-c28c81127ab0">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7ac68eb0-79a8-473c-8dc7-0deb9f8dc1ef" class="text-block-content">
+    <p>Test permissions</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/38f19a84-399a-426c-b4e0-12e849b4734e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/576/medium/38f19a84-399a-426c-b4e0-12e849b4734e.png" srcset="" alt="" height="244" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_948926e2-7c59-4774-ad27-15804077ab79"><code>kubectl get ns</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_948926e2-7c59-4774-ad27-15804077ab79">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_408bef73-dfef-4068-93d1-655f477eef0d"><code>kubectl get nodes -o wide</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_408bef73-dfef-4068-93d1-655f477eef0d">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="unattended-deletion-by-error" data-step-uuid="D74D2611-C5A6-443E-921E-89A3FC2C6BE0">
+    <h3 id="unattended-deletion-by-error" class="step-title screensteps-heading">2.4. Deploy a Workload as a Developer</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_90A7B105-99D9-450F-ACBA-9F50EFA57DF2" class="text-block-content">
+    <p>Check you have access to the manifest</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/8e91b368-b40f-476c-979f-0112bbae129b.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/578/medium/8e91b368-b40f-476c-979f-0112bbae129b.png" srcset="" alt="" height="145" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_0c79b14a-8b97-4e1b-ae76-92558e6d2f8b"><code>ls .\Downloads\tito-full-lb.yaml</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_0c79b14a-8b97-4e1b-ae76-92558e6d2f8b">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_641c96ce-a56c-4ec7-a9a7-170f2a7685cc" class="text-block-content">
+    <p>IMPORTANT !!!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_cb582a50-68f6-4643-b97a-a85106cd918e" class="text-block-content">
+    <p>Configure <strong>PSA</strong> properly over the <code>dev-ns</code> namespace:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/d306035a-aeb4-4103-a831-44471f7f4ad3.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/580/medium/d306035a-aeb4-4103-a831-44471f7f4ad3.png" srcset="" alt="" height="61" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_0c4ee089-e991-483b-8e8c-c3e76477ebb4"><code>kubectl label --overwrite ns dev-ns pod-security.kubernetes.io/enforce=privileged</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_0c4ee089-e991-483b-8e8c-c3e76477ebb4">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_9605ee98-1a2a-4151-a21b-90fee2d45622" class="text-block-content">
+    <p>Deploy the TITO app in the corresponding namsespace <code>dev-ns</code> on the workload TKG cluster</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/89f1a865-95e2-4c08-8d8c-b7faca1e2f0e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/582/medium/89f1a865-95e2-4c08-8d8c-b7faca1e2f0e.png" srcset="" alt="" height="115" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_cf43818d-bfbe-4aeb-ab27-58f2020d847b"><code>kubectl create -f .\Downloads\tito-full-lb.yaml -n dev-ns</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_cf43818d-bfbe-4aeb-ab27-58f2020d847b">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_fb4535e2-109a-482a-a0bd-0d9dbe7d4231" class="text-block-content">
+    <p>In a couple of minutes you should have the app running</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/f7fd63cf-b727-4481-987b-e415e73aa686.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/584/medium/f7fd63cf-b727-4481-987b-e415e73aa686.png" srcset="" alt="" height="299" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_5f97113d-88f6-4aa0-8ee6-2a195fb1d6d1"><code>kubectl get all -n dev-ns</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_5f97113d-88f6-4aa0-8ee6-2a195fb1d6d1">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/d64d0058-db97-4f5e-8b1b-33dc9f7e5baa.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/687/586/medium/d64d0058-db97-4f5e-8b1b-33dc9f7e5baa.png" srcset="" alt="" height="512" width="855">
+      </a>
+  </div>
+ 
+  </div>
+ 
+  </div>
+
+

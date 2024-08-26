@@ -1,0 +1,258 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="network" data-step-uuid="6a7db6b4-fece-447a-a698-3cff2e8b110e">
+    <h2 id="network" class="step-title screensteps-heading">Network</h2>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_9c5d61fa-be2f-4db4-a5db-a23df756994b" class="text-block-content">
+    <p>Taken Directly from the <em><strong>VMware Validated Solution:</strong></em> <strong>Network Design for Developer Ready Infrastructure for VMware Cloud Foundation</strong> found at </p>
+<p><a href="https://docs.vmware.com/en/VMware-Cloud-Foundation/services/vcf-developer-ready-infrastructure-v1/GUID-AF178A31-D09A-4265-89FD-5987D1B36757.html">https://docs.vmware.com/en/VMware-Cloud-Foundation/services/vcf-developer-ready-infrastructure-v1/GUID-AF178A31-D09A-4265-89FD-5987D1B36757.html</a></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5bfd6b1e-51f4-41b3-b7a0-2c516b6464e2" class="text-block-content">
+    <p>vSphere with Tanzu requires multiple networks. This section discusses networking design not covered in the NSX detailed design.</p>
+<p>You deploy all vSphere with Tanzu workloads to overlay-backed NSX segments. NSX Edge nodes in the shared edge and workload vSphere cluster are deployed to VLAN-backed portgroups.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_feea64fb-e47c-4a00-9a44-01676114af3c" class="text-block-content">
+    <p>Network Design for vSphere with Tanzu in a Workload Domain</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_04211e52-9961-459d-a2c4-866969403d53" class="text-block-content">
+    
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/54314ab6-e769-4a49-9112-2408f3ccb61e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/653/028/medium/54314ab6-e769-4a49-9112-2408f3ccb61e.png" srcset="" alt="Network Design for Developer Ready Infrastructure for VMware Cloud Foundation - Google Chrome" height="351" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_08687516-2c77-4fe2-b6e8-418c552e0b67" class="text-block-content">
+    <p>Networks Used by vSphere with Tanzu</p>
+  </div>
+</div>
+ 
+      <div class="screensteps-table">
+  <table style="width:100%;">
+<thead><tr>
+<th style="width:33.3497%;background-color:rgb(209, 213, 216);">Network</th>
+<th style="width:33.3497%;background-color:rgb(209, 213, 216);">Routable/NAT<br>
+</th>
+<th style="width:33.3333%;background-color:rgb(209, 213, 216);">Usage</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="width:33.3497%;">Supervisor Cluster Management Network<br>
+</td>
+<td style="width:33.3497%;">Routable<br>
+</td>
+<td style="width:33.3333%;">Used by the Supervisor control plane nodes.<br>
+</td>
+</tr>
+<tr>
+<td style="width:33.3497%;">Namespace Networks<br>
+</td>
+<td style="width:33.3497%;">NAT<br>
+</td>
+<td style="width:33.3333%;">When you create a namespace, a /28 overlay-backed NSX segment and corresponding IP pool is instantiated to service pods in that namespace. If that IP space runs out, an additional /28 overlay-backed NSX segment and IP pool are instantiated.<br>
+</td>
+</tr>
+<tr>
+<td style="width:33.3497%;">Service IP Pool Network<br>
+</td>
+<td style="width:33.3497%;">NAT<br>
+</td>
+<td style="width:33.3333%;">Used by Kubernetes applications that need a service IP address.<br>
+</td>
+</tr>
+<tr>
+<td style="width:33.3497%;">Ingress IP Pool Network<br>
+</td>
+<td style="width:33.3497%;">Routable<br>
+</td>
+<td style="width:33.3333%;">Used by NSX to create an IP pool for load balancing.<br>
+</td>
+</tr>
+<tr>
+<td style="width:33.3497%;">Egress IP Pool Network<br>
+</td>
+<td style="width:33.3497%;">Routable<br>
+</td>
+<td style="width:33.3333%;">Used by NSX to create an IP pool for NAT endpoint use.<br>
+</td>
+</tr>
+<tr>
+<td style="width:33.3497%;">Pod Networks<br>
+</td>
+<td style="width:33.3497%;">NAT<br>
+</td>
+<td style="width:33.3333%;">Used by Kubernetes pods that run in the cluster. Any Tanzu Kubernetes Clusters instantiated in the Supervisor also use this pool.<br>
+</td>
+</tr>
+<tr>
+<td style="width:33.3497%;">Tanzu Kubernetes Cluster Service Pool Network<br>
+</td>
+<td style="width:33.3497%;">NAT<br>
+</td>
+<td style="width:33.3333%;">When you create a Tanzu Kubernetes cluster, an NSX Tier-1 Gateway is instantiated in NSX. On that NSX Tier-1 Gateway, a /28 overlay-backed NSX segment and IP pool is also instantiated.<br>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--info screensteps-wrapper">
+  <div id="text-content_3b4e9641-24c6-4217-b925-220036b92d96" class="text-block-content">
+    <p>Design Decisions on Networking for Developer Ready Infrastructure for&nbsp;VMware Cloud Foundation</p>
+  </div>
+</div>
+ 
+      <div class="screensteps-table">
+  <table style="width:100%;">
+<thead><tr>
+<th style="width:33.4205%;background-color:rgb(209, 213, 216);">Design Decision</th>
+<th style="width:33.2897%;background-color:rgb(209, 213, 216);">Design Justification</th>
+<th style="width:33.2897%;background-color:rgb(209, 213, 216);">Design Implication</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="width:33.4205%;">Add a /24 overlay-backed NSX segment for use by the Supervisor control plane nodes.</td>
+<td style="width:33.2897%;">Supports the Supervisor control plane nodes.</td>
+<td style="width:33.2897%;">You must create the overlay-backed NSX segment.</td>
+</tr>
+<tr>
+<td style="width:33.4205%;">Use a dedicated /20 subnet for pod networking.</td>
+<td style="width:33.2897%;">A single /20 subnet is sufficient to meet the design requirement of 2000 pods.</td>
+<td style="width:33.2897%;">Private IP space behind a NAT that you can use in multiple Supervisors.</td>
+</tr>
+<tr>
+<td style="width:33.4205%;">Use a dedicated /22 subnet for services.</td>
+<td style="width:33.2897%;">A single /22 subnet is sufficient to meet the design requirement of 2000 pods</td>
+<td style="width:33.2897%;">Private IP space behind a NAT that you can use in multiple Supervisors.</td>
+</tr>
+<tr>
+<td style="width:33.4205%;">Use a dedicated /24 or larger subnet on your corporate network for ingress endpoints.</td>
+<td style="width:33.2897%;">A /24 subnet is sufficient to meet the design requirement of 2000 pods in most cases.</td>
+<td style="width:33.2897%;">This subnet must be routable to the rest of the corporate network.<br><br>A /24 subnet will suffice for most use cases, but you should evaluate your ingress needs prior to deployment</td>
+</tr>
+<tr>
+<td style="width:33.4205%;">Use a dedicated /24 or larger subnet on your corporate network for egress endpoints.</td>
+<td style="width:33.2897%;">A /24 subnet is sufficient to meet the design requirement of 2000 pods in most cases.</td>
+<td style="width:33.2897%;">This subnet must be routable to the rest of the corporate network.<br><br>A /24 subnet will suffice for most use cases, but you should evaluate your egress needs prior to deployment<br>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="storage" data-step-uuid="bc949ec1-5fd1-42be-949b-f8dbc1b0ad04">
+    <h2 id="storage" class="step-title screensteps-heading">Storage</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_279ada00-2527-4616-9ef8-d9f517a2ce45" class="text-block-content">
+    <p>You must configure a datastore with the activation requirements before activating a Supervisor. The Supervisor configuration requires the use of vSphere Storage Policy Based Management (SPBM) policies for control plane nodes, ephemeral disks, and image cache. These policies correlate to Kubernetes storage policies that can be assigned to vSphere Namespaces. These policies are consumed in a Supervisor or a Tanzu Kubernetes cluster, deployed by using Tanzu Kubernetes Grid Service in the Supervisor.</p>
+  </div>
+</div>
+ 
+      <div class="screensteps-table">
+  <table style="width:100%;">
+<thead><tr>
+<th style="width:33.3497%;background-color:rgb(209, 213, 216);">Design Decision</th>
+<th style="width:33.3497%;background-color:rgb(209, 213, 216);">Design Justification</th>
+<th style="width:33.3333%;background-color:rgb(209, 213, 216);">Design Implication</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="width:33.3497%;">Create a vSphere tag and tag category, and apply the vSphere tag to the vSAN datastore in the shared edge and workload vSphere cluster in the VI workload domain.</td>
+<td style="width:33.3497%;">Supervisor activation requires the use of vSphere Storage Based Policy Management (SPBM).<br>To assign the vSAN datastore to the Supervisor, you need to create a vSphere tag and tag category to create an SPBM rule.<br>
+</td>
+<td style="width:33.3333%;">This must be done manually or via PowerCLI<br>
+</td>
+</tr>
+<tr>
+<td style="width:33.3497%;">Create a vSphere Storage Policy Based Management (SPBM) policy that specifies the vSphere tag you created for the Supervisor</td>
+<td style="width:33.3497%;">When you create the SPBM policy and define the vSphere tag for the Supervisor, you can then assign that SPBM policy during Supervisor activation.</td>
+<td style="width:33.3333%;">This must be done manually or via PowerCLI<br>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="personas-permissions" data-step-uuid="235387d8-41c1-47a0-a12d-b00dea15b492">
+    <h2 id="personas-permissions" class="step-title screensteps-heading">Personas - Permissions</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c798eb05-15fe-4eee-97ed-1c486348faf1" class="text-block-content">
+    <p>Personas describe types of system users, aligned with real people and their functions within the organization. You build a persona set based on your organization requirements for role-based access control.</p>
+<p>The following is an example of personas defined by the&nbsp;Developer Ready Infrastructure for&nbsp;VMware Cloud Foundation&nbsp;validated solution and their equivalent access. To delegate roles and define access based on roles and responsibilities within your organizational structure, you use these personas as a baseline for defining and building a set of personas.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--tip screensteps-wrapper">
+  <div id="text-content_369913e4-0373-424c-b4b2-873800b575ca" class="text-block-content">
+    <p>Example Personas for Developer Ready Infrastructure</p>
+  </div>
+</div>
+ 
+      <div class="screensteps-table">
+  <table style="width:100%;">
+<thead><tr>
+<th style="width:25.0614%;background-color:rgb(209, 213, 216);">Persona<br>
+</th>
+<th style="width:25%;background-color:rgb(209, 213, 216);">Responsibility<br>
+</th>
+<th style="width:24.9877%;background-color:rgb(209, 213, 216);">Solution Component<br>
+</th>
+<th style="width:25.0246%;background-color:rgb(209, 213, 216);">Component Role or Group<br>
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="width:25.0614%;">vSphere Administrator<br>
+</td>
+<td style="width:25.0000%;">Full administrative access to vSphere with Tanzu infrastructure - configuring and activating Supervisors and vSphere namespaces<br>
+</td>
+<td style="width:24.9877%;">vCenter Server<br>
+</td>
+<td style="width:25.0246%;">Administrator</td>
+</tr>
+<tr>
+<td style="width:25.0614%;">DevOps Engineer<br>
+</td>
+<td style="width:25.0000%;">Deploying vSphere Pods, VMs, and Tanzu Kubernetes clusters on existing vSphere namespaces within a Supervisor<br>
+</td>
+<td style="width:24.9877%;">vSphere namespace<br>
+</td>
+<td style="width:25.0246%;">Can edit</td>
+</tr>
+<tr>
+<td style="width:25.0614%;">Auditor<br>
+</td>
+<td style="width:25.0000%;">Read-only access for security and compliance review<br>
+</td>
+<td style="width:24.9877%;">vSphere namespace<br>
+</td>
+<td style="width:25.0246%;">Can view</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 
+  </div>
+
+

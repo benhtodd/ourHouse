@@ -1,0 +1,448 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="task-description-and-objectives" data-step-uuid="274FAD27-D38D-4713-8C9F-DEEEC9CAB33E">
+    <h2 id="task-description-and-objectives" class="step-title screensteps-heading">1. Task description and objectives</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D7EF2F9C-3444-4224-8D05-A628B73AAFA6" class="text-block-content">
+    <p>As part of your activities, you have to log in to the Supervisor using CLI and the local administrator account.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="create-storage-policy" data-step-uuid="91F5A59A-D720-4344-9625-BA9F942AFC50">
+    <h2 id="create-storage-policy" class="step-title screensteps-heading">2. Log in to Supervisor using CLI kubectl</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2D17CFCD-6ACC-43F8-B848-2323A371625E" class="text-block-content">
+    <p>1. Yo can continue working in your <strong>PowerShell prompt </strong>and use it as a Terminal window.</p>
+<p>2. Create a local <strong>kubeconfig</strong> file by logging in to the Supervisor with the <strong>vSphere plug-in</strong> for kubectl. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/2ea7d081-ef27-472d-9404-a0b350098238.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/667/275/medium/2ea7d081-ef27-472d-9404-a0b350098238.png" srcset="" alt="" height="303" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_11d76c9d-b363-464d-b16c-555839cbff01" class="text-block-content">
+    <p>Set the SUPERVISOR_IP System Variable for powershell</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_812031a7-b706-4493-8135-382b6989d8c0"><code>$env:SUPERVISOR_IP = &#39;10.80.0.2&#39;</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_812031a7-b706-4493-8135-382b6989d8c0">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_fbdf49b9-9baf-4820-938f-140dcbee66e5" class="text-block-content">
+    <p>Connect to the Tanzu supervisor </p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_4bbd14a9-db6d-48fc-b266-9ed626850165"><code>kubectl vsphere login --server=$Env:SUPERVISOR_IP --insecure-skip-tls-verify</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_4bbd14a9-db6d-48fc-b266-9ed626850165">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ACC4B42D-B3F1-499A-A08E-C2B3CA566AF1" class="text-block-content">
+    <p>In this command, and in all commands in later activities in which interaction with the Supervisor is required, you must use the correct Supervisor IP address that you recorded in an earlier task.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--introduction screensteps-wrapper">
+  <div id="text-content_A22ED5BE-8066-44EF-B1E3-FA83867F0135" class="text-block-content">
+    <p>As the vCenter root certificate is not installed on your windows desktop machine, the<strong> --insecure-skip-tls-verify</strong> flag is required when you log in to the Supervisor</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_79b9ad35-f7ee-47df-8032-cff7cd4fed42" class="text-block-content">
+    <p><strong>Username: </strong></p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_B8842E08-019B-4E8A-8A54-69147E16875B"><code>administrator@vsphere.local</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_B8842E08-019B-4E8A-8A54-69147E16875B">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_b957703e-1b9d-4629-8ca4-22a30ab4080a" class="text-block-content">
+    <p>Password: </p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_14b34bb1-c2d5-4a44-8d88-84ef58bbaa54"><code>VMware123!VMware123!</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_14b34bb1-c2d5-4a44-8d88-84ef58bbaa54">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_763A981B-9520-4B9D-8781-531E01A01CE4" class="text-block-content">
+    <p>You are creating a local <strong>kubeconfig</strong> file by logging in to the Supervisor with the vSphere plug-in for <strong>kubectl</strong>. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/cd5a45e6-c5da-4845-88cb-49b0f5781e93.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/671/102/medium/cd5a45e6-c5da-4845-88cb-49b0f5781e93.png" srcset="" alt="" height="165" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_0CC4D785-17A7-42F3-B7DC-0B0D7EB86FAE"><code>dir .kube</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_0CC4D785-17A7-42F3-B7DC-0B0D7EB86FAE">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="login-to-vsphere-client" data-step-uuid="8017EBE0-019F-49D1-B6E5-28927B6A0726">
+    <h3 id="login-to-vsphere-client" class="step-title screensteps-heading">2.1. Work with contexts in your Supervisor</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_10C6EB3A-81BA-49B8-A7C6-FCB74C9A81CE" class="text-block-content">
+    <p>Once you've logged in your Supervisor, you are informed which contexts you have access to.</p>
+<p>But you can check this anytime and get a bit more details:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/40d7dacf-e8c0-4545-9688-e879ec8f9b4e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/667/286/medium/40d7dacf-e8c0-4545-9688-e879ec8f9b4e.png" srcset="" alt="" height="164" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_6E8E6CA6-FCF5-4864-980B-1294C67297CF"><code>kubectl config get-contexts</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_6E8E6CA6-FCF5-4864-980B-1294C67297CF">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_DCC06310-630C-449A-AA51-9AFF60AFDEB3" class="text-block-content">
+    <p>The one that is active is marked as current with (*) in the CLI</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D3164357-53DB-4785-BF13-3EB8F4300C93" class="text-block-content">
+    <p>You can switch between contexts</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e6402b0a-85a9-4575-87fe-bb91a45497a6.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/667/292/medium/e6402b0a-85a9-4575-87fe-bb91a45497a6.png" srcset="" alt="" height="201" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_9D9EBE28-DB97-4698-8051-B7933C85842B"><code>kubectl config get-contexts</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_9D9EBE28-DB97-4698-8051-B7933C85842B">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_620ccb43-f5b2-4e15-b3fe-2938771bbe79"><code>kubectl config use-context lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_620ccb43-f5b2-4e15-b3fe-2938771bbe79">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5097B240-C07A-4379-BB7C-BEEC7DA6FF80" class="text-block-content">
+    <p>You can also check the clusters in the current context, if any</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ecd19579-9b20-4a8a-b261-e58c68829c8c.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/671/104/medium/ecd19579-9b20-4a8a-b261-e58c68829c8c.png" srcset="" alt="" height="232" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_6AB0E224-8B8E-46A2-BCF3-27454C99567A"><code>kubectl get clusters</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_6AB0E224-8B8E-46A2-BCF3-27454C99567A">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_1095934b-2d6b-41e5-89dd-a371a6430f9c"><code>kubectl get nodes -A</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_1095934b-2d6b-41e5-89dd-a371a6430f9c">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="connect-the-tanzu-cli-to-the-supervisor" data-step-uuid="D98FCE0B-3ADB-472F-95AC-EC5D99DA5B2D">
+    <h3 id="connect-the-tanzu-cli-to-the-supervisor" class="step-title screensteps-heading">2.2. Connect the Tanzu CLI to the Supervisor</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_4E5BBB3A-3FC5-4134-B8EF-0DBF65746E15" class="text-block-content">
+    <p>Make sure your current content points back to the Supervisor</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/2a100aef-e49e-4d4a-bc50-87333e9c5c3e.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/667/302/medium/2a100aef-e49e-4d4a-bc50-87333e9c5c3e.png" srcset="" alt="" height="203" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_B802B7C5-AD38-4613-ACDC-C35CDDA1DC59"><code>kubectl config use-context 10.80.0.2</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_B802B7C5-AD38-4613-ACDC-C35CDDA1DC59">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_e50962d8-6ba1-4ee0-a978-05db0e6c1eaf"><code>kubectl config get-contexts</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_e50962d8-6ba1-4ee0-a978-05db0e6c1eaf">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_10F07829-8321-45C6-8609-79A735A0706E" class="text-block-content">
+    <p>The Tanzu CLI installs <strong>context-scoped plugins</strong> automatically when you connect to a <strong>management cluster</strong>!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/1f6167c6-4325-4a7f-9dce-a11022d4d558.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/671/106/medium/1f6167c6-4325-4a7f-9dce-a11022d4d558.png" srcset="" alt="" height="253" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_56C39231-7DEA-467F-ABCA-B949728A9AE3"><code>tanzu context create lf-tdd-supervisor --kubeconfig ./.kube/config --kubecontext 10.80.0.2</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_56C39231-7DEA-467F-ABCA-B949728A9AE3">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0b68e3ce-fe55-45ca-82b5-e60cc30d4a66" class="text-block-content">
+    <p>Let's check what happened - Tanzu CLI should now have a configured context!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/74b8c60b-5435-4da9-9479-61d561291fab.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/671/108/medium/74b8c60b-5435-4da9-9479-61d561291fab.png" srcset="" alt="" height="87" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_93deaa3e-cb7a-4525-b393-c91c12599dd9"><code>tanzu context list</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_93deaa3e-cb7a-4525-b393-c91c12599dd9">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f9baccc2-8a72-4122-a5e2-cc6a6b23096b" class="text-block-content">
+    <p>From now on, you can refer to your Supervisor in the way you registered it within the context:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/b66e44a1-a5e3-47db-b726-6888c9b74815.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/671/110/medium/b66e44a1-a5e3-47db-b726-6888c9b74815.png" srcset="" alt="" height="117" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_ef8158f6-35cb-4021-a28d-982bbecea1db"><code>tanzu context use</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_ef8158f6-35cb-4021-a28d-982bbecea1db">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_bb759e9f-29cc-44cc-8c72-0353b296121b" class="text-block-content">
+    <p>Please select your Supervisor <strong>lf-tdd-supervisor</strong> when prompted</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_cffd7767-6ac0-4008-8eb9-172a2e31af27" class="text-block-content">
+    <p>Let's inspect the overall plugins in place:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/ffd39cff-f854-4240-9053-540ac9bc9712.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/671/116/medium/ffd39cff-f854-4240-9053-540ac9bc9712.png" srcset="" alt="" height="298" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_90be9c9a-f0f4-498a-89a3-144dcb3fec35"><code>tanzu plugin list</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_90be9c9a-f0f4-498a-89a3-144dcb3fec35">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a31aa0cc-3f55-457a-8cd0-2a7410d0b237" class="text-block-content">
+    <p> Now you should see the list of:</p>
+<ul>
+<li>Supervisor specific plugins (just installed as context-scoped) as well as </li>
+<li>The standalone CLI plugins (installed as standalone in the previous task)</li>
+</ul>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7e37b6b3-27df-4f97-b731-a0849dd24225" class="text-block-content">
+    <p>Be aware, you can always check if newer versions of your installed plugins are available</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e5281454-4c11-4014-89ac-a3eafc1e1a4d.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/667/381/medium/e5281454-4c11-4014-89ac-a3eafc1e1a4d.png" srcset="" alt="" height="100" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_fa6563d8-5dc6-419b-85bb-e2fef926fba3"><code>tanzu plugin sync</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_fa6563d8-5dc6-419b-85bb-e2fef926fba3">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_77683398-292c-4a39-a910-5d4987923251" class="text-block-content">
+    <p>You are now ready to create Workload clusters with CLI</p>
+  </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+

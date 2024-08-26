@@ -1,0 +1,841 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="task-description-and-objectives" data-step-uuid="0143B1F5-F150-4411-B864-1CBE7A44046F">
+    <h2 id="task-description-and-objectives" class="step-title screensteps-heading">1. Task description and objectives</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6CA55913-339E-40AD-B6C1-C89FF67CE7F2" class="text-block-content">
+    <p>Your task is to examine the functionality of Tanzu CLI ans its Package plug-in to manage repositories and packages in a TKG workload cluster. </p>
+<p>You will get the experience of working with &nbsp;Tanzu Package CLI Plug-In and repositories.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="create-storage-policy" data-step-uuid="2C3F0131-223D-41F9-8B68-B3C71317CF63">
+    <h2 id="create-storage-policy" class="step-title screensteps-heading">2. Packaging in a TKG Workload Cluster</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7AB4D631-FF0C-40ED-A4E0-BAC2E1D463E7" class="text-block-content">
+    <p>To make sure hosting modern Applications on top of your &nbsp;workload TKG cluster will go smooth, a bunch of packages must be installed in addition.</p>
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="login-to-vsphere-client" data-step-uuid="7EB50931-09E5-4229-8271-FEAA2C38B5A4">
+    <h3 id="login-to-vsphere-client" class="step-title screensteps-heading">2.1. Working context</h3>
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_3117d35d-3079-4175-a961-553c0c4a33bd" class="text-block-content">
+    <p><strong>IMPORTANT:</strong> &nbsp;</p>
+<p>The steps below should already be in place, perform them only in case your<strong> kubeconfig</strong> context is not set to the <strong>tkg-workload-c001</strong> cluster!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_86214376-559f-4082-8f92-f36d4c413efe" class="text-block-content">
+    <p><strong>IMPORTANT:</strong> This exercise is being done with administrator@vsphere.local permissions set over the <strong>lf-tdd-namespace</strong></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_780157aa-851c-4a83-952a-793d5f8e9f92" class="text-block-content">
+    <p>Make sure you are logged in your <strong>Supervisor</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/76a91af0-dbe6-47fd-a3a8-a61e11731618.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/211/medium/76a91af0-dbe6-47fd-a3a8-a61e11731618.png" srcset="" alt="" height="303" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_5ead8e3e-4b74-4eab-9e7f-e1b1adc3669d"><code>kubectl vsphere login --server=10.80.0.2 --insecure-skip-tls-verify</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_5ead8e3e-4b74-4eab-9e7f-e1b1adc3669d">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f320bb7c-ce6d-408e-b1b5-b23ba7582659" class="text-block-content">
+    <p>Open a<strong> PowerShell prompt </strong>and use it as a<strong> Terminal,</strong> log in your <strong>Supervisor</strong> (you should already be there coming from the previous exercise)</p>
+<p>Username:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_485fb3dc-dce5-48f9-be80-c3892230e7f3"><code>administrator@vsphere.local</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_485fb3dc-dce5-48f9-be80-c3892230e7f3">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_a2efb071-d5cd-44ea-8ebd-0f032f18a506" class="text-block-content">
+    <p>Password:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_1ca37e3c-35ff-4a92-84d8-bad8eac37cbf"><code>VMware123!VMware123!</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_1ca37e3c-35ff-4a92-84d8-bad8eac37cbf">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c4be5b3f-4ea3-45d6-bc82-6593c2e0ede7" class="text-block-content">
+    <p>Navigate to your working Namespace <strong>lf-tdd-namespace</strong> where you will provision an additional <strong>workload cluster</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/83a59787-b7ad-4972-bbc0-c3da50ac1322.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/213/medium/83a59787-b7ad-4972-bbc0-c3da50ac1322.png" srcset="" alt="" height="236" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_1d0a1f63-d55f-4730-a3a8-ce2b211544e1"><code>kubectl config get-contexts</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_1d0a1f63-d55f-4730-a3a8-ce2b211544e1">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_8691f075-5570-45ba-b85b-6b58484a16b0"><code>kubectl config use-context lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_8691f075-5570-45ba-b85b-6b58484a16b0">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_57955653-bc9f-4a37-ada9-11f6885c975c" class="text-block-content">
+    <p>Make sure to log in to your Supervisor context with Tanzu CLI as well</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/a546a65d-ebb2-400c-88af-bfe32d6b07e4.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/215/medium/a546a65d-ebb2-400c-88af-bfe32d6b07e4.png" srcset="" alt="" height="91" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_2f271712-1c15-4815-bbd8-12331256fba3"><code>tanzu context use lf-tdd-supervisor</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_2f271712-1c15-4815-bbd8-12331256fba3">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_8970d062-6514-4155-bb5f-36c4ba7e1df0" class="text-block-content">
+    <p>Once again, assure your workload clusters are in place:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/7d0239ae-da39-429e-919c-1adeede3fed5.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/217/medium/7d0239ae-da39-429e-919c-1adeede3fed5.png" srcset="" alt="" height="87" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_93394f9d-74df-48fe-8c7e-9902329583d2"><code>tanzu cluster list --namespace lf-tdd-namespace</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_93394f9d-74df-48fe-8c7e-9902329583d2">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_874ed4bb-f3cc-4fe2-aeb2-724172027986" class="text-block-content">
+    <p>Retrieve the administrator <strong>kubeconfig</strong> file for the <strong>tkg-cluster-c001</strong> workload cluster.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/926196a3-1a9a-4798-9eca-5c10af8b1b29.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/219/medium/926196a3-1a9a-4798-9eca-5c10af8b1b29.png" srcset="" alt="" height="81" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_9c7d83f6-1b83-47df-af18-7b7875c5e1ef"><code>tanzu cluster kubeconfig get tkg-cluster-c001 --namespace=lf-tdd-namespace --admin</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_9c7d83f6-1b83-47df-af18-7b7875c5e1ef">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/efa06aa7-90d5-4e63-8f91-2e9f6b828b3a.png" srcset="" alt="" height="316" width="831">
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_62bba73b-e0bc-42ef-9acd-b911d659015c"><code>kubectx tkg-cluster-c001-admin@tkg-cluster-c001</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_62bba73b-e0bc-42ef-9acd-b911d659015c">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_e3729ebe-7545-40c7-b04c-c8c087cab3de"><code>kubectx</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_e3729ebe-7545-40c7-b04c-c8c087cab3de">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="add-a-package-repository" data-step-uuid="63541486-646b-4b05-9ad7-839517ce807e">
+    <h3 id="add-a-package-repository" class="step-title screensteps-heading">2.2. Add a Package Repository</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_847790fe-b410-45e8-be9c-6d3b163cd712" class="text-block-content">
+    <p>In your workload cluster context:</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5e636ec4-dd7c-40da-8b71-aead299c71ac" class="text-block-content">
+    <p>Get info on the package repositories, if any available at this point</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/89056186-c742-4db5-8515-ee533d1e29b0.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/223/medium/89056186-c742-4db5-8515-ee533d1e29b0.png" srcset="" alt="" height="83" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_8c0c9cea-2bee-4a60-a29e-59380cfd15a0"><code>tanzu package repository list -A</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_8c0c9cea-2bee-4a60-a29e-59380cfd15a0">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3d5384b9-fa94-42e4-a1c2-4452abc5f95d" class="text-block-content">
+    <p>The tanzu-standard package repository appears in the tkg-system namespace with STATUS Reconcile succeede</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_59733afa-ad97-41ce-a5ed-8209a8bbf80e" class="text-block-content">
+    <p>No repos are configured yet. Let's add some:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e2565f85-7bd1-42de-8e86-fa7f0747d4d6.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/506/medium/e2565f85-7bd1-42de-8e86-fa7f0747d4d6.png" srcset="" alt="" height="254" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ebde186a-bc85-4ab9-aa18-54367abfb2c5" class="text-block-content">
+    <p>The screenshot is truncated!</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/100c2cdc-2d5f-4c1f-a7de-f32592535291.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/508/medium/100c2cdc-2d5f-4c1f-a7de-f32592535291.png" srcset="" alt="" height="66" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_db915294-fc2b-40fc-8afa-857b71e54de7"><code>tanzu package repository add tanzu-standard --url projects.registry.vmware.com/tkg/packages/standard/repo:v2024.4.12 -n tkg-system</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_db915294-fc2b-40fc-8afa-857b71e54de7">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_6efa5baf-ded0-4ac4-8326-60884c6723e3" class="text-block-content">
+    <p>After adding this package repo a reconciliation process kicks-in, and you can see it as <strong>tanzu-standard </strong>under &nbsp;namespace<strong> tkg-system</strong> in your workload cluster, in about of couple of minutes.</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/93c057c7-21bd-4412-9896-d539b33b3b13.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/229/medium/93c057c7-21bd-4412-9896-d539b33b3b13.png" srcset="" alt="" height="88" width="855">
+      </a>
+  </div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/6dffb836-5100-4da9-a586-3ed14bb59afd.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/510/medium/6dffb836-5100-4da9-a586-3ed14bb59afd.png" srcset="" alt="" height="75" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_cf2fdde7-7fcb-46ad-8f4d-8c6e009b6504"><code>tanzu package repository list -A</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_cf2fdde7-7fcb-46ad-8f4d-8c6e009b6504">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_3ba1a95d-e81b-4cd2-9feb-6d41d83edb49" class="text-block-content">
+    <p>The <strong>tanzu-standard</strong> package repository appears in the <strong>tkg-system</strong> namespace with <strong>version v2024.4.12</strong> and &nbsp;<strong>STATUS Reconcile succeeded</strong></p>
+  </div>
+</div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="install-harbor" data-step-uuid="E53277C5-72AA-428A-A45F-89FFCD2A8012">
+    <h3 id="install-harbor" class="step-title screensteps-heading">2.3. Work with Packages in the Cluster</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5C442894-E0FE-43C6-A2FE-EB1DA442FD82" class="text-block-content">
+    <p>Okay, after adding a tanzu-standard repo, let's inspect what's available from it as packages</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/5be341cb-f76f-4852-9d18-11e970cc0325.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/231/medium/5be341cb-f76f-4852-9d18-11e970cc0325.png" srcset="" alt="" height="319" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_baf61490-037b-43ec-b3a6-69592ad0aaec"><code>tanzu package available list</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_baf61490-037b-43ec-b3a6-69592ad0aaec">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_deb6fa29-258a-48cc-9825-66447664a3cf" class="text-block-content">
+    <p>A list of all available packages and their latest versions is seen.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_066c6f0c-80b3-4a83-9f41-0a1a72dcf57f" class="text-block-content">
+    <p>If you focus on any of those, you can retrieve a bunch of additional information, for example <strong>cert-manager</strong>:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/6335b1be-d3f1-428a-8e18-1955d971577f.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/512/medium/6335b1be-d3f1-428a-8e18-1955d971577f.png" srcset="" alt="" height="188" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_390526e3-6412-4484-abc2-bfdda0d07a85" class="text-block-content">
+    <p>A list of all available versions for the <strong>cert-manager</strong> package is seen</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_30cf287f-291d-4469-afab-30de0194d4e5"><code>tanzu package available list cert-manager.tanzu.vmware.com</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_30cf287f-291d-4469-afab-30de0194d4e5">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_69567183-b493-4726-b985-d5ac193465b0" class="text-block-content">
+    <p>But you can retrieve some more and get details about the Harbor package:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9952d95a-5541-40de-8a0c-87a4462899c2.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/514/medium/9952d95a-5541-40de-8a0c-87a4462899c2.png" srcset="" alt="" height="310" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_422e0016-f624-403c-84f9-93b7818f28e7"><code>tanzu package available get cert-manager.tanzu.vmware.com</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_422e0016-f624-403c-84f9-93b7818f28e7">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_55eae844-e893-4dfa-a0ab-6f9c0c1c65f1" class="text-block-content">
+    <p>Information about the cert-manager package appears, including:</p>
+<ul>
+<li>package name</li>
+<li>categories</li>
+<li>description</li>
+<li>support details</li>
+<li>versions</li>
+</ul>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_43854ab4-3ea5-4a75-a0eb-285be317fefb" class="text-block-content">
+    <p>You can List all the installed packages in the cluster that were installed automatically during the cluster creation appear. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/93fd1444-3e29-4cd1-992e-244563f38ec1.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/233/medium/93fd1444-3e29-4cd1-992e-244563f38ec1.png" srcset="" alt="" height="174" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_6cd57c69-f16f-4cbd-8b55-e94d1598bd1f"><code>tanzu package installed list -A</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_6cd57c69-f16f-4cbd-8b55-e94d1598bd1f">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_26dcf680-cfb0-4976-be9d-3e69b128b4cd" class="text-block-content">
+    <p>So obviously, <strong>cert-manager </strong>is not installed in your workload cluster.</p>
+<p>Although cert-manager is installed automatically in management clusters, you must install it using the tanzu package CLI plug-in in workload clusters. </p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5ac0b1f8-9c40-4d9a-b1fe-f216d9267b97" class="text-block-content">
+    <p>The Installation process &nbsp;is quite neat:</p>
+<ul>
+<li>you create a namespace to fetch the package files into your cluster</li>
+<li>then install the package itself from there, through a reconciliation process</li>
+</ul>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--warning screensteps-wrapper">
+  <div id="text-content_de92c193-3e93-45dd-9c8c-8e7ccdc07b78" class="text-block-content">
+    <p>IMPORTANT: You need to consider Configuration of <strong>PSA</strong> for TKR 1.25 and Later</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_2f72512d-4f29-44af-9ee7-690795450bad" class="text-block-content">
+    <p>Tanzu Kubernetes releases v1.25 and later enable the <strong>Pod Security Admission (PSA)</strong> controller. With <strong>PSA</strong> you can uniformly enforce pod security using namespace labels.</p>
+<p>The P<strong>od Security Admission (PSA)</strong> controller is a Kubernetes controller that lets you apply security standards to pods running on TKG clusters. By default, Tanzu Kubernetes releases v1.25 and later enable the Pod Security Admission (PSA) controller. The PSA controller replaces the Pod Security Policy (PSP) controller, which is deprecated and removed.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7ba02ace-751e-4991-98fd-44ba34b48935" class="text-block-content">
+    <p><strong>PSA Modes</strong></p>
+  </div>
+</div>
+ 
+      <div class="screensteps-table">
+  <table style="width:100%;">
+<thead><tr>
+<th style="width:50.0000%;">Mode</th>
+<th style="width:50.0000%;">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="width:50.0000%;">enforce</td>
+<td style="width:50.0000%;">Security violations cause the pod to be rejected.<br>
+</td>
+</tr>
+<tr>
+<td style="width:50.0000%;">audit</td>
+<td style="width:50.0000%;">Security violations trigger the addition of an audit annotation to the event recorded in the audit log, but are otherwise allowed<br>
+</td>
+</tr>
+<tr>
+<td style="width:50.0000%;">Warn</td>
+<td style="width:50.0000%;">Security violations trigger a user-facing warning, but are otherwise allowed<br>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d8bca94d-384d-4b18-aa8a-f595a7730589" class="text-block-content">
+    <p>Tanzu Kubernetes release v1.25 is a transitional release with PSA configured to warn. Starting with Tanzu Kubernetes release v1.26, <strong>PSA is enforced</strong>. You should plan to migrate pod workloads from PSP to PSA in anticipation of upgrading TKG clusters or modify your PSA in accordance with your workloads.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_eb2d3c92-56f6-49ac-a43a-69db058adee4" class="text-block-content">
+    <p><strong>PSA Standards</strong></p>
+  </div>
+</div>
+ 
+      <div class="screensteps-table">
+  <table style="width:100%;">
+<thead><tr>
+<th style="width:50.0000%;">Level</th>
+<th style="width:50.0000%;">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="width:50.0000%;">privileged<br>
+</td>
+<td style="width:50.0000%;">Unrestricted control, providing the widest possible level of permissions. This security standard allows for known privilege escalations.<br>
+</td>
+</tr>
+<tr>
+<td style="width:50.0000%;">baseline</td>
+<td style="width:50.0000%;">Minimally restrictive control which prevents known privilege escalations. This security standard allows the default (minimally specified) pod configuration<br>
+</td>
+</tr>
+<tr>
+<td style="width:50.0000%;">restricted</td>
+<td style="width:50.0000%;">Heavily restricted control, following pod hardening best practices<br>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock screensteps-wrapper--alert screensteps-wrapper">
+  <div id="text-content_1bee715f-0187-4777-a346-6f3359a1355f" class="text-block-content">
+    <p>IMPORTANT!</p>
+<p>By default, TKG clusters provisioned with Tanzu Kubernetes releases v1.26 and later have the <strong>PSA</strong> mode <strong>enforce</strong> set to <strong>restricted</strong> for <strong>non-system namespaces</strong>. </p>
+<p>If a pod violates security, it is rejected. You must configure PSA on the namespace to run pods with less restrictive control.</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_c67f0f8f-8b77-40dc-a6a1-1fe342278730" class="text-block-content">
+    <p>The TKR of &nbsp;the <strong>tkg-cluster-c001</strong> you deployed is <strong>v1.29</strong></p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5ef61c5d-d981-48c0-89e3-36a615d78aef" class="text-block-content">
+    <p>Let's start by creating a cert-manager namespace, where the package needs to be installed on top of your cluster:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_66b13a1d-a962-45ef-a463-37e5bae5f5ae"><code>kubectl create ns cert-manager</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_66b13a1d-a962-45ef-a463-37e5bae5f5ae">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/52d2a30f-38d3-4d8d-8776-e47eda2f3c57.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/571/medium/52d2a30f-38d3-4d8d-8776-e47eda2f3c57.png" srcset="" alt="" height="54" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7844a098-d024-4406-98e2-f14b20c0d574" class="text-block-content">
+    <p>However, &nbsp;before applying any package additionally, post-cluster creation, you need to regulate the PSA accordingly so that the placeholder in your cluster, for the package installation, has the needed permissions:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/0b3291c8-e36a-4812-bacc-5a515ec7e714.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/573/medium/0b3291c8-e36a-4812-bacc-5a515ec7e714.png" srcset="" alt="" height="55" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_ebb15984-d41c-428d-b5a7-1e61c09c2d84"><code>kubectl label --overwrite ns cert-manager pod-security.kubernetes.io/enforce=privileged</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_ebb15984-d41c-428d-b5a7-1e61c09c2d84">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5268e7d5-2018-4be9-b51a-d3bf72734ca5" class="text-block-content">
+    <p>Once you set the correct mode for PSA over the namespace, you can continue with installing the package itself.</p>
+<p>As a refresher, let's get the versions available:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9ca947d6-4db3-4517-bde3-a6f5c1137403.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/516/medium/9ca947d6-4db3-4517-bde3-a6f5c1137403.png" srcset="" alt="" height="188" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_bbccb29b-3a93-4c66-8747-eaa0dab1f9c7"><code>tanzu package available list cert-manager.tanzu.vmware.com</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_bbccb29b-3a93-4c66-8747-eaa0dab1f9c7">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_0e108312-73eb-4ce3-a480-b396d09f3031" class="text-block-content">
+    <p>So from this list, you can pick-up a version for install. </p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_08bbe5f0-f0b0-4b6d-a85c-40537dfcad10" class="text-block-content">
+    <p>Let's get the most recent one: <code>1.7.2+vmware.3-tkg.3</code></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/debd2b0f-6952-49af-853c-2ef709205cea.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/575/medium/debd2b0f-6952-49af-853c-2ef709205cea.png" srcset="" alt="" height="276" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_a740c20b-dd16-48bc-86f1-0c2961adcfac"><code>tanzu package install cert-manager -p cert-manager.tanzu.vmware.com --version  1.1.0+vmware.1-tkg.2 -n c001-packages</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_a740c20b-dd16-48bc-86f1-0c2961adcfac">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_be413b23-43f1-4fd9-a22a-c9340c39f4ab" class="text-block-content">
+    <p>The output on the screenshot is truncated!</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_aedac022-3ca5-4164-a1c7-79e3bf2cc6e8" class="text-block-content">
+    <p>Installation takes up to 5min.</p>
+<p>The process involves kapp controller at the backend, implementing the following:</p>
+<ul>
+<li>Creating a dedicated service account</li>
+<li>Creating a cluster admin role</li>
+<li>Creating cluster role binding</li>
+<li>Creating overlay secrets</li>
+<li>Creating package install resource</li>
+<li>Reconciling changes untill package gets installed</li>
+</ul>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_74f024a4-bc84-46d6-a709-eb204b27d618" class="text-block-content">
+    <p>You can check the changes &nbsp;and get info update, after the cert-manager gets successfully installed</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_f6436093-1b15-4c22-9ccb-8693fec56933" class="text-block-content">
+    <p>From list of installed packages perspective:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/e3047d99-1482-43e7-ba43-69838e9a3244.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/577/medium/e3047d99-1482-43e7-ba43-69838e9a3244.png" srcset="" alt="" height="178" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_2843dff4-b3f2-4b70-a4e7-fac3b5c7ba0a"><code>tanzu package installed list -A</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_2843dff4-b3f2-4b70-a4e7-fac3b5c7ba0a">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ce63bc4a-03d5-4cff-9ef4-369546143b36" class="text-block-content">
+    <p>From installation namespace perspective:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/b8295b13-4c2b-4373-a7cc-ef07a804464f.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/589/medium/b8295b13-4c2b-4373-a7cc-ef07a804464f.png" srcset="" alt="" height="198" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_f8e69641-bc7d-487b-9dfd-71b0728886b8"><code>tanzu package installed get cert-manager -n cert-manager
+
+tanzu package installed list -n cert-manager</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_f8e69641-bc7d-487b-9dfd-71b0728886b8">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_ed39a99f-d296-45d3-a433-11b5900c8575" class="text-block-content">
+    <p>In case it is needed, the best approach for troubleshooting is from description perspective:</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/b9b4341d-c224-4caf-8f25-923640c1a3d8.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/591/medium/b9b4341d-c224-4caf-8f25-923640c1a3d8.png" srcset="" alt="" height="88" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_53057167-e9e6-4d0f-8f16-cf97a00494ca"><code>kubectl get pods -n cert-manager</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_53057167-e9e6-4d0f-8f16-cf97a00494ca">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/dc87e68a-8b90-4b50-b691-f3807726ff24.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/683/581/medium/dc87e68a-8b90-4b50-b691-f3807726ff24.png" srcset="" alt="" height="421" width="855">
+      </a>
+  </div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_44d66569-5121-4236-bab6-1b8b4211d067"><code>kubectl describe pkgi cert-manager -n cert-manager</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_44d66569-5121-4236-bab6-1b8b4211d067">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+  </div>
+ 
+  </div>
+
+

@@ -1,0 +1,233 @@
+<template id='article_translations'
+  data-translation-clipboard-copy='Click to copy'
+  data-translation-clipboard-copied="Copied to clipboard!">
+</template>
+
+
+      <div class="step screensteps-section screensteps-depth-1" id="task-description-and-objectives" data-step-uuid="A7720654-A786-4F98-8976-DEB6E570619C">
+    <h2 id="task-description-and-objectives" class="step-title screensteps-heading">1. Task description and objectives</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_06D0AC9D-7A87-4504-BFF0-C3DDDF204D2A" class="text-block-content">
+    <p>Your task is to log in to Harbor, create a project, and obtain the certificate for login to the registry.</p>
+  </div>
+</div>
+ 
+  </div>
+
+      <div class="step screensteps-section screensteps-depth-1" id="create-storage-policy" data-step-uuid="79E9640D-81ED-498B-8E87-083C5495659D">
+    <h2 id="create-storage-policy" class="step-title screensteps-heading">2. Work with Harbor</h2>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_C03F34C6-84B9-48EB-BCDD-3B048C76A332" class="text-block-content">
+    
+  </div>
+</div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="login-to-vsphere-client" data-step-uuid="93E84AAC-12CC-455F-93C3-3B2EB37BCD57">
+    <h3 id="login-to-vsphere-client" class="step-title screensteps-heading">2.1. Access and Prepare Harbor</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_D6CD1298-BF7C-4E27-A983-D904CFEEE294" class="text-block-content">
+    <p>Access Harbor using its FQDN</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_86dd5291-20d2-4e3a-b088-01847659c06f" class="text-block-content">
+    <p>The Harbor FQDN is provided by ExternalDNS, and it is set in the <strong>harbor-data-values.yml</strong> file. </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/94c3fa68-ef91-47bd-a786-db6005eb1edf.png" srcset="" alt="" height="99" width="782">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_003cc5f7-90d1-496e-9e99-5d81a3979e8c" class="text-block-content">
+    <p>You can review this value from &nbsp;<strong>harbor-data-values.yml </strong>file by running a command in Terminal.</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_ac95a4bd-7533-4d13-8b6c-6fd22c32616f"><code>cat .\Downloads\harbor-data-values.yml | grep hostname</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_ac95a4bd-7533-4d13-8b6c-6fd22c32616f">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_d583ff77-cd2c-4343-b5a2-721b6fdc15a3" class="text-block-content">
+    <p>Now let's prepare your environment for Harbor</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/701712e7-8b34-485d-8258-e83d39fca824.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/144/medium/701712e7-8b34-485d-8258-e83d39fca824.png" srcset="" alt="" height="593" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_786b5cc1-c674-4659-98bb-14864758472c" class="text-block-content">
+    <ol>
+<li>In Chrome, Go to your harbor URL: <a target="_blank" href="https://harbor.vcf.holo.lab"><code>https://harbor.vcf.holo.lab</code></a>
+</li>
+<li>Provide the credentials</li>
+<li>Confirm with LOG IN</li>
+</ol>
+<p>Username:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_59502852-b776-437a-b8a8-202011cfeb45"><code>admin</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_59502852-b776-437a-b8a8-202011cfeb45">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_34fa0f9c-c754-4b86-b10e-e39fa1a17584" class="text-block-content">
+    <p>Password:</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_76fa7816-4833-453c-a968-08489e45bb2e"><code>VMware1!</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_76fa7816-4833-453c-a968-08489e45bb2e">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_13f0df36-dc14-441e-8c57-49811ec6071b" class="text-block-content">
+    <p>Let's create a Project</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/3f6ef9d1-bb26-4719-99e6-709c01f9eb76.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/146/medium/3f6ef9d1-bb26-4719-99e6-709c01f9eb76.png" srcset="" alt="" height="540" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_42457e85-b2d2-4ccd-b194-1526670931be" class="text-block-content">
+    <p>Click on NEW PROJECT</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/dbdd1e85-9e53-4087-a5f3-6df7a6a3b075.png" srcset="" alt="" height="404" width="575">
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_e3ba2eb2-bd54-4f82-a8ae-cb5295f51acd" class="text-block-content">
+    <p>Project Name: </p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_411ccce5-4b31-419e-a9d1-7ecc41ed1086"><code>lf-tdd-project</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_411ccce5-4b31-419e-a9d1-7ecc41ed1086">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_7b7a1ef3-7796-4de4-afbd-4a9fdd775cb7" class="text-block-content">
+    <p>Access Level: mark Public Leave the other options unchanged and </p>
+<p>click <strong>OK</strong></p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/9936f5b0-761c-4046-bfcc-2301ebc88da0.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/150/medium/9936f5b0-761c-4046-bfcc-2301ebc88da0.png" srcset="" alt="" height="528" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_5c9dc13c-8492-43e0-9a53-053b77c48be5" class="text-block-content">
+    <p>On the Projects page go to your lf-tdd-project </p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/7f318901-57f1-4200-8e75-194d19b433c1.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/679/152/medium/7f318901-57f1-4200-8e75-194d19b433c1.png" srcset="" alt="" height="528" width="855">
+      </a>
+  </div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_21e3a8d7-08da-4ef5-9470-05631b0659e1" class="text-block-content">
+    <p>Click on REGISTRY CERTIFICATE</p>
+  </div>
+</div>
+ 
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_1ac68b35-8395-4f70-a781-0b235845c1ca" class="text-block-content">
+    <p>The <strong>ca.cer</strong> file is downloaded in your Downloads folder</p>
+  </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <img src="images/e82bf90b-499f-4cb0-8365-349e79f74253.png" srcset="" alt="" height="374" width="753">
+  </div>
+ 
+  </div>
+ 
+        <div class="step screensteps-section screensteps-depth-2" id="install-harbor" data-step-uuid="F9485A5B-D127-4E44-8F14-DDD8077615B0">
+    <h3 id="install-harbor" class="step-title screensteps-heading">2.2. Use the Harbor Repository</h3>
+      <div class="step-instructions screensteps-textblock">
+  <div id="text-content_390DF6EF-AFDF-474E-86EC-9C54B1481EC9" class="text-block-content">
+    <p>we need to have DOCKER CLI in windows desktop / PS Terminal</p>
+  </div>
+</div>
+ 
+      <div class="code-block copy-clipboard--parent">
+  <pre id="code-content_f0df254f-b91d-46e0-99de-8ba091c04415"><code>choco install docker-cli</code></pre>
+    <div class="copy-clipboard">
+      <svg width="12" height="14" viewbox="0 0 12 14" xmlns="http://www.w3.org/2000/svg" role="img" class="clipboard-icon copy-clipboard--icon" data-clipboard-target="#code-content_f0df254f-b91d-46e0-99de-8ba091c04415">
+    <path d="M1.155 14a1.12 1.12 0 0 1-.808-.34A1.074 1.074 0 0 1 0 12.87V3.658h1.155v9.21h6.943V14H1.155zm2.31-2.262a1.12 1.12 0 0 1-.808-.339 1.074 1.074 0 0 1-.347-.791V1.13c0-.302.116-.566.347-.792.23-.226.5-.339.808-.339h7.38c.308 0 .577.113.808.34.231.225.347.49.347.79v9.478c0 .301-.116.565-.347.791-.23.226-.5.34-.808.34h-7.38zm0-1.13h7.38V1.13h-7.38v9.477zm0 0V.054v10.554z" fill="#556A7B" fill-rule="nonzero"></path>
+</svg>
+
+      <span class='copy-clipboard--tt'>
+        Click to copy
+      </span>
+    </div>
+</div>
+ 
+        <div class="image screensteps-image">
+      <a href="images/81c969a2-b64c-4797-a9fe-40f008123358.png" class="screensteps-image-zoom">
+        <img src="https://media.screensteps.com/image_assets/assets/008/682/677/medium/81c969a2-b64c-4797-a9fe-40f008123358.png" srcset="" alt="mRemoteNG - confCons.xml - vcf-5.2-1.5.4-noaria" height="216" width="855">
+      </a>
+  </div>
+ 
+  </div>
+ 
+  </div>
+
+
